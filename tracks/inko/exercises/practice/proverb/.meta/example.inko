@@ -1,0 +1,16 @@
+# Returns the lines of the proverb built from `pieces`, one line per pair of
+# consecutive pieces plus the closing line.
+fn pub recite(pieces: ref Array[String]) -> Array[String] {
+  let first = match pieces.first {
+    case Some(piece) -> piece
+    case None -> return []
+  }
+  let lines = pieces
+    .iter
+    .zip(pieces.iter.skip(1))
+    .map(fn (pair) { 'For want of a ${pair.0} the ${pair.1} was lost.' })
+    .to_array
+
+  lines.push('And all for the want of a ${first}.')
+  lines
+}

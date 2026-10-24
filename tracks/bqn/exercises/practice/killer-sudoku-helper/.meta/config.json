@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "killer-sudoku-helper.bqn"
+    ],
+    "test": [
+      "test/killer-sudoku-helper.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Write a tool that makes it easier to solve Killer Sudokus",
+  "source": "Created by Sascha Mann, Jeremy Walker, and BethanyG for the Julia track on Exercism.",
+  "source_url": "https://github.com/exercism/julia/pull/413",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

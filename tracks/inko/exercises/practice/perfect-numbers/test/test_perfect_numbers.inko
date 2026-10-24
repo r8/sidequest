@@ -1,0 +1,19 @@
+import perfect_numbers (Classification, classify)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('Perfect numbers > Smallest perfect number is classified correctly', fn (t) { t.equal(classify(6), Result.Ok(Classification.Perfect)) })
+  t.test('Perfect numbers > Medium perfect number is classified correctly', fn (t) { t.equal(classify(28), Result.Ok(Classification.Perfect)) })
+  t.test('Perfect numbers > Large perfect number is classified correctly', fn (t) { t.equal(classify(33550336), Result.Ok(Classification.Perfect)) })
+  t.test('Abundant numbers > Smallest abundant number is classified correctly', fn (t) { t.equal(classify(12), Result.Ok(Classification.Abundant)) })
+  t.test('Abundant numbers > Medium abundant number is classified correctly', fn (t) { t.equal(classify(30), Result.Ok(Classification.Abundant)) })
+  t.test('Abundant numbers > Large abundant number is classified correctly', fn (t) { t.equal(classify(33550335), Result.Ok(Classification.Abundant)) })
+  t.test('Abundant numbers > Perfect square abundant number is classified correctly', fn (t) { t.equal(classify(196), Result.Ok(Classification.Abundant)) })
+  t.test('Deficient numbers > Smallest prime deficient number is classified correctly', fn (t) { t.equal(classify(2), Result.Ok(Classification.Deficient)) })
+  t.test('Deficient numbers > Smallest non-prime deficient number is classified correctly', fn (t) { t.equal(classify(4), Result.Ok(Classification.Deficient)) })
+  t.test('Deficient numbers > Medium deficient number is classified correctly', fn (t) { t.equal(classify(32), Result.Ok(Classification.Deficient)) })
+  t.test('Deficient numbers > Large deficient number is classified correctly', fn (t) { t.equal(classify(33550337), Result.Ok(Classification.Deficient)) })
+  t.test('Deficient numbers > Edge case (no factors other than itself) is classified correctly', fn (t) { t.equal(classify(1), Result.Ok(Classification.Deficient)) })
+  t.test('Invalid inputs > Zero is rejected (as it is not a positive integer)', fn (t) { t.equal(classify(0), Result.Error('Classification is only possible for positive integers.')) })
+  t.test('Invalid inputs > Negative integer is rejected (as it is not a positive integer)', fn (t) { t.equal(classify(-1), Result.Error('Classification is only possible for positive integers.')) })
+}

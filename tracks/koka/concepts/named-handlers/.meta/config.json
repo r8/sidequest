@@ -1,0 +1,7 @@
+{
+  "blurb": "Named effects have handlers that are values, so a program can use several handlers of one effect at once.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

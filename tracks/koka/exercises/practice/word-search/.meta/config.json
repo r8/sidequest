@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "word-search.kk"
+    ],
+    "test": [
+      "test/word-search-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Create a program to solve a word search puzzle.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

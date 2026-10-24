@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/weather_balloons.inko"
+    ],
+    "test": [
+      "test/test_weather_balloons.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about futures and async expressions by collecting readings from weather balloons.",
+  "custom": {
+    "after": [
+      "bakery-ovens"
+    ]
+  }
+}

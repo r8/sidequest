@@ -1,0 +1,49 @@
+import palindrome_products (Palindrome, largest, smallest)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('find the smallest palindrome from single digit factors', fn (t) {
+    t.equal(smallest(1, 9), Result.Ok(Option.Some(Palindrome(value: 1, factors: [(1, 1)]))))
+  })
+  t.test('find the largest palindrome from single digit factors', fn (t) {
+    t.equal(largest(1, 9), Result.Ok(Option.Some(Palindrome(value: 9, factors: [(1, 9), (3, 3)]))))
+  })
+  t.test('find the smallest palindrome from double digit factors', fn (t) {
+    t.equal(smallest(10, 99), Result.Ok(Option.Some(Palindrome(value: 121, factors: [(11, 11)]))))
+  })
+  t.test('find the largest palindrome from double digit factors', fn (t) {
+    t.equal(largest(10, 99), Result.Ok(Option.Some(Palindrome(value: 9009, factors: [(91, 99)]))))
+  })
+  t.test('find the smallest palindrome from triple digit factors', fn (t) {
+    t.equal(smallest(100, 999), Result.Ok(Option.Some(Palindrome(value: 10201, factors: [(101, 101)]))))
+  })
+  t.test('find the largest palindrome from triple digit factors', fn (t) {
+    t.equal(largest(100, 999), Result.Ok(Option.Some(Palindrome(value: 906609, factors: [(913, 993)]))))
+  })
+  t.test('find the smallest palindrome from four digit factors', fn (t) {
+    t.equal(smallest(1000, 9999), Result.Ok(Option.Some(Palindrome(value: 1002001, factors: [(1001, 1001)]))))
+  })
+  t.test('find the largest palindrome from four digit factors', fn (t) {
+    t.equal(largest(1000, 9999), Result.Ok(Option.Some(Palindrome(value: 99000099, factors: [(9901, 9999)]))))
+  })
+  t.test('empty result for smallest if no palindrome in the range', fn (t) {
+    t.equal(smallest(1002, 1003), Result.Ok(Option.None))
+  })
+  t.test('empty result for largest if no palindrome in the range', fn (t) {
+    t.equal(largest(15, 15), Result.Ok(Option.None))
+  })
+  t.test('error result for smallest if min is more than max', fn (t) {
+    t.equal(smallest(10000, 1), Result.Error('min must be <= max'))
+  })
+  t.test('error result for largest if min is more than max', fn (t) {
+    t.equal(largest(2, 1), Result.Error('min must be <= max'))
+  })
+  t.test('smallest product does not use the smallest factor', fn (t) {
+    t.equal(smallest(3215, 4000), Result.Ok(Option.Some(Palindrome(value: 10988901, factors: [(3297, 3333)]))))
+  })
+  # Not in the canonical data: when the range starts at 0, the smallest
+  # palindrome is 0, and every number in the range is a factor of it with 0.
+  t.test('smallest palindrome of a range starting at zero', fn (t) {
+    t.equal(smallest(0, 3), Result.Ok(Option.Some(Palindrome(value: 0, factors: [(0, 0), (0, 1), (0, 2), (0, 3)]))))
+  })
+}

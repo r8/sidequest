@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "knitting-rows.fs"
+    ],
+    "test": [
+      "test/knitting-rows-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about counted loops with do, ?do, loop, +loop, i and j by counting the stitches in a knitting pattern.",
+  "custom": {
+    "after": [
+      "tea-time"
+    ]
+  }
+}

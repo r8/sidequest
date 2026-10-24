@@ -1,0 +1,71 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# The classification of a positive integer by its aliquot sum (the sum of its
+# divisors other than itself).
+type pub copy enum Classification {
+  case Perfect
+  case Abundant
+  case Deficient
+}
+
+impl Equal for Classification {
+  fn pub ==(other: Classification) -> Bool {
+    match (self, other) {
+      case (Perfect, Perfect) -> true
+      case (Abundant, Abundant) -> true
+      case (Deficient, Deficient) -> true
+      case _ -> false
+    }
+  }
+}
+
+impl Format for Classification {
+  fn pub fmt(formatter: mut Formatter) {
+    let name = match self {
+      case Perfect -> 'Perfect'
+      case Abundant -> 'Abundant'
+      case Deficient -> 'Deficient'
+    }
+
+    formatter.tuple(name).finish
+  }
+}
+
+# Returns the sum of the divisors of `number` other than itself.
+fn aliquot_sum(number: Int) -> Int {
+  let mut sum = 0
+  let mut divisor = 1
+
+  # Not divisor * divisor <= number: near the largest Int, that product overflows.
+  while divisor <= (number / divisor) {
+    if number % divisor == 0 {
+      let pair = number / divisor
+
+      sum += divisor
+
+      if pair != divisor { sum += pair }
+    }
+
+    divisor += 1
+  }
+
+  sum - number
+}
+
+# Returns the classification of `number`, or an error if it isn't positive.
+fn pub classify(number: Int) -> Result[Classification, String] {
+  if number < 1 {
+    return Result.Error(
+      'Classification is only possible for positive integers.',
+    )
+  }
+
+  let classification = match aliquot_sum(number).cmp(number) {
+    case Less -> Classification.Deficient
+    case Equal -> Classification.Perfect
+    case Greater -> Classification.Abundant
+  }
+
+  Result.Ok(classification)
+}

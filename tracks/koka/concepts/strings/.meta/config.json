@@ -1,0 +1,7 @@
+{
+  "blurb": "Immutable Unicode text: literals and escapes, joining with ++, and the standard string functions.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

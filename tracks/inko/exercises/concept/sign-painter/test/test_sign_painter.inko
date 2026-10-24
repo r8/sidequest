@@ -1,0 +1,50 @@
+import sign_painter (banner, door_plate, painted_characters, shop_sign, tidy)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. a bakery sign', fn (t) {
+    t.equal(shop_sign(owner: 'Rosa', trade: 'Bakery'), "Rosa's Bakery")
+  })
+  t.test('1. a longer sign', fn (t) {
+    t.equal(
+      shop_sign(owner: 'Old Tom', trade: 'Fish and Chips'),
+      "Old Tom's Fish and Chips",
+    )
+  })
+
+  t.test('2. tidy spaces on both sides', fn (t) {
+    t.equal(tidy('   Fresh Fish  '), 'Fresh Fish')
+  })
+  t.test('2. tidy tabs and newlines', fn (t) {
+    t.equal(tidy('\tFlowers\n'), 'Flowers')
+  })
+  t.test('2. tidy keeps inner spaces', fn (t) {
+    t.equal(tidy('Two  Spaces'), 'Two  Spaces')
+  })
+
+  t.test('3. a banner', fn (t) {
+    t.equal(banner(' Summer fair '), '*** SUMMER FAIR ***')
+  })
+  t.test('3. a banner with accents', fn (t) {
+    t.equal(banner('Crème brûlée'), '*** CRÈME BRÛLÉE ***')
+  })
+
+  t.test('4. letters in a plain sign', fn (t) {
+    t.equal(painted_characters('Bakery'), 6)
+  })
+  t.test('4. spaces are free', fn (t) {
+    t.equal(painted_characters('Fish and Chips'), 12)
+  })
+  t.test('4. accented letters count once', fn (t) {
+    t.equal(painted_characters('Café Rosa'), 8)
+  })
+  t.test('4. nothing to paint', fn (t) { t.equal(painted_characters('   '), 0) })
+
+  t.test('5. a short house number', fn (t) { t.equal(door_plate(7), '0007') })
+  t.test('5. a two-digit house number', fn (t) {
+    t.equal(door_plate(42), '0042')
+  })
+  t.test('5. a four-digit house number', fn (t) {
+    t.equal(door_plate(1984), '1984')
+  })
+}

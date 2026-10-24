@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Input-Sources.html",
+    "description": "Input sources, including evaluate, in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/The-Text-Interpreter.html",
+    "description": "The text interpreter in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/EVALUATE",
+    "description": "EVALUATE in the Forth standard"
+  }
+]

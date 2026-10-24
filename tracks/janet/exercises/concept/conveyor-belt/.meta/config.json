@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "conveyor-belt.janet"
+    ],
+    "test": [
+      "test/conveyor-belt.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about fibers by modelling a chocolate factory's conveyor belt, which hands out one box at a time.",
+  "custom": {
+    "after": [
+      "firefly-census",
+      "seed-catalog"
+    ]
+  }
+}

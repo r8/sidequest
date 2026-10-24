@@ -1,0 +1,10 @@
+import nth_prime (prime)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('first prime', fn (t) { t.equal(prime(1), Result.Ok(2)) })
+  t.test('second prime', fn (t) { t.equal(prime(2), Result.Ok(3)) })
+  t.test('sixth prime', fn (t) { t.equal(prime(6), Result.Ok(13)) })
+  t.test('big prime', fn (t) { t.equal(prime(10001), Result.Ok(104743)) })
+  t.test('there is no zeroth prime', fn (t) { t.equal(prime(0), Result.Error('there is no zeroth prime')) })
+}

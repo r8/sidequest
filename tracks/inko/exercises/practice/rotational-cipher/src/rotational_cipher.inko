@@ -1,0 +1,5 @@
+# Rotates every letter of `text` by `shift_key` places in the alphabet,
+# keeping its case; other characters are left as they are.
+fn pub rotate(text: String, shift_key: Int) -> String {
+  panic('implement me')
+}

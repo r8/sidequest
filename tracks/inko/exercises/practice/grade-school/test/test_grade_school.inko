@@ -1,0 +1,175 @@
+import grade_school (School)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('Roster is empty when no student is added', fn (t) {
+    let school = School.new
+
+    t.equal(school.roster, [])
+  })
+  t.test('Add a student', fn (t) {
+    let school = School.new
+    let added = [
+      school.add('Aimee', 2),
+    ]
+
+    t.equal(added, [true])
+  })
+  t.test('Student is added to the roster', fn (t) {
+    let school = School.new
+    let _ = school.add('Aimee', 2)
+
+    t.equal(school.roster, ['Aimee'])
+  })
+  t.test('Adding multiple students in the same grade in the roster', fn (t) {
+    let school = School.new
+    let added = [
+      school.add('Blair', 2),
+      school.add('James', 2),
+      school.add('Paul', 2),
+    ]
+
+    t.equal(added, [true, true, true])
+  })
+  t.test('Multiple students in the same grade are added to the roster', fn (t) {
+    let school = School.new
+    let _ = school.add('Blair', 2)
+    let _ = school.add('James', 2)
+    let _ = school.add('Paul', 2)
+
+    t.equal(school.roster, ['Blair', 'James', 'Paul'])
+  })
+  t.test('Cannot add student to same grade in the roster more than once', fn (t) {
+    let school = School.new
+    let added = [
+      school.add('Blair', 2),
+      school.add('James', 2),
+      school.add('James', 2),
+      school.add('Paul', 2),
+    ]
+
+    t.equal(added, [true, true, false, true])
+  })
+  t.test('Student not added to same grade in the roster more than once', fn (t) {
+    let school = School.new
+    let _ = school.add('Blair', 2)
+    let _ = school.add('James', 2)
+    let _ = school.add('James', 2)
+    let _ = school.add('Paul', 2)
+
+    t.equal(school.roster, ['Blair', 'James', 'Paul'])
+  })
+  t.test('Adding students in multiple grades', fn (t) {
+    let school = School.new
+    let added = [
+      school.add('Chelsea', 3),
+      school.add('Logan', 7),
+    ]
+
+    t.equal(added, [true, true])
+  })
+  t.test('Students in multiple grades are added to the roster', fn (t) {
+    let school = School.new
+    let _ = school.add('Chelsea', 3)
+    let _ = school.add('Logan', 7)
+
+    t.equal(school.roster, ['Chelsea', 'Logan'])
+  })
+  t.test('Cannot add same student to multiple grades in the roster', fn (t) {
+    let school = School.new
+    let added = [
+      school.add('Blair', 2),
+      school.add('James', 2),
+      school.add('James', 3),
+      school.add('Paul', 3),
+    ]
+
+    t.equal(added, [true, true, false, true])
+  })
+  t.test('Student not added to multiple grades in the roster', fn (t) {
+    let school = School.new
+    let _ = school.add('Blair', 2)
+    let _ = school.add('James', 2)
+    let _ = school.add('James', 3)
+    let _ = school.add('Paul', 3)
+
+    t.equal(school.roster, ['Blair', 'James', 'Paul'])
+  })
+  t.test('Students are sorted by grades in the roster', fn (t) {
+    let school = School.new
+    let _ = school.add('Jim', 3)
+    let _ = school.add('Peter', 2)
+    let _ = school.add('Anna', 1)
+
+    t.equal(school.roster, ['Anna', 'Peter', 'Jim'])
+  })
+  t.test('Students are sorted by name in the roster', fn (t) {
+    let school = School.new
+    let _ = school.add('Peter', 2)
+    let _ = school.add('Zoe', 2)
+    let _ = school.add('Alex', 2)
+
+    t.equal(school.roster, ['Alex', 'Peter', 'Zoe'])
+  })
+  t.test('Students are sorted by grades and then by name in the roster', fn (t) {
+    let school = School.new
+    let _ = school.add('Peter', 2)
+    let _ = school.add('Anna', 1)
+    let _ = school.add('Barb', 1)
+    let _ = school.add('Zoe', 2)
+    let _ = school.add('Alex', 2)
+    let _ = school.add('Jim', 3)
+    let _ = school.add('Charlie', 1)
+
+    t.equal(school.roster, ['Anna', 'Barb', 'Charlie', 'Alex', 'Peter', 'Zoe', 'Jim'])
+  })
+  t.test('Grade is empty if no students in the roster', fn (t) {
+    let school = School.new
+
+    t.equal(school.grade(1), [])
+  })
+  t.test('Grade is empty if no students in that grade', fn (t) {
+    let school = School.new
+    let _ = school.add('Peter', 2)
+    let _ = school.add('Zoe', 2)
+    let _ = school.add('Alex', 2)
+    let _ = school.add('Jim', 3)
+
+    t.equal(school.grade(1), [])
+  })
+  t.test('Student not added to same grade more than once', fn (t) {
+    let school = School.new
+    let _ = school.add('Blair', 2)
+    let _ = school.add('James', 2)
+    let _ = school.add('James', 2)
+    let _ = school.add('Paul', 2)
+
+    t.equal(school.grade(2), ['Blair', 'James', 'Paul'])
+  })
+  t.test('Student not added to multiple grades', fn (t) {
+    let school = School.new
+    let _ = school.add('Blair', 2)
+    let _ = school.add('James', 2)
+    let _ = school.add('James', 3)
+    let _ = school.add('Paul', 3)
+
+    t.equal(school.grade(2), ['Blair', 'James'])
+  })
+  t.test('Student not added to other grade for multiple grades', fn (t) {
+    let school = School.new
+    let _ = school.add('Blair', 2)
+    let _ = school.add('James', 2)
+    let _ = school.add('James', 3)
+    let _ = school.add('Paul', 3)
+
+    t.equal(school.grade(3), ['Paul'])
+  })
+  t.test('Students are sorted by name in a grade', fn (t) {
+    let school = School.new
+    let _ = school.add('Franklin', 5)
+    let _ = school.add('Bradley', 5)
+    let _ = school.add('Jeff', 1)
+
+    t.equal(school.grade(5), ['Bradley', 'Franklin'])
+  })
+}

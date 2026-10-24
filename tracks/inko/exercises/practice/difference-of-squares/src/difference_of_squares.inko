@@ -1,0 +1,15 @@
+# Returns the square of the sum of the first `number` natural numbers.
+fn pub square_of_sum(number: Int) -> Int {
+  panic('implement me')
+}
+
+# Returns the sum of the squares of the first `number` natural numbers.
+fn pub sum_of_squares(number: Int) -> Int {
+  panic('implement me')
+}
+
+# Returns the difference between the square of the sum and the sum of the
+# squares of the first `number` natural numbers.
+fn pub difference_of_squares(number: Int) -> Int {
+  panic('implement me')
+}

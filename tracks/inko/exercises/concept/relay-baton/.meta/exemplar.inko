@@ -1,0 +1,81 @@
+# The baton a team passes from runner to runner.
+type pub Baton {
+  let @team: String
+  let mut @handoffs: Int
+
+  # Returns a new baton for `team`, not passed on yet.
+  fn pub static new(team: String) -> Baton {
+    Baton(team: team, handoffs: 0)
+  }
+
+  # Returns the team the baton belongs to.
+  fn pub team -> String {
+    @team
+  }
+
+  # Returns how many times the baton has been passed on.
+  fn pub handoffs -> Int {
+    @handoffs
+  }
+
+  # Records that the baton was passed on.
+  fn pub mut passed {
+    @handoffs += 1
+  }
+}
+
+# A runner in a relay team, who may be holding the baton.
+type pub Runner {
+  let @name: String
+  let mut @baton: Option[Baton]
+
+  # Returns a runner called `name` without a baton.
+  fn pub static new(name: String) -> Runner {
+    Runner(name: name, baton: Option.None)
+  }
+
+  # Gives the runner `baton` to hold.
+  fn pub mut take(baton: Baton) {
+    @baton = Option.Some(baton)
+  }
+
+  # Returns whether the runner holds a baton.
+  fn pub holding? -> Bool {
+    @baton.some?
+  }
+
+  # Passes the baton, if the runner holds one, on to `runner`.
+  fn pub mut hand_off(runner: mut Runner) {
+    match @baton := Option.None {
+      case Some(baton) -> {
+        baton.passed
+        runner.take(baton)
+      }
+      case None -> {}
+    }
+  }
+
+  # Returns the team of the baton the runner holds, or "no team".
+  fn pub team -> String {
+    match @baton {
+      case Some(baton) -> baton.team
+      case None -> 'no team'
+    }
+  }
+
+  # Takes the runner out of the race, returning the baton they held, if any.
+  fn pub move retire -> Option[Baton] {
+    @baton
+  }
+}
+
+# Returns a closure that counts laps: every call returns the number of laps
+# so far, starting at 1.
+fn pub lap_counter -> fn -> Int {
+  let mut laps = 0
+
+  fn move {
+    laps += 1
+    laps
+  }
+}

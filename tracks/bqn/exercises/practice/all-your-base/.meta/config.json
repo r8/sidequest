@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "all-your-base.bqn"
+    ],
+    "test": [
+      "test/all-your-base.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Convert a number, represented as a sequence of digits in one base, to any other base.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+# Returns the Scrabble score of `word`, ignoring case.
+fn pub score(word: String) -> Int {
+  panic('implement me')
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/types/",
+    "description": "Inline, copy and ref types, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/memory-management/",
+    "description": "Value types in memory management"
+  }
+]

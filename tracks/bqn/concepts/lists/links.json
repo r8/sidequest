@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/tutorial/list.html",
+    "description": "Tutorial: working with lists"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/arrayrepr.html",
+    "description": "Writing arrays: brackets and stranding"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/range.html",
+    "description": "Range: ↕"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/join.html",
+    "description": "Join: ∾"
+  }
+]

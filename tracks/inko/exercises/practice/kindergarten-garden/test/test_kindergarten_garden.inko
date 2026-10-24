@@ -1,0 +1,115 @@
+import kindergarten_garden (Plant, plants)
+import std.test (Tests)
+
+let FULL = 'VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV'
+
+fn pub tests(t: mut Tests) {
+  t.test('partial garden > garden with single student', fn (t) {
+    t.equal(
+      plants('RC\nGG', 'Alice'),
+      [Plant.Radishes, Plant.Clover, Plant.Grass, Plant.Grass],
+    )
+  })
+  t.test('partial garden > different garden with single student', fn (t) {
+    t.equal(
+      plants('VC\nRC', 'Alice'),
+      [Plant.Violets, Plant.Clover, Plant.Radishes, Plant.Clover],
+    )
+  })
+  t.test('partial garden > garden with two students', fn (t) {
+    t.equal(
+      plants('VVCG\nVVRC', 'Bob'),
+      [Plant.Clover, Plant.Grass, Plant.Radishes, Plant.Clover],
+    )
+  })
+  t.test(
+    "partial garden > multiple students for the same garden with three students > second student's garden",
+    fn (t) {
+      t.equal(
+        plants('VVCCGG\nVVCCGG', 'Bob'),
+        [Plant.Clover, Plant.Clover, Plant.Clover, Plant.Clover],
+      )
+    },
+  )
+  t.test(
+    "partial garden > multiple students for the same garden with three students > third student's garden",
+    fn (t) {
+      t.equal(
+        plants('VVCCGG\nVVCCGG', 'Charlie'),
+        [Plant.Grass, Plant.Grass, Plant.Grass, Plant.Grass],
+      )
+    },
+  )
+  t.test("full garden > for Alice, first student's garden", fn (t) {
+    t.equal(
+      plants(FULL, 'Alice'),
+      [Plant.Violets, Plant.Radishes, Plant.Violets, Plant.Radishes],
+    )
+  })
+  t.test("full garden > for Bob, second student's garden", fn (t) {
+    t.equal(
+      plants(FULL, 'Bob'),
+      [Plant.Clover, Plant.Grass, Plant.Clover, Plant.Clover],
+    )
+  })
+  t.test('full garden > for Charlie', fn (t) {
+    t.equal(
+      plants(FULL, 'Charlie'),
+      [Plant.Violets, Plant.Violets, Plant.Clover, Plant.Grass],
+    )
+  })
+  t.test('full garden > for David', fn (t) {
+    t.equal(
+      plants(FULL, 'David'),
+      [Plant.Radishes, Plant.Violets, Plant.Clover, Plant.Radishes],
+    )
+  })
+  t.test('full garden > for Eve', fn (t) {
+    t.equal(
+      plants(FULL, 'Eve'),
+      [Plant.Clover, Plant.Grass, Plant.Radishes, Plant.Grass],
+    )
+  })
+  t.test('full garden > for Fred', fn (t) {
+    t.equal(
+      plants(FULL, 'Fred'),
+      [Plant.Grass, Plant.Clover, Plant.Violets, Plant.Clover],
+    )
+  })
+  t.test('full garden > for Ginny', fn (t) {
+    t.equal(
+      plants(FULL, 'Ginny'),
+      [Plant.Clover, Plant.Grass, Plant.Grass, Plant.Clover],
+    )
+  })
+  t.test('full garden > for Harriet', fn (t) {
+    t.equal(
+      plants(FULL, 'Harriet'),
+      [Plant.Violets, Plant.Radishes, Plant.Radishes, Plant.Violets],
+    )
+  })
+  t.test('full garden > for Ileana', fn (t) {
+    t.equal(
+      plants(FULL, 'Ileana'),
+      [Plant.Grass, Plant.Clover, Plant.Violets, Plant.Clover],
+    )
+  })
+  t.test('full garden > for Joseph', fn (t) {
+    t.equal(
+      plants(FULL, 'Joseph'),
+      [Plant.Violets, Plant.Clover, Plant.Violets, Plant.Grass],
+    )
+  })
+  t.test("full garden > for Kincaid, second to last student's garden", fn (t) {
+    t.equal(
+      plants(FULL, 'Kincaid'),
+      [Plant.Grass, Plant.Clover, Plant.Clover, Plant.Grass],
+    )
+  })
+  t.test("full garden > for Larry, last student's garden", fn (t) {
+    t.equal(
+      plants(FULL, 'Larry'),
+      [Plant.Grass, Plant.Violets, Plant.Clover, Plant.Violets],
+    )
+  })
+}

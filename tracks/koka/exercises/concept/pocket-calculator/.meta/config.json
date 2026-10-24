@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "pocket-calculator.kk"
+    ],
+    "test": [
+      "test/pocket-calculator-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about recursive types by teaching a pocket calculator to remember, evaluate and print whole expressions.",
+  "custom": {
+    "after": [
+      "coffee-cart",
+      "trail-log"
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+fn vowel?(byte: Int) -> Bool {
+  match byte {
+    case 97 or 101 or 105 or 111 or 117 -> true
+    case _ -> false
+  }
+}
+
+# Returns the index at which the leading consonant sound of `word` ends.
+fn consonant_sound_end(word: String) -> Int {
+  if word.starts_with?('xr') or word.starts_with?('yt') { return 0 }
+
+  let mut index = 0
+
+  while index < word.size {
+    let byte = word.get(index).or_panic
+
+    if vowel?(byte) {
+      return if byte == 117 and index > 0 and word.get(index - 1).or_panic == 113 {
+        index + 1
+      } else {
+        index
+      }
+    }
+
+    if byte == 121 and index > 0 { return index }
+
+    index += 1
+  }
+
+  index
+}
+
+fn translate_word(word: String) -> String {
+  let split = consonant_sound_end(word)
+
+  '${word.slice(split, word.size)}${word.slice(0, split)}ay'
+}
+
+# Translates every word of `phrase` into Pig Latin, keeping the whitespace
+# between the words as it is.
+fn pub translate(phrase: String) -> String {
+  let parts = []
+  let mut word = ''
+
+  for char in phrase.chars {
+    if ' \t\r\n\u{B}\u{C}'.contains?(char) {
+      if word.size > 0 { parts.push(translate_word(word)) }
+
+      word = ''
+      parts.push(char)
+    } else {
+      word = word + char
+    }
+  }
+
+  if word.size > 0 { parts.push(translate_word(word)) }
+
+  String.join(parts.into_iter, with: '')
+}

@@ -1,0 +1,7 @@
+{
+  "blurb": "A return clause turns the result of a handled computation into the handler's result, often paired with its state.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

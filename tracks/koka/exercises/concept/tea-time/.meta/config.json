@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "tea-time.kk"
+    ],
+    "test": [
+      "test/tea-time-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn the basics of Koka by timing the pots in a tea house.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

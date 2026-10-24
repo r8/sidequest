@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "sgf-parsing.kk"
+    ],
+    "test": [
+      "test/sgf-parsing-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Parsing a Smart Game Format string.",
+  "custom": {
+    "after": [
+      "matching-brackets"
+    ]
+  }
+}

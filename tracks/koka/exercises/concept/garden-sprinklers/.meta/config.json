@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "garden-sprinklers.kk"
+    ],
+    "test": [
+      "test/garden-sprinklers-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about with statements by programming a garden sprinkler controller.",
+  "custom": {
+    "after": [
+      "step-counter",
+      "assembly-line"
+    ]
+  }
+}

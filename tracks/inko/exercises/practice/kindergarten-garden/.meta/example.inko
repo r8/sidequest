@@ -1,0 +1,75 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# A plant that grows in the garden.
+type pub copy enum Plant {
+  case Clover
+  case Grass
+  case Radishes
+  case Violets
+}
+
+impl Equal for Plant {
+  fn pub ==(other: Plant) -> Bool {
+    match (self, other) {
+      case (Clover, Clover) -> true
+      case (Grass, Grass) -> true
+      case (Radishes, Radishes) -> true
+      case (Violets, Violets) -> true
+      case _ -> false
+    }
+  }
+}
+
+impl Format for Plant {
+  fn pub fmt(formatter: mut Formatter) {
+    let name = match self {
+      case Clover -> 'Clover'
+      case Grass -> 'Grass'
+      case Radishes -> 'Radishes'
+      case Violets -> 'Violets'
+    }
+
+    formatter.tuple(name).finish
+  }
+}
+
+let STUDENTS = [
+  'Alice',
+  'Bob',
+  'Charlie',
+  'David',
+  'Eve',
+  'Fred',
+  'Ginny',
+  'Harriet',
+  'Ileana',
+  'Joseph',
+  'Kincaid',
+  'Larry',
+]
+
+# Returns the plant for a letter's byte.
+fn plant(letter: Int) -> Plant {
+  match letter {
+    case 67 -> Plant.Clover # 'C'
+    case 71 -> Plant.Grass # 'G'
+    case 82 -> Plant.Radishes # 'R'
+    case _ -> Plant.Violets
+  }
+}
+
+# Returns the four plants of `student`, given the garden `diagram`: two rows of
+# plant letters (`C`, `G`, `R` or `V`) separated by a newline. Each student,
+# in alphabetical order from Alice to Larry, has two cups in each row; the
+# plants are listed row by row, from left to right.
+fn pub plants(diagram: String, student: String) -> Array[Plant] {
+  let index = STUDENTS.index_of(student).get * 2
+
+  diagram
+    .split('\n')
+    .flat_map(fn (row) {
+      index.until(index + 2).iter.map(fn (i) { plant(row.get(i).or_panic) })
+    })
+    .to_array
+}

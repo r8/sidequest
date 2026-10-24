@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "collatz-conjecture.bqn"
+    ],
+    "test": [
+      "test/collatz-conjecture.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Calculate the number of steps to reach 1 using the Collatz conjecture.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Collatz_conjecture",
+  "custom": {
+    "after": [
+      "paper-folding"
+    ]
+  }
+}

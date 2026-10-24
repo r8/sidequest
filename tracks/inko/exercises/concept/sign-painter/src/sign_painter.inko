@@ -1,0 +1,24 @@
+# Returns the sign for `owner`'s shop, such as "Rosa's Bakery".
+fn pub shop_sign(owner: String, trade: String) -> String {
+  panic('implement me')
+}
+
+# Returns `order` without whitespace at its start and end.
+fn pub tidy(order: String) -> String {
+  panic('implement me')
+}
+
+# Returns `text` tidied and in capitals, between three stars on either side.
+fn pub banner(text: String) -> String {
+  panic('implement me')
+}
+
+# Returns the number of characters in `text` that aren't spaces.
+fn pub painted_characters(text: String) -> Int {
+  panic('implement me')
+}
+
+# Returns `number` as four digits, padded with leading zeros.
+fn pub door_plate(number: Int) -> String {
+  panic('implement me')
+}

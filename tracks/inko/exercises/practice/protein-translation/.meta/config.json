@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/protein_translation.inko"
+    ],
+    "test": [
+      "test/test_protein_translation.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Translate RNA sequences into proteins.",
+  "source": "Tyler Long",
+  "custom": {
+    "after": [
+      "rna-transcription"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "tournament.janet"
+    ],
+    "test": [
+      "test/tournament.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Tally the results of a small football competition.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

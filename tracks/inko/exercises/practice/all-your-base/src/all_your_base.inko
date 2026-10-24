@@ -1,0 +1,12 @@
+# Converts `digits`, the digits of a number in `input_base` (most significant
+# first), to the digits of the same number in `output_base`.
+#
+# Returns an error if either base is less than 2, or if a digit is outside the
+# range `0 <= digit < input_base`.
+fn pub rebase(
+  input_base: Int,
+  digits: ref Array[Int],
+  output_base: Int,
+) -> Result[Array[Int], String] {
+  panic('implement me')
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "remote-control.fs"
+    ],
+    "test": [
+      "test/remote-control-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about execution tokens with ', ['], execute and :noname by programming a universal remote control.",
+  "custom": {
+    "after": [
+      "tide-tables"
+    ]
+  }
+}

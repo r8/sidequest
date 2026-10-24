@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "coffee-orders.janet"
+    ],
+    "test": [
+      "test/coffee-orders.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about functions — optional, variadic and named parameters, and functions as values — by taking orders at a coffee cart.",
+  "custom": {
+    "after": [
+      "night-market",
+      "name-badges",
+      "weather-report"
+    ]
+  }
+}

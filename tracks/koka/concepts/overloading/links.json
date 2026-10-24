@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://github.com/koka-lang/koka/blob/master/samples/learn/qualifiers.kk",
+    "description": "Koka's tutorial sample on qualified names and overloading"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-identifiers",
+    "description": "The Koka book: identifiers"
+  }
+]

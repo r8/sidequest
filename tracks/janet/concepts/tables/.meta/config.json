@@ -1,0 +1,7 @@
+{
+  "blurb": "Tables are Janet's mutable key–value maps: @{:key value}, read with get and changed with put and update.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

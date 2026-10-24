@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Double-precision.html",
+    "description": "Double precision in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Mixed-precision.html",
+    "description": "Mixed precision in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/double",
+    "description": "The Double-Number word set in the Forth standard"
+  }
+]

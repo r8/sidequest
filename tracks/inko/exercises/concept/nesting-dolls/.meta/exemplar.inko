@@ -1,0 +1,59 @@
+# A set of nesting dolls: either the solid innermost doll, or a hollow doll
+# with another doll inside. Every doll has a name painted on it.
+type pub enum Doll {
+  case Solid(String)
+  case Hollow(String, Doll)
+
+  # Returns the number of dolls in the set.
+  fn pub count -> Int {
+    match self {
+      case Solid(_) -> 1
+      case Hollow(_, inside) -> 1 + inside.count
+    }
+  }
+
+  # Returns the name of the innermost doll.
+  fn pub innermost -> String {
+    match self {
+      case Solid(name) -> name
+      case Hollow(_, inside) -> inside.innermost
+    }
+  }
+
+  # Returns the names of all the dolls, from the outermost to the innermost.
+  fn pub names -> Array[String] {
+    match self {
+      case Solid(name) -> [name]
+      case Hollow(name, inside) -> {
+        let names = [name]
+
+        names.append(inside.names)
+        names
+      }
+    }
+  }
+
+  # Returns whether a doll called `name` is part of the set.
+  fn pub contains?(name: String) -> Bool {
+    match self {
+      case Solid(own) -> own == name
+      case Hollow(own, inside) -> own == name or inside.contains?(name)
+    }
+  }
+
+  # Returns a set of dolls with the given names, from the outermost to the
+  # innermost. `names` is never empty.
+  fn pub static nest(names: ref Array[String]) -> Doll {
+    nest_from(names, 0)
+  }
+
+  fn static nest_from(names: ref Array[String], index: Int) -> Doll {
+    let name = names.get(index).or_panic
+
+    if index == (names.size - 1) {
+      Doll.Solid(name)
+    } else {
+      Doll.Hollow(name, nest_from(names, index + 1))
+    }
+  }
+}

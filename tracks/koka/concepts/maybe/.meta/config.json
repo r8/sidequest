@@ -1,0 +1,7 @@
+{
+  "blurb": "A maybe<a> is Just a value or Nothing: Koka's type for a value that may be missing.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

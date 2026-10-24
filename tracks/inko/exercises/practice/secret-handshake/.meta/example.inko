@@ -1,0 +1,55 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# An action of the secret handshake.
+type pub copy enum Action {
+  case Wink
+  case DoubleBlink
+  case CloseYourEyes
+  case Jump
+}
+
+impl Equal for Action {
+  fn pub ==(other: Action) -> Bool {
+    match (self, other) {
+      case (Wink, Wink) -> true
+      case (DoubleBlink, DoubleBlink) -> true
+      case (CloseYourEyes, CloseYourEyes) -> true
+      case (Jump, Jump) -> true
+      case _ -> false
+    }
+  }
+}
+
+impl Format for Action {
+  fn pub fmt(formatter: mut Formatter) {
+    let name = match self {
+      case Wink -> 'Wink'
+      case DoubleBlink -> 'DoubleBlink'
+      case CloseYourEyes -> 'CloseYourEyes'
+      case Jump -> 'Jump'
+    }
+
+    formatter.write(name)
+  }
+}
+
+# Returns the actions encoded in the five rightmost bits of `number`: 1 is a
+# wink, 2 a double blink, 4 closing your eyes and 8 a jump, in that order; 16
+# reverses the order.
+fn pub commands(number: Int) -> Array[Action] {
+  let actions = [
+    (1, Action.Wink),
+    (2, Action.DoubleBlink),
+    (4, Action.CloseYourEyes),
+    (8, Action.Jump),
+  ]
+    .into_iter
+    .select(fn (pair) { number & pair.0 != 0 })
+    .map(fn (pair) { pair.1 })
+    .to_array
+
+  if number & 16 != 0 { actions.reverse }
+
+  actions
+}

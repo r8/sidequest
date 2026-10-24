@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "letter-tiles.fs"
+    ],
+    "test": [
+      "test/letter-tiles-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about characters as numbers, char and [char], by scoring the tiles of a word game.",
+  "custom": {
+    "after": [
+      "weather-station"
+    ]
+  }
+}

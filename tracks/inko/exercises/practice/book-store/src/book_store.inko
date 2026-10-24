@@ -1,0 +1,5 @@
+# Returns the lowest price in cents for `basket`, a list of books numbered 1 to
+# 5, applying the best combination of discounts for groups of different books.
+fn pub total(basket: ref Array[Int]) -> Int {
+  panic('implement me')
+}

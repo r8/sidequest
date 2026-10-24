@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "coffee-cart.kk"
+    ],
+    "test": [
+      "test/coffee-cart-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about algebraic data types by pricing and labelling the drinks of a coffee cart.",
+  "custom": {
+    "after": [
+      "bike-rental",
+      "treasure-map"
+    ]
+  }
+}

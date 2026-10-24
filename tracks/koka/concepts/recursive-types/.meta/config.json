@@ -1,0 +1,7 @@
+{
+  "blurb": "Types that contain themselves, such as trees and expressions, and the structural recursion that walks them.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/maps/",
+    "description": "Maps, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/map/Map/",
+    "description": "The Map type in the standard library"
+  }
+]

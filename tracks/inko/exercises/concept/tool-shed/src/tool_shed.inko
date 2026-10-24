@@ -1,0 +1,76 @@
+# A tool, which goes blunt after three jobs.
+type pub Tool {
+  let @name: String
+  let mut @jobs: Int
+
+  # Returns a new, sharp tool called `name`.
+  fn pub static new(name: String) -> Tool {
+    Tool(name: name, jobs: 0)
+  }
+
+  # Returns the name of the tool.
+  fn pub name -> String {
+    @name
+  }
+
+  # Returns how many jobs the tool has done since it was last sharpened.
+  fn pub jobs -> Int {
+    @jobs
+  }
+
+  # Returns whether the tool needs sharpening.
+  fn pub blunt? -> Bool {
+    @jobs >= 3
+  }
+
+  # Records that the tool was used for a job.
+  fn pub mut work {
+    @jobs += 1
+  }
+
+  # Sharpens the tool.
+  fn pub mut sharpen {
+    @jobs = 0
+  }
+}
+
+# The tool shed, which owns the tools that aren't lent out.
+#
+# Add the fields you need.
+type pub Shed {
+  # Returns an empty shed.
+  fn pub static new -> Shed {
+    panic('implement me')
+  }
+
+  # Puts `tool` in the shed.
+  fn pub mut store(tool: Tool) {
+    panic('implement me')
+  }
+
+  # Returns the number of tools in the shed.
+  fn pub size -> Int {
+    panic('implement me')
+  }
+
+  # Returns a borrow of the tool called `name`, if it is in the shed.
+  fn pub find(name: String) -> Option[ref Tool] {
+    panic('implement me')
+  }
+
+  # Uses the tool called `name` for a job in the shed, and returns whether the
+  # shed has it.
+  fn pub mut work_with(name: String) -> Bool {
+    panic('implement me')
+  }
+
+  # Sharpens every blunt tool in the shed.
+  fn pub mut sharpen_all {
+    panic('implement me')
+  }
+
+  # Takes the tool called `name` out of the shed, if it is there.
+  fn pub mut lend(name: String) -> Option[Tool] {
+    panic('implement me')
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "step-counter.bqn"
+    ],
+    "test": [
+      "test/step-counter.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about lists in BQN by writing reports for a step counter.",
+  "custom": {
+    "after": [
+      "road-trip",
+      "drawbridge"
+    ]
+  }
+}

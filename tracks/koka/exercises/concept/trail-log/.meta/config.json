@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "trail-log.kk"
+    ],
+    "test": [
+      "test/trail-log-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about recursion and the div effect by working out the figures in a hiking club's trail log.",
+  "custom": {
+    "after": [
+      "treasure-map"
+    ]
+  }
+}

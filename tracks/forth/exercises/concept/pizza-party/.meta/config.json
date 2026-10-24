@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "pizza-party.fs"
+    ],
+    "test": [
+      "test/pizza-party-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about floating-point numbers and the float stack by ordering pizza for a football team's party.",
+  "custom": {
+    "after": [
+      "roller-coaster"
+    ]
+  }
+}

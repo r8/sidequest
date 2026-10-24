@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://gforth.org/manual/Conditional-execution-Tutorial.html",
+    "description": "Conditional execution in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Selection.html",
+    "description": "if, else and then in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Calls-and-returns.html",
+    "description": "exit and ?exit in the Gforth manual"
+  },
+  {
+    "url": "https://www.forth.com/starting-forth/4-conditional-if-then-statements/",
+    "description": "Starting Forth, chapter 4: decisions, decisions"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/strings/",
+    "description": "Strings, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/string/String/",
+    "description": "The String type in the standard library"
+  },
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/string/StringBuffer/",
+    "description": "StringBuffer, for building strings"
+  }
+]

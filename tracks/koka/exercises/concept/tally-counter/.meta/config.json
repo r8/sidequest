@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "tally-counter.kk"
+    ],
+    "test": [
+      "test/tally-counter-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about handler state and return clauses by keeping the tally at a winter bird count.",
+  "custom": {
+    "after": [
+      "weather-station",
+      "step-counter"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+(defn greet [&opt name]
+  (default name "you")
+  (string "One for " name ", one for me."))
+
+(print (greet "Alice"))

@@ -1,0 +1,7 @@
+{
+  "blurb": "Arrays, written @[…], are Janet's mutable lists, changed in place with array/push, array/pop, array/insert and put.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

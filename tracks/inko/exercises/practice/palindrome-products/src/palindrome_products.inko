@@ -1,0 +1,41 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# A palindrome product: the palindrome's `value`, and every pair of factors
+# `(a, b)` in the range with `a <= b` and `a * b == value`, sorted by `a`.
+type pub Palindrome {
+  let pub @value: Int
+  let pub @factors: Array[(Int, Int)]
+}
+
+impl Equal for Palindrome {
+  fn pub ==(other: ref Palindrome) -> Bool {
+    @value == other.value and @factors == other.factors
+  }
+}
+
+impl Format for Palindrome {
+  fn pub fmt(formatter: mut Formatter) {
+    formatter
+      .object('Palindrome')
+      .field('value', @value)
+      .field('factors', @factors)
+      .finish
+  }
+}
+
+# Returns the smallest palindrome that is a product of two factors in the range
+# `min` to `max` (inclusive), or `Option.None` if there is none.
+#
+# Returns an error if `min` is greater than `max`.
+fn pub smallest(min: Int, max: Int) -> Result[Option[Palindrome], String] {
+  panic('implement me')
+}
+
+# Returns the largest palindrome that is a product of two factors in the range
+# `min` to `max` (inclusive), or `Option.None` if there is none.
+#
+# Returns an error if `min` is greater than `max`.
+fn pub largest(min: Int, max: Int) -> Result[Option[Palindrome], String] {
+  panic('implement me')
+}

@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "status": "pass",
+  "message": null,
+  "tests": [
+    {
+      "name": "no name",
+      "status": "pass",
+      "test_code": "(t/deftest \"no name\"\n  (print \"noisy\\toutput\")\n  (print \"second line\")\n  (t/assert-equal \"Hello, you!\" (sol/greet)))",
+      "message": null,
+      "output": "noisy\toutput\nsecond line\n"
+    },
+    {
+      "name": "name with \"quotes\"",
+      "status": "pass",
+      "test_code": "(t/deftest \"name with \\\"quotes\\\"\"\n  (t/assert-equal \"Hello, \\\"Bob\\\"!\" (sol/greet `\"Bob\"`)))",
+      "message": null,
+      "output": null
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "status": "pass",
+  "message": null,
+  "tests": [
+    {
+      "name": "no name",
+      "status": "pass",
+      "test_code": "test(\"no name\") {\n      println(\"noisy\\toutput\")\n      println(\"second line\")\n      assert-equal(\"Hello, you!\", greet())\n    }",
+      "message": null,
+      "output": "noisy\toutput\nsecond line\n"
+    },
+    {
+      "name": "name with \"quotes\"",
+      "status": "pass",
+      "test_code": "test(\"name with \\\"quotes\\\"\", fn() assert-equal(\"Hello, \\\"Bob\\\"!\", greet(\"\\\"Bob\\\"\")))",
+      "message": null,
+      "output": null
+    }
+  ]
+}

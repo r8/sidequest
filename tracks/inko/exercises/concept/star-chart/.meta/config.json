@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/star_chart.inko"
+    ],
+    "test": [
+      "test/test_star_chart.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about tuples by keeping an astronomer's star chart.",
+  "custom": {
+    "after": [
+      "orchard-harvest"
+    ]
+  }
+}

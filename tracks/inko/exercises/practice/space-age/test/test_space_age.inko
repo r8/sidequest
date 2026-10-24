@@ -1,0 +1,14 @@
+import space_age (Planet, age)
+import std.test (Tests)
+
+# Ages are compared rounded to two decimals.
+fn pub tests(t: mut Tests) {
+  t.test('age on Earth', fn (t) { t.equal(age(Planet.Earth, 1000000000).round(2), 31.69) })
+  t.test('age on Mercury', fn (t) { t.equal(age(Planet.Mercury, 2134835688).round(2), 280.88) })
+  t.test('age on Venus', fn (t) { t.equal(age(Planet.Venus, 189839836).round(2), 9.78) })
+  t.test('age on Mars', fn (t) { t.equal(age(Planet.Mars, 2129871239).round(2), 35.88) })
+  t.test('age on Jupiter', fn (t) { t.equal(age(Planet.Jupiter, 901876382).round(2), 2.41) })
+  t.test('age on Saturn', fn (t) { t.equal(age(Planet.Saturn, 2000000000).round(2), 2.15) })
+  t.test('age on Uranus', fn (t) { t.equal(age(Planet.Uranus, 1210123456).round(2), 0.46) })
+  t.test('age on Neptune', fn (t) { t.equal(age(Planet.Neptune, 1821023456).round(2), 0.35) })
+}

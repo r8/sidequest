@@ -1,0 +1,7 @@
+{
+  "blurb": "A function passed as the last argument can follow the call's parentheses, as fn(x) … or as a { … } block.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

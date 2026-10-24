@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "ticket-booth.janet"
+    ],
+    "test": [
+      "test/ticket-booth.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about closures by building a theatre's ticket dispensers, discount stamps and sales tally.",
+  "custom": {
+    "after": [
+      "firefly-census",
+      "seed-catalog"
+    ]
+  }
+}

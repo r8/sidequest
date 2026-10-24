@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "calculator-tape.janet"
+    ],
+    "test": [
+      "test/calculator-tape.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about PEG grammars by reading the paper tapes of an old adding machine.",
+  "custom": {
+    "after": [
+      "log-lines",
+      "seed-catalog",
+      "star-charts"
+    ]
+  }
+}

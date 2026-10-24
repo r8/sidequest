@@ -1,0 +1,45 @@
+import std.cmp (Equal, max)
+import std.fmt (Format, Formatter)
+
+# An item the thief can take: how much it weighs, and what it's worth.
+type pub Item {
+  let pub @weight: Int
+  let pub @value: Int
+}
+
+impl Equal for Item {
+  fn pub ==(other: ref Item) -> Bool {
+    @weight == other.weight and @value == other.value
+  }
+}
+
+impl Format for Item {
+  fn pub fmt(formatter: mut Formatter) {
+    formatter
+      .object('Item')
+      .field('weight', @weight)
+      .field('value', @value)
+      .finish
+  }
+}
+
+# Returns the largest total value of `items` that fit together in a knapsack
+# holding at most `maximum_weight`, taking each item at most once.
+fn pub maximum_value(maximum_weight: Int, items: ref Array[Item]) -> Int {
+  # best[w] is the largest value that fits in weight `w` using the items so far.
+  let best = Array.filled(with: 0, times: maximum_weight + 1)
+
+  for item in items.iter {
+    let mut capacity = maximum_weight
+
+    # Going down from the top keeps each item from being taken twice.
+    while capacity >= item.weight {
+      let with_item = best.get(capacity - item.weight).or_panic + item.value
+
+      best.set(capacity, max(best.get(capacity).or_panic, with_item))
+      capacity -= 1
+    }
+  }
+
+  best.get(maximum_weight).or_panic
+}

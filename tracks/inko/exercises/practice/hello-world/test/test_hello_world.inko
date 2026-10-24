@@ -1,0 +1,6 @@
+import hello_world (hello)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('Say Hi!', fn (t) { t.equal(hello, 'Hello, World!') })
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/group.html",
+    "description": "Group: ⊔ with one and two arguments"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/selfcmp.html",
+    "description": "Classify, a common source of group indices"
+  }
+]

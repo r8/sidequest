@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "parallel-letter-frequency.fs"
+    ],
+    "test": [
+      "test/parallel-letter-frequency-test.fs"
+    ],
+    "example": [
+      ".meta/example.fs"
+    ]
+  },
+  "blurb": "Count the frequency of letters in texts using parallel computation.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

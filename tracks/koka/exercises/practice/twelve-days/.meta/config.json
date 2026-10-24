@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "twelve-days.kk"
+    ],
+    "test": [
+      "test/twelve-days-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Output the lyrics to 'The Twelve Days of Christmas'.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/The_Twelve_Days_of_Christmas_(song)",
+  "custom": {
+    "after": [
+      "house"
+    ]
+  }
+}

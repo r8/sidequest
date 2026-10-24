@@ -1,0 +1,11 @@
+import collatz_conjecture (steps)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('zero steps for one', fn (t) { t.equal(steps(1), Result.Ok(0)) })
+  t.test('divide if even', fn (t) { t.equal(steps(16), Result.Ok(4)) })
+  t.test('even and odd steps', fn (t) { t.equal(steps(12), Result.Ok(9)) })
+  t.test('large number of even and odd steps', fn (t) { t.equal(steps(1000000), Result.Ok(152)) })
+  t.test('zero is an error', fn (t) { t.equal(steps(0), Result.Error('Only positive integers are allowed')) })
+  t.test('negative value is an error', fn (t) { t.equal(steps(-15), Result.Error('Only positive integers are allowed')) })
+}

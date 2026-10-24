@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "understudy.fs"
+    ],
+    "test": [
+      "test/understudy-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about deferred words by recasting the lead role of a play while the show goes on.",
+  "custom": {
+    "after": [
+      "remote-control",
+      "nesting-dolls"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "atbash-cipher.fs"
+    ],
+    "test": [
+      "test/atbash-cipher-test.fs"
+    ],
+    "example": [
+      ".meta/example.fs"
+    ]
+  },
+  "blurb": "Create an implementation of the Atbash cipher, an ancient encryption system created in the Middle East.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Atbash",
+  "custom": {
+    "after": [
+      "rotational-cipher"
+    ]
+  }
+}

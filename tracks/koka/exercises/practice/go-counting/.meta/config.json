@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "go-counting.kk"
+    ],
+    "test": [
+      "test/go-counting-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Count the scored points on a Go board.",
+  "custom": {
+    "after": [
+      "connect"
+    ]
+  }
+}

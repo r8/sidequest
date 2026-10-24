@@ -1,0 +1,26 @@
+# Returns `true` if every bracket, brace and parenthesis in `value` is matched
+# and correctly nested. All other characters are ignored.
+fn pub paired?(value: String) -> Bool {
+  let stack = []
+
+  for char in value.chars {
+    match char {
+      case '(' or '[' or '{' -> stack.push(char)
+      case ')' or ']' or '}' -> {
+        let expected = match char {
+          case ')' -> '('
+          case ']' -> '['
+          case _ -> '{'
+        }
+
+        match stack.pop {
+          case Some(open) if open == expected -> {}
+          case _ -> return false
+        }
+      }
+      case _ -> {}
+    }
+  }
+
+  stack.empty?
+}

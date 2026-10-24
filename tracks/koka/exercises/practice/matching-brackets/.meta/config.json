@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "matching-brackets.kk"
+    ],
+    "test": [
+      "test/matching-brackets-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Make sure the brackets and braces all match.",
+  "source": "Ginna Baker",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

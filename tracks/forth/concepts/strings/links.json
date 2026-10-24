@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://gforth.org/manual/String-Formats.html",
+    "description": "String formats in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/String-words.html",
+    "description": "String words in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Memory-Blocks.html",
+    "description": "compare, /string, -trailing and other memory-block words"
+  },
+  {
+    "url": "https://forth-standard.org/standard/string",
+    "description": "The String word set of the Forth 2012 standard"
+  }
+]

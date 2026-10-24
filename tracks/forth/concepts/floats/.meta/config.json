@@ -1,0 +1,7 @@
+{
+  "blurb": "Floating-point numbers live on their own stack, with f-prefixed words to compute, compare and convert them.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

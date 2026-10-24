@@ -1,0 +1,78 @@
+import seed_catalog (add_packets, catalogue_from, packets, retire, running_low)
+import std.test (Tests)
+
+fn catalogue(entries: Array[(String, Int)]) -> Map[String, Int] {
+  let map = Map.new
+
+  for (variety, count) in entries { map.set(variety, count) }
+
+  map
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('1. a donation with repeats', fn (t) {
+    t.equal(
+      catalogue_from(['tomato', 'bean', 'tomato']),
+      catalogue([('tomato', 2), ('bean', 1)]),
+    )
+  })
+  t.test('1. a donation of one variety', fn (t) {
+    t.equal(catalogue_from(['pea', 'pea', 'pea']), catalogue([('pea', 3)]))
+  })
+  t.test('1. an empty donation', fn (t) { t.equal(catalogue_from([]), Map.new) })
+
+  t.test('2. packets of a variety', fn (t) {
+    let seeds = catalogue([('tomato', 2), ('bean', 1)])
+
+    t.equal(packets(seeds, 'tomato'), 2)
+  })
+  t.test('2. packets of a missing variety', fn (t) {
+    let seeds = catalogue([('tomato', 2)])
+
+    t.equal(packets(seeds, 'kale'), 0)
+  })
+
+  t.test('3. add packets of a known variety', fn (t) {
+    let seeds = catalogue([('tomato', 2), ('bean', 1)])
+
+    add_packets(seeds, 'bean', amount: 3)
+    t.equal(seeds, catalogue([('tomato', 2), ('bean', 4)]))
+  })
+  t.test('3. add packets of a new variety', fn (t) {
+    let seeds = catalogue([('tomato', 2)])
+
+    add_packets(seeds, 'kale', amount: 5)
+    t.equal(seeds, catalogue([('tomato', 2), ('kale', 5)]))
+  })
+
+  t.test('4. retire a variety', fn (t) {
+    let seeds = catalogue([('tomato', 2), ('bean', 4)])
+
+    t.equal(retire(seeds, 'bean'), 4)
+    t.equal(seeds, catalogue([('tomato', 2)]))
+  })
+  t.test('4. retire a missing variety', fn (t) {
+    let seeds = catalogue([('tomato', 2)])
+
+    t.equal(retire(seeds, 'kale'), 0)
+    t.equal(seeds, catalogue([('tomato', 2)]))
+  })
+
+  t.test('5. varieties running low', fn (t) {
+    let seeds = catalogue(
+      [('squash', 1), ('tomato', 5), ('pea', 0), ('bean', 2)],
+    )
+
+    t.equal(running_low(seeds, below: 2), ['squash', 'pea'])
+  })
+  t.test('5. nothing running low', fn (t) {
+    let seeds = catalogue([('tomato', 5)])
+
+    t.equal(running_low(seeds, below: 2), [])
+  })
+  t.test('5. everything running low', fn (t) {
+    let seeds = catalogue([('tomato', 1), ('bean', 1)])
+
+    t.equal(running_low(seeds, below: 10), ['tomato', 'bean'])
+  })
+}

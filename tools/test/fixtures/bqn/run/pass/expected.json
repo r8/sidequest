@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "status": "pass",
+  "message": null,
+  "tests": [
+    {
+      "name": "greets",
+      "status": "pass",
+      "test_code": "\"greets\"‿{𝕊:\n    •Out \"noisy output\"\n    •Out \"second line\"\n    \"Hello, you!\" t.Expect g.Greet \"you\"\n  }",
+      "message": null,
+      "output": "noisy output\nsecond line\n"
+    },
+    {
+      "name": "name with \"quotes\"",
+      "status": "pass",
+      "test_code": "\"name with \"\"quotes\"\"\"‿{𝕊: \"Hello, \"\"Bob\"\"!\" t.Expect g.Greet \"\"\"Bob\"\"\"}",
+      "message": null,
+      "output": null
+    },
+    {
+      "name": "doubles a list",
+      "status": "pass",
+      "test_code": "\"doubles a list\"‿{𝕊: 2‿4‿6 t.Expect g.Double 1‿2‿3}",
+      "message": null,
+      "output": null
+    }
+  ]
+}

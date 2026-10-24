@@ -1,0 +1,31 @@
+# Returns `true` if `number` is prime.
+fn prime?(number: Int) -> Bool {
+  if number < 2 { return false }
+
+  let mut divisor = 2
+
+  while divisor * divisor <= number {
+    if number % divisor == 0 { return false }
+
+    divisor += 1
+  }
+
+  true
+}
+
+# Returns the `number`th prime, counting from 1 (the first prime is 2), or an
+# error if `number` is zero.
+fn pub prime(number: Int) -> Result[Int, String] {
+  if number < 1 { return Result.Error('there is no zeroth prime') }
+
+  let mut found = 0
+  let mut candidate = 1
+
+  while found < number {
+    candidate += 1
+
+    if prime?(candidate) { found += 1 }
+  }
+
+  Result.Ok(candidate)
+}

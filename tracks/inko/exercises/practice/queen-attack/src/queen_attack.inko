@@ -1,0 +1,32 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# A queen on a chess board. Rows and columns are numbered 0 to 7.
+type pub Queen {
+  let pub @row: Int
+  let pub @column: Int
+
+  # Returns a queen at the given position, or an error if the position isn't on
+  # the board: `"row not positive"`, `"row not on board"`,
+  # `"column not positive"` or `"column not on board"`.
+  fn pub static new(row: Int, column: Int) -> Result[Queen, String] {
+    panic('implement me')
+  }
+
+  # Returns `true` if this queen and `other` share a row, column or diagonal.
+  fn pub can_attack?(other: ref Queen) -> Bool {
+    panic('implement me')
+  }
+}
+
+impl Equal for Queen {
+  fn pub ==(other: ref Queen) -> Bool {
+    @row == other.row and @column == other.column
+  }
+}
+
+impl Format for Queen {
+  fn pub fmt(formatter: mut Formatter) {
+    formatter.object('Queen').field('row', @row).field('column', @column).finish
+  }
+}

@@ -1,0 +1,11 @@
+# Encodes each of the unsigned 32-bit `integers` as a variable-length quantity
+# and returns all the bytes (values from 0 to 255) in order.
+fn pub encode(integers: ref Array[Int]) -> Array[Int] {
+  panic('implement me')
+}
+
+# Decodes the variable-length quantities in `bytes` (values from 0 to 255) back
+# into integers, or returns an error if the last quantity is incomplete.
+fn pub decode(bytes: ref Array[Int]) -> Result[Array[Int], String] {
+  panic('implement me')
+}

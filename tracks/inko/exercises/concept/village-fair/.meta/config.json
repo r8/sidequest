@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/village_fair.inko",
+      "src/village_fair/stalls.inko"
+    ],
+    "test": [
+      "test/test_village_fair.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko",
+      ".meta/exemplar/stalls.inko"
+    ]
+  },
+  "blurb": "Learn about modules, imports and visibility by organising the stalls of a village fair.",
+  "custom": {
+    "after": [
+      "weather-station"
+    ]
+  }
+}

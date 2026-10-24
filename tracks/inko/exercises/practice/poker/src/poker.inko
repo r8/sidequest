@@ -1,0 +1,9 @@
+# Returns the winning hands among `hands`, in their original order: one hand,
+# or several when they tie.
+#
+# A hand is five space-separated cards, each a rank (`2` to `10`, `J`, `Q`, `K`
+# or `A`) followed by a suit (`C`, `D`, `H` or `S`), for example
+# `"4S 5S 7H 8D JC"`.
+fn pub best_hands(hands: Array[String]) -> Array[String] {
+  panic('implement me')
+}

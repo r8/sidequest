@@ -1,0 +1,33 @@
+import std.string (StringBuffer)
+
+let VALUES = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+let SYMBOLS = [
+  'M',
+  'CM',
+  'D',
+  'CD',
+  'C',
+  'XC',
+  'L',
+  'XL',
+  'X',
+  'IX',
+  'V',
+  'IV',
+  'I',
+]
+
+# Returns the Roman numeral for `number`, which is between 1 and 3999.
+fn pub roman(number: Int) -> String {
+  let buf = StringBuffer.new
+  let mut rest = number
+
+  for (value, symbol) in VALUES.iter.zip(SYMBOLS.iter) {
+    while rest >= value {
+      buf.push(symbol)
+      rest -= value
+    }
+  }
+
+  buf.into_string
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/assert.html",
+    "description": "Assert ! and Catch ⎊"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/spec/system.html",
+    "description": "System values, including •CurrentError"
+  }
+]

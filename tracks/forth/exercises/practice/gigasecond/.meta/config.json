@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "gigasecond.fs"
+    ],
+    "test": [
+      "test/gigasecond-test.fs"
+    ],
+    "example": [
+      ".meta/example.fs"
+    ]
+  },
+  "blurb": "Given a moment, determine the moment that would be after a gigasecond has passed.",
+  "source": "Chapter 9 in Chris Pine's online Learn to Program tutorial.",
+  "source_url": "https://pine.fm/LearnToProgram/chap_09.html",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+import std.string (ToString)
+
+# Something on display in the museum.
+trait pub Exhibit {
+  # Returns the title of the exhibit.
+  fn pub title -> String
+
+  # Returns the year the exhibit was made.
+  fn pub year -> Int
+
+  # Returns the text on the exhibit's plaque, such as "Lute by Anna Weiss (1612)".
+  fn pub plaque -> String {
+    '${title} (${year})'
+  }
+}
+
+# A painting and the artist who painted it.
+type pub Painting {
+  let @name: String
+  let @artist: String
+  let @year: Int
+
+  fn pub static new(name: String, artist: String, year: Int) -> Painting {
+    Painting(name: name, artist: artist, year: year)
+  }
+}
+
+impl Exhibit for Painting {
+  fn pub title -> String {
+    '${@name} by ${@artist}'
+  }
+
+  fn pub year -> Int {
+    @year
+  }
+}
+
+impl ToString for Painting {
+  # Returns the painting's title.
+  fn pub to_string -> String {
+    title
+  }
+}
+
+# A musical instrument, which visitors may be allowed to play.
+type pub Instrument {
+  let @kind: String
+  let @maker: String
+  let @year: Int
+  let @playable: Bool
+
+  fn pub static new(
+    kind: String,
+    maker: String,
+    year: Int,
+    playable: Bool,
+  ) -> Instrument {
+    Instrument(kind: kind, maker: maker, year: year, playable: playable)
+  }
+}
+
+impl Exhibit for Instrument {
+  fn pub title -> String {
+    '${@kind} made by ${@maker}'
+  }
+
+  fn pub year -> Int {
+    @year
+  }
+
+  fn pub plaque -> String {
+    let text = '${title} (${year})'
+
+    if @playable { '${text}, ask to play it' } else { text }
+  }
+}
+
+# Returns the title of the oldest exhibit, or "nothing on display".
+fn pub oldest(exhibits: ref Array[Exhibit]) -> String {
+  let Some(first) = exhibits.first else return 'nothing on display'
+  let mut oldest = first
+
+  for exhibit in exhibits.iter {
+    if exhibit.year < oldest.year { oldest = exhibit }
+  }
+
+  oldest.title
+}

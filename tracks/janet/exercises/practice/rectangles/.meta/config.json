@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "rectangles.janet"
+    ],
+    "test": [
+      "test/rectangles.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Count the rectangles in an ASCII diagram.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "light-years.fs"
+    ],
+    "test": [
+      "test/light-years-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about double-cell numbers and mixed-precision arithmetic by keeping a starship's log in kilometres.",
+  "custom": {
+    "after": [
+      "roller-coaster"
+    ]
+  }
+}

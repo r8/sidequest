@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "stdout": "ERROR\tstub raises\timplement me\t\nERROR\tindex out of range\t𝕨⊑𝕩: indexing out-of-bounds (𝕨≡3, 0≡≠𝕩)\t\nPASS\tfloats\t\t\nSUMMARY\t1\t0\t2\n",
+  "stderr": "",
+  "timedOut": false
+}

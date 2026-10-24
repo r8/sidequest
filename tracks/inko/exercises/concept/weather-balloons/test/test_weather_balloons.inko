@@ -1,0 +1,73 @@
+import std.sync (Future)
+import std.test (Tests)
+import std.time (Duration)
+import weather_balloons (Balloon, listen, peaks, record, request)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. the peak of a balloon', fn (t) {
+    t.equal(await Balloon.new(recover [300, 1200, 800]).peak, 1200)
+  })
+  t.test('1. the peak of a balloon without readings', fn (t) {
+    t.equal(await Balloon.new(recover []).peak, 0)
+  })
+
+  t.test('2. request a peak', fn (t) {
+    let future = request(Balloon.new(recover [300, 1200, 800]))
+
+    t.equal(future.get, 1200)
+  })
+  t.test('2. requests run at the same time', fn (t) {
+    let first = request(Balloon.new(recover [100]))
+    let second = request(Balloon.new(recover [200]))
+
+    t.equal(second.get, 200)
+    t.equal(first.get, 100)
+  })
+
+  t.test('3. the peaks of several balloons', fn (t) {
+    let balloons = [
+      Balloon.new(recover [300, 1200]),
+      Balloon.new(recover [5400, 900]),
+      Balloon.new(recover [700]),
+    ]
+
+    t.equal(peaks(balloons), [1200, 5400, 700])
+  })
+  t.test('3. the peaks of no balloons', fn (t) {
+    let balloons: Array[Balloon] = []
+
+    t.equal(peaks(balloons), [])
+  })
+
+  t.test('4. the record of several balloons', fn (t) {
+    let balloons = [
+      Balloon.new(recover [300, 1200]),
+      Balloon.new(recover [5400, 900]),
+      Balloon.new(recover [700]),
+    ]
+
+    t.equal(record(balloons), 5400)
+  })
+  t.test('4. the record of no balloons', fn (t) {
+    let balloons: Array[Balloon] = []
+
+    t.equal(record(balloons), 0)
+  })
+
+  t.test('5. a reading that arrives in time', fn (t) {
+    let (future, promise) = Future.new
+
+    promise.set(4200)
+    t.equal(listen(future, Duration.from_millis(50)), Option.Some(4200))
+  })
+  t.test('5. a reading that never arrives', fn (t) {
+    let (future, _promise) = Future.new
+
+    t.equal(listen(future, Duration.from_millis(10)), Option.None)
+  })
+  t.test('5. listen to a balloon', fn (t) {
+    let future = request(Balloon.new(recover [800]))
+
+    t.equal(listen(future, Duration.from_secs(5)), Option.Some(800))
+  })
+}

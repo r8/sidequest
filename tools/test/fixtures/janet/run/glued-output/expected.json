@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "status": "error",
+  "message": "the harness reported 2 passed, 0 failed and 0 errored, but 1, 0 and 0 could be read from its output (does the solution print without a trailing newline?)\ndebugPASS\tno name\t\tnoisy\\toutput\\nsecond line\\n",
+  "tests": [
+    {
+      "name": "name with \"quotes\"",
+      "status": "pass",
+      "test_code": "(t/deftest \"name with \\\"quotes\\\"\"\n  (t/assert-equal \"Hello, \\\"Bob\\\"!\" (sol/greet `\"Bob\"`)))",
+      "message": null,
+      "output": null
+    }
+  ]
+}

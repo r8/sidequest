@@ -1,0 +1,5 @@
+# Returns a `size` by `size` matrix, as an array of rows, filled with the
+# numbers 1 up to `size * size` in a clockwise spiral starting at the top left.
+fn pub spiral_matrix(size: Int) -> Array[Array[Int]] {
+  panic('implement me')
+}

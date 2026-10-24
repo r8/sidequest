@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "react.janet"
+    ],
+    "test": [
+      "test/react.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Implement a basic reactive system.",
+  "custom": {
+    "after": [
+      "ticket-booth"
+    ]
+  }
+}

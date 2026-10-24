@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/lantern_festival.inko"
+    ],
+    "test": [
+      "test/test_lantern_festival.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about destructors and drop order by putting out the lanterns of a festival parade.",
+  "custom": {
+    "after": [
+      "relay-baton",
+      "museum-exhibits"
+    ]
+  }
+}

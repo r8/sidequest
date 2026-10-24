@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "Error: Unmatched bracket\n<staging>/greet.bqn:1:\n  Greet ⇐ {\"Hello, \"∾𝕩∾\n          ^\ntest/greet.bqn:2:\n  g ← •Import \"../greet.bqn\"\n      ^^^^^^^\n",
+  "timedOut": false
+}

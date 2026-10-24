@@ -1,0 +1,7 @@
+# Solves the alphametics `puzzle` (such as "SEND + MORE == MONEY"): returns the
+# digit for each letter as `(letter, digit)` pairs sorted by letter, or
+# `Option.None` if there is no solution. Every letter has a different digit,
+# and the first letter of a multi-digit word can't be zero.
+fn pub solve(puzzle: String) -> Option[Array[(String, Int)]] {
+  panic('implement me')
+}

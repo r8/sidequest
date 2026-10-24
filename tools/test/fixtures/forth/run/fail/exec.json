@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "stdout": "\nPASS\tpasses\t\t\n\nFAIL\tfails on a number\texpected 5, got 4\t\n\nFAIL\tfails on a missing throw\texpected throw -24, but nothing was thrown\t\n\nERROR\tleaves the stack dirty\tthe test left the stack changed by 1 item(s)\t\n\nSUMMARY\t1\t2\t1\n",
+  "stderr": "",
+  "timedOut": false
+}

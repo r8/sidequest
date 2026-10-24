@@ -1,0 +1,35 @@
+import test
+import yacht
+
+pub fun main()
+  run([
+    test("Yacht") { assert-equal(50, score([5, 5, 5, 5, 5], Yacht)) },
+    test("Not Yacht") { assert-equal(0, score([1, 3, 3, 2, 5], Yacht)) },
+    test("Ones") { assert-equal(3, score([1, 1, 1, 3, 5], Ones)) },
+    test("Ones, out of order") { assert-equal(3, score([3, 1, 1, 5, 1], Ones)) },
+    test("No ones") { assert-equal(0, score([4, 3, 6, 5, 5], Ones)) },
+    test("Twos") { assert-equal(2, score([2, 3, 4, 5, 6], Twos)) },
+    test("Fours") { assert-equal(8, score([1, 4, 1, 4, 1], Fours)) },
+    test("Yacht counted as threes") { assert-equal(15, score([3, 3, 3, 3, 3], Threes)) },
+    test("Yacht of 3s counted as fives") { assert-equal(0, score([3, 3, 3, 3, 3], Fives)) },
+    test("Fives") { assert-equal(10, score([1, 5, 3, 5, 3], Fives)) },
+    test("Sixes") { assert-equal(6, score([2, 3, 4, 5, 6], Sixes)) },
+    test("Full house two small, three big") { assert-equal(16, score([2, 2, 4, 4, 4], FullHouse)) },
+    test("Full house three small, two big") { assert-equal(19, score([5, 3, 3, 5, 3], FullHouse)) },
+    test("Two pair is not a full house") { assert-equal(0, score([2, 2, 4, 4, 5], FullHouse)) },
+    test("Four of a kind is not a full house") { assert-equal(0, score([1, 4, 4, 4, 4], FullHouse)) },
+    test("Yacht is not a full house") { assert-equal(0, score([2, 2, 2, 2, 2], FullHouse)) },
+    test("Four of a Kind") { assert-equal(24, score([6, 6, 4, 6, 6], FourOfAKind)) },
+    test("Yacht can be scored as Four of a Kind") { assert-equal(12, score([3, 3, 3, 3, 3], FourOfAKind)) },
+    test("Full house is not Four of a Kind") { assert-equal(0, score([3, 3, 3, 5, 5], FourOfAKind)) },
+    test("Little Straight") { assert-equal(30, score([3, 5, 4, 1, 2], LittleStraight)) },
+    test("Little Straight as Big Straight") { assert-equal(0, score([1, 2, 3, 4, 5], BigStraight)) },
+    test("Four in order but not a little straight") { assert-equal(0, score([1, 1, 2, 3, 4], LittleStraight)) },
+    test("No pairs but not a little straight") { assert-equal(0, score([1, 2, 3, 4, 6], LittleStraight)) },
+    test("Minimum is 1, maximum is 5, but not a little straight") { assert-equal(0, score([1, 1, 3, 4, 5], LittleStraight)) },
+    test("Big Straight") { assert-equal(30, score([4, 6, 2, 5, 3], BigStraight)) },
+    test("Big Straight as little straight") { assert-equal(0, score([6, 5, 4, 3, 2], LittleStraight)) },
+    test("No pairs but not a big straight") { assert-equal(0, score([6, 5, 4, 3, 1], BigStraight)) },
+    test("Choice") { assert-equal(23, score([3, 3, 5, 6, 6], Choice)) },
+    test("Yacht as choice") { assert-equal(10, score([2, 2, 2, 2, 2], Choice)) },
+  ])

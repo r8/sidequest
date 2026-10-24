@@ -1,0 +1,7 @@
+{
+  "blurb": "Vectors: fixed-size sequences read by index, updated in place when not shared.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/control.html",
+    "description": "Control flow in BQN"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/block.html",
+    "description": "Blocks: headers, predicates and multiple bodies"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/valences.html",
+    "description": "Valences: functions called with one or two arguments"
+  }
+]

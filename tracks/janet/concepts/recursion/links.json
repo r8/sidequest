@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/functions.html",
+    "description": "Functions in the Janet documentation"
+  },
+  {
+    "url": "https://janet-lang.org/docs/fibers/index.html",
+    "description": "Fibers, which hold Janet's call stack"
+  }
+]

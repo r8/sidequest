@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "armstrong-numbers.fs"
+    ],
+    "test": [
+      "test/armstrong-numbers-test.fs"
+    ],
+    "example": [
+      ".meta/example.fs"
+    ]
+  },
+  "blurb": "Determine if a number is an Armstrong number.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Narcissistic_number",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

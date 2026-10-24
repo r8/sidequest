@@ -1,0 +1,64 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# A scoring category.
+type pub copy enum Category {
+  case Ones
+  case Twos
+  case Threes
+  case Fours
+  case Fives
+  case Sixes
+  case FullHouse
+  case FourOfAKind
+  case LittleStraight
+  case BigStraight
+  case Choice
+  case Yacht
+}
+
+impl Equal for Category {
+  fn pub ==(other: Category) -> Bool {
+    match (self, other) {
+      case (Ones, Ones) -> true
+      case (Twos, Twos) -> true
+      case (Threes, Threes) -> true
+      case (Fours, Fours) -> true
+      case (Fives, Fives) -> true
+      case (Sixes, Sixes) -> true
+      case (FullHouse, FullHouse) -> true
+      case (FourOfAKind, FourOfAKind) -> true
+      case (LittleStraight, LittleStraight) -> true
+      case (BigStraight, BigStraight) -> true
+      case (Choice, Choice) -> true
+      case (Yacht, Yacht) -> true
+      case _ -> false
+    }
+  }
+}
+
+impl Format for Category {
+  fn pub fmt(formatter: mut Formatter) {
+    let name = match self {
+      case Ones -> 'Ones'
+      case Twos -> 'Twos'
+      case Threes -> 'Threes'
+      case Fours -> 'Fours'
+      case Fives -> 'Fives'
+      case Sixes -> 'Sixes'
+      case FullHouse -> 'FullHouse'
+      case FourOfAKind -> 'FourOfAKind'
+      case LittleStraight -> 'LittleStraight'
+      case BigStraight -> 'BigStraight'
+      case Choice -> 'Choice'
+      case Yacht -> 'Yacht'
+    }
+
+    formatter.tuple(name).finish
+  }
+}
+
+# Returns the score of the five `dice` (each 1 to 6) in `category`.
+fn pub score(dice: Array[Int], category: Category) -> Int {
+  panic('implement me')
+}

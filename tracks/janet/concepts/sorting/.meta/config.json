@@ -1,0 +1,7 @@
+{
+  "blurb": "sort and sort-by reorder an array in place, sorted and sorted-by build a new one, ordered by < or a comparator.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

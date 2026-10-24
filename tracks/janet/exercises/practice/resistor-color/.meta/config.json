@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "resistor-color.janet"
+    ],
+    "test": [
+      "test/resistor-color.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Convert a resistor band's color to its numeric representation.",
+  "source": "Maud de Vries, Erik Schierboom",
+  "source_url": "https://github.com/exercism/problem-specifications/issues/1458",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

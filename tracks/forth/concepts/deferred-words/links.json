@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://gforth.org/manual/Deferred-Words.html",
+    "description": "Deferred words in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/DEFER",
+    "description": "DEFER in the Forth standard, with IS, ACTION-OF, DEFER! and DEFER@ linked from it"
+  }
+]

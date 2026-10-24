@@ -1,0 +1,24 @@
+# Returns how many crates of `per_crate` apples can be filled completely.
+fn pub full_crates(apples: Int, per_crate: Int) -> Int {
+  panic('implement me')
+}
+
+# Returns how many apples are left over after filling the crates.
+fn pub loose_apples(apples: Int, per_crate: Int) -> Int {
+  panic('implement me')
+}
+
+# Returns how many crates hold all the apples, counting a part-filled crate.
+fn pub crates_needed(apples: Int, per_crate: Int) -> Int {
+  panic('implement me')
+}
+
+# Returns the average weight of one apple in grams.
+fn pub average_weight(grams: Int, apples: Int) -> Float {
+  panic('implement me')
+}
+
+# Returns the price of `kilograms` at `per_kilogram`, rounded to two decimals.
+fn pub sale_price(kilograms: Float, per_kilogram: Float) -> Float {
+  panic('implement me')
+}

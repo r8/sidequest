@@ -1,0 +1,7 @@
+{
+  "blurb": "Handlers give the operations of an effect their meaning for one computation, and remove the effect from its type.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

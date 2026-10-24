@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/data_structures/index.html",
+    "description": "Janet's data structures and their mutable and immutable versions"
+  },
+  {
+    "url": "https://janet-lang.org/docs/comparison.html",
+    "description": "Comparison operators: =, deep= and compare"
+  }
+]

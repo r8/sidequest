@@ -1,0 +1,40 @@
+import std.sync (Future, Promise)
+import std.time (Duration)
+
+# A weather balloon in flight, running as its own process. It knows the
+# altitudes, in metres, that it has measured.
+type pub async Balloon {
+  let @readings: Array[Int]
+
+  # Launches a balloon that has measured `readings`.
+  fn pub static new(readings: uni Array[Int]) -> Balloon {
+    Balloon(readings: readings)
+  }
+
+  # Replies with the highest altitude the balloon reached, or 0 if it has no
+  # readings.
+  fn pub async peak(reply: uni Promise[Int]) {
+    panic('implement me')
+  }
+}
+
+# Asks `balloon` for its peak without waiting for the answer.
+fn pub request(balloon: Balloon) -> uni Future[Int] {
+  panic('implement me')
+}
+
+# Returns the peaks of all `balloons`, in order, asking all of them before
+# waiting for any answer.
+fn pub peaks(balloons: ref Array[Balloon]) -> Array[Int] {
+  panic('implement me')
+}
+
+# Returns the highest peak of all `balloons`, or 0 if there are none.
+fn pub record(balloons: ref Array[Balloon]) -> Int {
+  panic('implement me')
+}
+
+# Returns the value of `future` if it arrives within `timeout`, or `None`.
+fn pub listen(future: uni Future[Int], timeout: Duration) -> Option[Int] {
+  panic('implement me')
+}

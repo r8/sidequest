@@ -1,0 +1,84 @@
+import bakery_ovens (Oven, preheat)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. a new oven is at room temperature', fn (t) {
+    t.equal(await Oven.new.temperature, 20)
+  })
+
+  t.test('2. heat an oven', fn (t) {
+    let oven = Oven.new
+
+    oven.heat_to(220)
+    t.equal(await oven.temperature, 220)
+  })
+  t.test('2. messages arrive in order', fn (t) {
+    let oven = Oven.new
+
+    oven.heat_to(220)
+    oven.heat_to(150)
+    oven.heat_to(190)
+    t.equal(await oven.temperature, 190)
+  })
+
+  t.test('3. bake in a hot oven', fn (t) {
+    let oven = Oven.new
+
+    oven.heat_to(200)
+
+    let result = recover await oven.bake(12)
+
+    t.equal(result, Result.Ok(12))
+  })
+  t.test('3. bake in a cold oven', fn (t) {
+    let result = recover await Oven.new.bake(12)
+
+    t.equal(result, Result.Error('too cold'))
+  })
+  t.test('3. keep count of the loaves', fn (t) {
+    let oven = Oven.new
+
+    oven.heat_to(200)
+
+    let _ = await oven.bake(12)
+    let result = recover await oven.bake(8)
+
+    t.equal(result, Result.Ok(20))
+  })
+  t.test('3. a failed bake bakes nothing', fn (t) {
+    let oven = Oven.new
+    let _ = await oven.bake(12)
+
+    oven.heat_to(200)
+
+    let result = recover await oven.bake(8)
+
+    t.equal(result, Result.Ok(8))
+  })
+
+  t.test('4. load a tray', fn (t) {
+    let oven = Oven.new
+
+    t.equal(await oven.load(recover ['rye', 'spelt']), 2)
+  })
+  t.test('4. load several trays', fn (t) {
+    let oven = Oven.new
+    let _ = await oven.load(recover ['rye', 'spelt'])
+
+    t.equal(await oven.load(recover ['brioche']), 3)
+  })
+
+  t.test('5. preheat every oven', fn (t) {
+    let ovens = [Oven.new, Oven.new, Oven.new]
+
+    preheat(ovens, 230)
+
+    for oven in ovens.iter { t.equal(await oven.temperature, 230) }
+  })
+  t.test('5. preheat no ovens', fn (t) {
+    let ovens: Array[Oven] = []
+
+    preheat(ovens, 230)
+    t.equal(ovens.size, 0)
+  })
+}

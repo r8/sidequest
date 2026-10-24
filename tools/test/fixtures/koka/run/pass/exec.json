@@ -1,0 +1,6 @@
+{
+  "exitCode": 0,
+  "stdout": "noisy\toutput\nsecond line\nPASS\tno name\t\t\nPASS\tname with \"quotes\"\t\t\nSUMMARY\t2\t0\t0\n",
+  "stderr": "vfs: [\"/@virtual/test/greet-test/@main.kk\"]\nvfs: [\"/@virtual/test/greet-test/@main.kk\"]\n",
+  "timedOut": false
+}

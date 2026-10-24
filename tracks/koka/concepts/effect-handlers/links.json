@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-handlers",
+    "description": "The Koka book: effect handlers"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-opfun",
+    "description": "The Koka book: tail-resumptive (fun) operations"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-abstracting-handlers",
+    "description": "The Koka book: abstracting handlers into functions"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-overriding-handlers",
+    "description": "The Koka book: overriding handlers"
+  }
+]

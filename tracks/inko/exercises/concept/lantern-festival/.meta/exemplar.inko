@@ -1,0 +1,67 @@
+import std.drop (Drop, drop)
+
+# A paper lantern. When a lantern is dropped, it goes out, and says so in the
+# festival log.
+type pub Lantern {
+  let @name: String
+  let @log: mut Array[String]
+
+  # Returns a lit lantern called `name`, which writes to `log`.
+  fn pub static new(name: String, log: mut Array[String]) -> Lantern {
+    Lantern(name: name, log: log)
+  }
+
+  # Returns the name of the lantern.
+  fn pub name -> String {
+    @name
+  }
+}
+
+impl Drop for Lantern {
+  fn mut drop {
+    @log.push('${@name} goes out')
+  }
+}
+
+# A parade, which owns the lanterns carried in it.
+type pub Parade {
+  let @log: mut Array[String]
+  let @lanterns: Array[Lantern]
+
+  # Returns a parade without lanterns, which writes to `log`.
+  fn pub static new(log: mut Array[String]) -> Parade {
+    Parade(log: log, lanterns: [])
+  }
+
+  # Lights a lantern called `name` and adds it to the end of the parade.
+  fn pub mut light(name: String) {
+    @lanterns.push(Lantern.new(name, @log))
+  }
+
+  # Returns the number of lanterns in the parade.
+  fn pub size -> Int {
+    @lanterns.size
+  }
+
+  # Takes the lantern called `name` out of the parade, if it's there.
+  fn pub mut release(name: String) -> Option[Lantern] {
+    let index = try @lanterns
+      .iter
+      .with_index
+      .find(fn (pair) { pair.1.name == name })
+      .map(fn (pair) { pair.0 })
+
+    @lanterns.remove_at(index).ok
+  }
+}
+
+impl Drop for Parade {
+  fn mut drop {
+    @log.push('the parade is over')
+  }
+}
+
+# Puts `lantern` out right away.
+fn pub snuff(lantern: Lantern) {
+  drop(lantern)
+}

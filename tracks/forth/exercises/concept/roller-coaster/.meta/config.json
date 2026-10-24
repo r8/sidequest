@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "roller-coaster.fs"
+    ],
+    "test": [
+      "test/roller-coaster-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about flags and comparisons by checking riders at the gate of a roller coaster.",
+  "custom": {
+    "after": [
+      "juggling-act"
+    ]
+  }
+}

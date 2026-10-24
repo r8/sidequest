@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Floating-Point.html",
+    "description": "Floating point in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Floating-Point-Tutorial.html",
+    "description": "Floating point in the Gforth tutorial"
+  },
+  {
+    "url": "https://forth-standard.org/standard/float",
+    "description": "The Floating-Point word set in the Forth standard"
+  }
+]

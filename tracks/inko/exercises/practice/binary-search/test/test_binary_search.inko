@@ -1,0 +1,20 @@
+import binary_search (find)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('finds a value in an array with one element', fn (t) { t.equal(find([6], 6), Option.Some(0)) })
+  t.test('finds a value in the middle of an array', fn (t) { t.equal(find([1, 3, 4, 6, 8, 9, 11], 6), Option.Some(3)) })
+  t.test('finds a value at the beginning of an array', fn (t) { t.equal(find([1, 3, 4, 6, 8, 9, 11], 1), Option.Some(0)) })
+  t.test('finds a value at the end of an array', fn (t) { t.equal(find([1, 3, 4, 6, 8, 9, 11], 11), Option.Some(6)) })
+  t.test('finds a value in an array of odd length', fn (t) {
+    t.equal(find([1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 634], 144), Option.Some(9))
+  })
+  t.test('finds a value in an array of even length', fn (t) {
+    t.equal(find([1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377], 21), Option.Some(5))
+  })
+  t.test('identifies that a value is not included in the array', fn (t) { t.equal(find([1, 3, 4, 6, 8, 9, 11], 7), Option.None) })
+  t.test("a value smaller than the array's smallest value is not found", fn (t) { t.equal(find([1, 3, 4, 6, 8, 9, 11], 0), Option.None) })
+  t.test("a value larger than the array's largest value is not found", fn (t) { t.equal(find([1, 3, 4, 6, 8, 9, 11], 13), Option.None) })
+  t.test('nothing is found in an empty array', fn (t) { t.equal(find([], 1), Option.None) })
+  t.test('nothing is found when the left and right bounds cross', fn (t) { t.equal(find([1, 2], 0), Option.None) })
+}

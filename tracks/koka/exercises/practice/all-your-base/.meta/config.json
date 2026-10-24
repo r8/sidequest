@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "all-your-base.kk"
+    ],
+    "test": [
+      "test/all-your-base-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Convert a number, represented as a sequence of digits in one base, to any other base.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

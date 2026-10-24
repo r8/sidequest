@@ -1,0 +1,43 @@
+# A matrix of integers, parsed from rows of space-separated numbers, one row per
+# line.
+type pub Matrix {
+  # The parsed rows. Change the fields as you see fit.
+  let @rows: Array[Array[Int]]
+
+  # Parses `input`, for example `"1 2\n3 4"`.
+  fn pub static new(input: String) -> Matrix {
+    let rows = input
+      .split('\n')
+      .map(fn (line) {
+        line
+          .split(' ')
+          .select(fn (word) { !word.empty? })
+          .map(fn (word) { Int.parse(word, base: 10).get })
+          .to_array
+      })
+      .to_array
+
+    Matrix(rows)
+  }
+
+  # Returns the row at `index`, counting from 1, or `None` if there is no such
+  # row.
+  fn pub row(index: Int) -> Option[Array[Int]] {
+    @rows.get(index - 1).ok.map(fn (row) { row.clone })
+  }
+
+  # Returns the column at `index`, counting from 1, or `None` if there is no
+  # such column.
+  fn pub column(index: Int) -> Option[Array[Int]] {
+    let column = []
+
+    for row in @rows.iter {
+      match row.get(index - 1) {
+        case Ok(value) -> column.push(value)
+        case Error(_) -> return Option.None
+      }
+    }
+
+    if column.empty? { Option.None } else { Option.Some(column) }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "name-tags.bqn"
+    ],
+    "test": [
+      "test/name-tags.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about characters and strings in BQN by printing conference name badges.",
+  "custom": {
+    "after": [
+      "step-counter"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+import std.sync (Promise)
+
+# An oven, running as its own process. Other processes talk to it by sending
+# it messages.
+#
+# Add the fields you need.
+type pub async Oven {
+  # Returns a new oven process at room temperature (20 degrees), which hasn't
+  # baked anything yet.
+  fn pub static new -> Oven {
+    panic('implement me')
+  }
+
+  # Replies with the oven's temperature.
+  fn pub async temperature(reply: uni Promise[Int]) {
+    panic('implement me')
+  }
+
+  # Heats (or cools) the oven to `degrees`.
+  fn pub async mut heat_to(degrees: Int) {
+    panic('implement me')
+  }
+
+  # Bakes `loaves` loaves, replying with the number of loaves baked so far, or
+  # with the error "too cold" when the oven is below 180 degrees.
+  fn pub async mut bake(reply: uni Promise[Result[Int, String]], loaves: Int) {
+    panic('implement me')
+  }
+
+  # Puts `tray` in the oven, replying with the number of items on all the trays
+  # in the oven.
+  fn pub async mut load(reply: uni Promise[Int], tray: uni Array[String]) {
+    panic('implement me')
+  }
+}
+
+# Heats every oven in `ovens` to `degrees`.
+fn pub preheat(ovens: ref Array[Oven], degrees: Int) {
+  panic('implement me')
+}

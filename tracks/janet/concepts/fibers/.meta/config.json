@@ -1,0 +1,7 @@
+{
+  "blurb": "Fibers are functions that can pause with yield and continue with resume: Janet's coroutines and generators.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

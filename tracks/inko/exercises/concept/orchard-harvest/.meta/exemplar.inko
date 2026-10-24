@@ -1,0 +1,24 @@
+# Returns how many crates of `per_crate` apples can be filled completely.
+fn pub full_crates(apples: Int, per_crate: Int) -> Int {
+  apples / per_crate
+}
+
+# Returns how many apples are left over after filling the crates.
+fn pub loose_apples(apples: Int, per_crate: Int) -> Int {
+  apples % per_crate
+}
+
+# Returns how many crates hold all the apples, counting a part-filled crate.
+fn pub crates_needed(apples: Int, per_crate: Int) -> Int {
+  (apples.to_float / per_crate.to_float).ceil.to_int
+}
+
+# Returns the average weight of one apple in grams.
+fn pub average_weight(grams: Int, apples: Int) -> Float {
+  grams.to_float / apples.to_float
+}
+
+# Returns the price of `kilograms` at `per_kilogram`, rounded to two decimals.
+fn pub sale_price(kilograms: Float, per_kilogram: Float) -> Float {
+  (kilograms * per_kilogram).round(2)
+}

@@ -1,0 +1,7 @@
+{
+  "blurb": "postpone lets an immediate word compile code into the definition that uses it: macros and new control structures, written in Forth.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

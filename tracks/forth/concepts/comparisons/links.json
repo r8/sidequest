@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://gforth.org/manual/Numeric-comparison.html",
+    "description": "Numeric comparison in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/WITHIN",
+    "description": "WITHIN in the Forth 2012 standard, with its rationale"
+  }
+]

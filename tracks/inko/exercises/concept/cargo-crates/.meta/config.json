@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/cargo_crates.inko"
+    ],
+    "test": [
+      "test/test_cargo_crates.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about generics by building shipping crates that can hold any kind of cargo.",
+  "custom": {
+    "after": [
+      "museum-exhibits",
+      "lost-and-found"
+    ]
+  }
+}

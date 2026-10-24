@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "binary-search-tree.kk"
+    ],
+    "test": [
+      "test/binary-search-tree-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Insert and search for numbers in a binary tree.",
+  "source": "Josh Cheek",
+  "custom": {
+    "after": [
+      "binary-search"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+let FLOWER = 42 # '*'
+let SPACE = 32 # ' '
+let ZERO = 48 # '0'
+
+fn flower?(garden: ref Array[String], row: Int, col: Int) -> Bool {
+  match garden.get(row) {
+    case Ok(line) -> line.get(col).or(SPACE) == FLOWER
+    case Error(_) -> false
+  }
+}
+
+# Returns the garden with every empty square (a space) that touches one or more
+# flowers (`*`), including diagonally, replaced by the number of flowers it
+# touches.
+fn pub annotate(garden: Array[String]) -> Array[String] {
+  garden
+    .iter
+    .with_index
+    .map(fn (pair) {
+      let row = pair.0
+      let line = pair.1
+      let out = ByteArray.new
+
+      for col in 0.until(line.size) {
+        let byte = line.get(col).or_panic
+
+        if byte == FLOWER {
+          out.push(byte)
+          next
+        }
+
+        let count = (row - 1).to(row + 1).iter.reduce(0, fn (sum, r) {
+          sum
+            + (col - 1)
+              .to(col + 1)
+              .iter
+              .select(fn (c) { flower?(garden, r, c) })
+              .count
+        })
+
+        out.push(if count == 0 { SPACE } else { ZERO + count })
+      }
+
+      out.into_string
+    })
+    .to_array
+}

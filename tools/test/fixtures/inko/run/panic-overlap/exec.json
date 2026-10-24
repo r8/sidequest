@@ -1,0 +1,14 @@
+[
+  {
+    "exitCode": 101,
+    "stdout": "..",
+    "stderr": "\u001equest-passed 12:passing case\n\u001equest-passed 10:name check\nStack trace (the most recent call comes last):\n  /opt/homebrew/Cellar/inko/0.21.1_1/lib/inko/std/std/test.inko:313 in std.test.Runner.run\n  <staging>/test/test_greet.inko:7 in <closure>\n  <staging>/src/greet.inko:2 in greet.greet\n  /opt/homebrew/Cellar/inko/0.21.1_1/lib/inko/std/std/process.inko:21 in std.process.panic\nProcess 'Runner' (0x749ece4320) panicked: kaboom\n",
+    "timedOut": false
+  },
+  {
+    "exitCode": 0,
+    "stdout": "\u001equest-run\n.\u001equest-exit 101\n\u001equest-run\n\u001equest-exit 101\n\u001equest-run\n.F\n\nFailures:\n\n1. Test: name check strict\n   Line: <staging>/test/test_greet.inko:10\n\n     expected: \"Hi, Bob!\"\n          got: \"Hello, Bob!\"\n\nFinished running 2 tests in 0 milliseconds, 1 failures, seed: -8690848355022966395\n\u001equest-exit 2\n\u001equest-run\nF\n\nFailures:\n\n1. Test: name check strict\n   Line: <staging>/test/test_greet.inko:10\n\n     expected: \"Hi, Bob!\"\n          got: \"Hello, Bob!\"\n\nFinished running 1 tests in 0 milliseconds, 1 failures, seed: 1877183797299992424\n\u001equest-exit 2\n",
+    "stderr": "\u001equest-run\n\u001equest-passed 12:passing case\nStack trace (the most recent call comes last):\n  /opt/homebrew/Cellar/inko/0.21.1_1/lib/inko/std/std/test.inko:313 in std.test.Runner.run\n  <staging>/test/test_greet.inko:7 in <closure>\n  <staging>/src/greet.inko:2 in greet.greet\n  /opt/homebrew/Cellar/inko/0.21.1_1/lib/inko/std/std/process.inko:21 in std.process.panic\nProcess 'Runner' (0x7c56c9c280) panicked: kaboom\n\u001equest-run\nStack trace (the most recent call comes last):\n  /opt/homebrew/Cellar/inko/0.21.1_1/lib/inko/std/std/test.inko:313 in std.test.Runner.run\n  <staging>/test/test_greet.inko:7 in <closure>\n  <staging>/src/greet.inko:2 in greet.greet\n  /opt/homebrew/Cellar/inko/0.21.1_1/lib/inko/std/std/process.inko:21 in std.process.panic\nProcess 'Runner' (0x77facbc140) panicked: kaboom\n\u001equest-run\n\u001equest-passed 10:name check\n\u001equest-run\n",
+    "timedOut": false
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "nesting-dolls.fs"
+    ],
+    "test": [
+      "test/nesting-dolls-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about recursion with recurse by answering a doll carver's questions about her nesting dolls.",
+  "custom": {
+    "after": [
+      "tea-time"
+    ]
+  }
+}

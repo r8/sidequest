@@ -1,0 +1,95 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+import std.map (Map)
+
+# An undirected graph with attributes on its nodes, its edges and itself.
+#
+# Attribute values are kept as strings, without the quotes they may have in
+# the input: `[foo=1]`, `[bar=true]` and `[title="Testing Attrs"]` give the
+# values "1", "true" and "Testing Attrs".
+#
+# The `with_*` methods build a graph step by step (the tests use them to build
+# the graphs they expect); you can use them in `parse` too.
+type pub Graph {
+  # The attributes of each node, by node name.
+  let pub @nodes: Map[String, Map[String, String]]
+
+  # The attributes of each edge, by the names of the two nodes it connects,
+  # in alphabetical order.
+  let pub @edges: Map[(String, String), Map[String, String]]
+
+  # The attributes of the graph itself.
+  let pub @attrs: Map[String, String]
+
+  # Returns an empty graph.
+  fn pub static new -> Graph {
+    Graph(nodes: Map.new, edges: Map.new, attrs: Map.new)
+  }
+
+  # Returns the graph with the node `name`, which has the given `attrs`.
+  fn pub move with_node(name: String, attrs: Array[(String, String)]) -> Graph {
+    @nodes.set(name, to_map(attrs))
+    self
+  }
+
+  # Returns the graph with an edge between the nodes `a` and `b`, which has the
+  # given `attrs`. The nodes themselves aren't added.
+  fn pub move with_edge(a: String, b: String, attrs: Array[(String, String)]) -> Graph {
+    @edges.set(edge_key(a, b), to_map(attrs))
+    self
+  }
+
+  # Returns the graph with the attribute `name` set to `value`.
+  fn pub move with_attr(name: String, value: String) -> Graph {
+    @attrs.set(name, value)
+    self
+  }
+}
+
+impl Equal for Graph {
+  fn pub ==(other: ref Graph) -> Bool {
+    @nodes == other.nodes and @edges == other.edges and @attrs == other.attrs
+  }
+}
+
+impl Format for Graph {
+  fn pub fmt(formatter: mut Formatter) {
+    formatter
+      .object('Graph')
+      .field('nodes', @nodes)
+      .field('edges', @edges)
+      .field('attrs', @attrs)
+      .finish
+  }
+}
+
+# Returns the key of the edge between the nodes `a` and `b` in `Graph.edges`.
+fn pub edge_key(a: String, b: String) -> (String, String) {
+  if a <= b { (a, b) } else { (b, a) }
+}
+
+fn to_map(pairs: Array[(String, String)]) -> Map[String, String] {
+  let map = Map.new
+
+  for (name, value) in pairs.into_iter { map.set(name, value) }
+
+  map
+}
+
+# Parses the `lines` of a graph in a subset of the DOT language, or returns
+# one of the errors "invalid graph", "invalid edge", "invalid attribute" or
+# "node name must be alphanumeric".
+#
+# The first line is `graph {` and the last is `}`. Each line between them is
+# empty, a comment (starting with `//` or `#`), or a statement ending in `;`:
+#
+# - `a;` or `a [name=value, …];`: a node with optional attributes;
+# - `a -- b;`, `a -- b -- c [name=value];`, …: edges (with optional
+#   attributes applied to each), adding their nodes;
+# - `[name=value, …];`: attributes of the graph.
+#
+# Repeated statements about the same node or edge (in either direction) merge
+# their attributes.
+fn pub parse(lines: Array[String]) -> Result[Graph, String] {
+  panic('implement me')
+}

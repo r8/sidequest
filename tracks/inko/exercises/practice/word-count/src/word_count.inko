@@ -1,0 +1,11 @@
+import std.map (Map)
+
+# Returns how often each word occurs in `sentence`, ignoring case. A word is a
+# run of ASCII letters and digits, and may contain apostrophes (as in "don't");
+# quotation marks around a word aren't part of it. Words are returned in
+# lowercase.
+#
+# Maps are compared without regard to the order of their entries.
+fn pub count_words(sentence: String) -> Map[String, Int] {
+  panic('implement me')
+}

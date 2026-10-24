@@ -1,0 +1,44 @@
+import flower_field (annotate)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('no rows', fn (t) { t.equal(annotate([]), []) })
+  t.test('no columns', fn (t) { t.equal(annotate(['']), ['']) })
+  t.test('no flowers', fn (t) {
+    t.equal(annotate(['   ', '   ', '   ']), ['   ', '   ', '   '])
+  })
+  t.test('garden full of flowers', fn (t) {
+    t.equal(annotate(['***', '***', '***']), ['***', '***', '***'])
+  })
+  t.test('flower surrounded by spaces', fn (t) {
+    t.equal(annotate(['   ', ' * ', '   ']), ['111', '1*1', '111'])
+  })
+  t.test('space surrounded by flowers', fn (t) {
+    t.equal(annotate(['***', '* *', '***']), ['***', '*8*', '***'])
+  })
+  t.test('horizontal line', fn (t) { t.equal(annotate([' * * ']), ['1*2*1']) })
+  t.test('horizontal line, flowers at edges', fn (t) {
+    t.equal(annotate(['*   *']), ['*1 1*'])
+  })
+  t.test('vertical line', fn (t) {
+    t.equal(annotate([' ', '*', ' ', '*', ' ']), ['1', '*', '2', '*', '1'])
+  })
+  t.test('vertical line, flowers at edges', fn (t) {
+    t.equal(annotate(['*', ' ', ' ', ' ', '*']), ['*', '1', ' ', '1', '*'])
+  })
+  t.test('cross', fn (t) {
+    t.equal(
+      annotate(['  *  ', '  *  ', '*****', '  *  ', '  *  ']),
+      [' 2*2 ', '25*52', '*****', '25*52', ' 2*2 '],
+    )
+  })
+  t.test('large garden', fn (t) {
+    t.equal(
+      annotate([' *  * ', '  *   ', '    * ', '   * *', ' *  * ', '      ']),
+      ['1*22*1', '12*322', ' 123*2', '112*4*', '1*22*2', '111111'],
+    )
+  })
+  t.test('multiple adjacent flowers', fn (t) {
+    t.equal(annotate([' ** ']), ['1**1'])
+  })
+}

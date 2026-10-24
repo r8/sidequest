@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "status": "pass",
+  "message": null,
+  "tests": [
+    {
+      "name": "greets",
+      "status": "pass",
+      "test_code": "t.test('greets', fn (t) { t.equal(greet('you'), 'Hello, you!') })",
+      "message": null
+    },
+    {
+      "name": "name with 'quotes'",
+      "status": "pass",
+      "test_code": "t.test(\"name with 'quotes'\", fn (t) {\n    t.equal(greet(\"'Bob'\"), \"Hello, 'Bob'!\")\n  })",
+      "message": null
+    }
+  ]
+}

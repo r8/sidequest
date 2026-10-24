@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Characters-and-Strings-Tutorial.html",
+    "description": "Characters and strings in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Displaying-characters-and-strings.html",
+    "description": "char, [char], emit and friends in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/BracketCHAR",
+    "description": "[CHAR] in the Forth 2012 standard"
+  }
+]

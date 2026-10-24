@@ -1,0 +1,7 @@
+# Returns the results of calling `func` with each of the `values`, in order.
+#
+# Implement this without `Iter.map` or other iterator helpers that do the work
+# for you.
+fn pub accumulate[T, R](values: Array[T], func: fn (T) -> R) -> Array[R] {
+  panic('implement me')
+}

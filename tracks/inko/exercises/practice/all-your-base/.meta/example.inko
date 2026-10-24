@@ -1,0 +1,31 @@
+# Converts `digits`, the digits of a number in `input_base` (most significant
+# first), to the digits of the same number in `output_base`.
+#
+# Returns an error if either base is less than 2, or if a digit is outside the
+# range `0 <= digit < input_base`.
+fn pub rebase(
+  input_base: Int,
+  digits: ref Array[Int],
+  output_base: Int,
+) -> Result[Array[Int], String] {
+  if input_base < 2 { return Result.Error('input base must be >= 2') }
+
+  if output_base < 2 { return Result.Error('output base must be >= 2') }
+
+  if digits.iter.any?(fn (d) { d < 0 or d >= input_base }) {
+    return Result.Error('all digits must satisfy 0 <= d < input base')
+  }
+
+  let mut value = digits.iter.reduce(0, fn (acc, d) { acc * input_base + d })
+  let out = [value % output_base]
+
+  value /= output_base
+
+  while value > 0 {
+    out.push(value % output_base)
+    value /= output_base
+  }
+
+  out.reverse
+  Result.Ok(out)
+}

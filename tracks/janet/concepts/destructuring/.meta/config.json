@@ -1,0 +1,7 @@
+{
+  "blurb": "Destructuring binds names to the parts of tuples, arrays, structs and tables by writing the shape of the data.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

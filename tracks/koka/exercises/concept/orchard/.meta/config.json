@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "orchard.kk"
+    ],
+    "test": [
+      "test/orchard-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about higher-order functions and trailing lambdas by sorting out the harvest of an apple orchard.",
+  "custom": {
+    "after": [
+      "playlist"
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+# A parcel: a label and the items packed inside.
+type pub Parcel {
+  let @label: String
+  let @items: Array[String]
+
+  # Returns an empty, sealed parcel labelled `label`.
+  fn pub static seal(label: String) -> uni Parcel {
+    Parcel(label: label, items: [])
+  }
+
+  # Returns the label of the parcel.
+  fn pub label -> String {
+    @label
+  }
+
+  # Returns a copy of the list of items in the parcel.
+  fn pub items -> Array[String] {
+    @items.clone
+  }
+
+  # Packs `item` into the parcel.
+  fn pub mut add(item: String) {
+    @items.push(item)
+  }
+
+  # Unpacks the parcel, returning its items.
+  fn pub move into_items -> Array[String] {
+    @items
+  }
+}
+
+# Returns a sealed parcel labelled `label`, holding a copy of `items`.
+fn pub pack(label: String, items: ref Array[String]) -> uni Parcel {
+  recover Parcel(label: label, items: items.clone)
+}
+
+# Opens a sealed parcel, returning it as an ordinary parcel.
+fn pub open(parcel: uni Parcel) -> Parcel {
+  recover parcel
+}
+
+# Returns one sealed parcel with the label of `first`, holding the items of
+# `first` followed by those of `second`.
+fn pub combine(first: uni Parcel, second: uni Parcel) -> uni Parcel {
+  recover {
+    let parcel = recover first
+
+    for item in (recover second).into_items { parcel.add(item) }
+
+    parcel
+  }
+}

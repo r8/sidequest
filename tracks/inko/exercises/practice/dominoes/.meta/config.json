@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/dominoes.inko"
+    ],
+    "test": [
+      "test/test_dominoes.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Make a chain of dominoes.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+import paint_mixer (Colour, Recipe)
+import std.test (Tests)
+
+fn red -> Colour {
+  Colour.new(255, 0, 0)
+}
+
+fn white -> Colour {
+  Colour.new(255, 255, 255)
+}
+
+fn blue -> Colour {
+  Colour.new(0, 0, 255)
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('1. mix red and white', fn (t) {
+    t.equal(red.mix(white), Colour.new(255, 127, 127))
+  })
+  t.test('1. mix red and blue', fn (t) {
+    t.equal(red.mix(blue), Colour.new(127, 0, 127))
+  })
+  t.test('1. mixing leaves both colours unchanged', fn (t) {
+    let colour = red
+    let _ = colour.mix(blue)
+
+    t.equal(colour, Colour.new(255, 0, 0))
+  })
+
+  t.test('2. a lighter colour', fn (t) {
+    t.equal(Colour.new(10, 20, 30).lighter(5), Colour.new(15, 25, 35))
+  })
+  t.test('2. lighter stops at 255', fn (t) {
+    t.equal(Colour.new(250, 100, 0).lighter(10), Colour.new(255, 110, 10))
+  })
+  t.test('2. the original stays as it was', fn (t) {
+    let colour = Colour.new(10, 20, 30)
+    let _ = colour.lighter(5)
+
+    t.equal(colour, Colour.new(10, 20, 30))
+  })
+
+  t.test('3. the hex code of red', fn (t) { t.equal(red.hex, '#ff0000') })
+  t.test('3. the hex code of a mix', fn (t) {
+    t.equal(Colour.new(255, 128, 0).hex, '#ff8000')
+  })
+  t.test('3. the hex code of a dark colour', fn (t) {
+    t.equal(Colour.new(1, 2, 3).hex, '#010203')
+  })
+
+  t.test('4. the paint of one colour', fn (t) {
+    t.equal(Recipe.new('Ruby', [red]).paint, red)
+  })
+  t.test('4. the paint of two colours', fn (t) {
+    t.equal(Recipe.new('Rose', [red, white]).paint, Colour.new(255, 127, 127))
+  })
+  t.test('4. colours are mixed in order', fn (t) {
+    t.equal(
+      Recipe.new('Dusk', [red, white, blue]).paint,
+      Colour.new(127, 63, 191),
+    )
+  })
+  t.test('4. the paint of no colours', fn (t) {
+    t.equal(Recipe.new('Void', []).paint, Colour.new(0, 0, 0))
+  })
+
+  t.test('5. clone a recipe', fn (t) {
+    let recipe = Recipe.new('Rose', [red, white])
+    let twin = recipe.clone
+
+    t.equal(twin.name, 'Rose')
+    t.equal(twin.colours, [red, white])
+  })
+  t.test('5. a clone is independent', fn (t) {
+    let recipe = Recipe.new('Rose', [red, white])
+    let twin = recipe.clone
+
+    twin.colours.push(blue)
+    t.equal(recipe.colours, [red, white])
+  })
+
+  t.test('6. a variant', fn (t) {
+    let rose = Recipe.new('Rose', [red, white])
+    let dusk = rose.variant('Dusk', blue)
+
+    t.equal(dusk.name, 'Dusk')
+    t.equal(dusk.colours, [red, white, blue])
+  })
+  t.test('6. a variant leaves the recipe alone', fn (t) {
+    let rose = Recipe.new('Rose', [red, white])
+    let _ = rose.variant('Dusk', blue)
+
+    t.equal(rose.colours, [red, white])
+    t.equal(rose.paint, Colour.new(255, 127, 127))
+  })
+}

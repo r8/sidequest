@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "variable-length-quantity.janet"
+    ],
+    "test": [
+      "test/variable-length-quantity.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Implement variable length quantity encoding and decoding.",
+  "source": "A poor Splice developer having to implement MIDI encoding/decoding.",
+  "source_url": "https://splice.com",
+  "custom": {
+    "after": [
+      "all-your-base"
+    ]
+  }
+}

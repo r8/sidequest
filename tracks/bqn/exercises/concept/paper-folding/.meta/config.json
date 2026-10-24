@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "paper-folding.bqn"
+    ],
+    "test": [
+      "test/paper-folding.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about recursion in BQN by working out facts about folding and cutting paper.",
+  "custom": {
+    "after": [
+      "parking-garage"
+    ]
+  }
+}

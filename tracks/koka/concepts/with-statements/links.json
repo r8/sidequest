@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-with",
+    "description": "The Koka book: with statements"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-anon",
+    "description": "The Koka book: anonymous functions and trailing lambdas"
+  }
+]

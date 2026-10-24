@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/specials.html",
+    "description": "Special forms, including quote and quasiquote"
+  },
+  {
+    "url": "https://janet-lang.org/docs/macros.html",
+    "description": "Macros, quasiquote, unquote and splicing"
+  },
+  {
+    "url": "https://janet-lang.org/api/index.html#eval",
+    "description": "eval in the core API reference"
+  }
+]

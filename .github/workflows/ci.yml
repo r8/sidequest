@@ -1,0 +1,32 @@
+# The one workflow: run the committed tree on a machine that is not yours.
+name: ci
+on: [push, pull_request]
+jobs:
+  ci:
+    # Every example must pass, and every stub must load and fail: as long as each other, so side by side.
+    strategy:
+      fail-fast: false
+      matrix: { check: [examples, stubs] }
+    name: ${{ matrix.check }}
+    runs-on: ubuntu-latest
+    env:
+      MISE_TRUSTED_CONFIG_PATHS: ${{ github.workspace }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v5
+        with: { install_args: --locked }
+      - uses: actions/setup-node@v7
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - uses: actions/cache@v6
+        with: { path: .cache/toolchain, key: "toolchain-${{ runner.os }}-${{ hashFiles('tracks/*/quest.json') }}" }
+      # Koka's standard library and kklib, compiled once per Koka version and adapter.
+      - uses: actions/cache@v6
+        with: { path: .cache/build/koka, key: "koka-build-${{ runner.os }}-${{ hashFiles('mise.lock', 'tools/src/runners/koka.ts') }}" }
+      - run: npx quest toolchain --install-ci
+      - run: npx quest doctor
+      - if: matrix.check == 'examples'
+        run: npm run typecheck && npm run test:tools && npx quest validate
+      - run: npx quest test --all --${{ matrix.check }}
+      - if: matrix.check == 'examples'
+        run: npx quest test --all --summary-md "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "palindrome-products.bqn"
+    ],
+    "test": [
+      "test/palindrome-products.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Detect palindrome products in a given range.",
+  "source": "Problem 4 at Project Euler",
+  "source_url": "https://projecteuler.net/problem=4",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

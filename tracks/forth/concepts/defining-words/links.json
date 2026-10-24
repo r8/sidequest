@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://gforth.org/manual/User_002ddefined-Defining-Words.html",
+    "description": "User-defined defining words in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Defining-Words-Tutorial.html",
+    "description": "Defining words in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/CREATE_002e_002eDOES_003e-applications.html",
+    "description": "Applications of CREATE..DOES> in the Gforth manual"
+  },
+  {
+    "url": "https://www.forth.com/starting-forth/11-forth-compiler-defining-words/",
+    "description": "Starting Forth, chapter 11: extending the compiler with defining words"
+  }
+]

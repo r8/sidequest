@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "vending-machine.kk"
+    ],
+    "test": [
+      "test/vending-machine-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about exceptions by writing the coin logic of a library's vending machine.",
+  "custom": {
+    "after": [
+      "assembly-line",
+      "customs-desk"
+    ]
+  }
+}

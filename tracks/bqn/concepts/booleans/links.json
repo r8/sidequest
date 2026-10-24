@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/logic.html",
+    "description": "Logic functions: ∧, ∨ and ¬"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/arithmetic.html",
+    "description": "Arithmetic and comparison functions"
+  }
+]

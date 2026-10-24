@@ -1,0 +1,5 @@
+# Returns the lines of the proverb built from `pieces`, one line per pair of
+# consecutive pieces plus the closing line.
+fn pub recite(pieces: ref Array[String]) -> Array[String] {
+  panic('implement me')
+}

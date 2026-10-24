@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/tournament.inko"
+    ],
+    "test": [
+      "test/test_tournament.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Tally the results of a small football competition.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

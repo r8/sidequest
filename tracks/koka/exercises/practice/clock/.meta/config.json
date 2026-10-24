@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "clock.kk"
+    ],
+    "test": [
+      "test/clock-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Implement a clock that handles times without dates.",
+  "source": "Pairing session with Erin Drummond",
+  "custom": {
+    "after": [
+      "bike-rental"
+    ]
+  }
+}

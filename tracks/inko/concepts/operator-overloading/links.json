@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/guides/operators/",
+    "description": "Operator overloading, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/ops/",
+    "description": "The std.ops module"
+  }
+]

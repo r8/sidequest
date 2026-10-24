@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/std_core_exn.html",
+    "description": "The std/core/exn module: throw, try and the exception type"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-handlers",
+    "description": "The Koka book: effect handlers, starting with exceptions"
+  }
+]

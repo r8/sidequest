@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "bacteria-culture.bqn"
+    ],
+    "test": [
+      "test/bacteria-culture.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about Repeat and Undo by predicting how a bacteria culture grows, and working out what it was.",
+  "custom": {
+    "after": [
+      "unit-converter"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+# Returns the lines of `take_down` verses of the song, counting down from
+# `start_bottles` bottles. Verses are separated by an empty line.
+fn pub recite(start_bottles: Int, take_down: Int) -> Array[String] {
+  panic('implement me')
+}

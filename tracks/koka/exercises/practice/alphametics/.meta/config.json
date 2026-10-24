@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "alphametics.kk"
+    ],
+    "test": [
+      "test/alphametics-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Given an alphametics puzzle, find the correct solution.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

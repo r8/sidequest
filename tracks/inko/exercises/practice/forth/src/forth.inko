@@ -1,0 +1,10 @@
+# Evaluates the Forth program `instructions` (one string per line) and returns
+# the resulting stack, bottom first.
+#
+# Supports integers, `+`, `-`, `*`, `/`, `dup`, `drop`, `swap`, `over`, and user
+# defined words (`: name body ;`); words are case-insensitive. Errors are
+# "empty stack", "only one value on the stack", "divide by zero",
+# "illegal operation" (redefining a number) and "undefined operation".
+fn pub evaluate(instructions: ref Array[String]) -> Result[Array[Int], String] {
+  panic('implement me')
+}

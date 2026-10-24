@@ -1,0 +1,20 @@
+# Returns `true` if sides `a`, `b` and `c` form a triangle with all three sides
+# equal.
+#
+# Sides form a triangle when all are positive and each side is at most the sum
+# of the other two.
+fn pub equilateral?(a: Float, b: Float, c: Float) -> Bool {
+  panic('implement me')
+}
+
+# Returns `true` if sides `a`, `b` and `c` form a triangle with at least two
+# sides equal.
+fn pub isosceles?(a: Float, b: Float, c: Float) -> Bool {
+  panic('implement me')
+}
+
+# Returns `true` if sides `a`, `b` and `c` form a triangle with all three sides
+# different.
+fn pub scalene?(a: Float, b: Float, c: Float) -> Bool {
+  panic('implement me')
+}

@@ -1,0 +1,17 @@
+import prime_factors (factors)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('no factors', fn (t) { t.equal(factors(1), []) })
+  t.test('prime number', fn (t) { t.equal(factors(2), [2]) })
+  t.test('another prime number', fn (t) { t.equal(factors(3), [3]) })
+  t.test('square of a prime', fn (t) { t.equal(factors(9), [3, 3]) })
+  t.test('product of first prime', fn (t) { t.equal(factors(4), [2, 2]) })
+  t.test('cube of a prime', fn (t) { t.equal(factors(8), [2, 2, 2]) })
+  t.test('product of second prime', fn (t) { t.equal(factors(27), [3, 3, 3]) })
+  t.test('product of third prime', fn (t) { t.equal(factors(625), [5, 5, 5, 5]) })
+  t.test('product of first and second prime', fn (t) { t.equal(factors(6), [2, 3]) })
+  t.test('product of primes and non-primes', fn (t) { t.equal(factors(12), [2, 2, 3]) })
+  t.test('product of primes', fn (t) { t.equal(factors(901255), [5, 17, 23, 461]) })
+  t.test('factors include a large prime', fn (t) { t.equal(factors(93819012551), [11, 9539, 894119]) })
+}

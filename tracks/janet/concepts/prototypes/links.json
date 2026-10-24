@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/prototypes.html",
+    "description": "Prototypes"
+  },
+  {
+    "url": "https://janet-lang.org/docs/object_oriented.html",
+    "description": "Object-oriented programming with tables and methods"
+  },
+  {
+    "url": "https://janet-lang.org/api/table.html",
+    "description": "The table module: setproto, getproto, rawget"
+  }
+]

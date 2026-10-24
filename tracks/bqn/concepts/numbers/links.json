@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/arithmetic.html",
+    "description": "Arithmetic functions"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/types.html",
+    "description": "BQN's types, numbers among them"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/primitive.html",
+    "description": "Every primitive, one and two arguments"
+  }
+]

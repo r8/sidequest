@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "drawbridge.bqn"
+    ],
+    "test": [
+      "test/drawbridge.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about booleans and comparisons in BQN by keeping a drawbridge.",
+  "custom": {
+    "after": [
+      "pizza-night"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "blurb": "Take ↑ and drop ↓: cut a list at either end, padding with fill elements when taking too many.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

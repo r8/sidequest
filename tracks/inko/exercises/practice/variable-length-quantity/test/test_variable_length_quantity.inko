@@ -1,0 +1,48 @@
+import variable_length_quantity (decode, encode)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('Encode a series of integers, producing a series of bytes. > zero', fn (t) { t.equal(encode([0]), [0]) })
+  t.test('Encode a series of integers, producing a series of bytes. > arbitrary single byte', fn (t) { t.equal(encode([64]), [64]) })
+  t.test('Encode a series of integers, producing a series of bytes. > asymmetric single byte', fn (t) { t.equal(encode([83]), [83]) })
+  t.test('Encode a series of integers, producing a series of bytes. > largest single byte', fn (t) { t.equal(encode([127]), [127]) })
+  t.test('Encode a series of integers, producing a series of bytes. > smallest double byte', fn (t) { t.equal(encode([128]), [129, 0]) })
+  t.test('Encode a series of integers, producing a series of bytes. > arbitrary double byte', fn (t) { t.equal(encode([8192]), [192, 0]) })
+  t.test('Encode a series of integers, producing a series of bytes. > asymmetric double byte', fn (t) { t.equal(encode([173]), [129, 45]) })
+  t.test('Encode a series of integers, producing a series of bytes. > largest double byte', fn (t) { t.equal(encode([16383]), [255, 127]) })
+  t.test('Encode a series of integers, producing a series of bytes. > smallest triple byte', fn (t) { t.equal(encode([16384]), [129, 128, 0]) })
+  t.test('Encode a series of integers, producing a series of bytes. > arbitrary triple byte', fn (t) { t.equal(encode([1048576]), [192, 128, 0]) })
+  t.test('Encode a series of integers, producing a series of bytes. > asymmetric triple byte', fn (t) { t.equal(encode([120220]), [135, 171, 28]) })
+  t.test('Encode a series of integers, producing a series of bytes. > largest triple byte', fn (t) { t.equal(encode([2097151]), [255, 255, 127]) })
+  t.test('Encode a series of integers, producing a series of bytes. > smallest quadruple byte', fn (t) { t.equal(encode([2097152]), [129, 128, 128, 0]) })
+  t.test('Encode a series of integers, producing a series of bytes. > arbitrary quadruple byte', fn (t) { t.equal(encode([134217728]), [192, 128, 128, 0]) })
+  t.test('Encode a series of integers, producing a series of bytes. > asymmetric quadruple byte', fn (t) { t.equal(encode([3503876]), [129, 213, 238, 4]) })
+  t.test('Encode a series of integers, producing a series of bytes. > largest quadruple byte', fn (t) { t.equal(encode([268435455]), [255, 255, 255, 127]) })
+  t.test('Encode a series of integers, producing a series of bytes. > smallest quintuple byte', fn (t) { t.equal(encode([268435456]), [129, 128, 128, 128, 0]) })
+  t.test('Encode a series of integers, producing a series of bytes. > arbitrary quintuple byte', fn (t) { t.equal(encode([4278190080]), [143, 248, 128, 128, 0]) })
+  t.test('Encode a series of integers, producing a series of bytes. > asymmetric quintuple byte', fn (t) { t.equal(encode([2254790917]), [136, 179, 149, 194, 5]) })
+  t.test('Encode a series of integers, producing a series of bytes. > maximum 32-bit integer input', fn (t) { t.equal(encode([4294967295]), [143, 255, 255, 255, 127]) })
+  t.test('Encode a series of integers, producing a series of bytes. > two single-byte values', fn (t) { t.equal(encode([64, 127]), [64, 127]) })
+  t.test('Encode a series of integers, producing a series of bytes. > two multi-byte values', fn (t) { t.equal(encode([16384, 1193046]), [129, 128, 0, 200, 232, 86]) })
+  t.test('Encode a series of integers, producing a series of bytes. > many multi-byte values', fn (t) {
+    t.equal(
+      encode([8192, 1193046, 268435455, 0, 16383, 16384]),
+      [192, 0, 200, 232, 86, 255, 255, 255, 127, 0, 255, 127, 129, 128, 0],
+    )
+  })
+  t.test('Decode a series of bytes, producing a series of integers. > one byte', fn (t) { t.equal(decode([127]), Result.Ok([127])) })
+  t.test('Decode a series of bytes, producing a series of integers. > two bytes', fn (t) { t.equal(decode([192, 0]), Result.Ok([8192])) })
+  t.test('Decode a series of bytes, producing a series of integers. > three bytes', fn (t) { t.equal(decode([255, 255, 127]), Result.Ok([2097151])) })
+  t.test('Decode a series of bytes, producing a series of integers. > four bytes', fn (t) { t.equal(decode([129, 128, 128, 0]), Result.Ok([2097152])) })
+  t.test('Decode a series of bytes, producing a series of integers. > maximum 32-bit integer', fn (t) { t.equal(decode([143, 255, 255, 255, 127]), Result.Ok([4294967295])) })
+  t.test('Decode a series of bytes, producing a series of integers. > incomplete sequence causes error', fn (t) { t.equal(decode([255]), Result.Error('incomplete sequence')) })
+  t.test('Decode a series of bytes, producing a series of integers. > incomplete sequence causes error, even if value is zero', fn (t) {
+    t.equal(decode([128]), Result.Error('incomplete sequence'))
+  })
+  t.test('Decode a series of bytes, producing a series of integers. > multiple values', fn (t) {
+    t.equal(
+      decode([192, 0, 200, 232, 86, 255, 255, 255, 127, 0, 255, 127, 129, 128, 0]),
+      Result.Ok([8192, 1193046, 268435455, 0, 16383, 16384]),
+    )
+  })
+}

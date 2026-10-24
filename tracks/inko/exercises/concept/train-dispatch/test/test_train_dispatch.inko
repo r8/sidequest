@@ -1,0 +1,52 @@
+import std.test (Tests)
+import train_dispatch (board, next_stop, platform, route, signal, zone)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. the red line', fn (t) { t.equal(platform('red'), 1) })
+  t.test('1. the blue line', fn (t) { t.equal(platform('blue'), 1) })
+  t.test('1. the green line', fn (t) { t.equal(platform('green'), 2) })
+  t.test('1. an unknown line', fn (t) { t.equal(platform('freight'), 0) })
+
+  t.test('2. on time', fn (t) { t.equal(board(0), 'on time') })
+  t.test('2. early counts as on time', fn (t) { t.equal(board(-2), 'on time') })
+  t.test('2. a slight delay', fn (t) { t.equal(board(4), 'slight delay') })
+  t.test('2. a real delay', fn (t) { t.equal(board(25), 'delayed 25 min') })
+  t.test('2. the longest delay', fn (t) { t.equal(board(59), 'delayed 59 min') })
+  t.test('2. cancelled', fn (t) { t.equal(board(60), 'cancelled') })
+
+  t.test('3. green', fn (t) {
+    t.equal(signal(clear: true, occupied: false), 'green')
+  })
+  t.test('3. yellow', fn (t) {
+    t.equal(signal(clear: true, occupied: true), 'yellow')
+  })
+  t.test('3. red', fn (t) {
+    t.equal(signal(clear: false, occupied: false), 'red')
+    t.equal(signal(clear: false, occupied: true), 'red')
+  })
+
+  t.test('4. the next stop', fn (t) {
+    t.equal(next_stop(Option.Some('Millbrook')), 'Next stop: Millbrook')
+  })
+  t.test('4. the last stop', fn (t) {
+    t.equal(next_stop(Option.None), 'This train terminates here')
+  })
+
+  t.test('5. the express', fn (t) {
+    t.equal(route(('express', Option.Some(1))), 'Express to platform 1')
+  })
+  t.test('5. another service', fn (t) {
+    t.equal(route(('local', Option.Some(2))), 'local to platform 2')
+  })
+  t.test('5. a service without a platform', fn (t) {
+    t.equal(route(('local', Option.None)), 'local waits')
+  })
+  t.test('5. the express without a platform', fn (t) {
+    t.equal(route(('express', Option.None)), 'express waits')
+  })
+
+  t.test('6. a zone code', fn (t) { t.equal(zone('Z3'), 3) })
+  t.test('6. a two-digit zone', fn (t) { t.equal(zone('Z12'), 12) })
+  t.test('6. a code without a Z', fn (t) { t.equal(zone('Q3'), 0) })
+  t.test('6. a Z without a number', fn (t) { t.equal(zone('Zone'), 0) })
+}

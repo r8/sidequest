@@ -1,0 +1,7 @@
+{
+  "blurb": "Control operations give their handler an explicit resume: continue the computation, abandon it, or change its result.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

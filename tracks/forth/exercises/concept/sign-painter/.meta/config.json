@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "sign-painter.fs"
+    ],
+    "test": [
+      "test/sign-painter-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn how words build new strings in buffers they own, valid until the next call, by laying out a sign painter's boards.",
+  "custom": {
+    "after": [
+      "name-tags",
+      "locker-room"
+    ]
+  }
+}

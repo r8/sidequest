@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/fibers/error_handling.html",
+    "description": "Error handling in the Janet documentation"
+  },
+  {
+    "url": "https://janet-lang.org/docs/fibers/index.html",
+    "description": "Fibers, the mechanism errors are built on"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "robot-simulator.kk"
+    ],
+    "test": [
+      "test/robot-simulator-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Write a robot simulator.",
+  "source": "Inspired by an interview question at a famous company.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/depth.html",
+    "description": "Depth: nesting and the depth modifier"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/enclose.html",
+    "description": "Enclose and units"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/couple.html",
+    "description": "Couple and merge: building higher-rank arrays"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/match.html",
+    "description": "Match: comparing whole values"
+  }
+]

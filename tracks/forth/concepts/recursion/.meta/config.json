@@ -1,0 +1,7 @@
+{
+  "blurb": "A word can call itself with recurse: a base case answered directly, and a smaller copy of the problem solved first.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

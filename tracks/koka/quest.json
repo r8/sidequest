@@ -1,0 +1,11 @@
+{
+  "runner": "koka",
+  "harness": ["lib/test.kk"],
+  "test": {
+    "argv": ["koka", "--verbose=0", "-e", "-ilib", "-i.", "{test}"],
+    "env": {},
+    "timeoutMs": 180000
+  },
+  "toolchain": null,
+  "color": "#03919d"
+}

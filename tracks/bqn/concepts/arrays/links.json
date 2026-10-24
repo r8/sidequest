@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/array.html",
+    "description": "The array model: axes, shape and elements"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/shape.html",
+    "description": "Array dimensions: rank, shape and length"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/leading.html",
+    "description": "Leading axis: how primitives treat the first axis"
+  }
+]

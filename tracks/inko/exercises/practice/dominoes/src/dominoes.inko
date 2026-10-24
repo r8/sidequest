@@ -1,0 +1,6 @@
+# Returns `true` if all `dominoes` can be arranged in a chain where the
+# adjacent halves of neighbouring stones match and the two free halves at the
+# ends match as well. Stones may be flipped. An empty set forms a chain.
+fn pub can_chain?(dominoes: ref Array[(Int, Int)]) -> Bool {
+  panic('implement me')
+}

@@ -1,0 +1,22 @@
+{
+  "runner": "bqn",
+  "harness": ["lib/test.bqn"],
+  "test": {
+    "argv": ["bqn", "{test}"],
+    "env": {},
+    "timeoutMs": 30000
+  },
+  "toolchain": {
+    "bin": "bqn",
+    "version": "b62079a405b1c05948ce8dc7be7a7bf4577679cd",
+    "versionCommand": ["bqn", "--version"],
+    "versionPattern": "^CBQN on commit ([0-9a-f]+)",
+    "ci": {
+      "install": [
+        ["sh", "-c", "test -x .cache/toolchain/CBQN/BQN || { git clone https://github.com/dzaima/CBQN .cache/toolchain/CBQN && git -C .cache/toolchain/CBQN checkout b62079a405b1c05948ce8dc7be7a7bf4577679cd && make -C .cache/toolchain/CBQN; }"],
+        ["sudo", "cp", ".cache/toolchain/CBQN/BQN", "/usr/local/bin/bqn"]
+      ]
+    }
+  },
+  "color": "#c05296"
+}

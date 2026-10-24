@@ -1,0 +1,48 @@
+import proverb (recite)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('zero pieces', fn (t) { t.equal(recite([]), []) })
+  t.test('one piece', fn (t) { t.equal(recite(['nail']), ['And all for the want of a nail.']) })
+  t.test('two pieces', fn (t) {
+    t.equal(
+      recite(['nail', 'shoe']),
+      ['For want of a nail the shoe was lost.', 'And all for the want of a nail.'],
+    )
+  })
+  t.test('three pieces', fn (t) {
+    t.equal(
+      recite(['nail', 'shoe', 'horse']),
+      [
+        'For want of a nail the shoe was lost.',
+        'For want of a shoe the horse was lost.',
+        'And all for the want of a nail.',
+      ],
+    )
+  })
+  t.test('full proverb', fn (t) {
+    t.equal(
+      recite(['nail', 'shoe', 'horse', 'rider', 'message', 'battle', 'kingdom']),
+      [
+        'For want of a nail the shoe was lost.',
+        'For want of a shoe the horse was lost.',
+        'For want of a horse the rider was lost.',
+        'For want of a rider the message was lost.',
+        'For want of a message the battle was lost.',
+        'For want of a battle the kingdom was lost.',
+        'And all for the want of a nail.',
+      ],
+    )
+  })
+  t.test('four pieces modernized', fn (t) {
+    t.equal(
+      recite(['pin', 'gun', 'soldier', 'battle']),
+      [
+        'For want of a pin the gun was lost.',
+        'For want of a gun the soldier was lost.',
+        'For want of a soldier the battle was lost.',
+        'And all for the want of a pin.',
+      ],
+    )
+  })
+}

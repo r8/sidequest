@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "status": "fail",
+  "message": null,
+  "tests": [
+    {
+      "name": "stub throws",
+      "status": "error",
+      "test_code": "test(\"stub throws\") { assert-equal(\"Hello, you!\", greet()) }",
+      "message": "implement me",
+      "output": null
+    },
+    {
+      "name": "booleans",
+      "status": "pass",
+      "test_code": "test(\"booleans\") { assert-true(1 < 2) }",
+      "message": null,
+      "output": null
+    }
+  ]
+}

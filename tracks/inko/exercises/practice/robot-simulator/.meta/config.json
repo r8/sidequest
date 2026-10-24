@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/robot_simulator.inko"
+    ],
+    "test": [
+      "test/test_robot_simulator.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Write a robot simulator.",
+  "source": "Inspired by an interview question at a famous company.",
+  "custom": {
+    "after": [
+      "potion-shop"
+    ]
+  }
+}

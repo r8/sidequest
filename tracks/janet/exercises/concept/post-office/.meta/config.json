@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "post-office.janet"
+    ],
+    "test": [
+      "test/post-office.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about Janet's event loop and channels by moving letters through a small-town post office.",
+  "custom": {
+    "after": [
+      "ticket-booth",
+      "conveyor-belt"
+    ]
+  }
+}

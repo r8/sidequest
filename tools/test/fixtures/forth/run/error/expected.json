@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "status": "fail",
+  "message": null,
+  "tests": [
+    {
+      "name": "stub aborts",
+      "status": "error",
+      "test_code": "test\" stub aborts\"  greet s\" Hello, you!\" assert-str= ;test",
+      "message": "implement me",
+      "output": null
+    },
+    {
+      "name": "bad memory access",
+      "status": "error",
+      "test_code": "test\" bad memory access\"  -8 @ drop ;test",
+      "message": "invalid memory address",
+      "output": null
+    },
+    {
+      "name": "floats",
+      "status": "pass",
+      "test_code": "test\" floats\"  2.505e 2.5e assert-f~ ;test",
+      "message": null,
+      "output": null
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+# A school roster: students by name, each in one grade.
+#
+# Add the fields you need to the type. `add` changes the school, so the tests
+# keep it in a local variable and call `add` on it.
+type pub School {}
+
+impl School {
+  # Returns an empty school.
+  fn pub static new -> School {
+    panic('implement me')
+  }
+
+  # Adds the student `name` to `grade`. Returns `false` (and leaves the school
+  # unchanged) if a student with that name is already enrolled in any grade.
+  fn pub mut add(name: String, grade: Int) -> Bool {
+    panic('implement me')
+  }
+
+  # Returns all students, sorted by grade and then by name within a grade.
+  fn pub roster -> Array[String] {
+    panic('implement me')
+  }
+
+  # Returns the students in `grade`, sorted by name.
+  fn pub grade(grade: Int) -> Array[String] {
+    panic('implement me')
+  }
+}

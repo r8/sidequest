@@ -1,0 +1,24 @@
+# Returns whether the lamp is lit at `hour` (0 to 23).
+fn pub lamp_on?(hour: Int) -> Bool {
+  panic('implement me')
+}
+
+# Returns whether to sound the foghorn.
+fn pub foghorn?(visibility: Int, ships_nearby: Bool) -> Bool {
+  panic('implement me')
+}
+
+# Returns the storm flag for a wind speed of `knots`.
+fn pub storm_flag(knots: Int) -> String {
+  panic('implement me')
+}
+
+# Returns whether the keeper can rest.
+fn pub can_rest?(
+  hour: Int,
+  visibility: Int,
+  ships_nearby: Bool,
+  knots: Int,
+) -> Bool {
+  panic('implement me')
+}

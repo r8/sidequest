@@ -1,0 +1,44 @@
+# A weather station and the temperatures it has recorded, in degrees Celsius.
+#
+# Add the fields you need.
+type pub Station {
+  # Returns a station called `name`, without any readings.
+  fn pub static new(name: String) -> Station {
+    panic('implement me')
+  }
+
+  # Returns the name of the station.
+  fn pub name -> String {
+    panic('implement me')
+  }
+
+  # Adds a reading.
+  fn pub mut record(celsius: Float) {
+    panic('implement me')
+  }
+
+  # Returns the number of readings.
+  fn pub count -> Int {
+    panic('implement me')
+  }
+
+  # Returns the most recent reading, if there is one.
+  fn pub latest -> Option[Float] {
+    panic('implement me')
+  }
+
+  # Returns the average reading rounded to one decimal, or 0.0 without readings.
+  fn pub average -> Float {
+    panic('implement me')
+  }
+
+  # Returns whether this station's average is higher than `other`'s.
+  fn pub warmer_than?(other: ref Station) -> Bool {
+    panic('implement me')
+  }
+
+  # Gives the station a new name.
+  fn pub mut rename(name: String) {
+    panic('implement me')
+  }
+}

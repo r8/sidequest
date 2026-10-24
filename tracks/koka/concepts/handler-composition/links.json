@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-combining-effects",
+    "description": "The Koka book: combining effects"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-mask",
+    "description": "The Koka book: masking effects"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-overriding-handlers",
+    "description": "The Koka book: overriding handlers"
+  }
+]

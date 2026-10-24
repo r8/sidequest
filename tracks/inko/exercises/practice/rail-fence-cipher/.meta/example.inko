@@ -1,0 +1,43 @@
+# Returns the positions of a `size` character message in the order the rail
+# fence reads them: rail by rail, left to right.
+fn fence_order(size: Int, rails: Int) -> Array[Int] {
+  let cycle = if rails > 1 { 2 * (rails - 1) } else { 1 }
+  let rail = fn (position: Int) {
+    let step = position % cycle
+
+    if step < rails { step } else { cycle - step }
+  }
+  let order = []
+
+  for current in 0.until(rails) {
+    for position in 0.until(size) {
+      if rail.call(position) == current { order.push(position) }
+    }
+  }
+
+  order
+}
+
+# Encodes `message` with a rail fence cipher of `rails` rails.
+fn pub encode(message: String, rails: Int) -> String {
+  let chars = message.chars.to_array
+
+  String.join(
+    fence_order(chars.size, rails).into_iter.map(fn (position) {
+      chars.get(position).or_panic
+    }),
+    with: '',
+  )
+}
+
+# Decodes `message`, encoded with a rail fence cipher of `rails` rails.
+fn pub decode(message: String, rails: Int) -> String {
+  let chars = message.chars.to_array
+  let decoded = Array.filled(with: '', times: chars.size)
+
+  for (index, position) in fence_order(chars.size, rails).into_iter.with_index {
+    decoded.set(position, chars.get(index).or_panic)
+  }
+
+  String.join(decoded.into_iter, with: '')
+}

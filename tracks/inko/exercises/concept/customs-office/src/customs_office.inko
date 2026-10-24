@@ -1,0 +1,30 @@
+# Returns `kilograms` if the weight is allowed (1 to 30), or an error.
+fn pub check_weight(kilograms: Int) -> Result[Int, String] {
+  panic('implement me')
+}
+
+# Returns the number written in `text`, or an error.
+fn pub read_number(text: String) -> Result[Int, String] {
+  panic('implement me')
+}
+
+# Returns the allowed weight written in `text`, or an error.
+fn pub read_weight(text: String) -> Result[Int, String] {
+  panic('implement me')
+}
+
+# Returns the value with 20% duty added, passing an error on.
+fn pub with_duty(value: Result[Int, String]) -> Result[Int, String] {
+  panic('implement me')
+}
+
+# Returns `result` with the name of the form in front of its error.
+fn pub on_form(result: Result[Int, String], form: String) -> Result[Int, String]
+{
+  panic('implement me')
+}
+
+# Returns "cleared: N" or "held: REASON".
+fn pub stamp(result: Result[Int, String]) -> String {
+  panic('implement me')
+}

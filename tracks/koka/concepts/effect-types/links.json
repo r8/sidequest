@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-effect-types",
+    "description": "The Koka book: effect types"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-polymorphic-effects",
+    "description": "The Koka book: polymorphic effects"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#why-effects",
+    "description": "The Koka book: why effect types"
+  }
+]

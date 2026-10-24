@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "tide-tables.fs"
+    ],
+    "test": [
+      "test/tide-tables-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about arrays of cells, indexing and looping over them by making sense of a harbour's tide readings.",
+  "custom": {
+    "after": [
+      "locker-room",
+      "knitting-rows"
+    ]
+  }
+}

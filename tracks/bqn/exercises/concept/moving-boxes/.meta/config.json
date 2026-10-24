@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "moving-boxes.bqn"
+    ],
+    "test": [
+      "test/moving-boxes.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about nested arrays by packing boxes inside boxes for a house move.",
+  "custom": {
+    "after": [
+      "band-setlist",
+      "egg-cartons"
+    ]
+  }
+}

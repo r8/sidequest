@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "weather-station.fs"
+    ],
+    "test": [
+      "test/weather-station-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about case \u2026 of \u2026 endof \u2026 endcase by turning a weather station's codes into readings.",
+  "custom": {
+    "after": [
+      "tea-time"
+    ]
+  }
+}

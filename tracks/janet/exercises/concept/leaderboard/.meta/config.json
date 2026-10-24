@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "leaderboard.janet"
+    ],
+    "test": [
+      "test/leaderboard.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about sorting by keeping a bowling alley's leaderboard in order.",
+  "custom": {
+    "after": [
+      "train-cars",
+      "spice-rack",
+      "seed-catalog"
+    ]
+  }
+}

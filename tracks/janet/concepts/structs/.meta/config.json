@@ -1,0 +1,7 @@
+{
+  "blurb": "Structs are Janet's immutable key–value maps, written {:key value} and compared by content.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

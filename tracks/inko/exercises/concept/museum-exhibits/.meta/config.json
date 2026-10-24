@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/museum_exhibits.inko"
+    ],
+    "test": [
+      "test/test_museum_exhibits.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about traits by giving every exhibit in a museum a plaque.",
+  "custom": {
+    "after": [
+      "weather-station",
+      "sign-painter"
+    ]
+  }
+}

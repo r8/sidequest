@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "crypto-square.kk"
+    ],
+    "test": [
+      "test/crypto-square-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Implement the classic method for composing secret messages called a square code.",
+  "source": "J Dalbey's Programming Practice problems",
+  "source_url": "https://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

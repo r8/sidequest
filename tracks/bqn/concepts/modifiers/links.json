@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/ops.html",
+    "description": "Modifiers and operands"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/block.html",
+    "description": "Blocks, including modifier blocks and their headers"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/context.html",
+    "description": "Syntactic roles and how names are spelled"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "blurb": "Tuples, written […], are Janet's immutable lists, compared by value and built with tuple and the ; splice.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

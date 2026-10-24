@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "snail-climb.fs"
+    ],
+    "test": [
+      "test/snail-climb-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about indefinite loops with begin, until, while, repeat and again by organising a snail race.",
+  "custom": {
+    "after": [
+      "tea-time"
+    ]
+  }
+}

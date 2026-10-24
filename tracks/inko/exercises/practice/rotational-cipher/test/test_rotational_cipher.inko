@@ -1,0 +1,17 @@
+import rotational_cipher (rotate)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('rotate a by 0, same output as input', fn (t) { t.equal(rotate('a', shift_key: 0), 'a') })
+  t.test('rotate a by 1', fn (t) { t.equal(rotate('a', shift_key: 1), 'b') })
+  t.test('rotate a by 26, same output as input', fn (t) { t.equal(rotate('a', shift_key: 26), 'a') })
+  t.test('rotate m by 13', fn (t) { t.equal(rotate('m', shift_key: 13), 'z') })
+  t.test('rotate n by 13 with wrap around alphabet', fn (t) { t.equal(rotate('n', shift_key: 13), 'a') })
+  t.test('rotate capital letters', fn (t) { t.equal(rotate('OMG', shift_key: 5), 'TRL') })
+  t.test('rotate spaces', fn (t) { t.equal(rotate('O M G', shift_key: 5), 'T R L') })
+  t.test('rotate numbers', fn (t) { t.equal(rotate('Testing 1 2 3 testing', shift_key: 4), 'Xiwxmrk 1 2 3 xiwxmrk') })
+  t.test('rotate punctuation', fn (t) { t.equal(rotate("Let's eat, Grandma!", shift_key: 21), "Gzo'n zvo, Bmviyhv!") })
+  t.test('rotate all letters', fn (t) {
+    t.equal(rotate('The quick brown fox jumps over the lazy dog.', shift_key: 13), 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt.')
+  })
+}

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "robot-simulator.janet"
+    ],
+    "test": [
+      "test/robot-simulator.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Write a robot simulator.",
+  "source": "Inspired by an interview question at a famous company.",
+  "custom": {
+    "after": [
+      "star-charts"
+    ]
+  }
+}

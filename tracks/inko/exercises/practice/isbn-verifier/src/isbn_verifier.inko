@@ -1,0 +1,4 @@
+# Returns `true` if `isbn` is a valid ISBN-10, with or without dashes.
+fn pub valid?(isbn: String) -> Bool {
+  panic('implement me')
+}

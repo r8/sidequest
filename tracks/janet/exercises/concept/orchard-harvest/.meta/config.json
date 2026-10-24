@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "orchard-harvest.janet"
+    ],
+    "test": [
+      "test/orchard-harvest.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about numbers in Janet — division, remainders and rounding — by packing an orchard's apples into crates.",
+  "custom": {
+    "after": [
+      "sourdough-schedule"
+    ]
+  }
+}

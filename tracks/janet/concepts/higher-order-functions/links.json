@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/functions.html",
+    "description": "Functions, fn and the short-fn syntax"
+  },
+  {
+    "url": "https://janet-lang.org/api/index.html",
+    "description": "The core API: map, filter, reduce, partial, comp and more"
+  }
+]

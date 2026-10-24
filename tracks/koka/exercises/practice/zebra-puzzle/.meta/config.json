@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "zebra-puzzle.kk"
+    ],
+    "test": [
+      "test/zebra-puzzle-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Solve the zebra puzzle.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Zebra_Puzzle",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "list-ops.kk"
+    ],
+    "test": [
+      "test/list-ops-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Implement basic list operations.",
+  "custom": {
+    "after": [
+      "orchard",
+      "trail-log"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "exitCode": 2,
+    "stdout": "Failures:\nF\n\nFinished running 1 tests in 0 milliseconds, 1 failures, seed: 1\n",
+    "stderr": "",
+    "timedOut": false
+  },
+  {
+    "exitCode": 0,
+    "stdout": "\u001equest-run\nFailures:\nF\n\nFailures:\n\n1. Test: Say Hi!\n   Line: <staging>/test/test_hello_world.inko:5\n\n     expected: \"Hello, World!\"\n          got: \"wrong answer\"\n\nFinished running 1 tests in 0 milliseconds, 1 failures, seed: -1713058645956504928\n\u001equest-exit 2\n",
+    "stderr": "\u001equest-run\n",
+    "timedOut": false
+  }
+]

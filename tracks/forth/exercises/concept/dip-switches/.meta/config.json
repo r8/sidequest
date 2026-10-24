@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "dip-switches.fs"
+    ],
+    "test": [
+      "test/dip-switches-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about bitwise operations and masks by reading and setting the DIP switches of a lighting desk.",
+  "custom": {
+    "after": [
+      "roller-coaster",
+      "knitting-rows"
+    ]
+  }
+}

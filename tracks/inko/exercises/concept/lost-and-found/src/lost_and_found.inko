@@ -1,0 +1,24 @@
+# Returns `number` if it is a valid ticket (1 to 999), or `None`.
+fn pub ticket(number: Int) -> Option[Int] {
+  panic('implement me')
+}
+
+# Returns the valid ticket written in `text`, or `None`.
+fn pub read_ticket(text: String) -> Option[Int] {
+  panic('implement me')
+}
+
+# Returns the first description in `items` containing `word`, or `None`.
+fn pub find_item(items: ref Array[String], word: String) -> Option[String] {
+  panic('implement me')
+}
+
+# Returns the shelf (1 to 20) for a ticket, or `None` without a ticket.
+fn pub shelf(ticket: Option[Int]) -> Option[Int] {
+  panic('implement me')
+}
+
+# Returns "Ticket N" for a ticket, or "No ticket".
+fn pub label(ticket: Option[Int]) -> String {
+  panic('implement me')
+}

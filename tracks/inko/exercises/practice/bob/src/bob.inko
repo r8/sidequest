@@ -1,0 +1,4 @@
+# Returns Bob's response to `hey_bob`.
+fn pub response(hey_bob: String) -> String {
+  panic('implement me')
+}

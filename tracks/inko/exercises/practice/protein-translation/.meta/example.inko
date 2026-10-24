@@ -1,0 +1,33 @@
+let STOP = 'STOP'
+
+# Returns the amino acid `codon` codes for, `STOP` for a stop codon, or `None`
+# if it isn't a valid codon.
+fn amino_acid(codon: String) -> Option[String] {
+  match codon {
+    case 'AUG' -> Option.Some('Methionine')
+    case 'UUU' or 'UUC' -> Option.Some('Phenylalanine')
+    case 'UUA' or 'UUG' -> Option.Some('Leucine')
+    case 'UCU' or 'UCC' or 'UCA' or 'UCG' -> Option.Some('Serine')
+    case 'UAU' or 'UAC' -> Option.Some('Tyrosine')
+    case 'UGU' or 'UGC' -> Option.Some('Cysteine')
+    case 'UGG' -> Option.Some('Tryptophan')
+    case 'UAA' or 'UAG' or 'UGA' -> Option.Some(STOP)
+    case _ -> Option.None
+  }
+}
+
+# Translates the RNA `strand` into the amino acids it codes for, up to the
+# first stop codon, or returns an error if it contains an invalid codon.
+fn pub proteins(strand: String) -> Result[Array[String], String] {
+  let proteins = []
+
+  for codon in strand.chars.chunks(3) {
+    match amino_acid(String.join(codon.into_iter, with: '')) {
+      case Some(STOP) -> break
+      case Some(protein) -> proteins.push(protein)
+      case None -> return Result.Error('Invalid codon')
+    }
+  }
+
+  Result.Ok(proteins)
+}

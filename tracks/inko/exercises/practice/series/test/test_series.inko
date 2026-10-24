@@ -1,0 +1,31 @@
+import series (slices)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('slices of one from one', fn (t) { t.equal(slices('1', 1), Result.Ok(['1'])) })
+  t.test('slices of one from two', fn (t) { t.equal(slices('12', 1), Result.Ok(['1', '2'])) })
+  t.test('slices of two', fn (t) { t.equal(slices('35', 2), Result.Ok(['35'])) })
+  t.test('slices of two overlap', fn (t) { t.equal(slices('9142', 2), Result.Ok(['91', '14', '42'])) })
+  t.test('slices can include duplicates', fn (t) {
+    t.equal(slices('777777', 3), Result.Ok(['777', '777', '777', '777']))
+  })
+  t.test('slices of a long series', fn (t) {
+    t.equal(
+      slices('918493904243', 5),
+      Result.Ok(['91849', '18493', '84939', '49390', '93904', '39042', '90424', '04243']),
+    )
+  })
+  t.test('slice length is too large', fn (t) {
+    t.equal(slices('12345', 6), Result.Error('slice length cannot be greater than series length'))
+  })
+  t.test('slice length is way too large', fn (t) {
+    t.equal(slices('12345', 42), Result.Error('slice length cannot be greater than series length'))
+  })
+  t.test('slice length cannot be zero', fn (t) {
+    t.equal(slices('12345', 0), Result.Error('slice length cannot be zero'))
+  })
+  t.test('slice length cannot be negative', fn (t) {
+    t.equal(slices('123', -1), Result.Error('slice length cannot be negative'))
+  })
+  t.test('empty series is invalid', fn (t) { t.equal(slices('', 1), Result.Error('series cannot be empty')) })
+}

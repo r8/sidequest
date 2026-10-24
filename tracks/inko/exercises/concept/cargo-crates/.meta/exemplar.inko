@@ -1,0 +1,55 @@
+import std.cmp (Equal)
+import std.string (ToString)
+
+# A shipping crate holding up to a fixed number of items of one type.
+type pub Crate[T] {
+  let @items: Array[T]
+  let @capacity: Int
+
+  # Returns an empty crate with room for `capacity` items.
+  fn pub static new(capacity: Int) -> Crate[T] {
+    Crate(items: [], capacity: capacity)
+  }
+
+  # Returns the number of items in the crate.
+  fn pub size -> Int {
+    @items.size
+  }
+
+  # Returns whether the crate is full.
+  fn pub full? -> Bool {
+    @items.size >= @capacity
+  }
+
+  # Puts `item` in the crate, or returns it as an error when the crate is full.
+  fn pub mut load(item: T) -> Result[Nil, T] {
+    if full? { throw item }
+
+    @items.push(item)
+    Result.Ok(nil)
+  }
+
+  # Takes the most recently loaded item out of the crate, if there is one.
+  fn pub mut unload -> Option[T] {
+    @items.pop
+  }
+}
+
+impl Crate if T: Equal {
+  # Returns whether the crate holds `item`.
+  fn pub contains?(item: ref T) -> Bool {
+    @items.contains?(item)
+  }
+}
+
+impl Crate if T: ToString {
+  # Returns the items in the order they were loaded, separated by ", ".
+  fn pub manifest -> String {
+    String.join(@items.iter, ', ')
+  }
+}
+
+# Returns how many of `items` are equal to `wanted`.
+fn pub count_matching[T: Equal](items: ref Array[T], wanted: ref T) -> Int {
+  items.iter.select(fn (item) { item == wanted }).count
+}

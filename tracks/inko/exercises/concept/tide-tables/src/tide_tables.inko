@@ -1,0 +1,25 @@
+# Returns the highest reading, or 0 if there are none.
+fn pub highest(heights: ref Array[Int]) -> Int {
+  panic('implement me')
+}
+
+# Returns how many readings are at or above `level`.
+fn pub hours_above(heights: ref Array[Int], level: Int) -> Int {
+  panic('implement me')
+}
+
+# Returns the hour of the first reading at or above `level`, or -1.
+fn pub first_hour_at(heights: ref Array[Int], level: Int) -> Int {
+  panic('implement me')
+}
+
+# Returns the minutes from `first` to `last` (inclusive), `every` minutes apart.
+fn pub reading_times(first: Int, last: Int, every: Int) -> Array[Int] {
+  panic('implement me')
+}
+
+# Returns the length of the longest run of consecutive readings at or above
+# `minimum`.
+fn pub longest_safe_stretch(heights: ref Array[Int], minimum: Int) -> Int {
+  panic('implement me')
+}

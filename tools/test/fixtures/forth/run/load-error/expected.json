@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "status": "error",
+  "message": "in file included from *OS command line*:-1\nin file included from test/greet-test.fs:2\ngreet.fs:1: Undefined word\n>>><<<\nBacktrace:\n$7C3240CA20 throw \n$7C32422C48 no.extensions \n$7C32410358 compiler-notfound1",
+  "tests": []
+}

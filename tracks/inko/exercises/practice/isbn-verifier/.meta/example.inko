@@ -1,0 +1,22 @@
+# Returns `true` if `isbn` is a valid ISBN-10, with or without dashes.
+fn pub valid?(isbn: String) -> Bool {
+  let chars = isbn.chars.select(fn (char) { char != '-' }).to_array
+
+  if chars.size != 10 { return false }
+
+  let values = []
+
+  for (index, char) in chars.iter.with_index {
+    match Int.parse(char, base: 10) {
+      case Some(digit) -> values.push(digit)
+      case _ if char == 'X' and index == 9 -> values.push(10)
+      case _ -> return false
+    }
+  }
+
+  let sum = values.iter.with_index.reduce(0, fn (sum, pair) {
+    sum + (pair.1 * (10 - pair.0))
+  })
+
+  sum % 11 == 0
+}

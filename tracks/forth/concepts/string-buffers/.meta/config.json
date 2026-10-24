@@ -1,0 +1,7 @@
+{
+  "blurb": "Words that make new text write it into a buffer they own and leave its address and length, valid until the next call.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

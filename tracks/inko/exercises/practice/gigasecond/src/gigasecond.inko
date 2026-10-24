@@ -1,0 +1,6 @@
+import std.time (DateTime)
+
+# Returns the moment one gigasecond (10^9 seconds) after `moment`.
+fn pub add(moment: DateTime) -> DateTime {
+  panic('implement me')
+}

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "kitchen-gadgets.bqn"
+    ],
+    "test": [
+      "test/kitchen-gadgets.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about writing modifiers and using functions as values by building the controls of a kitchen robot.",
+  "custom": {
+    "after": [
+      "unit-converter",
+      "band-setlist"
+    ]
+  }
+}

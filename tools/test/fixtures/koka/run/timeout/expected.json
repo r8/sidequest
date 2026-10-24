@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "status": "error",
+  "message": "Timed out after 60000 ms: compiling and running the tests did not finish (an infinite loop?)",
+  "tests": []
+}

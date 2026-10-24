@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "shopping-basket.bqn"
+    ],
+    "test": [
+      "test/shopping-basket.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about fold by building the checkout of a grocery delivery service.",
+  "custom": {
+    "after": [
+      "band-setlist",
+      "drawbridge"
+    ]
+  }
+}

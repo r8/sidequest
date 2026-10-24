@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "name-tags.fs"
+    ],
+    "test": [
+      "test/name-tags-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about strings as address and length, walking, slicing and comparing them, by printing conference name tags.",
+  "custom": {
+    "after": [
+      "letter-tiles",
+      "knitting-rows",
+      "snail-climb"
+    ]
+  }
+}

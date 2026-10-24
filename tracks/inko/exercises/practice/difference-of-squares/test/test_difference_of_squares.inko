@@ -1,0 +1,14 @@
+import difference_of_squares (difference_of_squares, square_of_sum, sum_of_squares)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('Square the sum of the numbers up to the given number > square of sum 1', fn (t) { t.equal(square_of_sum(1), 1) })
+  t.test('Square the sum of the numbers up to the given number > square of sum 5', fn (t) { t.equal(square_of_sum(5), 225) })
+  t.test('Square the sum of the numbers up to the given number > square of sum 100', fn (t) { t.equal(square_of_sum(100), 25502500) })
+  t.test('Sum the squares of the numbers up to the given number > sum of squares 1', fn (t) { t.equal(sum_of_squares(1), 1) })
+  t.test('Sum the squares of the numbers up to the given number > sum of squares 5', fn (t) { t.equal(sum_of_squares(5), 55) })
+  t.test('Sum the squares of the numbers up to the given number > sum of squares 100', fn (t) { t.equal(sum_of_squares(100), 338350) })
+  t.test('Subtract sum of squares from square of sums > difference of squares 1', fn (t) { t.equal(difference_of_squares(1), 0) })
+  t.test('Subtract sum of squares from square of sums > difference of squares 5', fn (t) { t.equal(difference_of_squares(5), 170) })
+  t.test('Subtract sum of squares from square of sums > difference of squares 100', fn (t) { t.equal(difference_of_squares(100), 25164150) })
+}

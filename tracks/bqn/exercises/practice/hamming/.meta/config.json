@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "hamming.bqn"
+    ],
+    "test": [
+      "test/hamming.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Calculate the Hamming distance between two DNA strands.",
+  "source": "The Calculating Point Mutations problem at Rosalind",
+  "source_url": "https://rosalind.info/problems/hamm/",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

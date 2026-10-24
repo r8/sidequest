@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "status": "error",
+  "message": "the tests did not run to the end: the harness printed no summary (does the solution call bye, or the test file not end with end-tests?)\nHello, you!",
+  "tests": []
+}

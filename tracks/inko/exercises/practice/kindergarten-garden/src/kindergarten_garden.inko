@@ -1,0 +1,43 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# A plant that grows in the garden.
+type pub copy enum Plant {
+  case Clover
+  case Grass
+  case Radishes
+  case Violets
+}
+
+impl Equal for Plant {
+  fn pub ==(other: Plant) -> Bool {
+    match (self, other) {
+      case (Clover, Clover) -> true
+      case (Grass, Grass) -> true
+      case (Radishes, Radishes) -> true
+      case (Violets, Violets) -> true
+      case _ -> false
+    }
+  }
+}
+
+impl Format for Plant {
+  fn pub fmt(formatter: mut Formatter) {
+    let name = match self {
+      case Clover -> 'Clover'
+      case Grass -> 'Grass'
+      case Radishes -> 'Radishes'
+      case Violets -> 'Violets'
+    }
+
+    formatter.tuple(name).finish
+  }
+}
+
+# Returns the four plants of `student`, given the garden `diagram`: two rows of
+# plant letters (`C`, `G`, `R` or `V`) separated by a newline. Each student,
+# in alphabetical order from Alice to Larry, has two cups in each row; the
+# plants are listed row by row, from left to right.
+fn pub plants(diagram: String, student: String) -> Array[Plant] {
+  panic('implement me')
+}

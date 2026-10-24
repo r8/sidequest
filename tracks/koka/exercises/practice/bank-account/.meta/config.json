@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "bank-account.kk"
+    ],
+    "test": [
+      "test/bank-account-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Simulate a bank account supporting opening/closing, withdraws, and deposits of money. Watch out for concurrent transactions!",
+  "custom": {
+    "after": [
+      "coffee-cart",
+      "vending-machine"
+    ]
+  }
+}

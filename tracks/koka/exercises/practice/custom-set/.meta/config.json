@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "custom-set.kk"
+    ],
+    "test": [
+      "test/custom-set-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Create a custom set type.",
+  "custom": {
+    "after": [
+      "price-tags"
+    ]
+  }
+}

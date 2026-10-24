@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "knapsack.bqn"
+    ],
+    "test": [
+      "test/knapsack.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Given a knapsack that can only carry a certain weight, determine which items to put in the knapsack in order to maximize their combined value.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Knapsack_problem",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

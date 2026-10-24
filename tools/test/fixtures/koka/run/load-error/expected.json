@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "status": "error",
+  "message": "greet.kk(3,24): type error: types do not match\n  context      :                name ++ 1\n  term         :                        1\n  inferred type: int\n  expected type: string\nFailed to compile test/greet-test.kk",
+  "tests": []
+}

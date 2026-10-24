@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "egg-cartons.bqn"
+    ],
+    "test": [
+      "test/egg-cartons.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about arrays, shapes and reshaping by packing eggs into cartons and crates.",
+  "custom": {
+    "after": [
+      "step-counter"
+    ]
+  }
+}

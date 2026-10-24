@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/lighthouse_keeper.inko"
+    ],
+    "test": [
+      "test/test_lighthouse_keeper.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about booleans and conditionals by writing the rules of a lighthouse.",
+  "custom": {
+    "after": [
+      "kiln-schedule"
+    ]
+  }
+}

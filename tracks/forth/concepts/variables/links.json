@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Variables.html",
+    "description": "Variables in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Memory-Tutorial.html",
+    "description": "Memory, including variables, in the Gforth tutorial"
+  },
+  {
+    "url": "https://www.forth.com/starting-forth/8-variables-constants-arrays/",
+    "description": "Starting Forth, chapter 8: variables, constants and arrays"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "blurb": "allocate, resize and free manage heap memory of a size chosen at run time, and someone must free what is allocated.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

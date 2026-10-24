@@ -1,0 +1,30 @@
+# Returns the books every new shelf starts with.
+fn pub starter_shelf -> Array[String] {
+  ['Dune', 'Emma', 'Persuasion']
+}
+
+# Returns the title at `position`, or "empty" if there is no book there.
+fn pub book_at(shelf: ref Array[String], position: Int) -> String {
+  shelf.get(position).or('empty')
+}
+
+# Adds `title` to the right end of the shelf.
+fn pub shelve(shelf: mut Array[String], title: String) {
+  shelf.push(title)
+}
+
+# Removes the rightmost book and returns its title, or "nothing" if the shelf
+# is empty.
+fn pub lend_last(shelf: mut Array[String]) -> String {
+  shelf.pop.or('nothing')
+}
+
+# Returns whether `title` is on the shelf.
+fn pub on_shelf?(shelf: ref Array[String], title: String) -> Bool {
+  shelf.contains?(title)
+}
+
+# Sorts the shelf alphabetically.
+fn pub tidy(shelf: mut Array[String]) {
+  shelf.sort
+}

@@ -1,0 +1,35 @@
+import say (say)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('zero', fn (t) { t.equal(say(0), Result.Ok('zero')) })
+  t.test('one', fn (t) { t.equal(say(1), Result.Ok('one')) })
+  t.test('fourteen', fn (t) { t.equal(say(14), Result.Ok('fourteen')) })
+  t.test('twenty', fn (t) { t.equal(say(20), Result.Ok('twenty')) })
+  t.test('twenty-two', fn (t) { t.equal(say(22), Result.Ok('twenty-two')) })
+  t.test('thirty', fn (t) { t.equal(say(30), Result.Ok('thirty')) })
+  t.test('ninety-nine', fn (t) { t.equal(say(99), Result.Ok('ninety-nine')) })
+  t.test('one hundred', fn (t) { t.equal(say(100), Result.Ok('one hundred')) })
+  t.test('one hundred twenty-three', fn (t) { t.equal(say(123), Result.Ok('one hundred twenty-three')) })
+  t.test('two hundred', fn (t) { t.equal(say(200), Result.Ok('two hundred')) })
+  t.test('nine hundred ninety-nine', fn (t) { t.equal(say(999), Result.Ok('nine hundred ninety-nine')) })
+  t.test('one thousand', fn (t) { t.equal(say(1000), Result.Ok('one thousand')) })
+  t.test('one thousand two hundred thirty-four', fn (t) {
+    t.equal(say(1234), Result.Ok('one thousand two hundred thirty-four'))
+  })
+  t.test('one million', fn (t) { t.equal(say(1000000), Result.Ok('one million')) })
+  t.test('one million two thousand three hundred forty-five', fn (t) {
+    t.equal(say(1002345), Result.Ok('one million two thousand three hundred forty-five'))
+  })
+  t.test('one billion', fn (t) { t.equal(say(1000000000), Result.Ok('one billion')) })
+  t.test('a big number', fn (t) {
+    t.equal(
+      say(987654321123),
+      Result.Ok('nine hundred eighty-seven billion six hundred fifty-four million three hundred twenty-one thousand one hundred twenty-three'),
+    )
+  })
+  t.test('numbers below zero are out of range', fn (t) { t.equal(say(-1), Result.Error('input out of range')) })
+  t.test('numbers above 999,999,999,999 are out of range', fn (t) {
+    t.equal(say(1000000000000), Result.Error('input out of range'))
+  })
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/spec/system.html",
+    "description": "System values: •Fmt, •Repr, •ParseFloat, •Out and •Show"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/take.html",
+    "description": "Take and Drop, and padding with fills"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/fill.html",
+    "description": "Fill elements"
+  }
+]

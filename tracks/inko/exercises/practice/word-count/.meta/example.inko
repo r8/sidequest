@@ -1,0 +1,43 @@
+import std.map (Map)
+
+# Returns how often each word occurs in `sentence`, ignoring case. A word is a
+# run of ASCII letters and digits, and may contain apostrophes (as in "don't");
+# quotation marks around a word aren't part of it. Words are returned in
+# lowercase.
+#
+# Maps are compared without regard to the order of their entries.
+fn pub count_words(sentence: String) -> Map[String, Int] {
+  let counts = Map.new
+  let separated = String.join(
+    sentence.to_lower.chars.map(fn (char) {
+      if word_char?(char) { char } else { ' ' }
+    }),
+    '',
+  )
+
+  for token in separated.split(' ') {
+    let word = trim_apostrophes(token.to_string)
+
+    if word.empty? { next }
+
+    counts.set(word, counts.get(word).or(0) + 1)
+  }
+
+  counts
+}
+
+fn word_char?(char: String) -> Bool {
+  char == "'" or (char >= 'a' and char <= 'z') or (char >= '0' and char <= '9')
+}
+
+fn trim_apostrophes(word: String) -> String {
+  match word.strip_prefix("'") {
+    case Some(rest) -> trim_apostrophes(rest)
+    case _ -> {
+      match word.strip_suffix("'") {
+        case Some(rest) -> trim_apostrophes(rest)
+        case _ -> word
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "playlist.kk"
+    ],
+    "test": [
+      "test/playlist-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about lists by editing the playlist of a party DJ.",
+  "custom": {
+    "after": [
+      "name-badges"
+    ]
+  }
+}

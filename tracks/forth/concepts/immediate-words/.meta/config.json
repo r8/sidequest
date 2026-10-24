@@ -1,0 +1,7 @@
+{
+  "blurb": "Immediate words run while a definition is being compiled; they are how Forth's own control structures are built, and how a program extends the compiler.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

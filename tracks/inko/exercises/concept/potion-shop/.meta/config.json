@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/potion_shop.inko"
+    ],
+    "test": [
+      "test/test_potion_shop.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about enums, types with a fixed set of cases, by running an apothecary's potion shop.",
+  "custom": {
+    "after": [
+      "train-dispatch",
+      "weather-station"
+    ]
+  }
+}

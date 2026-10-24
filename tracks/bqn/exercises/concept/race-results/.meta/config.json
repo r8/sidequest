@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "race-results.bqn"
+    ],
+    "test": [
+      "test/race-results.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about sorting and grading by putting the results of a fun run in order.",
+  "custom": {
+    "after": [
+      "vending-machine"
+    ]
+  }
+}

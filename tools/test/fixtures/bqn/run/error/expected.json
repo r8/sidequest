@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "status": "fail",
+  "message": null,
+  "tests": [
+    {
+      "name": "stub raises",
+      "status": "error",
+      "test_code": "\"stub raises\"‿{𝕊: \"Hello, you!\" t.Expect g.Greet \"you\"}",
+      "message": "implement me",
+      "output": null
+    },
+    {
+      "name": "index out of range",
+      "status": "error",
+      "test_code": "\"index out of range\"‿{𝕊: 0 t.Expect g.Double 3}",
+      "message": "𝕨⊑𝕩: indexing out-of-bounds (𝕨≡3, 0≡≠𝕩)",
+      "output": null
+    },
+    {
+      "name": "floats",
+      "status": "pass",
+      "test_code": "\"floats\"‿{𝕊: 2.5 t.Approx 2.505}",
+      "message": null,
+      "output": null
+    }
+  ]
+}

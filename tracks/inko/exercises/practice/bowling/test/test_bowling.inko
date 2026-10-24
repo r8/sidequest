@@ -1,0 +1,274 @@
+import bowling (Game)
+import std.test (Tests)
+
+# Returns a game in which `rolls` have been rolled.
+fn replay(rolls: Array[Int]) -> Game {
+  let game = Game.new
+
+  for pins in rolls.into_iter { game.roll(pins).or_panic }
+
+  game
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('should be able to score a game with all zeros', fn (t) {
+    let game = replay(
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    )
+
+    t.equal(game.score, Result.Ok(0))
+  })
+  t.test('should be able to score a game with no strikes or spares', fn (t) {
+    let game = replay(
+      [3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6],
+    )
+
+    t.equal(game.score, Result.Ok(90))
+  })
+  t.test('a spare followed by zeros is worth ten points', fn (t) {
+    let game = replay(
+      [6, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    )
+
+    t.equal(game.score, Result.Ok(10))
+  })
+  t.test('points scored in the roll after a spare are counted twice', fn (t) {
+    let game = replay(
+      [6, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    )
+
+    t.equal(game.score, Result.Ok(16))
+  })
+  t.test('consecutive spares each get a one roll bonus', fn (t) {
+    let game = replay(
+      [5, 5, 3, 7, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    )
+
+    t.equal(game.score, Result.Ok(31))
+  })
+  t.test(
+    'a spare in the last frame gets a one roll bonus that is counted once',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 3, 7],
+      )
+
+      t.equal(game.score, Result.Ok(17))
+    },
+  )
+  t.test('a strike earns ten points in a frame with a single roll', fn (t) {
+    let game = replay(
+      [10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    )
+
+    t.equal(game.score, Result.Ok(10))
+  })
+  t.test(
+    'points scored in the two rolls after a strike are counted twice as a bonus',
+    fn (t) {
+      let game = replay(
+        [10, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      )
+
+      t.equal(game.score, Result.Ok(26))
+    },
+  )
+  t.test('consecutive strikes each get the two roll bonus', fn (t) {
+    let game = replay([10, 10, 10, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+
+    t.equal(game.score, Result.Ok(81))
+  })
+  t.test(
+    'a strike in the last frame gets a two roll bonus that is counted once',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 7, 1],
+      )
+
+      t.equal(game.score, Result.Ok(18))
+    },
+  )
+  t.test(
+    'rolling a spare with the two roll bonus does not get a bonus roll',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 7, 3],
+      )
+
+      t.equal(game.score, Result.Ok(20))
+    },
+  )
+  t.test('strikes with the two roll bonus do not get bonus rolls', fn (t) {
+    let game = replay(
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10],
+    )
+
+    t.equal(game.score, Result.Ok(30))
+  })
+  t.test(
+    'last two strikes followed by only last bonus with non strike points',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 1],
+      )
+
+      t.equal(game.score, Result.Ok(31))
+    },
+  )
+  t.test(
+    'a strike with the one roll bonus after a spare in the last frame does not get a bonus',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 3, 10],
+      )
+
+      t.equal(game.score, Result.Ok(20))
+    },
+  )
+  t.test('all strikes is a perfect game', fn (t) {
+    let game = replay([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10])
+
+    t.equal(game.score, Result.Ok(300))
+  })
+  t.test('rolls cannot score negative points', fn (t) {
+    let game = replay([])
+
+    t.equal(game.roll(-1), Result.Error('Negative roll is invalid'))
+  })
+  t.test('a roll cannot score more than 10 points', fn (t) {
+    let game = replay([])
+
+    t.equal(game.roll(11), Result.Error('Pin count exceeds pins on the lane'))
+  })
+  t.test('two rolls in a frame cannot score more than 10 points', fn (t) {
+    let game = replay([5])
+
+    t.equal(game.roll(6), Result.Error('Pin count exceeds pins on the lane'))
+  })
+  t.test(
+    'bonus roll after a strike in the last frame cannot score more than 10 points',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10],
+      )
+
+      t.equal(game.roll(11), Result.Error('Pin count exceeds pins on the lane'))
+    },
+  )
+  t.test(
+    'two bonus rolls after a strike in the last frame cannot score more than 10 points',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 5],
+      )
+
+      t.equal(game.roll(6), Result.Error('Pin count exceeds pins on the lane'))
+    },
+  )
+  t.test(
+    'two bonus rolls after a strike in the last frame can score more than 10 points if one is a strike',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 6],
+      )
+
+      t.equal(game.score, Result.Ok(26))
+    },
+  )
+  t.test(
+    'the second bonus rolls after a strike in the last frame cannot be a strike if the first one is not a strike',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 6],
+      )
+
+      t.equal(game.roll(10), Result.Error('Pin count exceeds pins on the lane'))
+    },
+  )
+  t.test(
+    'second bonus roll after a strike in the last frame cannot score more than 10 points',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10],
+      )
+
+      t.equal(game.roll(11), Result.Error('Pin count exceeds pins on the lane'))
+    },
+  )
+  t.test('an unstarted game cannot be scored', fn (t) {
+    let game = replay([])
+
+    t.equal(
+      game.score,
+      Result.Error('Score cannot be taken until the end of the game'),
+    )
+  })
+  t.test('an incomplete game cannot be scored', fn (t) {
+    let game = replay([0, 0])
+
+    t.equal(
+      game.score,
+      Result.Error('Score cannot be taken until the end of the game'),
+    )
+  })
+  t.test('cannot roll if game already has ten frames', fn (t) {
+    let game = replay(
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    )
+
+    t.equal(game.roll(0), Result.Error('Cannot roll after game is over'))
+  })
+  t.test(
+    'bonus rolls for a strike in the last frame must be rolled before score can be calculated',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10],
+      )
+
+      t.equal(
+        game.score,
+        Result.Error('Score cannot be taken until the end of the game'),
+      )
+    },
+  )
+  t.test(
+    'both bonus rolls for a strike in the last frame must be rolled before score can be calculated',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10],
+      )
+
+      t.equal(
+        game.score,
+        Result.Error('Score cannot be taken until the end of the game'),
+      )
+    },
+  )
+  t.test(
+    'bonus roll for a spare in the last frame must be rolled before score can be calculated',
+    fn (t) {
+      let game = replay(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 3],
+      )
+
+      t.equal(
+        game.score,
+        Result.Error('Score cannot be taken until the end of the game'),
+      )
+    },
+  )
+  t.test('cannot roll after bonus roll for spare', fn (t) {
+    let game = replay(
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 3, 2],
+    )
+
+    t.equal(game.roll(2), Result.Error('Cannot roll after game is over'))
+  })
+  t.test('cannot roll after bonus rolls for strike', fn (t) {
+    let game = replay(
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 3, 2],
+    )
+
+    t.equal(game.roll(2), Result.Error('Cannot roll after game is over'))
+  })
+}

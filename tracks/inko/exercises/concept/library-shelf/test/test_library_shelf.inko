@@ -1,0 +1,78 @@
+import library_shelf (
+  book_at, lend_last, on_shelf?, shelve, starter_shelf, tidy,
+)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. the starter shelf', fn (t) {
+    t.equal(starter_shelf, ['Dune', 'Emma', 'Persuasion'])
+  })
+
+  t.test('2. the first book', fn (t) {
+    t.equal(book_at(['Dune', 'Emma'], position: 0), 'Dune')
+  })
+  t.test('2. the second book', fn (t) {
+    t.equal(book_at(['Dune', 'Emma'], position: 1), 'Emma')
+  })
+  t.test('2. past the end of the shelf', fn (t) {
+    t.equal(book_at(['Dune', 'Emma'], position: 4), 'empty')
+  })
+  t.test('2. an empty shelf', fn (t) {
+    t.equal(book_at([], position: 0), 'empty')
+  })
+
+  t.test('3. shelve a book', fn (t) {
+    let shelf = ['Dune']
+
+    shelve(shelf, 'Emma')
+    t.equal(shelf, ['Dune', 'Emma'])
+  })
+  t.test('3. shelve two books', fn (t) {
+    let shelf = []
+
+    shelve(shelf, 'Emma')
+    shelve(shelf, 'Dune')
+    t.equal(shelf, ['Emma', 'Dune'])
+  })
+
+  t.test('4. lend the last book', fn (t) {
+    let shelf = ['Dune', 'Emma']
+
+    t.equal(lend_last(shelf), 'Emma')
+    t.equal(shelf, ['Dune'])
+  })
+  t.test('4. lend the only book', fn (t) {
+    let shelf = ['Dune']
+
+    t.equal(lend_last(shelf), 'Dune')
+    t.equal(shelf, [])
+  })
+  t.test('4. nothing to lend', fn (t) {
+    let shelf = []
+
+    t.equal(lend_last(shelf), 'nothing')
+  })
+
+  t.test('5. a book on the shelf', fn (t) {
+    t.true(on_shelf?(['Dune', 'Emma'], 'Emma'))
+  })
+  t.test('5. a book not on the shelf', fn (t) {
+    t.false(on_shelf?(['Dune', 'Emma'], 'Ulysses'))
+  })
+  t.test('5. titles must match exactly', fn (t) {
+    t.false(on_shelf?(['Dune', 'Emma'], 'dune'))
+  })
+
+  t.test('6. tidy a shelf', fn (t) {
+    let shelf = ['Persuasion', 'Dune', 'Emma']
+
+    tidy(shelf)
+    t.equal(shelf, ['Dune', 'Emma', 'Persuasion'])
+  })
+  t.test('6. tidy a tidy shelf', fn (t) {
+    let shelf = ['Dune', 'Emma']
+
+    tidy(shelf)
+    t.equal(shelf, ['Dune', 'Emma'])
+  })
+}

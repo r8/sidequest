@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "stdout": "\nPASS\truns\t\t\n\n",
+  "stderr": "\nin file included from *OS command line*:-1\ntest/greet-test.fs:5: Division by zero\n\u0000\u0000\u0000\u0000>>>\u0000\u0000\u0000\u0000\u0000<<<\nBacktrace:",
+  "timedOut": false
+}

@@ -1,0 +1,43 @@
+import book_store (total)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('Only a single book', fn (t) { t.equal(total([1]), 800) })
+  t.test('Two of the same book', fn (t) { t.equal(total([2, 2]), 1600) })
+  t.test('Empty basket', fn (t) { t.equal(total([]), 0) })
+  t.test('Two different books', fn (t) { t.equal(total([1, 2]), 1520) })
+  t.test('Three different books', fn (t) { t.equal(total([1, 2, 3]), 2160) })
+  t.test('Four different books', fn (t) { t.equal(total([1, 2, 3, 4]), 2560) })
+  t.test('Five different books', fn (t) { t.equal(total([1, 2, 3, 4, 5]), 3000) })
+  t.test('Two groups of four is cheaper than group of five plus group of three', fn (t) {
+    t.equal(total([1, 1, 2, 2, 3, 3, 4, 5]), 5120)
+  })
+  t.test('Two groups of four is cheaper than groups of five and three', fn (t) {
+    t.equal(total([1, 1, 2, 3, 4, 4, 5, 5]), 5120)
+  })
+  t.test('Group of four plus group of two is cheaper than two groups of three', fn (t) {
+    t.equal(total([1, 1, 2, 2, 3, 4]), 4080)
+  })
+  t.test('Two each of first four books and one copy each of rest', fn (t) {
+    t.equal(total([1, 1, 2, 2, 3, 3, 4, 4, 5]), 5560)
+  })
+  t.test('Two copies of each book', fn (t) { t.equal(total([1, 1, 2, 2, 3, 3, 4, 4, 5, 5]), 6000) })
+  t.test('Three copies of first book and two each of remaining', fn (t) {
+    t.equal(total([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 1]), 6800)
+  })
+  t.test('Three each of first two books and two each of remaining books', fn (t) {
+    t.equal(total([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 1, 2]), 7520)
+  })
+  t.test('Four groups of four are cheaper than two groups each of five and three', fn (t) {
+    t.equal(total([1, 1, 2, 2, 3, 3, 4, 5, 1, 1, 2, 2, 3, 3, 4, 5]), 10240)
+  })
+  t.test('Check that groups of four are created properly even when there are more groups of three than groups of five', fn (t) {
+    t.equal(total([1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 5, 5]), 14560)
+  })
+  t.test('One group of one and four is cheaper than one group of two and three', fn (t) {
+    t.equal(total([1, 1, 2, 3, 4]), 3360)
+  })
+  t.test('One group of one and two plus three groups of four is cheaper than one group of each size', fn (t) {
+    t.equal(total([1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]), 10000)
+  })
+}

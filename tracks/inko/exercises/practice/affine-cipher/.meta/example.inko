@@ -1,0 +1,49 @@
+let M = 26
+let LOWER_A = 97
+
+fn gcd(a: Int, b: Int) -> Int {
+  if b == 0 { a } else { gcd(b, a % b) }
+}
+
+fn inverse(a: Int) -> Result[Int, String] {
+  if gcd(a, M) != 1 { return Result.Error('a and m must be coprime.') }
+
+  Result.Ok(1.until(M).iter.find(fn (x) { a * x % M == 1 }).get)
+}
+
+# Maps the letters of `text` (lowercased) with `cipher`, keeps its digits and
+# drops everything else.
+fn transform(text: String, cipher: fn (Int) -> Int) -> ByteArray {
+  let out = ByteArray.new
+
+  for byte in text.bytes {
+    if byte >= 65 and byte <= 90 {
+      out.push(cipher.call(byte + 32 - LOWER_A) % M + LOWER_A)
+    } else if byte >= 97 and byte <= 122 {
+      out.push(cipher.call(byte - LOWER_A) % M + LOWER_A)
+    } else if byte >= 48 and byte <= 57 {
+      out.push(byte)
+    }
+  }
+
+  out
+}
+
+# Encodes `phrase` with the key (`a`, `b`), in groups of five characters.
+fn pub encode(phrase: String, a: Int, b: Int) -> Result[String, String] {
+  try inverse(a)
+
+  let letters = transform(phrase, fn (x) { a * x + b })
+  let groups = letters.iter.chunks(5).map(fn (group) {
+    ByteArray.from_array(group).into_string
+  })
+
+  Result.Ok(String.join(groups, with: ' '))
+}
+
+# Decodes `phrase` with the key (`a`, `b`).
+fn pub decode(phrase: String, a: Int, b: Int) -> Result[String, String] {
+  let a_inverse = try inverse(a)
+
+  Result.Ok(transform(phrase, fn (y) { a_inverse * (y - b) }).into_string)
+}

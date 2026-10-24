@@ -1,0 +1,8 @@
+[
+  {
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "src/greet.inko:2:15 error(invalid-type): expected a value of type 'String', found 'Int'\n",
+    "timedOut": false
+  }
+]

@@ -1,0 +1,8 @@
+# Returns the saddle points of `matrix` as `(row, column)` pairs, counting rows
+# and columns from 1. The points are sorted by row, then by column.
+#
+# A saddle point is greater than or equal to every value in its row, and less
+# than or equal to every value in its column.
+fn pub saddle_points(matrix: Array[Array[Int]]) -> Array[(Int, Int)] {
+  panic('implement me')
+}

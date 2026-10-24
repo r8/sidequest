@@ -1,0 +1,61 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# A substance a person can be allergic to.
+type pub copy enum Allergen {
+  case Eggs
+  case Peanuts
+  case Shellfish
+  case Strawberries
+  case Tomatoes
+  case Chocolate
+  case Pollen
+  case Cats
+}
+
+impl Equal for Allergen {
+  fn pub ==(other: Allergen) -> Bool {
+    match (self, other) {
+      case (Eggs, Eggs) -> true
+      case (Peanuts, Peanuts) -> true
+      case (Shellfish, Shellfish) -> true
+      case (Strawberries, Strawberries) -> true
+      case (Tomatoes, Tomatoes) -> true
+      case (Chocolate, Chocolate) -> true
+      case (Pollen, Pollen) -> true
+      case (Cats, Cats) -> true
+      case _ -> false
+    }
+  }
+}
+
+impl Format for Allergen {
+  fn pub fmt(formatter: mut Formatter) {
+    let name = match self {
+      case Eggs -> 'Eggs'
+      case Peanuts -> 'Peanuts'
+      case Shellfish -> 'Shellfish'
+      case Strawberries -> 'Strawberries'
+      case Tomatoes -> 'Tomatoes'
+      case Chocolate -> 'Chocolate'
+      case Pollen -> 'Pollen'
+      case Cats -> 'Cats'
+    }
+
+    formatter.write(name)
+  }
+}
+
+# Returns `true` if the allergy `score` includes `item`. Each allergen has a
+# score (eggs 1, peanuts 2, shellfish 4, strawberries 8, tomatoes 16, chocolate
+# 32, pollen 64, cats 128); the allergy score is the sum of the scores of the
+# allergens. Bits above 128 are ignored.
+fn pub allergic_to?(item: Allergen, score: Int) -> Bool {
+  panic('implement me')
+}
+
+# Returns the allergens included in the allergy `score`, from the lowest score
+# to the highest.
+fn pub list(score: Int) -> Array[Allergen] {
+  panic('implement me')
+}

@@ -1,0 +1,14 @@
+import hamming (distance)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('empty strands', fn (t) { t.equal(distance('', ''), Result.Ok(0)) })
+  t.test('single letter identical strands', fn (t) { t.equal(distance('A', 'A'), Result.Ok(0)) })
+  t.test('single letter different strands', fn (t) { t.equal(distance('G', 'T'), Result.Ok(1)) })
+  t.test('long identical strands', fn (t) { t.equal(distance('GGACTGAAATCTG', 'GGACTGAAATCTG'), Result.Ok(0)) })
+  t.test('long different strands', fn (t) { t.equal(distance('GGACGGATTCTG', 'AGGACGGATTCT'), Result.Ok(9)) })
+  t.test('disallow first strand longer', fn (t) { t.equal(distance('AATG', 'AAA'), Result.Error('strands must be of equal length')) })
+  t.test('disallow second strand longer', fn (t) { t.equal(distance('ATA', 'AGTG'), Result.Error('strands must be of equal length')) })
+  t.test('disallow empty first strand', fn (t) { t.equal(distance('', 'G'), Result.Error('strands must be of equal length')) })
+  t.test('disallow empty second strand', fn (t) { t.equal(distance('G', ''), Result.Error('strands must be of equal length')) })
+}

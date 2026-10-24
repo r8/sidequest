@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/strings.html",
+    "description": "Strings, keywords and symbols"
+  },
+  {
+    "url": "https://janet-lang.org/api/string.html",
+    "description": "The string module"
+  }
+]

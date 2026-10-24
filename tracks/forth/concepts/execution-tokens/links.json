@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://gforth.org/manual/Execution-Tokens-Tutorial.html",
+    "description": "Execution tokens in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Execution-token.html",
+    "description": "Execution tokens in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Anonymous-Definitions.html",
+    "description": ":noname and anonymous definitions in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/EXECUTE",
+    "description": "EXECUTE in the Forth standard"
+  }
+]

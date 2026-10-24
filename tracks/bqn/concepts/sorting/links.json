@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/order.html",
+    "description": "Ordering functions: sort, grade and bins"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/select.html",
+    "description": "Select, for putting a list in the order of a grade"
+  }
+]

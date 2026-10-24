@@ -1,0 +1,7 @@
+# Evaluates a word problem such as "What is 5 plus 13 multiplied by 2?" from
+# left to right, ignoring the usual precedence. Returns the error
+# "unknown operation" for an unsupported operation or a question that isn't a
+# math question, "syntax error" for a malformed problem, and "division by zero".
+fn pub answer(question: String) -> Result[Int, String] {
+  panic('implement me')
+}

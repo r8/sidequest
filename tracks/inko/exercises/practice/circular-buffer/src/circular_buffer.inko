@@ -1,0 +1,37 @@
+# A fixed-capacity first-in, first-out buffer of values of type `T`.
+#
+# Add the fields you need. The buffer owns its values: `write` and `overwrite`
+# move a value in, `read` moves the oldest one back out.
+#
+# The errors are the strings "buffer is empty" (reading from an empty buffer)
+# and "buffer is full" (writing to a full one).
+type pub CircularBuffer[T] {}
+
+impl CircularBuffer {
+  # Returns an empty buffer that holds up to `capacity` values.
+  fn pub static new(capacity: Int) -> CircularBuffer[T] {
+    panic('implement me')
+  }
+
+  # Removes and returns the oldest value, or the error "buffer is empty".
+  fn pub mut read -> Result[T, String] {
+    panic('implement me')
+  }
+
+  # Adds `value` as the newest value, or returns the error "buffer is full"
+  # (leaving the buffer unchanged).
+  fn pub mut write(value: T) -> Result[Nil, String] {
+    panic('implement me')
+  }
+
+  # Adds `value` as the newest value; if the buffer is full, the oldest value
+  # is dropped to make room.
+  fn pub mut overwrite(value: T) {
+    panic('implement me')
+  }
+
+  # Removes all values.
+  fn pub mut clear {
+    panic('implement me')
+  }
+}

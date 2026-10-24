@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "status": "fail",
+  "message": null,
+  "tests": [
+    {
+      "name": "passing case",
+      "test_code": "t.test('passing case', fn (t) { t.equal(greet('you'), 'Hello, you!') })",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "passing case extended",
+      "test_code": "t.test('passing case extended', fn (t) {\n    t.equal(greet('boom'), 'x')\n  })",
+      "status": "error",
+      "message": "kaboom (src/greet.inko:2)"
+    },
+    {
+      "name": "name check",
+      "test_code": "t.test('name check', fn (t) { t.equal(greet('Bob'), 'Hello, Bob!') })",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "name check strict",
+      "test_code": "t.test('name check strict', fn (t) { t.equal(greet('Bob'), 'Hi, Bob!') })",
+      "status": "fail",
+      "message": "expected \"Hi, Bob!\", got \"Hello, Bob!\""
+    }
+  ]
+}

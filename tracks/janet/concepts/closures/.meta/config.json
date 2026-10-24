@@ -1,0 +1,7 @@
+{
+  "blurb": "A closure is a function that keeps the bindings around it, including vars it can change, after the code that made it has returned.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

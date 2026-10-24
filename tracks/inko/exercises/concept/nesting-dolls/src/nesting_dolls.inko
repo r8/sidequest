@@ -1,0 +1,32 @@
+# A set of nesting dolls: either the solid innermost doll, or a hollow doll
+# with another doll inside. Every doll has a name painted on it.
+type pub enum Doll {
+  case Solid(String)
+  case Hollow(String, Doll)
+
+  # Returns the number of dolls in the set.
+  fn pub count -> Int {
+    panic('implement me')
+  }
+
+  # Returns the name of the innermost doll.
+  fn pub innermost -> String {
+    panic('implement me')
+  }
+
+  # Returns the names of all the dolls, from the outermost to the innermost.
+  fn pub names -> Array[String] {
+    panic('implement me')
+  }
+
+  # Returns whether a doll called `name` is part of the set.
+  fn pub contains?(name: String) -> Bool {
+    panic('implement me')
+  }
+
+  # Returns a set of dolls with the given names, from the outermost to the
+  # innermost. `names` is never empty.
+  fn pub static nest(names: ref Array[String]) -> Doll {
+    panic('implement me')
+  }
+}

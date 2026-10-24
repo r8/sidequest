@@ -1,0 +1,7 @@
+{
+  "blurb": "Several handlers on one computation: the order of the with statements decides whether state is lost, shared or local to each path.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

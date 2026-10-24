@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "stdout": "PASS\tpasses\t\t\nFAIL\tfails on a list\texpected [1,2], got [1,3]\t\nFAIL\tfails on a missing exception\texpected the exception \"boom\", but nothing was thrown\t\nSUMMARY\t1\t2\t0\n",
+  "stderr": "vfs: [\"/@virtual/test/greet-test/@main.kk\"]\nvfs: [\"/@virtual/test/greet-test/@main.kk\"]\nerror  : command failed (exit code 1)\ncommand: \"<build>/out/test_greet_dash_test__main\"\n",
+  "timedOut": false
+}

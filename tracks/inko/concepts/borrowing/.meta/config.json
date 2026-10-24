@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn how ref and mut borrows let code use values it doesn't own, and how Inko keeps that safe.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

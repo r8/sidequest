@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "status": "fail",
+  "message": null,
+  "tests": [
+    {
+      "name": "Say Hi!",
+      "status": "fail",
+      "test_code": "t.test('Say Hi!', fn (t) { t.equal(hello, 'Hello, World!') })",
+      "message": "expected \"Hello, World!\", got \"wrong answer\""
+    }
+  ]
+}

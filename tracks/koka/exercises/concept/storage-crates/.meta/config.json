@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "storage-crates.kk"
+    ],
+    "test": [
+      "test/storage-crates-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about polymorphism by storing goods of any kind in a warehouse.",
+  "custom": {
+    "after": [
+      "coffee-cart",
+      "orchard"
+    ]
+  }
+}

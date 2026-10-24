@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/std_core_either.html",
+    "description": "The std/core/either module"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-data-types",
+    "description": "The Koka book: data types"
+  }
+]

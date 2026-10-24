@@ -1,0 +1,7 @@
+{
+  "blurb": "Buffers are Janet's mutable strings, written @\"…\", for building text piece by piece.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

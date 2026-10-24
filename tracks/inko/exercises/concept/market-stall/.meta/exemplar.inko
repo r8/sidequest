@@ -1,0 +1,42 @@
+# Returns a new list with `rule` applied to every price.
+fn pub apply_rule(prices: ref Array[Int], rule: fn (Int) -> Int) -> Array[Int] {
+  let changed = []
+
+  for price in prices.iter { changed.push(rule.call(price)) }
+
+  changed
+}
+
+# Returns how many prices pass `test`.
+fn pub count_where(prices: ref Array[Int], test: fn (Int) -> Bool) -> Int {
+  let mut count = 0
+
+  for price in prices.iter {
+    if test.call(price) { count += 1 }
+  }
+
+  count
+}
+
+# Returns a rule that takes `percent` percent off a price.
+fn pub discount(percent: Int) -> fn (Int) -> Int {
+  fn (price: Int) { price - (price * percent / 100) }
+}
+
+# Returns a closure that turns cents into a tag such as "€2.05".
+fn pub price_tag(currency: String) -> fn (Int) -> String {
+  fn (cents: Int) {
+    let units = cents / 100
+    let rest = (cents % 100).to_string.pad_start(with: '0', chars: 2)
+
+    '${currency}${units}.${rest}'
+  }
+}
+
+# Returns a rule that applies `first`, then `second`.
+fn pub combine(
+  first: fn (Int) -> Int,
+  second: fn (Int) -> Int,
+) -> fn (Int) -> Int {
+  fn move (price: Int) { second.call(first.call(price)) }
+}

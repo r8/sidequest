@@ -1,0 +1,13 @@
+import std.set (Set)
+
+# Returns `true` if no letter occurs more than once in `phrase`, ignoring case.
+# Spaces and hyphens may appear multiple times.
+fn pub isogram?(phrase: String) -> Bool {
+  let seen = Set.new
+
+  let letters = phrase.to_lower.chars.select(fn (char) {
+    char != ' ' and char != '-'
+  })
+
+  letters.all?(fn (char) { seen.insert(char) })
+}

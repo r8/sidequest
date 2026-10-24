@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "star-charts.janet"
+    ],
+    "test": [
+      "test/star-charts.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about destructuring by measuring, labelling and moving the stars on an observatory's chart.",
+  "custom": {
+    "after": [
+      "coffee-orders",
+      "train-cars",
+      "spice-rack"
+    ]
+  }
+}

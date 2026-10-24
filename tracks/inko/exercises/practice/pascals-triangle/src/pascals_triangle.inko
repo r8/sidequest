@@ -1,0 +1,4 @@
+# Returns the first `count` rows of Pascal's triangle.
+fn pub rows(count: Int) -> Array[Array[Int]] {
+  panic('implement me')
+}

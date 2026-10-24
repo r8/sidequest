@@ -1,0 +1,56 @@
+let ZERO = 48
+let ONE = 49
+
+fn digit?(byte: Int) -> Bool {
+  byte >= ZERO and byte <= 57
+}
+
+fn letter?(byte: Int) -> Bool {
+  (byte >= 65 and byte <= 90) or (byte >= 97 and byte <= 122)
+}
+
+fn separator?(byte: Int) -> Bool {
+  match byte {
+    # Space, "(", ")", "+", "-" and ".".
+    case 32 or 40 or 41 or 43 or 45 or 46 -> true
+    case _ -> false
+  }
+}
+
+fn check_code(digit: Int, name: String) -> Result[Nil, String] {
+  match digit {
+    case ZERO -> Result.Error('${name} code cannot start with zero')
+    case ONE -> Result.Error('${name} code cannot start with one')
+    case _ -> Result.Ok(nil)
+  }
+}
+
+# Returns the ten digits of the NANP phone number `phrase`, or an error
+# describing why it isn't valid.
+fn pub clean(phrase: String) -> Result[String, String] {
+  if phrase.bytes.any?(fn (byte) { letter?(byte) }) {
+    return Result.Error('letters not permitted')
+  }
+
+  if phrase.bytes.any?(fn (byte) { !digit?(byte) and !separator?(byte) }) {
+    return Result.Error('punctuations not permitted')
+  }
+
+  let digits = ByteArray.new
+
+  for byte in phrase.bytes { if digit?(byte) { digits.push(byte) } }
+
+  match digits.size {
+    case 10 -> {}
+    case 11 if digits.get(0).or_panic == ONE -> digits.remove_at(0).or_panic
+    case 11 -> return Result.Error('11 digits must start with 1')
+    case size if size < 10 -> {
+      return Result.Error('must not be fewer than 10 digits')
+    }
+    case _ -> return Result.Error('must not be greater than 11 digits')
+  }
+
+  try check_code(digits.get(0).or_panic, 'area')
+  try check_code(digits.get(3).or_panic, 'exchange')
+  Result.Ok(digits.into_string)
+}

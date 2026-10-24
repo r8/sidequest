@@ -1,0 +1,7 @@
+{
+  "blurb": "An array is cells in a row, passed as address and count; elements are reached with cells + and visited with counted loops.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

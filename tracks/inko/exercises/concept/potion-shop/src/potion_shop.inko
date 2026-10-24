@@ -1,0 +1,73 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# The bottles potions are sold in.
+type pub enum Bottle {
+  case Vial
+  case Flask
+
+  # A barrel holding the given number of litres.
+  case Barrel(Int)
+
+  # Returns how many millilitres the bottle holds.
+  fn pub millilitres -> Int {
+    panic('implement me')
+  }
+}
+
+# The potions the shop brews.
+type pub enum Potion {
+  # A healing potion of the given strength.
+  case Healing(Int)
+
+  # An invisibility potion lasting the given number of minutes.
+  case Invisibility(Int)
+  case Luck
+
+  # Returns the price of the potion, in silver coins.
+  fn pub price -> Int {
+    panic('implement me')
+  }
+
+  # Returns the label on the bottle.
+  fn pub label -> String {
+    panic('implement me')
+  }
+
+  # Returns a potion twice as strong (or lasting twice as long).
+  fn pub stronger -> Potion {
+    panic('implement me')
+  }
+}
+
+# Returns the potion of the given kind and amount, or `None` for an unknown kind.
+fn pub brew(kind: String, amount: Int) -> Option[Potion] {
+  panic('implement me')
+}
+
+# Lets the tests compare potions with `==`. The traits lesson explains `impl`.
+impl Equal for Potion {
+  fn pub ==(other: ref Potion) -> Bool {
+    match (self, other) {
+      case (Healing(a), Healing(b)) -> a == b
+      case (Invisibility(a), Invisibility(b)) -> a == b
+      case (Luck, Luck) -> true
+      case _ -> false
+    }
+  }
+}
+
+# Lets the tests show potions in their failure messages.
+impl Format for Potion {
+  fn pub fmt(formatter: mut Formatter) {
+    match self {
+      case Healing(strength) -> {
+        formatter.tuple('Healing').field(strength).finish
+      }
+      case Invisibility(minutes) -> {
+        formatter.tuple('Invisibility').field(minutes).finish
+      }
+      case Luck -> formatter.tuple('Luck').finish
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "customs-desk.kk"
+    ],
+    "test": [
+      "test/customs-desk-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about either by checking travellers' declarations at a customs desk.",
+  "custom": {
+    "after": [
+      "lost-and-found"
+    ]
+  }
+}

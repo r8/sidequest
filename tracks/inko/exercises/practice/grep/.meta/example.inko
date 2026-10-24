@@ -1,0 +1,68 @@
+import std.fs.file (ReadOnlyFile)
+
+# Searches `files` for lines matching `pattern` and returns the output lines.
+#
+# Flags: `-n` prefixes line numbers, `-l` returns only the names of files with
+# a match, `-i` matches case-insensitively, `-v` returns non-matching lines,
+# and `-x` only matches entire lines. With more than one file, output lines are
+# prefixed with the file name. File names are reported as given; the tests
+# pass bare names relative to the working directory, which they point at a
+# temporary directory holding the files.
+#
+# Returns an error if a file can't be read.
+fn pub grep(
+  pattern: String,
+  flags: ref Array[String],
+  files: ref Array[String],
+) -> Result[Array[String], String] {
+  let numbers = flags.contains?('-n')
+  let names_only = flags.contains?('-l')
+  let ignore_case = flags.contains?('-i')
+  let invert = flags.contains?('-v')
+  let whole = flags.contains?('-x')
+  let needle = if ignore_case { pattern.to_lower } else { pattern }
+  let output = []
+
+  for name in files.iter {
+    let lines = try read_lines(name)
+
+    for (index, line) in lines.iter.with_index {
+      let text = if ignore_case { line.to_lower } else { line.clone }
+      let found = if whole { text == needle } else { text.contains?(needle) }
+
+      if found == invert { next }
+
+      if names_only {
+        output.push(name.clone)
+        break
+      }
+
+      let prefix = if files.size > 1 { '${name}:' } else { '' }
+      let number = if numbers { '${index + 1}:' } else { '' }
+
+      output.push('${prefix}${number}${line}')
+    }
+  }
+
+  Result.Ok(output)
+}
+
+fn read_lines(name: String) -> Result[Array[String], String] {
+  let bytes = ByteArray.new
+
+  try ReadOnlyFile
+    .new(name.to_path)
+    .then(fn (file) { file.read_all(bytes) })
+    .map_error(fn (error) { '${name}: ${error}' })
+
+  let lines = bytes
+    .into_string
+    .split('\n')
+    .map(fn (line) { line.to_string })
+    .to_array
+
+  # A final newline ends the last line rather than starting an empty one.
+  if lines.last.map(fn (line) { line.empty? }).or(false) { lines.pop }
+
+  Result.Ok(lines)
+}

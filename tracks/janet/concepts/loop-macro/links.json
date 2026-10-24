@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/loop.html",
+    "description": "The loop macro: verbs and modifiers"
+  },
+  {
+    "url": "https://janet-lang.org/api/index.html#seq",
+    "description": "seq, tabseq and catseq in the core API"
+  }
+]

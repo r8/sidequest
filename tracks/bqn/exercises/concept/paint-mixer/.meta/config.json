@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "paint-mixer.bqn"
+    ],
+    "test": [
+      "test/paint-mixer.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about table by drawing up the price and name charts of a paint shop.",
+  "custom": {
+    "after": [
+      "egg-cartons",
+      "name-tags"
+    ]
+  }
+}

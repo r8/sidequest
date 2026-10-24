@@ -1,0 +1,7 @@
+{
+  "blurb": "Only false and nil are falsey in Janet; and and or short-circuit and return one of their arguments.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

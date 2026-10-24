@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/custom_set.inko"
+    ],
+    "test": [
+      "test/test_custom_set.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Create a custom set type.",
+  "custom": {
+    "after": [
+      "cargo-crates"
+    ]
+  }
+}

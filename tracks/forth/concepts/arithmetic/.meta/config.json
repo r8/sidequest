@@ -1,0 +1,7 @@
+{
+  "blurb": "Integer arithmetic on cells: + - * / mod /mod */ and friends, with operands in written order and no precedence.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

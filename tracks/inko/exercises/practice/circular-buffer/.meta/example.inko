@@ -1,0 +1,58 @@
+# A fixed-capacity first-in, first-out buffer of values of type `T`.
+#
+# The errors are the strings "buffer is empty" (reading from an empty buffer)
+# and "buffer is full" (writing to a full one).
+type pub CircularBuffer[T] {
+  # One slot per unit of capacity; empty slots hold `None`.
+  let @slots: Array[Option[T]]
+
+  # The index of the oldest value.
+  let mut @start: Int
+
+  # The number of values in the buffer.
+  let mut @size: Int
+}
+
+impl CircularBuffer {
+  # Returns an empty buffer that holds up to `capacity` values.
+  fn pub static new(capacity: Int) -> CircularBuffer[T] {
+    let slots = Array.with_capacity(capacity)
+
+    capacity.times(fn (_) { slots.push(Option.None) })
+    CircularBuffer(slots: slots, start: 0, size: 0)
+  }
+
+  # Removes and returns the oldest value, or the error "buffer is empty".
+  fn pub mut read -> Result[T, String] {
+    if @size == 0 { return Result.Error('buffer is empty') }
+
+    let value = @slots.swap(@start, Option.None)
+
+    @start = (@start + 1) % @slots.size
+    @size -= 1
+    value.ok_or('buffer is empty')
+  }
+
+  # Adds `value` as the newest value, or returns the error "buffer is full"
+  # (leaving the buffer unchanged).
+  fn pub mut write(value: T) -> Result[Nil, String] {
+    if @size == @slots.size { return Result.Error('buffer is full') }
+
+    @slots.set((@start + @size) % @slots.size, Option.Some(value))
+    @size += 1
+    Result.Ok(nil)
+  }
+
+  # Adds `value` as the newest value; if the buffer is full, the oldest value
+  # is dropped to make room.
+  fn pub mut overwrite(value: T) {
+    if @size == @slots.size { let _ = read }
+
+    let _ = write(value)
+  }
+
+  # Removes all values.
+  fn pub mut clear {
+    while @size > 0 { let _ = read }
+  }
+}

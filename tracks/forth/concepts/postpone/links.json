@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://gforth.org/manual/POSTPONE-Tutorial.html",
+    "description": "POSTPONE in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Macros.html",
+    "description": "Macros in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Arbitrary-control-structures.html",
+    "description": "Arbitrary control structures in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/POSTPONE",
+    "description": "POSTPONE in the Forth standard"
+  }
+]

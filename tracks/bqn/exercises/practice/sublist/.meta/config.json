@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "sublist.bqn"
+    ],
+    "test": [
+      "test/sublist.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Determine if a list is a sublist of another list.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

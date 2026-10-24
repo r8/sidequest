@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/library_shelf.inko"
+    ],
+    "test": [
+      "test/test_library_shelf.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about arrays by keeping track of the books on a village library's shelf.",
+  "custom": {
+    "after": [
+      "lighthouse-keeper",
+      "sign-painter"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/syntax.html",
+    "description": "Syntax: how characters and strings are written"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/types.html",
+    "description": "Types: characters are one of BQN's atoms"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/arithmetic.html",
+    "description": "Arithmetic, including character arithmetic"
+  }
+]

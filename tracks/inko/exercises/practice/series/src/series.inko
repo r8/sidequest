@@ -1,0 +1,9 @@
+# Returns every contiguous substring of `slice_length` characters in `series`,
+# in order, or an error if `series` is empty or `slice_length` is zero,
+# negative or greater than the length of `series`.
+fn pub slices(
+  series: String,
+  slice_length: Int,
+) -> Result[Array[String], String] {
+  panic('implement me')
+}

@@ -1,0 +1,59 @@
+# Returns the highest reading, or 0 if there are none.
+fn pub highest(heights: ref Array[Int]) -> Int {
+  let mut best = 0
+
+  for height in heights.iter {
+    if height > best { best = height }
+  }
+
+  best
+}
+
+# Returns how many readings are at or above `level`.
+fn pub hours_above(heights: ref Array[Int], level: Int) -> Int {
+  let mut hours = 0
+
+  for height in heights.iter {
+    if height >= level { hours += 1 }
+  }
+
+  hours
+}
+
+# Returns the hour of the first reading at or above `level`, or -1.
+fn pub first_hour_at(heights: ref Array[Int], level: Int) -> Int {
+  for hour in 0.until(heights.size) {
+    if heights.get(hour).or(0) >= level { return hour }
+  }
+
+  -1
+}
+
+# Returns the minutes from `first` to `last` (inclusive), `every` minutes apart.
+fn pub reading_times(first: Int, last: Int, every: Int) -> Array[Int] {
+  let times = []
+
+  for minute in first.to(last).step_by(every) { times.push(minute) }
+
+  times
+}
+
+# Returns the length of the longest run of consecutive readings at or above
+# `minimum`.
+fn pub longest_safe_stretch(heights: ref Array[Int], minimum: Int) -> Int {
+  let mut current = 0
+  let mut longest = 0
+
+  for height in heights.iter {
+    if height < minimum {
+      current = 0
+      next
+    }
+
+    current += 1
+
+    if current > longest { longest = current }
+  }
+
+  longest
+}

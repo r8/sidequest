@@ -1,0 +1,40 @@
+import bob (response)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('asking a question', fn (t) { t.equal(response('Does this cryogenic chamber make me look fat?'), 'Sure.') })
+  t.test('shouting', fn (t) { t.equal(response('WATCH OUT!'), 'Whoa, chill out!') })
+  t.test('forceful question', fn (t) { t.equal(response("WHAT'S GOING ON?"), "Calm down, I know what I'm doing!") })
+  t.test('silence', fn (t) { t.equal(response(''), 'Fine. Be that way!') })
+  t.test('stating something', fn (t) { t.equal(response('Tom-ay-to, tom-aaaah-to.'), 'Whatever.') })
+  t.test('asking a numeric question', fn (t) { t.equal(response('You are, what, like 15?'), 'Sure.') })
+  t.test('asking gibberish', fn (t) { t.equal(response('fffbbcbeab?'), 'Sure.') })
+  t.test('question with no letters', fn (t) { t.equal(response('4?'), 'Sure.') })
+  t.test('non-letters with question', fn (t) { t.equal(response(':) ?'), 'Sure.') })
+  t.test('prattling on', fn (t) { t.equal(response('Wait! Hang on. Are you going to be OK?'), 'Sure.') })
+  t.test('ending with whitespace', fn (t) { t.equal(response('Okay if like my  spacebar  quite a bit?   '), 'Sure.') })
+  t.test('multiple line question', fn (t) { t.equal(response('\nDoes this cryogenic chamber make\n me look fat?'), 'Sure.') })
+  t.test('shouting gibberish', fn (t) { t.equal(response('FCECDFCAAB'), 'Whoa, chill out!') })
+  t.test('shouting a statement containing a question mark', fn (t) { t.equal(response('DO LIONS EAT PEOPLE? AHHHHH.'), 'Whoa, chill out!') })
+  t.test('shouting numbers', fn (t) { t.equal(response('1, 2, 3 GO!'), 'Whoa, chill out!') })
+  t.test('shouting with special characters', fn (t) { t.equal(response('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!'), 'Whoa, chill out!') })
+  t.test('shouting with no exclamation mark', fn (t) { t.equal(response('I HATE THE DENTIST'), 'Whoa, chill out!') })
+  t.test('prolonged silence', fn (t) { t.equal(response('          '), 'Fine. Be that way!') })
+  t.test('alternate silence', fn (t) { t.equal(response('\t\t\t\t\t\t\t\t\t\t'), 'Fine. Be that way!') })
+  t.test('other whitespace', fn (t) { t.equal(response('\n\r \t'), 'Fine. Be that way!') })
+  t.test('talking forcefully', fn (t) { t.equal(response('Hi there!'), 'Whatever.') })
+  t.test('using acronyms in regular speech', fn (t) { t.equal(response("It's OK if you don't want to go work for NASA."), 'Whatever.') })
+  t.test('no letters', fn (t) { t.equal(response('1, 2, 3'), 'Whatever.') })
+  t.test('statement containing question mark', fn (t) { t.equal(response('Ending with ? means a question.'), 'Whatever.') })
+  t.test('starting with whitespace', fn (t) { t.equal(response('         hmmmmmmm...'), 'Whatever.') })
+  t.test('non-question ending with whitespace', fn (t) { t.equal(response('This is a statement ending with whitespace      '), 'Whatever.') })
+  # Not in the canonical data: a non-ASCII lowercase letter means it isn't
+  # shouting.
+  t.test('non-ASCII lowercase letter', fn (t) { t.equal(response('ÜMLäÜTS!'), 'Whatever.') })
+  # Not in the canonical data: shouting in capitals outside ASCII.
+  t.test('shouting in another script', fn (t) { t.equal(response('ПРИВЕТ!'), 'Whoa, chill out!') })
+  # Not in the canonical data: Unicode whitespace, such as a no-break space, is silence too.
+  t.test('no-break and ideographic spaces are silence', fn (t) {
+    t.equal(response('\u{A0}\u{3000}'), 'Fine. Be that way!')
+  })
+}

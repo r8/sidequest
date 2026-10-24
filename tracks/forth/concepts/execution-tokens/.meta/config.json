@@ -1,0 +1,7 @@
+{
+  "blurb": "An execution token is a cell that stands for a word: get one with ' or ['], run it with execute, and pass it around like any number.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

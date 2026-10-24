@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "stdout": "ERROR\tstub raises\timplement me\t\nPASS\tarrays compare by content\t\t\nSUMMARY\t1\t0\t1\n",
+  "stderr": "",
+  "timedOut": false
+}

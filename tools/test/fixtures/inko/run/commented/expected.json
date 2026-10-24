@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "status": "pass",
+  "message": null,
+  "tests": [
+    {
+      "name": "greets",
+      "status": "pass",
+      "test_code": "t.test('greets', fn (t) { t.equal(greet('you'), 'Hello, you!') })",
+      "message": null
+    },
+    {
+      "name": "ignores calls in strings",
+      "status": "pass",
+      "test_code": "t.test('ignores calls in strings', fn (t) {\n    t.equal(greet(\"t.test('nested', fn (t) {})\"), \"Hello, t.test('nested', fn (t) {})!\")\n  })",
+      "message": null
+    }
+  ]
+}

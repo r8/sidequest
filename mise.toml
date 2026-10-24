@@ -1,0 +1,8 @@
+[settings]
+lockfile = true
+
+[tools]
+node = "24"
+janet = "1.42.1"                          # mise registry entry → github:janet-lang/janet
+koka = "3.2.9"                            # mise registry entry; needs a C compiler on the host to link
+"github:exercism/configlet" = "4.0.2"    # github backend

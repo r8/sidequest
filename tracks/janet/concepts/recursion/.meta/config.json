@@ -1,0 +1,7 @@
+{
+  "blurb": "A recursive function calls itself on something smaller until it reaches a base case it can answer directly.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

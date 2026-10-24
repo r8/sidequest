@@ -1,0 +1,8 @@
+[
+  {
+    "exitCode": 2,
+    "stdout": "Failures:\nF\n\nFailures:\n\n1. Test: Say Hi!\n   Line: <staging>/test/test_hello_world.inko:5\n\n     expected: \"Hello, World!\"\n          got: \"wrong answer\"\n\nFinished running 1 tests in 0 milliseconds, 1 failures, seed: -1939700727415448843\n",
+    "stderr": "src/hello_world.inko:4:3 warning(unused-result): the result of this expression is unused\n",
+    "timedOut": false
+  }
+]

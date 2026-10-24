@@ -1,0 +1,4 @@
+# Returns the greeting.
+fn pub hello -> String {
+  'Hello, World!'
+}

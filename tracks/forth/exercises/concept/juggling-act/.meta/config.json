@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "juggling-act.fs"
+    ],
+    "test": [
+      "test/juggling-act-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn to rearrange the data stack with dup, swap, over, rot and friends by keeping score for a juggling troupe.",
+  "custom": {
+    "after": [
+      "pancake-stack"
+    ]
+  }
+}

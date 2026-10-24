@@ -1,0 +1,23 @@
+# Returns the first `count` rows of Pascal's triangle.
+fn pub rows(count: Int) -> Array[Array[Int]] {
+  let triangle: Array[Array[Int]] = []
+
+  count.times(fn (_) {
+    let row = match triangle.last {
+      case Some(above) -> {
+        let row = [1]
+
+        row.append(
+          above.iter.zip(above.iter.skip(1)).map(fn (p) { p.0 + p.1 }).to_array,
+        )
+        row.push(1)
+        row
+      }
+      case _ -> [1]
+    }
+
+    triangle.push(row)
+  })
+
+  triangle
+}

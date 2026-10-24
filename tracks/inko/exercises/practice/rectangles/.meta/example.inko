@@ -1,0 +1,67 @@
+let CORNER = 43 # '+'
+let HORIZONTAL = 45 # '-'
+let VERTICAL = 124 # '|'
+
+type Diagram {
+  let @lines: Array[String]
+
+  fn at(row: Int, col: Int) -> Int {
+    match @lines.get(row) {
+      case Ok(line) -> line.get(col).or(0)
+      case Error(_) -> 0
+    }
+  }
+
+  fn horizontal?(row: Int, from: Int, to: Int) -> Bool {
+    from.to(to).iter.all?(fn (col) {
+      let byte = at(row, col)
+
+      byte == HORIZONTAL or byte == CORNER
+    })
+  }
+
+  fn vertical?(col: Int, from: Int, to: Int) -> Bool {
+    from.to(to).iter.all?(fn (row) {
+      let byte = at(row, col)
+
+      byte == VERTICAL or byte == CORNER
+    })
+  }
+}
+
+# Returns the number of rectangles in the ASCII diagram `lines`.
+#
+# Corners are drawn with `+`, horizontal sides with `-` and vertical sides with
+# `|`. A side may cross other corners (`+`).
+fn pub rectangles(lines: Array[String]) -> Int {
+  let diagram = Diagram(lines)
+  let corners = []
+
+  for (row, line) in diagram.lines.iter.with_index {
+    for col in 0.until(line.size) {
+      if diagram.at(row, col) == CORNER { corners.push((row, col)) }
+    }
+  }
+
+  # Every rectangle is counted once, from its top left corner and its bottom
+  # right corner.
+  corners.iter.reduce(0, fn (count, top_left) {
+    count
+      + corners
+        .iter
+        .select(fn (bottom_right) {
+          let top = top_left.0
+          let left = top_left.1
+          let bottom = bottom_right.0
+          let right = bottom_right.1
+
+          bottom > top
+            and right > left
+            and diagram.horizontal?(top, left, right)
+            and diagram.horizontal?(bottom, left, right)
+            and diagram.vertical?(left, top, bottom)
+            and diagram.vertical?(right, top, bottom)
+        })
+        .count
+  })
+}

@@ -1,0 +1,104 @@
+import cargo_crates (Crate, count_matching)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. a new crate is empty', fn (t) {
+    let crate: Crate[Int] = Crate.new(3)
+
+    t.equal(crate.size, 0)
+    t.false(crate.full?)
+  })
+  t.test('1. a crate without room is full', fn (t) {
+    let crate: Crate[String] = Crate.new(0)
+
+    t.true(crate.full?)
+  })
+
+  t.test('2. load an item', fn (t) {
+    let crate = Crate.new(3)
+
+    t.equal(crate.load(42), Result.Ok(nil))
+    t.equal(crate.size, 1)
+  })
+  t.test('2. load until full', fn (t) {
+    let crate = Crate.new(2)
+
+    t.equal(crate.load('tea'), Result.Ok(nil))
+    t.equal(crate.load('rice'), Result.Ok(nil))
+    t.true(crate.full?)
+  })
+  t.test('2. a full crate gives the item back', fn (t) {
+    let crate = Crate.new(1)
+
+    t.equal(crate.load('tea'), Result.Ok(nil))
+    t.equal(crate.load('rice'), Result.Error('rice'))
+    t.equal(crate.size, 1)
+  })
+
+  t.test('3. unload the last item loaded', fn (t) {
+    let crate = Crate.new(3)
+    let _ = crate.load(1)
+    let _ = crate.load(2)
+
+    t.equal(crate.unload, Option.Some(2))
+    t.equal(crate.size, 1)
+  })
+  t.test('3. unload an empty crate', fn (t) {
+    let crate: Crate[Int] = Crate.new(3)
+
+    t.equal(crate.unload, Option.None)
+  })
+  t.test('3. unloading makes room', fn (t) {
+    let crate = Crate.new(1)
+    let _ = crate.load('tea')
+    let _ = crate.unload
+
+    t.equal(crate.load('rice'), Result.Ok(nil))
+  })
+
+  t.test('4. a crate contains an item', fn (t) {
+    let crate = Crate.new(3)
+    let _ = crate.load('tea')
+    let _ = crate.load('rice')
+
+    t.true(crate.contains?('rice'))
+  })
+  t.test('4. a crate does not contain an item', fn (t) {
+    let crate = Crate.new(3)
+    let _ = crate.load(7)
+
+    t.false(crate.contains?(8))
+  })
+
+  t.test('5. the manifest of a crate of words', fn (t) {
+    let crate = Crate.new(3)
+    let _ = crate.load('tea')
+    let _ = crate.load('rice')
+    let _ = crate.load('salt')
+
+    t.equal(crate.manifest, 'tea, rice, salt')
+  })
+  t.test('5. the manifest of a crate of numbers', fn (t) {
+    let crate = Crate.new(3)
+    let _ = crate.load(4)
+    let _ = crate.load(2)
+
+    t.equal(crate.manifest, '4, 2')
+  })
+  t.test('5. the manifest of an empty crate', fn (t) {
+    let crate: Crate[String] = Crate.new(3)
+
+    t.equal(crate.manifest, '')
+  })
+
+  t.test('6. count matching words', fn (t) {
+    let cargo = ['tea', 'rice', 'tea', 'salt']
+
+    t.equal(count_matching(cargo, 'tea'), 2)
+  })
+  t.test('6. count matching numbers', fn (t) {
+    let cargo = [1, 2, 3]
+
+    t.equal(count_matching(cargo, 4), 0)
+  })
+}

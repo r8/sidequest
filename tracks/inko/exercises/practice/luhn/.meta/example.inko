@@ -1,0 +1,29 @@
+# Returns `true` if `value` is a valid number according to the Luhn formula.
+#
+# Spaces are allowed and ignored; any other non-digit makes the number invalid.
+fn pub valid?(value: String) -> Bool {
+  let digits = []
+
+  for char in value.chars {
+    if char == ' ' { next }
+
+    match Int.parse(char, base: 10) {
+      case Some(digit) -> digits.push(digit)
+      case _ -> return false
+    }
+  }
+
+  if digits.size < 2 { return false }
+
+  let sum = digits.reverse_iter.with_index.reduce(0, fn (sum, pair) {
+    match pair {
+      case (index, digit) if index % 2 == 1 and digit > 4 -> {
+        sum + (digit * 2) - 9
+      }
+      case (index, digit) if index % 2 == 1 -> sum + (digit * 2)
+      case (_, digit) -> sum + digit
+    }
+  })
+
+  sum % 10 == 0
+}

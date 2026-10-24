@@ -1,0 +1,7 @@
+{
+  "blurb": "Macros receive code instead of values and return new code, which the compiler compiles in place of the call.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

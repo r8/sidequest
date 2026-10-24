@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "flower-field.kk"
+    ],
+    "test": [
+      "test/flower-field-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Mark all the flowers in a garden.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://janet-lang.org/api/index.html#sort",
+    "description": "sort, sorted, sort-by and sorted-by in the core API"
+  },
+  {
+    "url": "https://janet-lang.org/docs/comparison.html",
+    "description": "Comparison operators and compare"
+  }
+]

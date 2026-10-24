@@ -1,0 +1,14 @@
+import grains (square)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('returns the number of grains on the square > grains on square 1', fn (t) { t.equal(square(1), Result.Ok(1)) })
+  t.test('returns the number of grains on the square > grains on square 2', fn (t) { t.equal(square(2), Result.Ok(2)) })
+  t.test('returns the number of grains on the square > grains on square 3', fn (t) { t.equal(square(3), Result.Ok(4)) })
+  t.test('returns the number of grains on the square > grains on square 4', fn (t) { t.equal(square(4), Result.Ok(8)) })
+  t.test('returns the number of grains on the square > grains on square 16', fn (t) { t.equal(square(16), Result.Ok(32768)) })
+  t.test('returns the number of grains on the square > grains on square 32', fn (t) { t.equal(square(32), Result.Ok(2147483648)) })
+  t.test('returns the number of grains on the square > square 0 is invalid', fn (t) { t.equal(square(0), Result.Error('square must be between 1 and 64')) })
+  t.test('returns the number of grains on the square > negative square is invalid', fn (t) { t.equal(square(-1), Result.Error('square must be between 1 and 64')) })
+  t.test('returns the number of grains on the square > square greater than 64 is invalid', fn (t) { t.equal(square(65), Result.Error('square must be between 1 and 64')) })
+}

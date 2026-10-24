@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "diffie-hellman.bqn"
+    ],
+    "test": [
+      "test/diffie-hellman.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Diffie-Hellman key exchange.",
+  "source": "Wikipedia, 1024 bit key from www.cryptopp.com/wiki.",
+  "source_url": "https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

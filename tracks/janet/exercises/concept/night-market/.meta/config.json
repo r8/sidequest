@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "night-market.janet"
+    ],
+    "test": [
+      "test/night-market.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about booleans and conditionals — truthiness, and/or, if, cond and case — by running the gate of a night market.",
+  "custom": {
+    "after": [
+      "sourdough-schedule",
+      "orchard-harvest"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/train.html",
+    "description": "Trains: 2-trains and 3-trains"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/tacit.html",
+    "description": "Tacit programming in BQN"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/identity.html",
+    "description": "The identity functions ⊢ and ⊣"
+  }
+]

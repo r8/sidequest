@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "vending-machine.janet"
+    ],
+    "test": [
+      "test/vending-machine.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about errors by teaching a swimming pool's vending machine to raise, catch and report them.",
+  "custom": {
+    "after": [
+      "night-market",
+      "coffee-orders",
+      "spice-rack"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+import std.rand (Random)
+
+let LOWER_A = 97
+
+# A Vigenère cipher: a substitution cipher whose key is a series of lowercase
+# letters, where "a" shifts by 0, "b" by 1 and so on.
+type pub Cipher {
+  # The key, made only of lowercase letters.
+  let pub @key: String
+
+  # Returns a cipher with a random key of 100 lowercase letters.
+  fn pub static new -> Cipher {
+    let rng = Random.new
+    let key = ByteArray.new
+
+    for _ in 0.until(100) { key.push(rng.int_between(LOWER_A, LOWER_A + 26)) }
+
+    Cipher(key: key.into_string)
+  }
+
+  # Returns a cipher using `key`, a series of lowercase letters.
+  fn pub static with_key(key: String) -> Cipher {
+    Cipher(key: key)
+  }
+
+  # Encodes the lowercase letters of `plaintext`.
+  fn pub encode(plaintext: String) -> String {
+    shift(plaintext, direction: 1)
+  }
+
+  # Decodes the lowercase letters of `ciphertext`.
+  fn pub decode(ciphertext: String) -> String {
+    shift(ciphertext, direction: -1)
+  }
+
+  fn shift(text: String, direction: Int) -> String {
+    let out = ByteArray.new
+
+    for (index, byte) in text.bytes.with_index {
+      let distance = @key.get(index % @key.size).or_panic - LOWER_A
+
+      out.push((byte - LOWER_A + (direction * distance)) % 26 + LOWER_A)
+    }
+
+    out.into_string
+  }
+}

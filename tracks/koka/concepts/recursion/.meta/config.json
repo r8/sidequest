@@ -1,0 +1,7 @@
+{
+  "blurb": "Functions that call themselves on smaller inputs, and the div effect Koka infers when it cannot prove they stop.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

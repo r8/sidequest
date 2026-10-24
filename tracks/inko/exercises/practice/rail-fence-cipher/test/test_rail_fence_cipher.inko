@@ -1,0 +1,19 @@
+import rail_fence_cipher (decode, encode)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('encode > encode with two rails', fn (t) { t.equal(encode('XOXOXOXOXOXOXOXOXO', rails: 2), 'XXXXXXXXXOOOOOOOOO') })
+  t.test('encode > encode with three rails', fn (t) { t.equal(encode('WEAREDISCOVEREDFLEEATONCE', rails: 3), 'WECRLTEERDSOEEFEAOCAIVDEN') })
+  t.test('encode > encode with ending in the middle', fn (t) { t.equal(encode('EXERCISES', rails: 4), 'ESXIEECSR') })
+  t.test('decode > decode with three rails', fn (t) { t.equal(decode('TEITELHDVLSNHDTISEIIEA', rails: 3), 'THEDEVILISINTHEDETAILS') })
+  t.test('decode > decode with five rails', fn (t) { t.equal(decode('EIEXMSMESAORIWSCE', rails: 5), 'EXERCISMISAWESOME') })
+  t.test('decode > decode with six rails', fn (t) {
+    t.equal(
+      decode('133714114238148966225439541018335470986172518171757571896261', rails: 6),
+      '112358132134558914423337761098715972584418167651094617711286',
+    )
+  })
+  # Not in the canonical data: one rail never zig-zags, so the text reads straight through.
+  t.test('encode > encode with one rail', fn (t) { t.equal(encode('ABCDE', rails: 1), 'ABCDE') })
+  t.test('decode > decode with one rail', fn (t) { t.equal(decode('ABCDE', rails: 1), 'ABCDE') })
+}

@@ -1,0 +1,162 @@
+import simple_linked_list (SimpleLinkedList)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('count > Empty list has length of zero', fn (t) {
+    let list: SimpleLinkedList[Int] = SimpleLinkedList.new
+
+    t.equal(list.count, 0)
+  })
+  t.test('count > Singleton list has length of one', fn (t) {
+    let list = SimpleLinkedList.from_array([1])
+
+    t.equal(list.count, 1)
+  })
+  t.test('count > Non-empty list has correct length', fn (t) {
+    let list = SimpleLinkedList.from_array([1, 2, 3])
+
+    t.equal(list.count, 3)
+  })
+  t.test('pop > Pop from empty list is an error', fn (t) {
+    let list: SimpleLinkedList[Int] = SimpleLinkedList.new
+
+    t.equal(list.pop, Result.Error('list is empty'))
+  })
+  t.test('pop > Can pop from singleton list', fn (t) {
+    let list = SimpleLinkedList.from_array([1])
+
+    t.equal(list.pop, Result.Ok(1))
+  })
+  t.test('pop > Can pop from non-empty list', fn (t) {
+    let list = SimpleLinkedList.from_array([1, 2])
+
+    t.equal(list.pop, Result.Ok(2))
+  })
+  t.test('pop > Can pop multiple items', fn (t) {
+    let list = SimpleLinkedList.from_array([1, 2])
+
+    t.equal(list.pop, Result.Ok(2))
+    t.equal(list.pop, Result.Ok(1))
+  })
+  t.test('pop > Pop updates the count', fn (t) {
+    let list = SimpleLinkedList.from_array([1, 2])
+
+    t.equal(list.count, 2)
+    t.equal(list.pop, Result.Ok(2))
+    t.equal(list.count, 1)
+    t.equal(list.pop, Result.Ok(1))
+    t.equal(list.count, 0)
+  })
+  t.test('push > Can push to an empty list', fn (t) {
+    let list: SimpleLinkedList[Int] = SimpleLinkedList.new
+
+    list.push(1)
+    t.equal(list.peek, Result.Ok(1))
+  })
+  t.test('push > Can push to a non-empty list', fn (t) {
+    let list = SimpleLinkedList.from_array([1, 2])
+
+    list.push(3)
+    t.equal(list.peek, Result.Ok(3))
+  })
+  t.test('push > Push updates count', fn (t) {
+    let list = SimpleLinkedList.from_array([1, 2])
+
+    list.push(3)
+    t.equal(list.count, 3)
+  })
+  t.test('push > Push and pop', fn (t) {
+    let list: SimpleLinkedList[Int] = SimpleLinkedList.new
+
+    list.push(1)
+    list.push(2)
+    t.equal(list.pop, Result.Ok(2))
+    list.push(3)
+    t.equal(list.count, 2)
+    t.equal(list.pop, Result.Ok(3))
+    t.equal(list.pop, Result.Ok(1))
+    t.equal(list.count, 0)
+  })
+  t.test('peek > Peek on empty list is an error', fn (t) {
+    let list: SimpleLinkedList[Int] = SimpleLinkedList.new
+
+    t.equal(list.peek, Result.Error('list is empty'))
+  })
+  t.test('peek > Can peek on singleton list', fn (t) {
+    let list = SimpleLinkedList.from_array([1])
+
+    t.equal(list.peek, Result.Ok(1))
+  })
+  t.test('peek > Can peek on non-empty list', fn (t) {
+    let list = SimpleLinkedList.from_array([1, 2])
+
+    t.equal(list.peek, Result.Ok(2))
+  })
+  t.test('peek > Peek does not change the count', fn (t) {
+    let list = SimpleLinkedList.from_array([1, 2])
+
+    t.equal(list.peek, Result.Ok(2))
+    t.equal(list.count, 2)
+  })
+  t.test('peek > Can peek after a pop and push', fn (t) {
+    let list: SimpleLinkedList[Int] = SimpleLinkedList.new
+
+    list.push(1)
+    list.push(2)
+    t.equal(list.peek, Result.Ok(2))
+    t.equal(list.pop, Result.Ok(2))
+    t.equal(list.peek, Result.Ok(1))
+    list.push(3)
+    t.equal(list.peek, Result.Ok(3))
+  })
+  t.test('toList FIFO > Empty linked list to list is empty', fn (t) {
+    let list: SimpleLinkedList[Int] = SimpleLinkedList.new
+
+    t.equal(list.into_array, [])
+  })
+  t.test('toList FIFO > To list with multiple values', fn (t) {
+    let list = SimpleLinkedList.from_array([1, 2, 3])
+
+    t.equal(list.into_array, [1, 2, 3])
+  })
+  t.test('toList FIFO > To list after a pop', fn (t) {
+    let list: SimpleLinkedList[Int] = SimpleLinkedList.new
+
+    list.push(1)
+    list.push(2)
+    list.push(3)
+    t.equal(list.pop, Result.Ok(3))
+    list.push(4)
+    t.equal(list.into_array, [1, 2, 4])
+  })
+  t.test('reverse > Reversed empty list has same values', fn (t) {
+    let list: SimpleLinkedList[Int] = SimpleLinkedList.new
+
+    list.reverse
+    t.equal(list.into_array, [])
+  })
+  t.test('reverse > Reversed singleton list is same list', fn (t) {
+    let list = SimpleLinkedList.from_array([1])
+
+    list.reverse
+    t.equal(list.into_array, [1])
+  })
+  t.test('reverse > Reversed non-empty list is reversed', fn (t) {
+    let list = SimpleLinkedList.from_array([1, 2, 3])
+
+    list.reverse
+    t.equal(list.count, 3)
+    t.equal(list.pop, Result.Ok(1))
+    t.equal(list.pop, Result.Ok(2))
+    t.equal(list.pop, Result.Ok(3))
+  })
+  t.test('reverse > Double reverse', fn (t) {
+    let list = SimpleLinkedList.from_array([1, 2, 3])
+
+    list.reverse
+    list.reverse
+    t.equal(list.pop, Result.Ok(3))
+    t.equal(list.pop, Result.Ok(2))
+    t.equal(list.pop, Result.Ok(1))
+  })
+}

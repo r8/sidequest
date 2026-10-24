@@ -1,0 +1,169 @@
+import forth (evaluate)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('parsing and numbers > numbers just get pushed onto the stack', fn (t) {
+    t.equal(evaluate(['1 2 3 4 5']), Result.Ok([1, 2, 3, 4, 5]))
+  })
+  t.test('parsing and numbers > pushes negative numbers onto the stack', fn (t) {
+    t.equal(evaluate(['-1 -2 -3 -4 -5']), Result.Ok([-1, -2, -3, -4, -5]))
+  })
+  t.test('addition > can add two numbers', fn (t) { t.equal(evaluate(['1 2 +']), Result.Ok([3])) })
+  t.test('addition > errors if there is nothing on the stack', fn (t) {
+    t.equal(evaluate(['+']), Result.Error('empty stack'))
+  })
+  t.test('addition > errors if there is only one value on the stack', fn (t) {
+    t.equal(evaluate(['1 +']), Result.Error('only one value on the stack'))
+  })
+  t.test('addition > more than two values on the stack', fn (t) {
+    t.equal(evaluate(['1 2 3 +']), Result.Ok([1, 5]))
+  })
+  t.test('subtraction > can subtract two numbers', fn (t) { t.equal(evaluate(['3 4 -']), Result.Ok([-1])) })
+  t.test('subtraction > errors if there is nothing on the stack', fn (t) {
+    t.equal(evaluate(['-']), Result.Error('empty stack'))
+  })
+  t.test('subtraction > errors if there is only one value on the stack', fn (t) {
+    t.equal(evaluate(['1 -']), Result.Error('only one value on the stack'))
+  })
+  t.test('subtraction > more than two values on the stack', fn (t) {
+    t.equal(evaluate(['1 12 3 -']), Result.Ok([1, 9]))
+  })
+  t.test('multiplication > can multiply two numbers', fn (t) { t.equal(evaluate(['2 4 *']), Result.Ok([8])) })
+  t.test('multiplication > errors if there is nothing on the stack', fn (t) {
+    t.equal(evaluate(['*']), Result.Error('empty stack'))
+  })
+  t.test('multiplication > errors if there is only one value on the stack', fn (t) {
+    t.equal(evaluate(['1 *']), Result.Error('only one value on the stack'))
+  })
+  t.test('multiplication > more than two values on the stack', fn (t) {
+    t.equal(evaluate(['1 2 3 *']), Result.Ok([1, 6]))
+  })
+  t.test('division > can divide two numbers', fn (t) { t.equal(evaluate(['12 3 /']), Result.Ok([4])) })
+  t.test('division > performs integer division', fn (t) { t.equal(evaluate(['8 3 /']), Result.Ok([2])) })
+  t.test('division > errors if dividing by zero', fn (t) {
+    t.equal(evaluate(['4 0 /']), Result.Error('divide by zero'))
+  })
+  t.test('division > errors if there is nothing on the stack', fn (t) {
+    t.equal(evaluate(['/']), Result.Error('empty stack'))
+  })
+  t.test('division > errors if there is only one value on the stack', fn (t) {
+    t.equal(evaluate(['1 /']), Result.Error('only one value on the stack'))
+  })
+  t.test('division > more than two values on the stack', fn (t) {
+    t.equal(evaluate(['1 12 3 /']), Result.Ok([1, 4]))
+  })
+  # Not in the canonical data: integer division rounds toward zero, as in most languages' integer division.
+  t.test('division > rounds toward zero', fn (t) { t.equal(evaluate(['-7 2 /']), Result.Ok([-3])) })
+  # Not in the canonical data: the smallest Int divides without overflowing.
+  t.test('division > of the smallest Int', fn (t) {
+    t.equal(evaluate(['-9223372036854775808 2 /']), Result.Ok([-4611686018427387904]))
+  })
+  t.test('combined arithmetic > addition and subtraction', fn (t) {
+    t.equal(evaluate(['1 2 + 4 -']), Result.Ok([-1]))
+  })
+  t.test('combined arithmetic > multiplication and division', fn (t) {
+    t.equal(evaluate(['2 4 * 3 /']), Result.Ok([2]))
+  })
+  t.test('combined arithmetic > multiplication and addition', fn (t) {
+    t.equal(evaluate(['1 3 4 * +']), Result.Ok([13]))
+  })
+  t.test('combined arithmetic > addition and multiplication', fn (t) {
+    t.equal(evaluate(['1 3 4 + *']), Result.Ok([7]))
+  })
+  t.test('dup > copies a value on the stack', fn (t) { t.equal(evaluate(['1 dup']), Result.Ok([1, 1])) })
+  t.test('dup > copies the top value on the stack', fn (t) {
+    t.equal(evaluate(['1 2 dup']), Result.Ok([1, 2, 2]))
+  })
+  t.test('dup > errors if there is nothing on the stack', fn (t) {
+    t.equal(evaluate(['dup']), Result.Error('empty stack'))
+  })
+  t.test('drop > removes the top value on the stack if it is the only one', fn (t) {
+    t.equal(evaluate(['1 drop']), Result.Ok([]))
+  })
+  t.test('drop > removes the top value on the stack if it is not the only one', fn (t) {
+    t.equal(evaluate(['1 2 drop']), Result.Ok([1]))
+  })
+  t.test('drop > errors if there is nothing on the stack', fn (t) {
+    t.equal(evaluate(['drop']), Result.Error('empty stack'))
+  })
+  t.test('swap > swaps the top two values on the stack if they are the only ones', fn (t) {
+    t.equal(evaluate(['1 2 swap']), Result.Ok([2, 1]))
+  })
+  t.test('swap > swaps the top two values on the stack if they are not the only ones', fn (t) {
+    t.equal(evaluate(['1 2 3 swap']), Result.Ok([1, 3, 2]))
+  })
+  t.test('swap > errors if there is nothing on the stack', fn (t) {
+    t.equal(evaluate(['swap']), Result.Error('empty stack'))
+  })
+  t.test('swap > errors if there is only one value on the stack', fn (t) {
+    t.equal(evaluate(['1 swap']), Result.Error('only one value on the stack'))
+  })
+  t.test('over > copies the second element if there are only two', fn (t) {
+    t.equal(evaluate(['1 2 over']), Result.Ok([1, 2, 1]))
+  })
+  t.test('over > copies the second element if there are more than two', fn (t) {
+    t.equal(evaluate(['1 2 3 over']), Result.Ok([1, 2, 3, 2]))
+  })
+  t.test('over > errors if there is nothing on the stack', fn (t) {
+    t.equal(evaluate(['over']), Result.Error('empty stack'))
+  })
+  t.test('over > errors if there is only one value on the stack', fn (t) {
+    t.equal(evaluate(['1 over']), Result.Error('only one value on the stack'))
+  })
+  t.test('user-defined words > can consist of built-in words', fn (t) {
+    t.equal(evaluate([': dup-twice dup dup ;', '1 dup-twice']), Result.Ok([1, 1, 1]))
+  })
+  t.test('user-defined words > execute in the right order', fn (t) {
+    t.equal(evaluate([': countup 1 2 3 ;', 'countup']), Result.Ok([1, 2, 3]))
+  })
+  t.test('user-defined words > can override other user-defined words', fn (t) {
+    t.equal(evaluate([': foo dup ;', ': foo dup dup ;', '1 foo']), Result.Ok([1, 1, 1]))
+  })
+  t.test('user-defined words > can override built-in words', fn (t) {
+    t.equal(evaluate([': swap dup ;', '1 swap']), Result.Ok([1, 1]))
+  })
+  t.test('user-defined words > can override built-in operators', fn (t) {
+    t.equal(evaluate([': + * ;', '3 4 +']), Result.Ok([12]))
+  })
+  t.test('user-defined words > can use different words with the same name', fn (t) {
+    t.equal(evaluate([': foo 5 ;', ': bar foo ;', ': foo 6 ;', 'bar foo']), Result.Ok([5, 6]))
+  })
+  t.test('user-defined words > can define word that uses word with the same name', fn (t) {
+    t.equal(evaluate([': foo 10 ;', ': foo foo 1 + ;', 'foo']), Result.Ok([11]))
+  })
+  t.test('user-defined words > cannot redefine non-negative numbers', fn (t) {
+    t.equal(evaluate([': 1 2 ;']), Result.Error('illegal operation'))
+  })
+  t.test('user-defined words > cannot redefine negative numbers', fn (t) {
+    t.equal(evaluate([': -1 2 ;']), Result.Error('illegal operation'))
+  })
+  t.test('user-defined words > errors if executing a non-existent word', fn (t) {
+    t.equal(evaluate(['foo']), Result.Error('undefined operation'))
+  })
+  t.test('user-defined words > only defines locally', fn (t) {
+    t.equal(evaluate([': + - ;', '1 1 +']), Result.Ok([0]))
+    t.equal(evaluate(['1 1 +']), Result.Ok([2]))
+  })
+  t.test('case-insensitivity > DUP is case-insensitive', fn (t) {
+    t.equal(evaluate(['1 DUP Dup dup']), Result.Ok([1, 1, 1, 1]))
+  })
+  t.test('case-insensitivity > DROP is case-insensitive', fn (t) {
+    t.equal(evaluate(['1 2 3 4 DROP Drop drop']), Result.Ok([1]))
+  })
+  t.test('case-insensitivity > SWAP is case-insensitive', fn (t) {
+    t.equal(evaluate(['1 2 SWAP 3 Swap 4 swap']), Result.Ok([2, 3, 4, 1]))
+  })
+  t.test('case-insensitivity > OVER is case-insensitive', fn (t) {
+    t.equal(evaluate(['1 2 OVER Over over']), Result.Ok([1, 2, 1, 2, 1]))
+  })
+  t.test('case-insensitivity > user-defined words are case-insensitive', fn (t) {
+    t.equal(evaluate([': foo dup ;', '1 FOO Foo foo']), Result.Ok([1, 1, 1, 1]))
+  })
+  t.test('case-insensitivity > definitions are case-insensitive', fn (t) {
+    t.equal(evaluate([': SWAP DUP Dup dup ;', '1 swap']), Result.Ok([1, 1, 1, 1]))
+  })
+  # Not in the canonical data: a line with no words is a valid (empty) program.
+  t.test('empty and blank lines do nothing', fn (t) { t.equal(evaluate(['1', '', '   ', '2']), Result.Ok([1, 2])) })
+  # Not in the canonical data: words are separated by any whitespace, however much.
+  t.test('words are separated by any whitespace', fn (t) { t.equal(evaluate(['1  2\t+']), Result.Ok([3])) })
+}

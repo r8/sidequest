@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "redacted-files.bqn"
+    ],
+    "test": [
+      "test/redacted-files.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about Under by blacking out and tidying up old council files before they are released.",
+  "custom": {
+    "after": [
+      "unit-converter",
+      "lost-and-found",
+      "vending-machine"
+    ]
+  }
+}

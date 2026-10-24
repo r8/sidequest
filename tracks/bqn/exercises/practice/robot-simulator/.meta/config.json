@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "robot-simulator.bqn"
+    ],
+    "test": [
+      "test/robot-simulator.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Write a robot simulator.",
+  "source": "Inspired by an interview question at a famous company.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

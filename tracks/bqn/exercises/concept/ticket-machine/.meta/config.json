@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "ticket-machine.bqn"
+    ],
+    "test": [
+      "test/ticket-machine.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about blocks, headers and local names in BQN by programming a ferry ticket machine.",
+  "custom": {
+    "after": [
+      "step-counter"
+    ]
+  }
+}

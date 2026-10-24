@@ -1,0 +1,7 @@
+{
+  "blurb": "and, or, xor, invert and the shifts work on every bit of a cell; masks pick out the bits that matter.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

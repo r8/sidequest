@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "zebra-puzzle.bqn"
+    ],
+    "test": [
+      "test/zebra-puzzle.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Solve the zebra puzzle.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Zebra_Puzzle",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/simple_cipher.inko"
+    ],
+    "test": [
+      "test/test_simple_cipher.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Implement the Vigenère cipher, a simple substitution cipher.",
+  "source": "Substitution Cipher at Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Substitution_cipher",
+  "custom": {
+    "after": [
+      "rotational-cipher"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "vending-machine.bqn"
+    ],
+    "test": [
+      "test/vending-machine.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about pick and select by programming the office vending machine.",
+  "custom": {
+    "after": [
+      "name-tags"
+    ]
+  }
+}

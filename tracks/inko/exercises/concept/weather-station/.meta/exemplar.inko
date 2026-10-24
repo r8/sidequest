@@ -1,0 +1,49 @@
+# A weather station and the temperatures it has recorded, in degrees Celsius.
+type pub Station {
+  let mut @name: String
+  let @readings: Array[Float]
+
+  # Returns a station called `name`, without any readings.
+  fn pub static new(name: String) -> Station {
+    Station(name: name, readings: [])
+  }
+
+  # Returns the name of the station.
+  fn pub name -> String {
+    @name
+  }
+
+  # Adds a reading.
+  fn pub mut record(celsius: Float) {
+    @readings.push(celsius)
+  }
+
+  # Returns the number of readings.
+  fn pub count -> Int {
+    @readings.size
+  }
+
+  # Returns the most recent reading, if there is one.
+  fn pub latest -> Option[Float] {
+    @readings.last
+  }
+
+  # Returns the average reading rounded to one decimal, or 0.0 without readings.
+  fn pub average -> Float {
+    if @readings.empty? { return 0.0 }
+
+    let total = @readings.iter.reduce(0.0, fn (sum, reading) { sum + reading })
+
+    (total / count.to_float).round(1)
+  }
+
+  # Returns whether this station's average is higher than `other`'s.
+  fn pub warmer_than?(other: ref Station) -> Bool {
+    average > other.average
+  }
+
+  # Gives the station a new name.
+  fn pub mut rename(name: String) {
+    @name = name
+  }
+}

@@ -1,0 +1,6 @@
+import std.stdio (Stdout)
+
+fn pub hello -> String {
+  Stdout.new.print('Failures:')
+  'wrong answer'
+}

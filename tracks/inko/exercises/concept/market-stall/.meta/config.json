@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/market_stall.inko"
+    ],
+    "test": [
+      "test/test_market_stall.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about closures by building swappable pricing rules for a market stall.",
+  "custom": {
+    "after": [
+      "tide-tables"
+    ]
+  }
+}

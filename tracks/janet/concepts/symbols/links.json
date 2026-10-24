@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/syntax.html",
+    "description": "Symbols and keywords in Janet's syntax"
+  },
+  {
+    "url": "https://janet-lang.org/api/index.html#symbol",
+    "description": "symbol in the core API reference"
+  }
+]

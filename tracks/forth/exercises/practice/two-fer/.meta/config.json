@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "two-fer.fs"
+    ],
+    "test": [
+      "test/two-fer-test.fs"
+    ],
+    "example": [
+      ".meta/example.fs"
+    ]
+  },
+  "blurb": "Create a sentence of the form \"One for X, one for me.\".",
+  "source_url": "https://github.com/exercism/problem-specifications/issues/757",
+  "custom": {
+    "after": [
+      "sign-painter"
+    ]
+  }
+}

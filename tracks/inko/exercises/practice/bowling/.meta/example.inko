@@ -1,0 +1,113 @@
+let PINS = 10
+let TOO_MANY = 'Pin count exceeds pins on the lane'
+
+# A game of bowling.
+#
+# Create one with `Game.new`, record each roll with `roll`, and ask for the
+# total with `score` once the game is over.
+type pub Game {
+  # The pins knocked down by each roll so far. Change the fields as you see fit.
+  let @rolls: Array[Int]
+
+  # Returns a game without any rolls.
+  fn pub static new -> Game {
+    Game([])
+  }
+
+  # Records a roll that knocked down `pins` pins, or returns an error without
+  # recording it: `"Negative roll is invalid"`,
+  # `"Pin count exceeds pins on the lane"` or `"Cannot roll after game is over"`.
+  fn pub mut roll(pins: Int) -> Result[Nil, String] {
+    if pins < 0 { return Result.Error('Negative roll is invalid') }
+
+    if pins > PINS { return Result.Error(TOO_MANY) }
+
+    if try over? { return Result.Error('Cannot roll after game is over') }
+
+    @rolls.push(pins)
+
+    match over? {
+      case Ok(_) -> Result.Ok(nil)
+      case Error(error) -> {
+        @rolls.pop
+        Result.Error(error)
+      }
+    }
+  }
+
+  # Returns the total score, or `"Score cannot be taken until the end of the
+  # game"` as an error if the game isn't over.
+  fn pub score -> Result[Int, String] {
+    if !over?.or(false) {
+      return Result.Error('Score cannot be taken until the end of the game')
+    }
+
+    let mut index = 0
+    let mut total = 0
+
+    for _ in 0.until(10) {
+      let first = at(index)
+      let second = at(index + 1)
+
+      if first == PINS {
+        total += PINS + second + at(index + 2)
+        index += 1
+      } else if first + second == PINS {
+        total += PINS + at(index + 2)
+        index += 2
+      } else {
+        total += first + second
+        index += 2
+      }
+    }
+
+    Result.Ok(total)
+  }
+
+  # Returns the pins of the roll at `index`, or 0 if it hasn't been rolled.
+  fn at(index: Int) -> Int {
+    @rolls.get(index).or(0)
+  }
+
+  # Returns whether the rolls so far finish the game, or an error if a frame
+  # knocks down more pins than there are.
+  fn over? -> Result[Bool, String] {
+    let mut index = 0
+
+    # The first nine frames: a strike, or two rolls.
+    for _ in 0.until(9) {
+      if index >= @rolls.size { return Result.Ok(false) }
+
+      if at(index) == PINS {
+        index += 1
+        next
+      }
+
+      if index + 1 >= @rolls.size { return Result.Ok(false) }
+
+      if at(index) + at(index + 1) > PINS { return Result.Error(TOO_MANY) }
+
+      index += 2
+    }
+
+    # The tenth frame: two rolls, plus a bonus roll after a strike or spare.
+    let rolled = @rolls.size - index
+    let first = at(index)
+    let second = at(index + 1)
+    let third = at(index + 2)
+
+    if rolled < 2 { return Result.Ok(false) }
+
+    if first < PINS and first + second > PINS { return Result.Error(TOO_MANY) }
+
+    if first + second < PINS { return Result.Ok(true) }
+
+    if rolled < 3 { return Result.Ok(false) }
+
+    if first == PINS and second < PINS and second + third > PINS {
+      return Result.Error(TOO_MANY)
+    }
+
+    Result.Ok(true)
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/train_dispatch.inko"
+    ],
+    "test": [
+      "test/test_train_dispatch.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about pattern matching by writing the rules of a railway signal box.",
+  "custom": {
+    "after": [
+      "lost-and-found",
+      "star-chart"
+    ]
+  }
+}

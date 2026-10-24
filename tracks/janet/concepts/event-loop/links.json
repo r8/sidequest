@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/event_loop.html",
+    "description": "The event loop in the Janet documentation"
+  },
+  {
+    "url": "https://janet-lang.org/api/ev.html",
+    "description": "The ev module reference"
+  }
+]

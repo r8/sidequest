@@ -1,0 +1,7 @@
+{
+  "blurb": "Memory is addressed directly: here, allot and comma reserve it, create names it, and @ and ! read and write any address.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

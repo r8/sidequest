@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/std_core_int.html",
+    "description": "The std/core/int module: operations on integers"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-literals",
+    "description": "The Koka book: literals"
+  }
+]

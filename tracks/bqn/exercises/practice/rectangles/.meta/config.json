@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "rectangles.bqn"
+    ],
+    "test": [
+      "test/rectangles.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Count the rectangles in an ASCII diagram.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

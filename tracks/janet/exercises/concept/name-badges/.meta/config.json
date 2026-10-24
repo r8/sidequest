@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "name-badges.janet"
+    ],
+    "test": [
+      "test/name-badges.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about strings — slicing, searching and formatting — by printing name badges for a conference.",
+  "custom": {
+    "after": [
+      "sourdough-schedule",
+      "night-market"
+    ]
+  }
+}

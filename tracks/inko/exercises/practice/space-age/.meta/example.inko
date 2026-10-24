@@ -1,0 +1,69 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# The planets of the solar system.
+type pub copy enum Planet {
+  case Mercury
+  case Venus
+  case Earth
+  case Mars
+  case Jupiter
+  case Saturn
+  case Uranus
+  case Neptune
+}
+
+impl Equal for Planet {
+  fn pub ==(other: Planet) -> Bool {
+    match (self, other) {
+      case (Mercury, Mercury) -> true
+      case (Venus, Venus) -> true
+      case (Earth, Earth) -> true
+      case (Mars, Mars) -> true
+      case (Jupiter, Jupiter) -> true
+      case (Saturn, Saturn) -> true
+      case (Uranus, Uranus) -> true
+      case (Neptune, Neptune) -> true
+      case _ -> false
+    }
+  }
+}
+
+impl Format for Planet {
+  fn pub fmt(formatter: mut Formatter) {
+    let name = match self {
+      case Mercury -> 'Mercury'
+      case Venus -> 'Venus'
+      case Earth -> 'Earth'
+      case Mars -> 'Mars'
+      case Jupiter -> 'Jupiter'
+      case Saturn -> 'Saturn'
+      case Uranus -> 'Uranus'
+      case Neptune -> 'Neptune'
+    }
+
+    formatter.tuple(name).finish
+  }
+}
+
+# The number of seconds in an Earth year.
+let EARTH_YEAR = 31_557_600.0
+
+# Returns the length of a year on `planet` in Earth years.
+fn orbital_period(planet: Planet) -> Float {
+  match planet {
+    case Mercury -> 0.2408467
+    case Venus -> 0.61519726
+    case Earth -> 1.0
+    case Mars -> 1.8808158
+    case Jupiter -> 11.862615
+    case Saturn -> 29.447498
+    case Uranus -> 84.016846
+    case Neptune -> 164.79132
+  }
+}
+
+# Returns the age in years on `planet` of someone who is `seconds` old.
+fn pub age(planet: Planet, seconds: Int) -> Float {
+  seconds.to_float / EARTH_YEAR / orbital_period(planet)
+}

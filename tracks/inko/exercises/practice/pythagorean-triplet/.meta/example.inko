@@ -1,0 +1,22 @@
+# Returns every Pythagorean triplet `(a, b, c)` with `a < b < c` and
+# `a + b + c == sum`, ordered by `a`.
+fn pub triplets_with_sum(sum: Int) -> Array[(Int, Int, Int)] {
+  # From a + b + c = sum and a^2 + b^2 = c^2 follows
+  # b = sum * (sum - 2a) / (2 * (sum - a)), so each `a` gives at most one `b`.
+  # Inko has no operator precedence, hence the parentheses.
+  1
+    .until(sum / 3)
+    .iter
+    .select_map(fn (a) {
+      let numerator = sum * (sum - (2 * a))
+      let denominator = 2 * (sum - a)
+      let b = numerator / denominator
+
+      if numerator % denominator == 0 and b > a {
+        Option.Some((a, b, sum - a - b))
+      } else {
+        Option.None
+      }
+    })
+    .to_array
+}

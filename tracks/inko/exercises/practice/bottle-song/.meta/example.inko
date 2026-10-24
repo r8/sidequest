@@ -1,0 +1,44 @@
+let NUMBERS = [
+  'no',
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+  'ten',
+]
+
+# Returns the lines of `take_down` verses of the song, counting down from
+# `start_bottles` bottles. Verses are separated by an empty line.
+fn pub recite(start_bottles: Int, take_down: Int) -> Array[String] {
+  let lines = []
+
+  for verse in 0.until(take_down) {
+    let bottles = start_bottles - verse
+
+    if verse > 0 { lines.push('') }
+
+    let hanging = '${capitalize(count(bottles))} hanging on the wall,'
+
+    lines.push(hanging.clone)
+    lines.push(hanging)
+    lines.push('And if one green bottle should accidentally fall,')
+    lines.push("There'll be ${count(bottles - 1)} hanging on the wall.")
+  }
+
+  lines
+}
+
+fn count(bottles: Int) -> String {
+  let noun = if bottles == 1 { 'bottle' } else { 'bottles' }
+
+  '${NUMBERS.get(bottles).or_panic} green ${noun}'
+}
+
+fn capitalize(text: String) -> String {
+  text.substring(0, 1).to_upper + text.substring(1, text.size)
+}

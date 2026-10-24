@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "road-trip.bqn"
+    ],
+    "test": [
+      "test/road-trip.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about numbers and arithmetic in BQN by planning a road trip.",
+  "custom": {
+    "after": [
+      "pizza-night"
+    ]
+  }
+}

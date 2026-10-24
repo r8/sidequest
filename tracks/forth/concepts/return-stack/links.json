@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Return-Stack-Tutorial.html",
+    "description": "The return stack in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Return-stack.html",
+    "description": "Return-stack words in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/toR",
+    "description": ">R in the Forth 2012 standard"
+  }
+]

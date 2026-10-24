@@ -1,0 +1,35 @@
+import accumulate (accumulate)
+import std.test (Tests)
+
+fn reversed(string: String) -> String {
+  let chars = string.chars.to_array
+
+  chars.reverse
+  String.join(chars.into_iter, '')
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('accumulate empty', fn (t) {
+    let values: Array[Int] = []
+
+    t.equal(accumulate(values, fn (x) { x * x }), [])
+  })
+  t.test('accumulate squares', fn (t) {
+    t.equal(accumulate([1, 2, 3], fn (x) { x * x }), [1, 4, 9])
+  })
+  t.test('accumulate upcases', fn (t) {
+    t.equal(accumulate(['Hello', 'world'], fn (x) { x.to_upper }), ['HELLO', 'WORLD'])
+  })
+  t.test('accumulate reversed strings', fn (t) {
+    t.equal(
+      accumulate(['the', 'quick', 'brown', 'fox', 'etc'], fn (x) { reversed(x) }),
+      ['eht', 'kciuq', 'nworb', 'xof', 'cte'],
+    )
+  })
+  t.test('accumulate recursively', fn (t) {
+    t.equal(
+      accumulate(['a', 'b', 'c'], fn (x) { accumulate(['1', '2', '3'], fn (y) { x + y }) }),
+      [['a1', 'a2', 'a3'], ['b1', 'b2', 'b3'], ['c1', 'c2', 'c3']],
+    )
+  })
+}

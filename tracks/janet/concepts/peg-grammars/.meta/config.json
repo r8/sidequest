@@ -1,0 +1,7 @@
+{
+  "blurb": "A PEG grammar names rules that refer to each other, so it can parse nested input and turn matched text into values.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

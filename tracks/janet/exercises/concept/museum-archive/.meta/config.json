@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "museum-archive.janet"
+    ],
+    "test": [
+      "test/museum-archive.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about mutability and equality by sealing, reopening and copying a museum's catalogue records.",
+  "custom": {
+    "after": [
+      "train-cars",
+      "spice-rack",
+      "telegraph-office"
+    ]
+  }
+}

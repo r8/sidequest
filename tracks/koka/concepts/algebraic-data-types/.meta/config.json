@@ -1,0 +1,7 @@
+{
+  "blurb": "Types with several constructors, each with its own fields, taken apart with match.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

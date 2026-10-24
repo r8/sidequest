@@ -1,0 +1,71 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# The reasons a launch can't go ahead.
+type pub enum LaunchError {
+  # The fuel level, in percent, is too low.
+  case LowFuel(Int)
+
+  # The wind speed, in km/h, is too high.
+  case HighWind(Int)
+
+  # A sensor reading isn't a number.
+  case BadReading(String)
+
+  # The igniter isn't armed.
+  case NotArmed
+
+  # Returns the message shown on the launch console.
+  fn pub message -> String {
+    panic('implement me')
+  }
+}
+
+# Returns `percent` if there is enough fuel (80% or more).
+fn pub check_fuel(percent: Int) -> Result[Int, LaunchError] {
+  panic('implement me')
+}
+
+# Returns `speed` if the wind is calm enough (30 km/h or less).
+fn pub check_wind(speed: Int) -> Result[Int, LaunchError] {
+  panic('implement me')
+}
+
+# Returns the number a sensor reports as `text`.
+fn pub read_sensor(text: String) -> Result[Int, LaunchError] {
+  panic('implement me')
+}
+
+# Returns `Ok(nil)` if the rocket can launch, or the first problem found.
+fn pub ready(
+  fuel: String,
+  wind: String,
+  armed: Bool,
+) -> Result[Nil, LaunchError] {
+  panic('implement me')
+}
+
+# Lets the tests compare errors with `==`.
+impl Equal for LaunchError {
+  fn pub ==(other: ref LaunchError) -> Bool {
+    match (self, other) {
+      case (LowFuel(a), LowFuel(b)) -> a == b
+      case (HighWind(a), HighWind(b)) -> a == b
+      case (BadReading(a), BadReading(b)) -> a == b
+      case (NotArmed, NotArmed) -> true
+      case _ -> false
+    }
+  }
+}
+
+# Lets the tests show errors in their failure messages.
+impl Format for LaunchError {
+  fn pub fmt(formatter: mut Formatter) {
+    match self {
+      case LowFuel(percent) -> formatter.tuple('LowFuel').field(percent).finish
+      case HighWind(speed) -> formatter.tuple('HighWind').field(speed).finish
+      case BadReading(text) -> formatter.tuple('BadReading').field(text).finish
+      case NotArmed -> formatter.tuple('NotArmed').finish
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "pancake-stack.fs"
+    ],
+    "test": [
+      "test/pancake-stack-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about the data stack, defining words and integer arithmetic by doing the sums for a breakfast griddle.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

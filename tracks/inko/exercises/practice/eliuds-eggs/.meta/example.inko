@@ -1,0 +1,12 @@
+# Returns the number of 1 bits in the binary representation of `number`.
+fn pub egg_count(number: Int) -> Int {
+  let mut rest = number
+  let mut eggs = 0
+
+  while rest > 0 {
+    eggs += rest & 1
+    rest >>= 1
+  }
+
+  eggs
+}

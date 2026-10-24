@@ -1,0 +1,7 @@
+{
+  "blurb": "A char is one Unicode code point: write it in single quotes, classify it, and do arithmetic on its number.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

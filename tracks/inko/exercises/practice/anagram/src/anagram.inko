@@ -1,0 +1,8 @@
+# Returns the candidates that are anagrams of `subject`, ignoring case, in the
+# order they are given. A word is not an anagram of itself.
+fn pub find_anagrams(
+  subject: String,
+  candidates: ref Array[String],
+) -> Array[String] {
+  panic('implement me')
+}

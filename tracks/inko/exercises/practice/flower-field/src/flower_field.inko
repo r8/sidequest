@@ -1,0 +1,6 @@
+# Returns the garden with every empty square (a space) that touches one or more
+# flowers (`*`), including diagonally, replaced by the number of flowers it
+# touches.
+fn pub annotate(garden: Array[String]) -> Array[String] {
+  panic('implement me')
+}

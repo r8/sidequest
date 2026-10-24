@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "list-ops.janet"
+    ],
+    "test": [
+      "test/list-ops.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Implement basic list operations.",
+  "custom": {
+    "after": [
+      "seed-catalog"
+    ]
+  }
+}

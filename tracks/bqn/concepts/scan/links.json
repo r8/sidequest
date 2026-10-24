@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/scan.html",
+    "description": "Scan"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/fold.html",
+    "description": "Fold, the scan's final value"
+  }
+]

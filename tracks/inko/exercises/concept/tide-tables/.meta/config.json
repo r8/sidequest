@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/tide_tables.inko"
+    ],
+    "test": [
+      "test/test_tide_tables.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about loops and ranges by reading a harbour's tide tables.",
+  "custom": {
+    "after": [
+      "library-shelf"
+    ]
+  }
+}

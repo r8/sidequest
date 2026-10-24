@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/tutorial/expression.html",
+    "description": "Tutorial: BQN expressions"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/tutorial/variable.html",
+    "description": "Tutorial: variables and roles"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/block.html",
+    "description": "Blocks: functions written with 𝕩 and 𝕨"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/context.html",
+    "description": "How the spelling of a name sets its role"
+  }
+]

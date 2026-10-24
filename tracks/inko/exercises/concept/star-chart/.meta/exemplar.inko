@@ -1,0 +1,29 @@
+# Returns the position at `column` and `row`.
+fn pub position(column: Int, row: Int) -> (Int, Int) {
+  (column, row)
+}
+
+# Returns `point` moved by `by`, a pair of columns and rows.
+fn pub shift(point: (Int, Int), by: (Int, Int)) -> (Int, Int) {
+  (point.0 + by.0, point.1 + by.1)
+}
+
+# Returns the number of grid squares between `from` and `to`, moving across
+# and up or down only.
+fn pub steps(from: (Int, Int), to: (Int, Int)) -> Int {
+  (to.0 - from.0).absolute + (to.1 - from.1).absolute
+}
+
+# Returns the name of the brighter of two stars, each a name and a magnitude;
+# the first one when they're equally bright.
+fn pub brighter(first: (String, Float), second: (String, Float)) -> String {
+  if second.1 < first.1 { second.0 } else { first.0 }
+}
+
+# Returns a catalogue line for a star given as its name, magnitude and
+# position, such as "Vega (0.03) at 18,36".
+fn pub catalogue_entry(star: (String, Float, (Int, Int))) -> String {
+  let (name, magnitude, (column, row)) = star
+
+  '${name} (${magnitude}) at ${column},${row}'
+}

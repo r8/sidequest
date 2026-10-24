@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/control-flow/",
+    "description": "throw and try, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/hello-error-handling/",
+    "description": "Hello, error handling!, in the Inko manual"
+  }
+]

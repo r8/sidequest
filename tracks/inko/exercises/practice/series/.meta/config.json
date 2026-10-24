@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/series.inko"
+    ],
+    "test": [
+      "test/test_series.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Given a string of digits, output all the contiguous substrings of length `n` in that string.",
+  "source": "A subset of the Problem 8 at Project Euler",
+  "source_url": "https://projecteuler.net/problem=8",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

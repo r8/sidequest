@@ -1,0 +1,7 @@
+{
+  "blurb": "base holds the radix for reading and printing numbers; hex and decimal set it, and prefixes like $ff ignore it.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

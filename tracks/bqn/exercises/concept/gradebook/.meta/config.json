@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "gradebook.bqn"
+    ],
+    "test": [
+      "test/gradebook.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about cells, rank and insert by working out the totals in a teacher's gradebook.",
+  "custom": {
+    "after": [
+      "paint-mixer",
+      "shopping-basket"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "blurb": "A table can inherit keys from a prototype table, and (:method obj) calls a function found along that chain with obj as self.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "train-shunting.kk"
+    ],
+    "test": [
+      "test/train-shunting-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about functional but in-place programming by reordering wagons in a cramped shunting yard.",
+  "custom": {
+    "after": [
+      "pocket-calculator"
+    ]
+  }
+}

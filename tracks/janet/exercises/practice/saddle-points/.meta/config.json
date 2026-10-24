@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "saddle-points.janet"
+    ],
+    "test": [
+      "test/saddle-points.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Detect saddle points in a matrix.",
+  "source": "J Dalbey's Programming Practice problems",
+  "source_url": "https://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html",
+  "custom": {
+    "after": [
+      "matrix"
+    ]
+  }
+}

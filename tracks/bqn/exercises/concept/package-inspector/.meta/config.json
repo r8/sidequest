@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "package-inspector.bqn"
+    ],
+    "test": [
+      "test/package-inspector.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about raising and catching errors by checking parcels on the night shift at a depot.",
+  "custom": {
+    "after": [
+      "parking-garage",
+      "name-tags"
+    ]
+  }
+}

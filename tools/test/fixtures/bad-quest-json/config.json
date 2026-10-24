@@ -1,0 +1,14 @@
+{
+  "language": "Bad",
+  "slug": "bad-quest-json",
+  "active": false,
+  "blurb": "A fixture track whose quest.json is invalid.",
+  "version": 3,
+  "status": { "concept_exercises": false, "test_runner": false, "representer": false, "analyzer": false },
+  "online_editor": { "indent_style": "space", "indent_size": 2 },
+  "files": { "solution": ["%{kebab_slug}.bad"], "test": ["test/%{kebab_slug}.bad"], "example": [".meta/example.bad"] },
+  "exercises": { "concept": [], "practice": [] },
+  "concepts": [],
+  "key_features": [],
+  "tags": ["paradigm/functional"]
+}

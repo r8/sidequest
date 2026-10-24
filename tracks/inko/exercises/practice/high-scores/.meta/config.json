@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/high_scores.inko"
+    ],
+    "test": [
+      "test/test_high_scores.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Manage a player's High Score list.",
+  "source": "Tribute to the eighties' arcade game Frogger",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

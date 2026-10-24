@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/result/Result/",
+    "description": "The Result type in the standard library"
+  },
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/hello-error-handling/",
+    "description": "Hello, error handling!, in the Inko manual"
+  }
+]

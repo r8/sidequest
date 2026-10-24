@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "complex-numbers.kk"
+    ],
+    "test": [
+      "test/complex-numbers-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Implement complex numbers.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Complex_number",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

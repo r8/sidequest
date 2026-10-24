@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Counted-loops-Tutorial.html",
+    "description": "Counted loops in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Counted-Loops.html",
+    "description": "do, ?do, loop, +loop, leave and unloop in the Gforth manual"
+  },
+  {
+    "url": "https://www.forth.com/starting-forth/6-forth-do-loops/",
+    "description": "Starting Forth, chapter 6: throw it for a loop"
+  }
+]

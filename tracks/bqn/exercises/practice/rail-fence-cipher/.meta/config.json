@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "rail-fence-cipher.bqn"
+    ],
+    "test": [
+      "test/rail-fence-cipher.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Implement encoding and decoding for the rail fence cipher.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Transposition_cipher#Rail_Fence_cipher",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

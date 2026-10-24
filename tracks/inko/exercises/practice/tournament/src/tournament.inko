@@ -1,0 +1,7 @@
+# Returns the league table for the match results in `rows`, each formatted as
+# `<team>;<team>;<win|loss|draw>` (the result is from the first team's point of
+# view). The table starts with a header line; teams are sorted by points
+# (descending), then by name.
+fn pub tally(rows: ref Array[String]) -> Array[String] {
+  panic('implement me')
+}

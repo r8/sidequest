@@ -1,0 +1,25 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "recipe-book.janet",
+      "units.janet"
+    ],
+    "test": [
+      "test/recipe-book.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet",
+      ".meta/units.janet"
+    ]
+  },
+  "blurb": "Learn about modules — import, use and private definitions — by splitting a baker's recipe converter into two files.",
+  "custom": {
+    "after": [
+      "coffee-orders",
+      "spice-rack"
+    ]
+  }
+}

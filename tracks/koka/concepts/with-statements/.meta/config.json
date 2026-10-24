@@ -1,0 +1,7 @@
+{
+  "blurb": "The with statement passes the rest of a block as a function to a call, flattening nested trailing lambdas.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

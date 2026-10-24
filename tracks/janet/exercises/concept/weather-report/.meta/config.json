@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "weather-report.janet"
+    ],
+    "test": [
+      "test/weather-report.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about keywords by turning an island weather station's readings into reports.",
+  "custom": {
+    "after": [
+      "night-market",
+      "name-badges"
+    ]
+  }
+}

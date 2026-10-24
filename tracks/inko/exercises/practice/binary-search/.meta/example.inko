@@ -1,0 +1,18 @@
+# Returns the index of `value` in the sorted `array`, or `Option.None` if the
+# array doesn't contain it.
+fn pub find(array: ref Array[Int], value: Int) -> Option[Int] {
+  let mut low = 0
+  let mut high = array.size
+
+  while low < high {
+    let mid = low + ((high - low) / 2)
+
+    match array.get(mid).or_panic.cmp(value) {
+      case Equal -> return Option.Some(mid)
+      case Less -> low = mid + 1
+      case Greater -> high = mid
+    }
+  }
+
+  Option.None
+}

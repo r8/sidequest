@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "shorthand-club.janet"
+    ],
+    "test": [
+      "test/shorthand-club.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about macros by writing the keystroke-saving shorthands of a club of speed writers.",
+  "custom": {
+    "after": [
+      "coffee-orders",
+      "spell-book"
+    ]
+  }
+}

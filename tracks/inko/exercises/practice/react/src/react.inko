@@ -1,0 +1,69 @@
+# A reactive system of cells holding integers.
+#
+# A `Reactor` owns all its cells. The tests refer to cells through `CellId`s
+# and to callbacks through `CallbackId`s, which `Reactor` hands out: build
+# them as you see fit (an index into the reactor's cells works).
+#
+# Input cells hold a value that's set from outside. Compute cells derive their
+# value from other cells with a function, which gets their current values in
+# the order the cells were given. Callbacks belong to compute cells: after
+# `set_value` has updated every cell, each callback of a compute cell whose
+# value changed is called once with the new value.
+#
+# The reactor owns the functions and callbacks it is given. A callback that
+# records the values it's called with (as in the tests) captures the array it
+# records into, so that array must outlive the reactor: define it first.
+
+# The identifier of a cell in a `Reactor`.
+type pub copy CellId {
+  let @index: Int
+}
+
+# The identifier of a callback in a `Reactor`.
+type pub copy CallbackId {
+  let @index: Int
+}
+
+# Add the fields you need to the type.
+type pub Reactor {}
+
+impl Reactor {
+  # Returns a reactor without any cells.
+  fn pub static new -> Reactor {
+    panic('implement me')
+  }
+
+  # Adds an input cell holding `value` and returns its ID.
+  fn pub mut input(value: Int) -> CellId {
+    panic('implement me')
+  }
+
+  # Adds a compute cell whose value is `func` called with the values of the
+  # `inputs` cells (in that order), and returns its ID.
+  fn pub mut compute(inputs: Array[CellId], func: fn (ref Array[Int]) -> Int) -> CellId {
+    panic('implement me')
+  }
+
+  # Returns the current value of `cell`.
+  fn pub value(cell: CellId) -> Int {
+    panic('implement me')
+  }
+
+  # Sets the value of the input cell `cell` and updates the cells that depend
+  # on it, calling the callbacks of the compute cells whose value changed.
+  # Returns `false` (and changes nothing) if `cell` isn't an input cell.
+  fn pub mut set_value(cell: CellId, value: Int) -> Bool {
+    panic('implement me')
+  }
+
+  # Adds `callback` to the compute cell `cell` and returns its ID.
+  fn pub mut add_callback(cell: CellId, callback: fn (Int)) -> CallbackId {
+    panic('implement me')
+  }
+
+  # Removes the callback `callback` from `cell`. Returns `false` if the cell
+  # has no such callback (for example, because it was already removed).
+  fn pub mut remove_callback(cell: CellId, callback: CallbackId) -> Bool {
+    panic('implement me')
+  }
+}

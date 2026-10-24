@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "linked-list.janet"
+    ],
+    "test": [
+      "test/linked-list.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Implement a doubly linked list.",
+  "source": "Classic computer science topic",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

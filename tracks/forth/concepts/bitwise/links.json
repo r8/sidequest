@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Bitwise-operations.html",
+    "description": "Bitwise operations in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Number-Conversion.html",
+    "description": "Number prefixes such as % and $ in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/LSHIFT",
+    "description": "LSHIFT in the Forth 2012 standard"
+  }
+]

@@ -1,0 +1,9 @@
+import eliuds_eggs (egg_count)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('0 eggs', fn (t) { t.equal(egg_count(0), 0) })
+  t.test('1 egg', fn (t) { t.equal(egg_count(16), 1) })
+  t.test('4 eggs', fn (t) { t.equal(egg_count(89), 4) })
+  t.test('13 eggs', fn (t) { t.equal(egg_count(2000000000), 13) })
+}

@@ -1,0 +1,7 @@
+{
+  "blurb": "[ and ] switch between interpreting and compiling inside a definition, and literal compiles what was computed in between.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

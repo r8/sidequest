@@ -1,0 +1,7 @@
+{
+  "blurb": "Characters are numbers: char and [char] give a character's code, emit prints one, and arithmetic does the rest.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

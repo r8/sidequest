@@ -1,0 +1,55 @@
+import high_scores (HighScores)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('List of scores', fn (t) {
+    t.equal(HighScores.new([30, 50, 20, 70]).scores, [30, 50, 20, 70])
+  })
+  t.test('Latest score', fn (t) {
+    t.equal(HighScores.new([100, 0, 90, 30]).latest, Option.Some(30))
+  })
+  t.test('Personal best', fn (t) {
+    t.equal(HighScores.new([40, 100, 70]).personal_best, Option.Some(100))
+  })
+  t.test('Top 3 scores > Personal top three from a list of scores', fn (t) {
+    let scores = HighScores.new([10, 30, 90, 30, 100, 20, 10, 0, 30, 40, 40, 70, 70])
+
+    t.equal(scores.personal_top_three, [100, 90, 70])
+  })
+  t.test('Top 3 scores > Personal top highest to lowest', fn (t) {
+    t.equal(HighScores.new([20, 10, 30]).personal_top_three, [30, 20, 10])
+  })
+  t.test('Top 3 scores > Personal top when there is a tie', fn (t) {
+    t.equal(HighScores.new([40, 20, 40, 30]).personal_top_three, [40, 40, 30])
+  })
+  t.test('Top 3 scores > Personal top when there are less than 3', fn (t) {
+    t.equal(HighScores.new([30, 70]).personal_top_three, [70, 30])
+  })
+  t.test('Top 3 scores > Personal top when there is only one', fn (t) {
+    t.equal(HighScores.new([40]).personal_top_three, [40])
+  })
+  t.test('Top 3 scores > Latest score after personal top scores', fn (t) {
+    let scores = HighScores.new([70, 50, 20, 30])
+
+    let _ = scores.personal_top_three
+    t.equal(scores.latest, Option.Some(30))
+  })
+  t.test('Top 3 scores > Scores after personal top scores', fn (t) {
+    let scores = HighScores.new([30, 50, 20, 70])
+
+    let _ = scores.personal_top_three
+    t.equal(scores.scores, [30, 50, 20, 70])
+  })
+  t.test('Top 3 scores > Latest score after personal best', fn (t) {
+    let scores = HighScores.new([20, 70, 15, 25, 30])
+
+    let _ = scores.personal_best
+    t.equal(scores.latest, Option.Some(30))
+  })
+  t.test('Top 3 scores > Scores after personal best', fn (t) {
+    let scores = HighScores.new([20, 70, 15, 25, 30])
+
+    let _ = scores.personal_best
+    t.equal(scores.scores, [20, 70, 15, 25, 30])
+  })
+}

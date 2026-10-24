@@ -1,0 +1,8 @@
+[
+  {
+    "exitCode": 2,
+    "stdout": ".FFF\n\nFailures:\n\n1. Test: multi-line value\n   Line: <staging>/test/test_greet.inko:11\n\n     expected: \"x\"\n          got: \"Hello, a\\nb!\"\n\n2. Test: fails on a string\n   Line: <staging>/test/test_greet.inko:6\n\n     expected: \"nope\"\n          got: \"Hello, you!\"\n\n3. Test: fails twice\n   Line: <staging>/test/test_greet.inko:8\n\n     expected: 3\n          got: 2\n\n4. Test: fails twice\n   Line: <staging>/test/test_greet.inko:9\n\n     expected: true\n          got: false\n\nFinished running 4 tests in 1 milliseconds, 4 failures, seed: 6652527356087665512\n",
+    "stderr": "\u001equest-passed 6:passes\n",
+    "timedOut": false
+  }
+]

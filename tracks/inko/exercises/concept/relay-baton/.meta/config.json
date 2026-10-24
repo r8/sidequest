@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/relay_baton.inko"
+    ],
+    "test": [
+      "test/test_relay_baton.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about ownership and moves by passing the baton in a relay race.",
+  "custom": {
+    "after": [
+      "weather-station",
+      "market-stall"
+    ]
+  }
+}

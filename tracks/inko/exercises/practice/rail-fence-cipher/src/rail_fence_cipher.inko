@@ -1,0 +1,9 @@
+# Encodes `message` with a rail fence cipher of `rails` rails.
+fn pub encode(message: String, rails: Int) -> String {
+  panic('implement me')
+}
+
+# Decodes `message`, encoded with a rail fence cipher of `rails` rails.
+fn pub decode(message: String, rails: Int) -> String {
+  panic('implement me')
+}

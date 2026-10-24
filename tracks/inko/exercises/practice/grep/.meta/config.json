@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/grep.inko"
+    ],
+    "test": [
+      "test/test_grep.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Search a file for lines matching a regular expression pattern.",
+  "source": "Conversation with Nate Foster.",
+  "source_url": "https://www.cs.cornell.edu/courses/cs3110/2014sp/hw/0/ps0.pdf",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

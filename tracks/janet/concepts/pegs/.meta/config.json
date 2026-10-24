@@ -1,0 +1,7 @@
+{
+  "blurb": "PEGs are patterns written as Janet data; peg/match, peg/find and peg/replace-all match, capture and replace text with them.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

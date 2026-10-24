@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Flags-and-Comparisons-Tutorial.html",
+    "description": "Flags and comparisons in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Boolean-Flags.html",
+    "description": "Boolean flags in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Bitwise-operations.html",
+    "description": "and, or, xor and invert in the Gforth manual"
+  }
+]

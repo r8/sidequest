@@ -1,0 +1,94 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# The bottles potions are sold in.
+type pub enum Bottle {
+  case Vial
+  case Flask
+
+  # A barrel holding the given number of litres.
+  case Barrel(Int)
+
+  # Returns how many millilitres the bottle holds.
+  fn pub millilitres -> Int {
+    match self {
+      case Vial -> 50
+      case Flask -> 250
+      case Barrel(litres) -> litres * 1000
+    }
+  }
+}
+
+# The potions the shop brews.
+type pub enum Potion {
+  # A healing potion of the given strength.
+  case Healing(Int)
+
+  # An invisibility potion lasting the given number of minutes.
+  case Invisibility(Int)
+  case Luck
+
+  # Returns the price of the potion, in silver coins.
+  fn pub price -> Int {
+    match self {
+      case Healing(strength) -> strength * 10
+      case Invisibility(minutes) -> minutes * 3
+      case Luck -> 100
+    }
+  }
+
+  # Returns the label on the bottle.
+  fn pub label -> String {
+    match self {
+      case Healing(strength) -> 'Healing (strength ${strength})'
+      case Invisibility(minutes) -> 'Invisibility (${minutes} min)'
+      case Luck -> 'Luck'
+    }
+  }
+
+  # Returns a potion twice as strong (or lasting twice as long).
+  fn pub stronger -> Potion {
+    match self {
+      case Healing(strength) -> Potion.Healing(strength * 2)
+      case Invisibility(minutes) -> Potion.Invisibility(minutes * 2)
+      case Luck -> Potion.Luck
+    }
+  }
+}
+
+# Returns the potion of the given kind and amount, or `None` for an unknown kind.
+fn pub brew(kind: String, amount: Int) -> Option[Potion] {
+  match kind {
+    case 'healing' -> Option.Some(Potion.Healing(amount))
+    case 'invisibility' -> Option.Some(Potion.Invisibility(amount))
+    case 'luck' -> Option.Some(Potion.Luck)
+    case _ -> Option.None
+  }
+}
+
+# Lets the tests compare potions with `==`. The traits lesson explains `impl`.
+impl Equal for Potion {
+  fn pub ==(other: ref Potion) -> Bool {
+    match (self, other) {
+      case (Healing(a), Healing(b)) -> a == b
+      case (Invisibility(a), Invisibility(b)) -> a == b
+      case (Luck, Luck) -> true
+      case _ -> false
+    }
+  }
+}
+
+# Lets the tests show potions in their failure messages.
+impl Format for Potion {
+  fn pub fmt(formatter: mut Formatter) {
+    match self {
+      case Healing(strength) -> {
+        formatter.tuple('Healing').field(strength).finish
+      }
+      case Invisibility(minutes) -> {
+        formatter.tuple('Invisibility').field(minutes).finish
+      }
+      case Luck -> formatter.tuple('Luck').finish
+    }
+  }
+}

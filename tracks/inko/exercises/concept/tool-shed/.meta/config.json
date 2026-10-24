@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/tool_shed.inko"
+    ],
+    "test": [
+      "test/test_tool_shed.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about borrowing with ref and mut by running a neighbourhood tool shed.",
+  "custom": {
+    "after": [
+      "relay-baton"
+    ]
+  }
+}

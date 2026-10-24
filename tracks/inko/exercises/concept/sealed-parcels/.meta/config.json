@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/sealed_parcels.inko"
+    ],
+    "test": [
+      "test/test_sealed_parcels.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about unique values and recover by sealing parcels for the post.",
+  "custom": {
+    "after": [
+      "tool-shed"
+    ]
+  }
+}

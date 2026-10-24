@@ -1,0 +1,4 @@
+# Translates every word of `phrase` into Pig Latin.
+fn pub translate(phrase: String) -> String {
+  panic('implement me')
+}

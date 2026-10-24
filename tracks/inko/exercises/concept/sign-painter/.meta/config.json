@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/sign_painter.inko"
+    ],
+    "test": [
+      "test/test_sign_painter.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about strings by turning customers' orders into hand-painted signs.",
+  "custom": {
+    "after": [
+      "lighthouse-keeper"
+    ]
+  }
+}

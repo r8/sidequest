@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "dominoes.bqn"
+    ],
+    "test": [
+      "test/dominoes.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Make a chain of dominoes.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

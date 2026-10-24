@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/fold.html",
+    "description": "Fold and insert"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/identity.html",
+    "description": "Identity values, returned when folding an empty list"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/namespace.html",
+    "description": "Namespaces: exports, field access and destructuring"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/oop.html",
+    "description": "Object-oriented programming with namespaces"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/spec/system.html",
+    "description": "System values, including •Import"
+  }
+]

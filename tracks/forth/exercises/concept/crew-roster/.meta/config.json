@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "crew-roster.fs"
+    ],
+    "test": [
+      "test/crew-roster-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about structures with begin-structure and field: by keeping the crew roster of a research station.",
+  "custom": {
+    "after": [
+      "tide-tables"
+    ]
+  }
+}

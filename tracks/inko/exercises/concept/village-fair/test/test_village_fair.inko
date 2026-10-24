@@ -1,0 +1,60 @@
+import std.test (Tests)
+import village_fair (field_length, programme, total_fees)
+import village_fair.stalls (Stall)
+
+fn cakes -> Stall {
+  Stall.new(name: 'Cakes', metres: 4, power: false)
+}
+
+fn plants -> Stall {
+  Stall.new(name: 'Plants', metres: 6, power: false)
+}
+
+fn music -> Stall {
+  Stall.new(name: 'Music', metres: 3, power: true)
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('1. the fee of a stall', fn (t) { t.equal(cakes.fee, 12) })
+  t.test('1. the fee of a stall with electricity', fn (t) {
+    t.equal(music.fee, 14)
+  })
+
+  t.test('2. the fees of several stalls', fn (t) {
+    let stalls = [cakes, plants, music]
+
+    t.equal(total_fees(stalls), 44)
+  })
+  t.test('2. the fees of no stalls', fn (t) {
+    let stalls: Array[Stall] = []
+
+    t.equal(total_fees(stalls), 0)
+  })
+
+  t.test('3. the field for several stalls', fn (t) {
+    let stalls = [cakes, plants, music]
+
+    t.equal(field_length(stalls), 15)
+  })
+  t.test('3. the field for one stall', fn (t) {
+    let stalls = [plants]
+
+    t.equal(field_length(stalls), 6)
+  })
+  t.test('3. the field for no stalls', fn (t) {
+    let stalls: Array[Stall] = []
+
+    t.equal(field_length(stalls), 0)
+  })
+
+  t.test('4. the programme of several stalls', fn (t) {
+    let stalls = [cakes, plants, music]
+
+    t.equal(programme(stalls), '1. Cakes, 2. Plants, 3. Music')
+  })
+  t.test('4. the programme of one stall', fn (t) {
+    let stalls = [music]
+
+    t.equal(programme(stalls), '1. Music')
+  })
+}

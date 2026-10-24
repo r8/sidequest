@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://gforth.org/manual/Heap-Allocation.html",
+    "description": "Heap allocation in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/memory",
+    "description": "The Memory-Allocation word set in the Forth standard"
+  }
+]

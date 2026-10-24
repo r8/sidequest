@@ -1,0 +1,5 @@
+# Returns the rows of a diamond whose widest point is the uppercase `letter`
+# ('A' to 'Z'). Every row has the same width; spaces pad it on both sides.
+fn pub rows(letter: String) -> Array[String] {
+  panic('implement me')
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "save-the-cow.bqn"
+    ],
+    "test": [
+      "test/save-the-cow.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Implement a word-guessing game.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

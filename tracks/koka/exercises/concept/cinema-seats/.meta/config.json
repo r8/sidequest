@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "cinema-seats.kk"
+    ],
+    "test": [
+      "test/cinema-seats-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about vectors by booking the seats of a small cinema.",
+  "custom": {
+    "after": [
+      "step-counter",
+      "lost-and-found"
+    ]
+  }
+}

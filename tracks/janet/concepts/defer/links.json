@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://janet-lang.org/api/index.html#defer",
+    "description": "defer in the core API reference"
+  },
+  {
+    "url": "https://janet-lang.org/api/index.html#with",
+    "description": "with in the core API reference"
+  },
+  {
+    "url": "https://janet-lang.org/docs/fibers/error_handling.html",
+    "description": "Error handling with fibers"
+  }
+]

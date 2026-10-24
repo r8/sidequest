@@ -1,0 +1,147 @@
+import clock (Clock)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('Create a new clock with an initial time > on the hour', fn (t) {
+    t.equal(Clock.new(8, 0).to_string, '08:00')
+  })
+  t.test('Create a new clock with an initial time > past the hour', fn (t) {
+    t.equal(Clock.new(11, 9).to_string, '11:09')
+  })
+  t.test('Create a new clock with an initial time > midnight is zero hours', fn (t) {
+    t.equal(Clock.new(24, 0).to_string, '00:00')
+  })
+  t.test('Create a new clock with an initial time > hour rolls over', fn (t) {
+    t.equal(Clock.new(25, 0).to_string, '01:00')
+  })
+  t.test('Create a new clock with an initial time > hour rolls over continuously', fn (t) {
+    t.equal(Clock.new(100, 0).to_string, '04:00')
+  })
+  t.test('Create a new clock with an initial time > sixty minutes is next hour', fn (t) {
+    t.equal(Clock.new(1, 60).to_string, '02:00')
+  })
+  t.test('Create a new clock with an initial time > minutes roll over', fn (t) {
+    t.equal(Clock.new(0, 160).to_string, '02:40')
+  })
+  t.test('Create a new clock with an initial time > minutes roll over continuously', fn (t) {
+    t.equal(Clock.new(0, 1723).to_string, '04:43')
+  })
+  t.test('Create a new clock with an initial time > hour and minutes roll over', fn (t) {
+    t.equal(Clock.new(25, 160).to_string, '03:40')
+  })
+  t.test('Create a new clock with an initial time > hour and minutes roll over continuously', fn (t) {
+    t.equal(Clock.new(201, 3001).to_string, '11:01')
+  })
+  t.test('Create a new clock with an initial time > hour and minutes roll over to exactly midnight', fn (t) {
+    t.equal(Clock.new(72, 8640).to_string, '00:00')
+  })
+  t.test('Create a new clock with an initial time > negative hour', fn (t) {
+    t.equal(Clock.new(-1, 15).to_string, '23:15')
+  })
+  t.test('Create a new clock with an initial time > negative hour rolls over', fn (t) {
+    t.equal(Clock.new(-25, 0).to_string, '23:00')
+  })
+  t.test('Create a new clock with an initial time > negative hour rolls over continuously', fn (t) {
+    t.equal(Clock.new(-91, 0).to_string, '05:00')
+  })
+  t.test('Create a new clock with an initial time > negative minutes', fn (t) {
+    t.equal(Clock.new(1, -40).to_string, '00:20')
+  })
+  t.test('Create a new clock with an initial time > negative minutes roll over', fn (t) {
+    t.equal(Clock.new(1, -160).to_string, '22:20')
+  })
+  t.test('Create a new clock with an initial time > negative minutes roll over continuously', fn (t) {
+    t.equal(Clock.new(1, -4820).to_string, '16:40')
+  })
+  t.test('Create a new clock with an initial time > negative sixty minutes is previous hour', fn (t) {
+    t.equal(Clock.new(2, -60).to_string, '01:00')
+  })
+  t.test('Create a new clock with an initial time > negative hour and minutes both roll over', fn (t) {
+    t.equal(Clock.new(-25, -160).to_string, '20:20')
+  })
+  t.test('Create a new clock with an initial time > negative hour and minutes both roll over continuously', fn (t) {
+    t.equal(Clock.new(-121, -5810).to_string, '22:10')
+  })
+  t.test('Add minutes > add minutes', fn (t) { t.equal(Clock.new(10, 0).add(3).to_string, '10:03') })
+  t.test('Add minutes > add no minutes', fn (t) { t.equal(Clock.new(6, 41).add(0).to_string, '06:41') })
+  t.test('Add minutes > add to next hour', fn (t) { t.equal(Clock.new(0, 45).add(40).to_string, '01:25') })
+  t.test('Add minutes > add more than one hour', fn (t) { t.equal(Clock.new(10, 0).add(61).to_string, '11:01') })
+  t.test('Add minutes > add more than two hours with carry', fn (t) {
+    t.equal(Clock.new(0, 45).add(160).to_string, '03:25')
+  })
+  t.test('Add minutes > add across midnight', fn (t) { t.equal(Clock.new(23, 59).add(2).to_string, '00:01') })
+  t.test('Add minutes > add more than one day (1500 min = 25 hrs)', fn (t) {
+    t.equal(Clock.new(5, 32).add(1500).to_string, '06:32')
+  })
+  t.test('Add minutes > add more than two days', fn (t) { t.equal(Clock.new(1, 1).add(3500).to_string, '11:21') })
+  t.test('Subtract minutes > subtract minutes', fn (t) { t.equal(Clock.new(10, 3).subtract(3).to_string, '10:00') })
+  t.test('Subtract minutes > subtract to previous hour', fn (t) {
+    t.equal(Clock.new(10, 3).subtract(30).to_string, '09:33')
+  })
+  t.test('Subtract minutes > subtract more than an hour', fn (t) {
+    t.equal(Clock.new(10, 3).subtract(70).to_string, '08:53')
+  })
+  t.test('Subtract minutes > subtract across midnight', fn (t) {
+    t.equal(Clock.new(0, 3).subtract(4).to_string, '23:59')
+  })
+  t.test('Subtract minutes > subtract more than two hours', fn (t) {
+    t.equal(Clock.new(0, 0).subtract(160).to_string, '21:20')
+  })
+  t.test('Subtract minutes > subtract more than two hours with borrow', fn (t) {
+    t.equal(Clock.new(6, 15).subtract(160).to_string, '03:35')
+  })
+  t.test('Subtract minutes > subtract more than one day (1500 min = 25 hrs)', fn (t) {
+    t.equal(Clock.new(5, 32).subtract(1500).to_string, '04:32')
+  })
+  t.test('Subtract minutes > subtract more than two days', fn (t) {
+    t.equal(Clock.new(2, 20).subtract(3000).to_string, '00:20')
+  })
+  t.test('Compare two clocks for equality > clocks with same time', fn (t) {
+    t.equal(Clock.new(15, 37), Clock.new(15, 37))
+  })
+  t.test('Compare two clocks for equality > clocks a minute apart', fn (t) {
+    t.not_equal(Clock.new(15, 36), Clock.new(15, 37))
+  })
+  t.test('Compare two clocks for equality > clocks an hour apart', fn (t) {
+    t.not_equal(Clock.new(14, 37), Clock.new(15, 37))
+  })
+  t.test('Compare two clocks for equality > clocks with hour overflow', fn (t) {
+    t.equal(Clock.new(10, 37), Clock.new(34, 37))
+  })
+  t.test('Compare two clocks for equality > clocks with hour overflow by several days', fn (t) {
+    t.equal(Clock.new(3, 11), Clock.new(99, 11))
+  })
+  t.test('Compare two clocks for equality > clocks with negative hour', fn (t) {
+    t.equal(Clock.new(22, 40), Clock.new(-2, 40))
+  })
+  t.test('Compare two clocks for equality > clocks with negative hour that wraps', fn (t) {
+    t.equal(Clock.new(17, 3), Clock.new(-31, 3))
+  })
+  t.test('Compare two clocks for equality > clocks with negative hour that wraps multiple times', fn (t) {
+    t.equal(Clock.new(13, 49), Clock.new(-83, 49))
+  })
+  t.test('Compare two clocks for equality > clocks with minute overflow', fn (t) {
+    t.equal(Clock.new(0, 1), Clock.new(0, 1441))
+  })
+  t.test('Compare two clocks for equality > clocks with minute overflow by several days', fn (t) {
+    t.equal(Clock.new(2, 2), Clock.new(2, 4322))
+  })
+  t.test('Compare two clocks for equality > clocks with negative minute', fn (t) {
+    t.equal(Clock.new(2, 40), Clock.new(3, -20))
+  })
+  t.test('Compare two clocks for equality > clocks with negative minute that wraps', fn (t) {
+    t.equal(Clock.new(4, 10), Clock.new(5, -1490))
+  })
+  t.test('Compare two clocks for equality > clocks with negative minute that wraps multiple times', fn (t) {
+    t.equal(Clock.new(6, 15), Clock.new(6, -4305))
+  })
+  t.test('Compare two clocks for equality > clocks with negative hours and minutes', fn (t) {
+    t.equal(Clock.new(7, 32), Clock.new(-12, -268))
+  })
+  t.test('Compare two clocks for equality > clocks with negative hours and minutes that wrap', fn (t) {
+    t.equal(Clock.new(18, 7), Clock.new(-54, -11513))
+  })
+  t.test('Compare two clocks for equality > full clock and zeroed clock', fn (t) {
+    t.equal(Clock.new(24, 0), Clock.new(0, 0))
+  })
+}

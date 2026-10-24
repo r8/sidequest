@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "firefly-census.janet"
+    ],
+    "test": [
+      "test/firefly-census.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about loops and variables — var, set, each, for, while and break — by counting a marsh's fireflies.",
+  "custom": {
+    "after": [
+      "orchard-harvest",
+      "night-market",
+      "train-cars"
+    ]
+  }
+}

@@ -1,0 +1,233 @@
+import dot_dsl (Graph, parse)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('empty graph', fn (t) {
+    let lines = [
+      'graph {',
+      '}',
+    ]
+
+    t.equal(parse(lines), Result.Ok(Graph.new))
+  })
+  t.test('graph with one node', fn (t) {
+    let lines = [
+      'graph {',
+      '    a;',
+      '}',
+    ]
+
+    let expected = Graph
+      .new
+      .with_node('a', [])
+
+    t.equal(parse(lines), Result.Ok(expected))
+  })
+  t.test('graph with one node with attribute', fn (t) {
+    let lines = [
+      'graph {',
+      '    a [color=green];',
+      '}',
+    ]
+
+    let expected = Graph
+      .new
+      .with_node('a', [('color', 'green')])
+
+    t.equal(parse(lines), Result.Ok(expected))
+  })
+  t.test('graph with one edge', fn (t) {
+    let lines = [
+      'graph {',
+      '    a -- b;',
+      '}',
+    ]
+
+    let expected = Graph
+      .new
+      .with_node('a', [])
+      .with_node('b', [])
+      .with_edge('a', 'b', [])
+
+    t.equal(parse(lines), Result.Ok(expected))
+  })
+  t.test('graph with one attribute', fn (t) {
+    let lines = [
+      'graph {',
+      '    [foo=1];',
+      '}',
+    ]
+
+    let expected = Graph
+      .new
+      .with_attr('foo', '1')
+
+    t.equal(parse(lines), Result.Ok(expected))
+  })
+  t.test('graph with comments', fn (t) {
+    let lines = [
+      'graph {',
+      '    // a C-like comment',
+      '    # a shell-like comment',
+      '    [foo=1];',
+      '}',
+    ]
+
+    let expected = Graph
+      .new
+      .with_attr('foo', '1')
+
+    t.equal(parse(lines), Result.Ok(expected))
+  })
+  t.test('graph with nodes, edges, and attributes', fn (t) {
+    let lines = [
+      'graph {',
+      '    [foo=1];',
+      '    [title="Testing Attrs"];',
+      '    a [color=green];',
+      '    b [label="Beta!"];',
+      '    b -- c;',
+      '    a -- b [color=blue];',
+      '    [bar=true];',
+      '}',
+    ]
+
+    let expected = Graph
+      .new
+      .with_node('a', [('color', 'green')])
+      .with_node('b', [('label', 'Beta!')])
+      .with_node('c', [])
+      .with_edge('a', 'b', [('color', 'blue')])
+      .with_edge('b', 'c', [])
+      .with_attr('foo', '1')
+      .with_attr('title', 'Testing Attrs')
+      .with_attr('bar', 'true')
+
+    t.equal(parse(lines), Result.Ok(expected))
+  })
+  t.test('multiple edges on one line', fn (t) {
+    let lines = [
+      'graph {',
+      '    a -- b -- c -- d [style=dotted];',
+      '}',
+    ]
+
+    let expected = Graph
+      .new
+      .with_node('a', [])
+      .with_node('b', [])
+      .with_node('c', [])
+      .with_node('d', [])
+      .with_edge('a', 'b', [('style', 'dotted')])
+      .with_edge('b', 'c', [('style', 'dotted')])
+      .with_edge('c', 'd', [('style', 'dotted')])
+
+    t.equal(parse(lines), Result.Ok(expected))
+  })
+  t.test('only 1 edge between nodes', fn (t) {
+    let lines = [
+      'graph {',
+      '    a -- b;',
+      '    a -- b;',
+      '    b -- a [color=blue];',
+      '}',
+    ]
+
+    let expected = Graph
+      .new
+      .with_node('a', [])
+      .with_node('b', [])
+      .with_edge('a', 'b', [('color', 'blue')])
+
+    t.equal(parse(lines), Result.Ok(expected))
+  })
+  t.test('malformed input', fn (t) {
+    let lines = [
+      'graphical {',
+      '}',
+    ]
+
+    t.equal(parse(lines), Result.Error('invalid graph'))
+  })
+  t.test('malformed edge', fn (t) {
+    let lines = [
+      'graph {',
+      '    a --;',
+      '}',
+    ]
+
+    t.equal(parse(lines), Result.Error('invalid edge'))
+  })
+  t.test('malformed edge 2', fn (t) {
+    let lines = [
+      'graph {',
+      '    a b;',
+      '}',
+    ]
+
+    t.equal(parse(lines), Result.Error('invalid edge'))
+  })
+  t.test('invalid edge type', fn (t) {
+    let lines = [
+      'graph {',
+      '    a == b;',
+      '} ',
+    ]
+
+    t.equal(parse(lines), Result.Error('invalid edge'))
+  })
+  t.test('multiple edges missing a node', fn (t) {
+    let lines = [
+      'graph {',
+      '    a -- b --;',
+      '}',
+    ]
+
+    t.equal(parse(lines), Result.Error('invalid edge'))
+  })
+  t.test('multiple edges missing a connector', fn (t) {
+    let lines = [
+      'graph {',
+      '    a -- b c;',
+      '}',
+    ]
+
+    t.equal(parse(lines), Result.Error('invalid edge'))
+  })
+  t.test('empty attribute', fn (t) {
+    let lines = [
+      'graph {',
+      '    a [];',
+      '}',
+    ]
+
+    t.equal(parse(lines), Result.Error('invalid attribute'))
+  })
+  t.test('malformed attribute', fn (t) {
+    let lines = [
+      'graph {',
+      '    a [name];',
+      '}',
+    ]
+
+    t.equal(parse(lines), Result.Error('invalid attribute'))
+  })
+  t.test('empty attribute name', fn (t) {
+    let lines = [
+      'graph {',
+      '    a [=value];',
+      '}',
+    ]
+
+    t.equal(parse(lines), Result.Error('invalid attribute'))
+  })
+  t.test('non-alphanumeric node name', fn (t) {
+    let lines = [
+      'graph {',
+      '    ? [key=value];',
+      '}',
+    ]
+
+    t.equal(parse(lines), Result.Error('node name must be alphanumeric'))
+  })
+}

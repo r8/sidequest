@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-resume",
+    "description": "The Koka book: resuming"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-handling",
+    "description": "The Koka book: control operations as exceptions"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-handler-expressions",
+    "description": "The Koka language specification: handler expressions"
+  }
+]

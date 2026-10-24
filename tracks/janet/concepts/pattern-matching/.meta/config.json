@@ -1,0 +1,7 @@
+{
+  "blurb": "match compares a value against literal, tuple, struct and guarded patterns and evaluates the first case that fits.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

@@ -1,0 +1,180 @@
+import pov (Tree, from_pov, path_to)
+import std.test (Tests)
+
+# Returns `tree` with the children of every node sorted by label, as their order
+# carries no meaning.
+fn normalized(tree: Tree) -> Tree {
+  match tree {
+    case { @label = label, @children = children } -> {
+      let sorted = children.into_iter.map(fn (child) { normalized(child) }).to_array
+
+      sorted.sort_by(fn (a, b) { a.label.cmp(b.label) })
+      Tree.new(label, sorted)
+    }
+  }
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('Reroot a tree so that its root is the specified node. > Results in the same tree if the input tree is a singleton', fn (t) {
+    let tree = Tree.leaf('x')
+    let expected = Tree.leaf('x')
+
+    t.equal(from_pov(tree, 'x').map(fn (tree) { normalized(tree) }), Option.Some(normalized(expected)))
+  })
+  t.test('Reroot a tree so that its root is the specified node. > Can reroot a tree with a parent and one sibling', fn (t) {
+    let tree = Tree.new('parent', [Tree.leaf('x'), Tree.leaf('sibling')])
+    let expected = Tree.new('x', [Tree.new('parent', [Tree.leaf('sibling')])])
+
+    t.equal(from_pov(tree, 'x').map(fn (tree) { normalized(tree) }), Option.Some(normalized(expected)))
+  })
+  t.test('Reroot a tree so that its root is the specified node. > Can reroot a tree with a parent and many siblings', fn (t) {
+    let tree = Tree.new('parent', [Tree.leaf('a'), Tree.leaf('x'), Tree.leaf('b'), Tree.leaf('c')])
+    let expected = Tree.new('x', [Tree.new('parent', [Tree.leaf('a'), Tree.leaf('b'), Tree.leaf('c')])])
+
+    t.equal(from_pov(tree, 'x').map(fn (tree) { normalized(tree) }), Option.Some(normalized(expected)))
+  })
+  t.test('Reroot a tree so that its root is the specified node. > Can reroot a tree with new root deeply nested in tree', fn (t) {
+    let tree = Tree.new(
+      'level-0',
+      [
+        Tree.new('level-1', [Tree.new('level-2', [Tree.new('level-3', [Tree.leaf('x')])])]),
+      ],
+    )
+    let expected = Tree.new(
+      'x',
+      [
+        Tree.new('level-3', [Tree.new('level-2', [Tree.new('level-1', [Tree.leaf('level-0')])])]),
+      ],
+    )
+
+    t.equal(from_pov(tree, 'x').map(fn (tree) { normalized(tree) }), Option.Some(normalized(expected)))
+  })
+  t.test('Reroot a tree so that its root is the specified node. > Moves children of the new root to same level as former parent', fn (t) {
+    let tree = Tree.new('parent', [Tree.new('x', [Tree.leaf('kid-0'), Tree.leaf('kid-1')])])
+    let expected = Tree.new('x', [Tree.leaf('kid-0'), Tree.leaf('kid-1'), Tree.leaf('parent')])
+
+    t.equal(from_pov(tree, 'x').map(fn (tree) { normalized(tree) }), Option.Some(normalized(expected)))
+  })
+  t.test('Reroot a tree so that its root is the specified node. > Can reroot a complex tree with cousins', fn (t) {
+    let tree = Tree.new(
+      'grandparent',
+      [
+        Tree.new(
+          'parent',
+          [
+            Tree.new('x', [Tree.leaf('kid-0'), Tree.leaf('kid-1')]),
+            Tree.leaf('sibling-0'),
+            Tree.leaf('sibling-1'),
+          ],
+        ),
+        Tree.new('uncle', [Tree.leaf('cousin-0'), Tree.leaf('cousin-1')]),
+      ],
+    )
+    let expected = Tree.new(
+      'x',
+      [
+        Tree.leaf('kid-1'),
+        Tree.leaf('kid-0'),
+        Tree.new(
+          'parent',
+          [
+            Tree.leaf('sibling-0'),
+            Tree.leaf('sibling-1'),
+            Tree.new(
+              'grandparent',
+              [
+                Tree.new('uncle', [Tree.leaf('cousin-0'), Tree.leaf('cousin-1')]),
+              ],
+            ),
+          ],
+        ),
+      ],
+    )
+
+    t.equal(from_pov(tree, 'x').map(fn (tree) { normalized(tree) }), Option.Some(normalized(expected)))
+  })
+  t.test('Reroot a tree so that its root is the specified node. > Errors if target does not exist in a singleton tree', fn (t) {
+    let tree = Tree.leaf('x')
+
+    t.equal(from_pov(tree, 'nonexistent'), Option.None)
+  })
+  t.test('Reroot a tree so that its root is the specified node. > Errors if target does not exist in a large tree', fn (t) {
+    let tree = Tree.new(
+      'parent',
+      [
+        Tree.new('x', [Tree.leaf('kid-0'), Tree.leaf('kid-1')]),
+        Tree.leaf('sibling-0'),
+        Tree.leaf('sibling-1'),
+      ],
+    )
+
+    t.equal(from_pov(tree, 'nonexistent'), Option.None)
+  })
+  t.test('Given two nodes, find the path between them > Can find path to parent', fn (t) {
+    let tree = Tree.new('parent', [Tree.leaf('x'), Tree.leaf('sibling')])
+
+    t.equal(path_to(tree, 'x', 'parent'), Option.Some(['x', 'parent']))
+  })
+  t.test('Given two nodes, find the path between them > Can find path to sibling', fn (t) {
+    let tree = Tree.new('parent', [Tree.leaf('a'), Tree.leaf('x'), Tree.leaf('b'), Tree.leaf('c')])
+
+    t.equal(path_to(tree, 'x', 'b'), Option.Some(['x', 'parent', 'b']))
+  })
+  t.test('Given two nodes, find the path between them > Can find path to cousin', fn (t) {
+    let tree = Tree.new(
+      'grandparent',
+      [
+        Tree.new(
+          'parent',
+          [
+            Tree.new('x', [Tree.leaf('kid-0'), Tree.leaf('kid-1')]),
+            Tree.leaf('sibling-0'),
+            Tree.leaf('sibling-1'),
+          ],
+        ),
+        Tree.new('uncle', [Tree.leaf('cousin-0'), Tree.leaf('cousin-1')]),
+      ],
+    )
+
+    t.equal(path_to(tree, 'x', 'cousin-1'), Option.Some(['x', 'parent', 'grandparent', 'uncle', 'cousin-1']))
+  })
+  t.test('Given two nodes, find the path between them > Can find path not involving root', fn (t) {
+    let tree = Tree.new(
+      'grandparent',
+      [
+        Tree.new('parent', [Tree.leaf('x'), Tree.leaf('sibling-0'), Tree.leaf('sibling-1')]),
+      ],
+    )
+
+    t.equal(path_to(tree, 'x', 'sibling-1'), Option.Some(['x', 'parent', 'sibling-1']))
+  })
+  t.test('Given two nodes, find the path between them > Can find path from nodes other than x', fn (t) {
+    let tree = Tree.new('parent', [Tree.leaf('a'), Tree.leaf('x'), Tree.leaf('b'), Tree.leaf('c')])
+
+    t.equal(path_to(tree, 'a', 'c'), Option.Some(['a', 'parent', 'c']))
+  })
+  t.test('Given two nodes, find the path between them > Errors if destination does not exist', fn (t) {
+    let tree = Tree.new(
+      'parent',
+      [
+        Tree.new('x', [Tree.leaf('kid-0'), Tree.leaf('kid-1')]),
+        Tree.leaf('sibling-0'),
+        Tree.leaf('sibling-1'),
+      ],
+    )
+
+    t.equal(path_to(tree, 'x', 'nonexistent'), Option.None)
+  })
+  t.test('Given two nodes, find the path between them > Errors if source does not exist', fn (t) {
+    let tree = Tree.new(
+      'parent',
+      [
+        Tree.new('x', [Tree.leaf('kid-0'), Tree.leaf('kid-1')]),
+        Tree.leaf('sibling-0'),
+        Tree.leaf('sibling-1'),
+      ],
+    )
+
+    t.equal(path_to(tree, 'nonexistent', 'x'), Option.None)
+  })
+}

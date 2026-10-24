@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "zipper.kk"
+    ],
+    "test": [
+      "test/zipper-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Creating a zipper for a binary tree.",
+  "custom": {
+    "after": [
+      "binary-search-tree"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+# The stalls of the fair, and what they pay for their pitch.
+
+# The fee for every metre of pitch, in coins.
+let pub FEE_PER_METRE = 3
+
+# The extra fee for a stall that needs electricity, in coins.
+let POWER_FEE = 5
+
+# A stall at the fair.
+type pub Stall {
+  let @name: String
+  let @metres: Int
+  let @power: Bool
+
+  # Returns a stall called `name`, `metres` wide, that needs electricity if
+  # `power` is true.
+  fn pub static new(name: String, metres: Int, power: Bool) -> Stall {
+    Stall(name: name, metres: metres, power: power)
+  }
+
+  # Returns the name of the stall.
+  fn pub name -> String {
+    @name
+  }
+
+  # Returns the width of the stall's pitch in metres.
+  fn pub metres -> Int {
+    @metres
+  }
+
+  # Returns the fee the stall pays for its pitch.
+  fn pub fee -> Int {
+    panic('implement me')
+  }
+}

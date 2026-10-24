@@ -1,0 +1,183 @@
+import allergies (Allergen, allergic_to?, list)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('testing for eggs allergy > not allergic to anything', fn (t) {
+    t.false(allergic_to?(Allergen.Eggs, 0))
+  })
+  t.test('testing for eggs allergy > allergic only to eggs', fn (t) {
+    t.true(allergic_to?(Allergen.Eggs, 1))
+  })
+  t.test('testing for eggs allergy > allergic to eggs and something else', fn (t) {
+    t.true(allergic_to?(Allergen.Eggs, 3))
+  })
+  t.test('testing for eggs allergy > allergic to something, but not eggs', fn (t) {
+    t.false(allergic_to?(Allergen.Eggs, 2))
+  })
+  t.test('testing for eggs allergy > allergic to everything', fn (t) {
+    t.true(allergic_to?(Allergen.Eggs, 255))
+  })
+  t.test('testing for peanuts allergy > not allergic to anything', fn (t) {
+    t.false(allergic_to?(Allergen.Peanuts, 0))
+  })
+  t.test('testing for peanuts allergy > allergic only to peanuts', fn (t) {
+    t.true(allergic_to?(Allergen.Peanuts, 2))
+  })
+  t.test('testing for peanuts allergy > allergic to peanuts and something else', fn (t) {
+    t.true(allergic_to?(Allergen.Peanuts, 7))
+  })
+  t.test('testing for peanuts allergy > allergic to something, but not peanuts', fn (t) {
+    t.false(allergic_to?(Allergen.Peanuts, 5))
+  })
+  t.test('testing for peanuts allergy > allergic to everything', fn (t) {
+    t.true(allergic_to?(Allergen.Peanuts, 255))
+  })
+  t.test('testing for shellfish allergy > not allergic to anything', fn (t) {
+    t.false(allergic_to?(Allergen.Shellfish, 0))
+  })
+  t.test('testing for shellfish allergy > allergic only to shellfish', fn (t) {
+    t.true(allergic_to?(Allergen.Shellfish, 4))
+  })
+  t.test('testing for shellfish allergy > allergic to shellfish and something else', fn (t) {
+    t.true(allergic_to?(Allergen.Shellfish, 14))
+  })
+  t.test('testing for shellfish allergy > allergic to something, but not shellfish', fn (t) {
+    t.false(allergic_to?(Allergen.Shellfish, 10))
+  })
+  t.test('testing for shellfish allergy > allergic to everything', fn (t) {
+    t.true(allergic_to?(Allergen.Shellfish, 255))
+  })
+  t.test('testing for strawberries allergy > not allergic to anything', fn (t) {
+    t.false(allergic_to?(Allergen.Strawberries, 0))
+  })
+  t.test('testing for strawberries allergy > allergic only to strawberries', fn (t) {
+    t.true(allergic_to?(Allergen.Strawberries, 8))
+  })
+  t.test('testing for strawberries allergy > allergic to strawberries and something else', fn (t) {
+    t.true(allergic_to?(Allergen.Strawberries, 28))
+  })
+  t.test('testing for strawberries allergy > allergic to something, but not strawberries', fn (t) {
+    t.false(allergic_to?(Allergen.Strawberries, 20))
+  })
+  t.test('testing for strawberries allergy > allergic to everything', fn (t) {
+    t.true(allergic_to?(Allergen.Strawberries, 255))
+  })
+  t.test('testing for tomatoes allergy > not allergic to anything', fn (t) {
+    t.false(allergic_to?(Allergen.Tomatoes, 0))
+  })
+  t.test('testing for tomatoes allergy > allergic only to tomatoes', fn (t) {
+    t.true(allergic_to?(Allergen.Tomatoes, 16))
+  })
+  t.test('testing for tomatoes allergy > allergic to tomatoes and something else', fn (t) {
+    t.true(allergic_to?(Allergen.Tomatoes, 56))
+  })
+  t.test('testing for tomatoes allergy > allergic to something, but not tomatoes', fn (t) {
+    t.false(allergic_to?(Allergen.Tomatoes, 40))
+  })
+  t.test('testing for tomatoes allergy > allergic to everything', fn (t) {
+    t.true(allergic_to?(Allergen.Tomatoes, 255))
+  })
+  t.test('testing for chocolate allergy > not allergic to anything', fn (t) {
+    t.false(allergic_to?(Allergen.Chocolate, 0))
+  })
+  t.test('testing for chocolate allergy > allergic only to chocolate', fn (t) {
+    t.true(allergic_to?(Allergen.Chocolate, 32))
+  })
+  t.test('testing for chocolate allergy > allergic to chocolate and something else', fn (t) {
+    t.true(allergic_to?(Allergen.Chocolate, 112))
+  })
+  t.test('testing for chocolate allergy > allergic to something, but not chocolate', fn (t) {
+    t.false(allergic_to?(Allergen.Chocolate, 80))
+  })
+  t.test('testing for chocolate allergy > allergic to everything', fn (t) {
+    t.true(allergic_to?(Allergen.Chocolate, 255))
+  })
+  t.test('testing for pollen allergy > not allergic to anything', fn (t) {
+    t.false(allergic_to?(Allergen.Pollen, 0))
+  })
+  t.test('testing for pollen allergy > allergic only to pollen', fn (t) {
+    t.true(allergic_to?(Allergen.Pollen, 64))
+  })
+  t.test('testing for pollen allergy > allergic to pollen and something else', fn (t) {
+    t.true(allergic_to?(Allergen.Pollen, 224))
+  })
+  t.test('testing for pollen allergy > allergic to something, but not pollen', fn (t) {
+    t.false(allergic_to?(Allergen.Pollen, 160))
+  })
+  t.test('testing for pollen allergy > allergic to everything', fn (t) {
+    t.true(allergic_to?(Allergen.Pollen, 255))
+  })
+  t.test('testing for cats allergy > not allergic to anything', fn (t) {
+    t.false(allergic_to?(Allergen.Cats, 0))
+  })
+  t.test('testing for cats allergy > allergic only to cats', fn (t) {
+    t.true(allergic_to?(Allergen.Cats, 128))
+  })
+  t.test('testing for cats allergy > allergic to cats and something else', fn (t) {
+    t.true(allergic_to?(Allergen.Cats, 192))
+  })
+  t.test('testing for cats allergy > allergic to something, but not cats', fn (t) {
+    t.false(allergic_to?(Allergen.Cats, 64))
+  })
+  t.test('testing for cats allergy > allergic to everything', fn (t) {
+    t.true(allergic_to?(Allergen.Cats, 255))
+  })
+  t.test('list when: > no allergies', fn (t) { t.equal(list(0), []) })
+  t.test('list when: > just eggs', fn (t) { t.equal(list(1), [Allergen.Eggs]) })
+  t.test('list when: > just peanuts', fn (t) { t.equal(list(2), [Allergen.Peanuts]) })
+  t.test('list when: > just strawberries', fn (t) { t.equal(list(8), [Allergen.Strawberries]) })
+  t.test('list when: > eggs and peanuts', fn (t) { t.equal(list(3), [Allergen.Eggs, Allergen.Peanuts]) })
+  t.test('list when: > more than eggs but not peanuts', fn (t) {
+    t.equal(
+      list(5),
+      [
+        Allergen.Eggs,
+        Allergen.Shellfish,
+      ],
+    )
+  })
+  t.test('list when: > lots of stuff', fn (t) {
+    t.equal(
+      list(248),
+      [
+        Allergen.Strawberries,
+        Allergen.Tomatoes,
+        Allergen.Chocolate,
+        Allergen.Pollen,
+        Allergen.Cats,
+      ],
+    )
+  })
+  t.test('list when: > everything', fn (t) {
+    t.equal(
+      list(255),
+      [
+        Allergen.Eggs,
+        Allergen.Peanuts,
+        Allergen.Shellfish,
+        Allergen.Strawberries,
+        Allergen.Tomatoes,
+        Allergen.Chocolate,
+        Allergen.Pollen,
+        Allergen.Cats,
+      ],
+    )
+  })
+  t.test('list when: > no allergen score parts', fn (t) {
+    t.equal(
+      list(509),
+      [
+        Allergen.Eggs,
+        Allergen.Shellfish,
+        Allergen.Strawberries,
+        Allergen.Tomatoes,
+        Allergen.Chocolate,
+        Allergen.Pollen,
+        Allergen.Cats,
+      ],
+    )
+  })
+  t.test('list when: > no allergen score parts without highest valid score', fn (t) {
+    t.equal(list(257), [Allergen.Eggs])
+  })
+}

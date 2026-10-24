@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "band-setlist.bqn"
+    ],
+    "test": [
+      "test/band-setlist.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about each and modifiers by preparing a band's setlist for the tour.",
+  "custom": {
+    "after": [
+      "name-tags",
+      "ticket-machine"
+    ]
+  }
+}

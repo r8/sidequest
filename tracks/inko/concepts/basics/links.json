@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/methods/",
+    "description": "Methods and closures, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/variables/",
+    "description": "Variables and constants, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/references/syntax/",
+    "description": "The syntax reference"
+  }
+]

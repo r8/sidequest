@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "micro-blog.bqn"
+    ],
+    "test": [
+      "test/micro-blog.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Given an input string, truncate it to 5 characters.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

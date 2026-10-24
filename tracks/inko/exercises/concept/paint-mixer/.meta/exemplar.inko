@@ -1,0 +1,103 @@
+import std.clone (Clone)
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# A colour as amounts of red, green and blue light, each from 0 to 255.
+type pub copy Colour {
+  let pub mut @red: Int
+  let pub mut @green: Int
+  let pub mut @blue: Int
+
+  # Returns the colour with the given amounts of red, green and blue.
+  fn pub static new(red: Int, green: Int, blue: Int) -> Colour {
+    Colour(red: red, green: green, blue: blue)
+  }
+
+  # Returns the colour halfway between this one and `other`, rounding down.
+  fn pub mix(other: Colour) -> Colour {
+    Colour(
+      red: (@red + other.red) / 2,
+      green: (@green + other.green) / 2,
+      blue: (@blue + other.blue) / 2,
+    )
+  }
+
+  # Returns the colour with `amount` added to each of red, green and blue, up to
+  # 255.
+  fn pub move lighter(amount: Int) -> Colour {
+    @red = brighten(@red, amount)
+    @green = brighten(@green, amount)
+    @blue = brighten(@blue, amount)
+    self
+  }
+
+  # Returns the colour as a hex code, such as "#ff8000".
+  fn pub hex -> String {
+    '#${channel(@red)}${channel(@green)}${channel(@blue)}'
+  }
+}
+
+# Lets the tests compare colours with `==`.
+impl Equal for Colour {
+  fn pub ==(other: Colour) -> Bool {
+    @red == other.red and @green == other.green and @blue == other.blue
+  }
+}
+
+# A copy type is copied whenever it's moved, so cloning it just returns it.
+# Implementing `Clone` lets an `Array[Colour]` be cloned.
+impl Clone for Colour {
+  fn pub clone -> Colour {
+    self
+  }
+}
+
+# Lets the tests show colours in their failure messages.
+impl Format for Colour {
+  fn pub fmt(formatter: mut Formatter) {
+    formatter.write(hex)
+  }
+}
+
+# A recipe for a paint: the colours that are mixed, in order.
+type pub Recipe {
+  let pub @name: String
+  let pub @colours: Array[Colour]
+
+  # Returns the recipe called `name` that mixes `colours`.
+  fn pub static new(name: String, colours: Array[Colour]) -> Recipe {
+    Recipe(name: name, colours: colours)
+  }
+
+  # Returns the colour of the paint: the colours mixed one after the other, in
+  # order, starting from the first. Black (0, 0, 0) without any colours.
+  fn pub paint -> Colour {
+    let Some(first) = @colours.first else return Colour.new(0, 0, 0)
+
+    @colours.iter.skip(1).reduce(first, fn (mixed, colour) { mixed.mix(colour) })
+  }
+
+  # Returns a copy of the recipe called `name`, with `colour` mixed in last.
+  # The recipe itself doesn't change.
+  fn pub variant(name: String, colour: Colour) -> Recipe {
+    let colours = @colours.clone
+
+    colours.push(colour)
+    Recipe(name: name, colours: colours)
+  }
+}
+
+impl Clone for Recipe {
+  # Returns a copy of the recipe.
+  fn pub clone -> Recipe {
+    Recipe(name: @name, colours: @colours.clone)
+  }
+}
+
+fn brighten(value: Int, amount: Int) -> Int {
+  if (value + amount) > 255 { 255 } else { value + amount }
+}
+
+fn channel(value: Int) -> String {
+  value.format(16).pad_start(with: '0', chars: 2)
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Formatted-numeric-output.html",
+    "description": "Formatted numeric output in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/num-start",
+    "description": "<# in the Forth 2012 standard, with links to the related words"
+  },
+  {
+    "url": "https://www.forth.com/starting-forth/7-signed-double-length-numbers/",
+    "description": "Starting Forth, chapter 7: number formatting"
+  }
+]

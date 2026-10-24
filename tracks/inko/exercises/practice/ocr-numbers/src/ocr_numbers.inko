@@ -1,0 +1,6 @@
+# Converts the OCR grid `rows` to its digits: every 4 rows form one line of
+# digits that are 3 columns wide each, unreadable digits become `?`, and lines
+# are joined by commas. Returns an error if the grid has the wrong size.
+fn pub convert(rows: ref Array[String]) -> Result[String, String] {
+  panic('implement me')
+}

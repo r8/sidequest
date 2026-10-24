@@ -1,0 +1,33 @@
+import matching_brackets (paired?)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('paired square brackets', fn (t) { t.true(paired?('[]')) })
+  t.test('empty string', fn (t) { t.true(paired?('')) })
+  t.test('unpaired brackets', fn (t) { t.false(paired?('[[')) })
+  t.test('wrong ordered brackets', fn (t) { t.false(paired?('}{')) })
+  t.test('wrong closing bracket', fn (t) { t.false(paired?('{]')) })
+  t.test('paired with whitespace', fn (t) { t.true(paired?('{ }')) })
+  t.test('partially paired brackets', fn (t) { t.false(paired?('{[])')) })
+  t.test('simple nested brackets', fn (t) { t.true(paired?('{[]}')) })
+  t.test('several paired brackets', fn (t) { t.true(paired?('{}[]')) })
+  t.test('paired and nested brackets', fn (t) { t.true(paired?('([{}({}[])])')) })
+  t.test('unopened closing brackets', fn (t) { t.false(paired?('{[)][]}')) })
+  t.test('unpaired and nested brackets', fn (t) { t.false(paired?('([{])')) })
+  t.test('paired and wrong nested brackets', fn (t) { t.false(paired?('[({]})')) })
+  t.test('paired and wrong nested brackets but innermost are correct', fn (t) {
+    t.false(paired?('[({}])'))
+  })
+  t.test('paired and incomplete brackets', fn (t) { t.false(paired?('{}[')) })
+  t.test('too many closing brackets', fn (t) { t.false(paired?('[]]')) })
+  t.test('early unexpected brackets', fn (t) { t.false(paired?(')()')) })
+  t.test('early mismatched brackets', fn (t) { t.false(paired?('{)()')) })
+  t.test('math expression', fn (t) { t.true(paired?('(((185 + 223.85) * 15) - 543)/2')) })
+  t.test('complex latex expression', fn (t) {
+    t.true(
+      paired?(
+        '\\left(\\begin{array}{cc} \\frac{1}{3} & x\\\\ \\mathrm{e}^{x} &... x^2 \\end{array}\\right)',
+      ),
+    )
+  })
+}

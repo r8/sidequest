@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "clock.bqn"
+    ],
+    "test": [
+      "test/clock.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Implement a clock that handles times without dates.",
+  "source": "Pairing session with Erin Drummond",
+  "custom": {
+    "after": [
+      "receipt-printer"
+    ]
+  }
+}

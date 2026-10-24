@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "sublist.kk"
+    ],
+    "test": [
+      "test/sublist-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Determine if a list is a sublist of another list.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "tea-time.fs"
+    ],
+    "test": [
+      "test/tea-time-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about conditionals with if, else, then and exit by writing down a teahouse's brewing rules.",
+  "custom": {
+    "after": [
+      "roller-coaster"
+    ]
+  }
+}

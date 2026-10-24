@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "mail-room.bqn"
+    ],
+    "test": [
+      "test/mail-room.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about group by sorting the morning post in an apartment block's mail room.",
+  "custom": {
+    "after": [
+      "spice-rack",
+      "band-setlist"
+    ]
+  }
+}

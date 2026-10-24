@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "etl.kk"
+    ],
+    "test": [
+      "test/etl-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Change the data format for scoring a game to more easily add other languages.",
+  "source": "Based on an exercise by the JumpstartLab team for students at The Turing School of Software and Design.",
+  "source_url": "https://www.turing.edu/",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

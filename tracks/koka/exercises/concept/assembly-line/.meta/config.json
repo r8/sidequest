@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "assembly-line.kk"
+    ],
+    "test": [
+      "test/assembly-line-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about effect types by running a toy factory's assembly line of fallible stations.",
+  "custom": {
+    "after": [
+      "orchard",
+      "trail-log"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+# Returns the Scrabble score of `word`, ignoring case.
+fn pub score(word: String) -> Int {
+  word.to_lower.chars.reduce(0, fn (total, letter) {
+    total + letter_score(letter)
+  })
+}
+
+fn letter_score(letter: String) -> Int {
+  match letter {
+    case 'a' or 'e' or 'i' or 'o' or 'u' or 'l' or 'n' or 'r' or 's' or 't' -> 1
+    case 'd' or 'g' -> 2
+    case 'b' or 'c' or 'm' or 'p' -> 3
+    case 'f' or 'h' or 'v' or 'w' or 'y' -> 4
+    case 'k' -> 5
+    case 'j' or 'x' -> 8
+    case 'q' or 'z' -> 10
+    case _ -> 0
+  }
+}

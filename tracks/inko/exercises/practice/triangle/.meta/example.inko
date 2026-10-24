@@ -1,0 +1,26 @@
+# Returns `true` if all sides are positive and each side is at most the sum of
+# the other two.
+fn triangle?(a: Float, b: Float, c: Float) -> Bool {
+  a > 0.0 and b > 0.0 and c > 0.0 and a + b >= c and b + c >= a and a + c >= b
+}
+
+# Returns `true` if sides `a`, `b` and `c` form a triangle with all three sides
+# equal.
+#
+# Sides form a triangle when all are positive and each side is at most the sum
+# of the other two.
+fn pub equilateral?(a: Float, b: Float, c: Float) -> Bool {
+  triangle?(a, b, c) and a == b and b == c
+}
+
+# Returns `true` if sides `a`, `b` and `c` form a triangle with at least two
+# sides equal.
+fn pub isosceles?(a: Float, b: Float, c: Float) -> Bool {
+  triangle?(a, b, c) and (a == b or b == c or a == c)
+}
+
+# Returns `true` if sides `a`, `b` and `c` form a triangle with all three sides
+# different.
+fn pub scalene?(a: Float, b: Float, c: Float) -> Bool {
+  triangle?(a, b, c) and a != b and b != c and a != c
+}

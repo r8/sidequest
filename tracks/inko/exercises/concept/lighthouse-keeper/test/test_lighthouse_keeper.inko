@@ -1,0 +1,45 @@
+import lighthouse_keeper (can_rest?, foghorn?, lamp_on?, storm_flag)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. lamp is lit late in the evening', fn (t) { t.true(lamp_on?(22)) })
+  t.test('1. lamp is lit at 20:00', fn (t) { t.true(lamp_on?(20)) })
+  t.test('1. lamp is lit after midnight', fn (t) { t.true(lamp_on?(3)) })
+  t.test('1. lamp is off at 06:00', fn (t) { t.false(lamp_on?(6)) })
+  t.test('1. lamp is off in the afternoon', fn (t) { t.false(lamp_on?(15)) })
+
+  t.test('2. foghorn in fog with ships', fn (t) {
+    t.true(foghorn?(visibility: 400, ships_nearby: true))
+  })
+  t.test('2. no foghorn in fog without ships', fn (t) {
+    t.false(foghorn?(visibility: 400, ships_nearby: false))
+  })
+  t.test('2. no foghorn in clear weather', fn (t) {
+    t.false(foghorn?(visibility: 1000, ships_nearby: true))
+  })
+
+  t.test('3. no flag in a breeze', fn (t) { t.equal(storm_flag(10), 'none') })
+  t.test('3. gale flag', fn (t) { t.equal(storm_flag(34), 'gale') })
+  t.test('3. storm flag', fn (t) { t.equal(storm_flag(50), 'storm') })
+  t.test('3. hurricane flag', fn (t) { t.equal(storm_flag(64), 'hurricane') })
+  t.test('3. storm flag just below a hurricane', fn (t) {
+    t.equal(storm_flag(63), 'storm')
+  })
+
+  t.test('4. rest on a calm afternoon', fn (t) {
+    t.true(can_rest?(hour: 14, visibility: 5000, ships_nearby: true, knots: 10))
+  })
+  t.test('4. no rest while the lamp is lit', fn (t) {
+    t.false(
+      can_rest?(hour: 21, visibility: 5000, ships_nearby: false, knots: 10),
+    )
+  })
+  t.test('4. no rest while the foghorn sounds', fn (t) {
+    t.false(can_rest?(hour: 14, visibility: 200, ships_nearby: true, knots: 10))
+  })
+  t.test('4. no rest in a gale', fn (t) {
+    t.false(
+      can_rest?(hour: 14, visibility: 5000, ships_nearby: false, knots: 40),
+    )
+  })
+}

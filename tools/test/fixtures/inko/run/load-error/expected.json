@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "status": "error",
+  "message": "src/greet.inko:2:15 error(invalid-type): expected a value of type 'String', found 'Int'",
+  "tests": []
+}

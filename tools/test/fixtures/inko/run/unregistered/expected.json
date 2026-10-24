@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "status": "fail",
+  "message": "warning: inko ran 1 tests but the test file declares 2",
+  "tests": [
+    {
+      "name": "greets",
+      "status": "error",
+      "test_code": "if false { t.test('greets', fn (t) { t.equal(greet('you'), 'Hello, you!') })",
+      "message": "not run: Inko did not run this test (is it registered only conditionally?)"
+    },
+    {
+      "name": "counts",
+      "status": "pass",
+      "test_code": "t.test('counts', fn (t) { t.equal(1 + 1, 2) })",
+      "message": null
+    }
+  ]
+}

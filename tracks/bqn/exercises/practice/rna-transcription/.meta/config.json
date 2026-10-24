@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "rna-transcription.bqn"
+    ],
+    "test": [
+      "test/rna-transcription.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Given a DNA strand, return its RNA complement.",
+  "source": "Hyperphysics",
+  "source_url": "https://web.archive.org/web/20220408112140/http://hyperphysics.phy-astr.gsu.edu/hbase/Organic/transcription.html",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+import potion_shop (Bottle, Potion, brew)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. a vial', fn (t) { t.equal(Bottle.Vial.millilitres, 50) })
+  t.test('1. a flask', fn (t) { t.equal(Bottle.Flask.millilitres, 250) })
+  t.test('1. a barrel', fn (t) {
+    t.equal(Bottle.Barrel(40).millilitres, 40_000)
+  })
+
+  t.test('2. the price of healing', fn (t) {
+    t.equal(Potion.Healing(3).price, 30)
+  })
+  t.test('2. the price of invisibility', fn (t) {
+    t.equal(Potion.Invisibility(20).price, 60)
+  })
+  t.test('2. the price of luck', fn (t) { t.equal(Potion.Luck.price, 100) })
+
+  t.test('3. a healing label', fn (t) {
+    t.equal(Potion.Healing(3).label, 'Healing (strength 3)')
+  })
+  t.test('3. an invisibility label', fn (t) {
+    t.equal(Potion.Invisibility(20).label, 'Invisibility (20 min)')
+  })
+  t.test('3. a luck label', fn (t) { t.equal(Potion.Luck.label, 'Luck') })
+
+  t.test('4. stronger healing', fn (t) {
+    t.equal(Potion.Healing(3).stronger, Potion.Healing(6))
+  })
+  t.test('4. longer invisibility', fn (t) {
+    t.equal(Potion.Invisibility(20).stronger, Potion.Invisibility(40))
+  })
+  t.test('4. luck stays luck', fn (t) {
+    t.equal(Potion.Luck.stronger, Potion.Luck)
+  })
+
+  t.test('5. brew healing', fn (t) {
+    t.equal(brew('healing', 2), Option.Some(Potion.Healing(2)))
+  })
+  t.test('5. brew invisibility', fn (t) {
+    t.equal(brew('invisibility', 15), Option.Some(Potion.Invisibility(15)))
+  })
+  t.test('5. brew luck', fn (t) {
+    t.equal(brew('luck', 7), Option.Some(Potion.Luck))
+  })
+  t.test('5. brew something unknown', fn (t) {
+    t.equal(brew('flying', 1), Option.None)
+  })
+}

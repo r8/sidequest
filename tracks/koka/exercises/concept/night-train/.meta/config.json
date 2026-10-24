@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "night-train.kk"
+    ],
+    "test": [
+      "test/night-train-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about booleans and conditionals by running the ticket machine of a night train.",
+  "custom": {
+    "after": [
+      "tea-time"
+    ]
+  }
+}

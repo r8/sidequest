@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "parcel-post.kk"
+    ],
+    "test": [
+      "test/parcel-post-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about default values, named arguments, local functions and dot-selection by programming the till of a post office.",
+  "custom": {
+    "after": [
+      "night-train"
+    ]
+  }
+}

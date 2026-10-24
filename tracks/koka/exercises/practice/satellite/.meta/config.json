@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "satellite.kk"
+    ],
+    "test": [
+      "test/satellite-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Rebuild binary trees from pre-order and in-order traversals.",
+  "custom": {
+    "after": [
+      "binary-search-tree"
+    ]
+  }
+}

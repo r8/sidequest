@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "receipt-printer.fs"
+    ],
+    "test": [
+      "test/receipt-printer-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about pictured numeric output and number bases by formatting the receipts of a corner shop's till.",
+  "custom": {
+    "after": [
+      "name-tags",
+      "coat-check",
+      "piggy-bank"
+    ]
+  }
+}

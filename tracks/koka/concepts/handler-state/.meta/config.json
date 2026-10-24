@@ -1,0 +1,7 @@
+{
+  "blurb": "A handler keeps state in local variables of the function that installs it, so an effect can remember.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

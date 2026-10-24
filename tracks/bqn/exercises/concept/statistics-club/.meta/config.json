@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "statistics-club.bqn"
+    ],
+    "test": [
+      "test/statistics-club.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about trains and tacit style by computing the Statistics Club's numbers without naming a single argument.",
+  "custom": {
+    "after": [
+      "unit-converter",
+      "shopping-basket"
+    ]
+  }
+}

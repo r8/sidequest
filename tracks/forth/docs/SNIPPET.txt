@@ -1,0 +1,4 @@
+: square ( n -- n² ) dup * ;
+: sum-of-squares ( a b -- n ) square swap square + ;
+
+3 4 sum-of-squares .  \ 25

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "train-cars.janet"
+    ],
+    "test": [
+      "test/train-cars.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about arrays and tuples by coupling and shunting the cars of freight trains.",
+  "custom": {
+    "after": [
+      "orchard-harvest",
+      "night-market"
+    ]
+  }
+}

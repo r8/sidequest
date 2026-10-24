@@ -1,0 +1,32 @@
+import nucleotide_count (nucleotide_counts)
+import std.map (Map)
+import std.test (Tests)
+
+fn counts(a: Int, c: Int, g: Int, t: Int) -> Map[String, Int] {
+  let map = Map.new
+
+  map.set('A', a)
+  map.set('C', c)
+  map.set('G', g)
+  map.set('T', t)
+  map
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('empty strand', fn (t) { t.equal(nucleotide_counts(''), Result.Ok(counts(0, 0, 0, 0))) })
+  t.test('can count one nucleotide in single-character input', fn (t) {
+    t.equal(nucleotide_counts('G'), Result.Ok(counts(0, 0, 1, 0)))
+  })
+  t.test('strand with repeated nucleotide', fn (t) {
+    t.equal(nucleotide_counts('GGGGGGG'), Result.Ok(counts(0, 0, 7, 0)))
+  })
+  t.test('strand with multiple nucleotides', fn (t) {
+    t.equal(
+      nucleotide_counts('AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'),
+      Result.Ok(counts(20, 12, 17, 21)),
+    )
+  })
+  t.test('strand with invalid nucleotides', fn (t) {
+    t.equal(nucleotide_counts('AGXXACT'), Result.Error('Invalid nucleotide in strand'))
+  })
+}

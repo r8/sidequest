@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "atbash-cipher.janet"
+    ],
+    "test": [
+      "test/atbash-cipher.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Create an implementation of the Atbash cipher, an ancient encryption system created in the Middle East.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Atbash",
+  "custom": {
+    "after": [
+      "rotational-cipher"
+    ]
+  }
+}

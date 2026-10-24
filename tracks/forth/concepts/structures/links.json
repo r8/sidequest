@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Forth200x-Structures.html",
+    "description": "Forth 2012 structures in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/facility/BEGIN-STRUCTURE",
+    "description": "BEGIN-STRUCTURE in the Forth standard"
+  },
+  {
+    "url": "https://gforth.org/manual/Arrays-and-Records-Tutorial.html",
+    "description": "Arrays and records in the Gforth tutorial"
+  }
+]

@@ -1,0 +1,5 @@
+# Returns `true` if `number` is the sum of its own digits each raised to the
+# power of the number of digits.
+fn pub armstrong_number?(number: Int) -> Bool {
+  panic('implement me')
+}

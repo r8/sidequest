@@ -1,0 +1,59 @@
+import nesting_dolls (Doll)
+import std.test (Tests)
+
+fn babushka -> Doll {
+  Doll.Hollow(
+    'Anya',
+    Doll.Hollow('Bela', Doll.Hollow('Vera', Doll.Solid('Dasha'))),
+  )
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('1. count a single doll', fn (t) {
+    t.equal(Doll.Solid('Dasha').count, 1)
+  })
+  t.test('1. count two dolls', fn (t) {
+    t.equal(Doll.Hollow('Vera', Doll.Solid('Dasha')).count, 2)
+  })
+  t.test('1. count a full set', fn (t) { t.equal(babushka.count, 4) })
+
+  t.test('2. the innermost of a single doll', fn (t) {
+    t.equal(Doll.Solid('Dasha').innermost, 'Dasha')
+  })
+  t.test('2. the innermost of a full set', fn (t) {
+    t.equal(babushka.innermost, 'Dasha')
+  })
+
+  t.test('3. the names of a single doll', fn (t) {
+    t.equal(Doll.Solid('Dasha').names, ['Dasha'])
+  })
+  t.test('3. the names of a full set', fn (t) {
+    t.equal(babushka.names, ['Anya', 'Bela', 'Vera', 'Dasha'])
+  })
+
+  t.test('4. the outermost doll is in the set', fn (t) {
+    t.true(babushka.contains?('Anya'))
+  })
+  t.test('4. a doll in the middle is in the set', fn (t) {
+    t.true(babushka.contains?('Vera'))
+  })
+  t.test('4. the innermost doll is in the set', fn (t) {
+    t.true(babushka.contains?('Dasha'))
+  })
+  t.test('4. a stranger is not in the set', fn (t) {
+    t.false(babushka.contains?('Olga'))
+  })
+
+  t.test('5. nest a single doll', fn (t) {
+    let doll = Doll.nest(['Dasha'])
+
+    t.equal(doll.names, ['Dasha'])
+    t.equal(doll.count, 1)
+  })
+  t.test('5. nest a full set', fn (t) {
+    let doll = Doll.nest(['Anya', 'Bela', 'Vera', 'Dasha'])
+
+    t.equal(doll.names, ['Anya', 'Bela', 'Vera', 'Dasha'])
+    t.equal(doll.innermost, 'Dasha')
+  })
+}

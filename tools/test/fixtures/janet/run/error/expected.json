@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "status": "fail",
+  "message": null,
+  "tests": [
+    {
+      "name": "stub raises",
+      "status": "error",
+      "test_code": "(t/deftest \"stub raises\"\n  (t/assert-equal \"Hello, you!\" (sol/greet)))",
+      "message": "implement me",
+      "output": null
+    },
+    {
+      "name": "arrays compare by content",
+      "status": "pass",
+      "test_code": "(t/deftest \"arrays compare by content\"\n  (t/assert-equal [1 2 3] @[1 2 3]))",
+      "message": null,
+      "output": null
+    }
+  ]
+}

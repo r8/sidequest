@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "stdout": "\n",
+  "stderr": "\nin file included from *OS command line*:-1\nin file included from test/greet-test.fs:2\ngreet.fs:1: Undefined word\n\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000>>>\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000<<<\u0000\u0000\nBacktrace:\n$7C3240CA20 throw \n$7C32422C48 no.extensions \n$7C32410358 compiler-notfound1 ",
+  "timedOut": false
+}

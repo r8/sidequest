@@ -1,0 +1,30 @@
+# Returns the books every new shelf starts with.
+fn pub starter_shelf -> Array[String] {
+  panic('implement me')
+}
+
+# Returns the title at `position`, or "empty" if there is no book there.
+fn pub book_at(shelf: ref Array[String], position: Int) -> String {
+  panic('implement me')
+}
+
+# Adds `title` to the right end of the shelf.
+fn pub shelve(shelf: mut Array[String], title: String) {
+  panic('implement me')
+}
+
+# Removes the rightmost book and returns its title, or "nothing" if the shelf
+# is empty.
+fn pub lend_last(shelf: mut Array[String]) -> String {
+  panic('implement me')
+}
+
+# Returns whether `title` is on the shelf.
+fn pub on_shelf?(shelf: ref Array[String], title: String) -> Bool {
+  panic('implement me')
+}
+
+# Sorts the shelf alphabetically.
+fn pub tidy(shelf: mut Array[String]) {
+  panic('implement me')
+}

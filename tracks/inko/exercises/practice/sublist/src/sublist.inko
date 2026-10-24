@@ -1,0 +1,47 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# How one list relates to another.
+type pub copy enum Comparison {
+  # Both lists have the same elements in the same order.
+  case Equal
+
+  # The first list appears, contiguously, inside the second.
+  case Sublist
+
+  # The second list appears, contiguously, inside the first.
+  case Superlist
+
+  # None of the above.
+  case Unequal
+}
+
+impl Equal for Comparison {
+  fn pub ==(other: Comparison) -> Bool {
+    match (self, other) {
+      case (Equal, Equal) -> true
+      case (Sublist, Sublist) -> true
+      case (Superlist, Superlist) -> true
+      case (Unequal, Unequal) -> true
+      case _ -> false
+    }
+  }
+}
+
+impl Format for Comparison {
+  fn pub fmt(formatter: mut Formatter) {
+    let name = match self {
+      case Equal -> 'Equal'
+      case Sublist -> 'Sublist'
+      case Superlist -> 'Superlist'
+      case Unequal -> 'Unequal'
+    }
+
+    formatter.write(name)
+  }
+}
+
+# Returns how `first` relates to `second`.
+fn pub sublist[T: Equal](first: ref Array[T], second: ref Array[T]) -> Comparison {
+  panic('implement me')
+}

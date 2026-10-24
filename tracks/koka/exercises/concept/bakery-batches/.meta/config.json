@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "bakery-batches.kk"
+    ],
+    "test": [
+      "test/bakery-batches-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about integers and floating-point numbers by planning the trays, flour and prices of a bakery.",
+  "custom": {
+    "after": [
+      "tea-time"
+    ]
+  }
+}

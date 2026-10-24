@@ -1,0 +1,37 @@
+{
+  "runner": "inko",
+  "harness": [],
+  "test": {
+    "argv": [
+      "inko",
+      "build",
+      "-i",
+      "src",
+      "-i",
+      "test"
+    ],
+    "env": {
+      "NO_COLOR": "1"
+    },
+    "timeoutMs": 120000
+  },
+  "toolchain": {
+    "bin": "inko",
+    "version": "0.21.1",
+    "versionCommand": [
+      "inko",
+      "--version"
+    ],
+    "versionPattern": "^inko (\\S+)",
+    "platforms": [
+      "linux",
+      "darwin",
+      "freebsd"
+    ],
+    "ci": {
+      "install": [],
+      "image": "ghcr.io/inko-lang/inko:0.21.1"
+    }
+  },
+  "color": "#0486d3"
+}

@@ -1,0 +1,34 @@
+# Returns a `size` by `size` matrix, as an array of rows, filled with the
+# numbers 1 up to `size * size` in a clockwise spiral starting at the top left.
+fn pub spiral_matrix(size: Int) -> Array[Array[Int]] {
+  let matrix = 0.until(size).iter.map(fn (_) { Array.filled(0, size) }).to_array
+  let mut row = 0
+  let mut col = 0
+  let mut dr = 0
+  let mut dc = 1
+
+  for number in 1.to(size * size) {
+    matrix.get_mut(row).or_panic.set(col, number)
+
+    let next_row = row + dr
+    let next_col = col + dc
+    let free = next_row >= 0
+      and next_row < size
+      and next_col >= 0
+      and next_col < size
+      and matrix.get(next_row).or_panic.get(next_col).or_panic == 0
+
+    # Turn clockwise: right -> down -> left -> up.
+    if !free {
+      let turn = dr
+
+      dr = dc
+      dc = 0 - turn
+    }
+
+    row += dr
+    col += dc
+  }
+
+  matrix
+}

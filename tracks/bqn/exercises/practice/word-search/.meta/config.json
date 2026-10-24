@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "word-search.bqn"
+    ],
+    "test": [
+      "test/word-search.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Create a program to solve a word search puzzle.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

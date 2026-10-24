@@ -1,0 +1,90 @@
+import rectangles (rectangles)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('no rows', fn (t) { t.equal(rectangles([]), 0) })
+  t.test('no columns', fn (t) { t.equal(rectangles(['']), 0) })
+  t.test('no rectangles', fn (t) { t.equal(rectangles([' ']), 0) })
+  t.test('one rectangle', fn (t) {
+    t.equal(rectangles(['+-+', '| |', '+-+']), 1)
+  })
+  t.test('two rectangles without shared parts', fn (t) {
+    t.equal(rectangles(['  +-+', '  | |', '+-+-+', '| |  ', '+-+  ']), 2)
+  })
+  t.test('five rectangles with shared parts', fn (t) {
+    t.equal(rectangles(['  +-+', '  | |', '+-+-+', '| | |', '+-+-+']), 5)
+  })
+  t.test('rectangle of height 1 is counted', fn (t) {
+    t.equal(rectangles(['+--+', '+--+']), 1)
+  })
+  t.test('rectangle of width 1 is counted', fn (t) {
+    t.equal(rectangles(['++', '||', '++']), 1)
+  })
+  t.test('1x1 square is counted', fn (t) {
+    t.equal(rectangles(['++', '++']), 1)
+  })
+  t.test('only complete rectangles are counted', fn (t) {
+    t.equal(rectangles(['  +-+', '    |', '+-+-+', '| | -', '+-+-+']), 1)
+  })
+  t.test('rectangles can be of different sizes', fn (t) {
+    t.equal(
+      rectangles(
+        [
+          '+------+----+',
+          '|      |    |',
+          '+---+--+    |',
+          '|   |       |',
+          '+---+-------+',
+        ],
+      ),
+      3,
+    )
+  })
+  t.test('corner is required for a rectangle to be complete', fn (t) {
+    t.equal(
+      rectangles(
+        [
+          '+------+----+',
+          '|      |    |',
+          '+------+    |',
+          '|   |       |',
+          '+---+-------+',
+        ],
+      ),
+      2,
+    )
+  })
+  t.test('large input with many rectangles', fn (t) {
+    t.equal(
+      rectangles(
+        [
+          '+---+--+----+',
+          '|   +--+----+',
+          '+---+--+    |',
+          '|   +--+----+',
+          '+---+--+--+-+',
+          '+---+--+--+-+',
+          '+------+  | |',
+          '          +-+',
+        ],
+      ),
+      60,
+    )
+  })
+  t.test('rectangles must have four sides', fn (t) {
+    t.equal(
+      rectangles(
+        [
+          '+-+ +-+',
+          '| | | |',
+          '+-+-+-+',
+          '  | |  ',
+          '+-+-+-+',
+          '| | | |',
+          '+-+ +-+',
+        ],
+      ),
+      5,
+    )
+  })
+}

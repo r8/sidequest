@@ -1,0 +1,61 @@
+import lost_and_found (find_item, label, read_ticket, shelf, ticket)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. a valid ticket', fn (t) { t.equal(ticket(42), Option.Some(42)) })
+  t.test('1. the first and last tickets', fn (t) {
+    t.equal(ticket(1), Option.Some(1))
+    t.equal(ticket(999), Option.Some(999))
+  })
+  t.test('1. a number that is too big', fn (t) {
+    t.equal(ticket(1200), Option.None)
+  })
+  t.test('1. zero is not a ticket', fn (t) { t.equal(ticket(0), Option.None) })
+
+  t.test('2. read a ticket', fn (t) {
+    t.equal(read_ticket('42'), Option.Some(42))
+  })
+  t.test('2. read words', fn (t) {
+    t.equal(read_ticket('forty-two'), Option.None)
+  })
+  t.test('2. read an invalid number', fn (t) {
+    t.equal(read_ticket('5000'), Option.None)
+  })
+  t.test('2. read nothing', fn (t) { t.equal(read_ticket(''), Option.None) })
+
+  t.test('3. find the first match', fn (t) {
+    t.equal(
+      find_item(['red umbrella', 'blue scarf', 'green umbrella'], 'umbrella'),
+      Option.Some('red umbrella'),
+    )
+  })
+  t.test('3. find a later match', fn (t) {
+    t.equal(
+      find_item(['red umbrella', 'blue scarf'], 'scarf'),
+      Option.Some('blue scarf'),
+    )
+  })
+  t.test('3. find nothing', fn (t) {
+    t.equal(find_item(['red umbrella'], 'hat'), Option.None)
+  })
+  t.test('3. find in an empty office', fn (t) {
+    t.equal(find_item([], 'hat'), Option.None)
+  })
+
+  t.test('4. the shelf for a ticket', fn (t) {
+    t.equal(shelf(Option.Some(42)), Option.Some(3))
+  })
+  t.test('4. the last shelf', fn (t) {
+    t.equal(shelf(Option.Some(19)), Option.Some(20))
+  })
+  t.test('4. no ticket, no shelf', fn (t) {
+    t.equal(shelf(Option.None), Option.None)
+  })
+
+  t.test('5. a ticket label', fn (t) {
+    t.equal(label(Option.Some(42)), 'Ticket 42')
+  })
+  t.test('5. a label without a ticket', fn (t) {
+    t.equal(label(Option.None), 'No ticket')
+  })
+}

@@ -1,0 +1,23 @@
+import pangram (pangram?)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('empty sentence', fn (t) { t.false(pangram?('')) })
+  t.test('perfect lower case', fn (t) { t.true(pangram?('abcdefghijklmnopqrstuvwxyz')) })
+  t.test('only lower case', fn (t) { t.true(pangram?('the quick brown fox jumps over the lazy dog')) })
+  t.test("missing the letter 'x'", fn (t) {
+    t.false(pangram?('a quick movement of the enemy will jeopardize five gunboats'))
+  })
+  t.test("missing the letter 'h'", fn (t) { t.false(pangram?('five boxing wizards jump quickly at it')) })
+  t.test('with underscores', fn (t) { t.true(pangram?('the_quick_brown_fox_jumps_over_the_lazy_dog')) })
+  t.test('with numbers', fn (t) { t.true(pangram?('the 1 quick brown fox jumps over the 2 lazy dogs')) })
+  t.test('missing letters replaced by numbers', fn (t) {
+    t.false(pangram?('7h3 qu1ck brown fox jumps ov3r 7h3 lazy dog'))
+  })
+  t.test('mixed case and punctuation', fn (t) {
+    t.true(pangram?('"Five quacking Zephyrs jolt my wax bed."'))
+  })
+  t.test('a-m and A-M are 26 different characters but not a pangram', fn (t) {
+    t.false(pangram?('abcdefghijklm ABCDEFGHIJKLM'))
+  })
+}

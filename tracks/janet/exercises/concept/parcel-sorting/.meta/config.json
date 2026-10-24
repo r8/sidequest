@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "parcel-sorting.janet"
+    ],
+    "test": [
+      "test/parcel-sorting.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about pattern matching with match by sorting letters, parcels and stickers in a courier's night shift.",
+  "custom": {
+    "after": [
+      "weather-report",
+      "star-charts"
+    ]
+  }
+}

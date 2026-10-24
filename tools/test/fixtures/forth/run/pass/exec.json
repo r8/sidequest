@@ -1,0 +1,6 @@
+{
+  "exitCode": 0,
+  "stdout": "noisy output\nsecond line\nPASS\tgreets\t\t\n\nPASS\tdoubles\t\t\n\nSUMMARY\t2\t0\t0\n",
+  "stderr": "",
+  "timedOut": false
+}

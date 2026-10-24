@@ -1,0 +1,7 @@
+{
+  "blurb": "error and assert raise errors, try catches them with a handler, and protect turns the outcome into a tuple.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

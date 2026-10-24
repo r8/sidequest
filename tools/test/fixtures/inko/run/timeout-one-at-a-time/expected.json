@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "status": "fail",
+  "message": null,
+  "tests": [
+    {
+      "name": "panics",
+      "test_code": "t.test('panics', fn (t) { t.equal(greet('you'), 'Hello, you!') })",
+      "status": "error",
+      "message": "implement me (src/greet.inko:2)"
+    },
+    {
+      "name": "passes",
+      "test_code": "t.test('passes', fn (t) { t.equal(greet('Bob'), 'Hello, Bob!') })",
+      "status": "error",
+      "message": "timed out"
+    },
+    {
+      "name": "fails",
+      "status": "error",
+      "test_code": "t.test('fails', fn (t) { t.equal(greet('Bob'), 'nope') })",
+      "message": "not run: the 60000 ms budget ran out"
+    }
+  ]
+}

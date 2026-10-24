@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "lost-and-found.bqn"
+    ],
+    "test": [
+      "test/lost-and-found.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about replicate and indices by sorting out a station's lost-and-found office.",
+  "custom": {
+    "after": [
+      "name-tags",
+      "drawbridge"
+    ]
+  }
+}

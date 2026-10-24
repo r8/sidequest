@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "unit-converter.bqn"
+    ],
+    "test": [
+      "test/unit-converter.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about combinators by building a travel unit converter without writing a single block.",
+  "custom": {
+    "after": [
+      "band-setlist",
+      "road-trip"
+    ]
+  }
+}

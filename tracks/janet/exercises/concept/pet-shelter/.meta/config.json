@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "pet-shelter.janet"
+    ],
+    "test": [
+      "test/pet-shelter.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about prototypes and method calls by modelling the animals of a shelter.",
+  "custom": {
+    "after": [
+      "coffee-orders",
+      "spice-rack"
+    ]
+  }
+}

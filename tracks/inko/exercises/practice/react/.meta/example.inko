@@ -1,0 +1,130 @@
+# A reactive system of cells holding integers.
+#
+# A `Reactor` owns all its cells, which it keeps in the order they were
+# created. A compute cell can only depend on cells created before it, so
+# updating the cells in that order updates every cell after its inputs.
+
+# The identifier of a cell in a `Reactor`.
+type pub copy CellId {
+  let @index: Int
+}
+
+# The identifier of a callback in a `Reactor`.
+type pub copy CallbackId {
+  let @index: Int
+}
+
+type Cell {
+  let mut @value: Int
+
+  # The indexes of the cells this cell is computed from.
+  let @inputs: Array[Int]
+
+  # The function computing the value; `None` for an input cell.
+  let @func: Option[fn (ref Array[Int]) -> Int]
+
+  # The callbacks by ID; removed ones are `None`.
+  let @callbacks: Array[Option[fn (Int)]]
+}
+
+impl Cell {
+  fn input? -> Bool {
+    @func.none?
+  }
+}
+
+type pub Reactor {
+  let @cells: Array[Cell]
+}
+
+impl Reactor {
+  # Returns a reactor without any cells.
+  fn pub static new -> Reactor {
+    Reactor([])
+  }
+
+  # Adds an input cell holding `value` and returns its ID.
+  fn pub mut input(value: Int) -> CellId {
+    add(Cell(value: value, inputs: [], func: Option.None, callbacks: []))
+  }
+
+  # Adds a compute cell whose value is `func` called with the values of the
+  # `inputs` cells (in that order), and returns its ID.
+  fn pub mut compute(inputs: Array[CellId], func: fn (ref Array[Int]) -> Int) -> CellId {
+    let indexes = inputs.into_iter.map(fn (id) { id.index }).to_array
+    let value = func.call(values(indexes))
+
+    add(Cell(value: value, inputs: indexes, func: Option.Some(func), callbacks: []))
+  }
+
+  # Returns the current value of `cell`.
+  fn pub value(cell: CellId) -> Int {
+    @cells.get(cell.index).or_panic.value
+  }
+
+  # Sets the value of the input cell `cell` and updates the cells that depend
+  # on it, calling the callbacks of the compute cells whose value changed.
+  # Returns `false` (and changes nothing) if `cell` isn't an input cell.
+  fn pub mut set_value(cell: CellId, value: Int) -> Bool {
+    match @cells.get_mut(cell.index) {
+      case Ok(input) if input.input? -> input.value = value
+      case _ -> return false
+    }
+
+    let before = @cells.iter.map(fn (cell) { cell.value }).to_array
+
+    for index in 0.until(@cells.size) {
+      let args = values(@cells.get(index).or_panic.inputs)
+      let cell = @cells.get_mut(index).or_panic
+
+      match cell.func {
+        case Some(func) -> cell.value = func.call(args)
+        case None -> {}
+      }
+    }
+
+    for (index, cell) in @cells.iter_mut.with_index {
+      if cell.value == before.get(index).or_panic { next }
+
+      for callback in cell.callbacks.iter_mut {
+        match callback {
+          case Some(func) -> func.call(cell.value)
+          case None -> {}
+        }
+      }
+    }
+
+    true
+  }
+
+  # Adds `callback` to the compute cell `cell` and returns its ID.
+  fn pub mut add_callback(cell: CellId, callback: fn (Int)) -> CallbackId {
+    let callbacks = @cells.get_mut(cell.index).or_panic.callbacks
+
+    callbacks.push(Option.Some(callback))
+    CallbackId(callbacks.size - 1)
+  }
+
+  # Removes the callback `callback` from `cell`. Returns `false` if the cell
+  # has no such callback (for example, because it was already removed).
+  fn pub mut remove_callback(cell: CellId, callback: CallbackId) -> Bool {
+    let callbacks = @cells.get_mut(cell.index).or_panic.callbacks
+
+    match callbacks.get(callback.index) {
+      case Ok(Some(_)) -> {
+        callbacks.set(callback.index, Option.None)
+        true
+      }
+      case _ -> false
+    }
+  }
+
+  fn mut add(cell: Cell) -> CellId {
+    @cells.push(cell)
+    CellId(@cells.size - 1)
+  }
+
+  fn values(indexes: ref Array[Int]) -> Array[Int] {
+    indexes.iter.map(fn (index) { @cells.get(index).or_panic.value }).to_array
+  }
+}

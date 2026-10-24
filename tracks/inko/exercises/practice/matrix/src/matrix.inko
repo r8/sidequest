@@ -1,0 +1,23 @@
+# A matrix of integers, parsed from rows of space-separated numbers, one row per
+# line.
+type pub Matrix {
+  # The parsed rows. Change the fields as you see fit.
+  let @rows: Array[Array[Int]]
+
+  # Parses `input`, for example `"1 2\n3 4"`.
+  fn pub static new(input: String) -> Matrix {
+    panic('implement me')
+  }
+
+  # Returns the row at `index`, counting from 1, or `None` if there is no such
+  # row.
+  fn pub row(index: Int) -> Option[Array[Int]] {
+    panic('implement me')
+  }
+
+  # Returns the column at `index`, counting from 1, or `None` if there is no
+  # such column.
+  fn pub column(index: Int) -> Option[Array[Int]] {
+    panic('implement me')
+  }
+}

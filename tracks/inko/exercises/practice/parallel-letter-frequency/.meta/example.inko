@@ -1,0 +1,47 @@
+import std.map (Map)
+import std.sync (Channel)
+
+# Counts the letters of one text and sends the counts back over a channel.
+type async Counter {
+  fn async count(text: String, output: uni Channel[Map[String, Int]]) {
+    output.send(recover letters(text))
+  }
+}
+
+# Returns how often each letter occurs in `texts`, ignoring case, with letters
+# in lowercase. Count the texts in parallel, using processes.
+#
+# Inko's standard library has no Unicode letter classification, so a letter is
+# an ASCII letter or any non-ASCII character; digits, whitespace and ASCII
+# punctuation aren't counted.
+#
+# Maps are compared without regard to the order of their entries.
+fn pub calculate_frequencies(texts: ref Array[String]) -> Map[String, Int] {
+  let output = Channel.new
+
+  for text in texts.iter { Counter().count(text.clone, recover output.clone) }
+
+  let total = Map.new
+
+  texts.size.times(fn (_) {
+    for (letter, count) in output.receive.into_iter {
+      total.set(letter, total.get(letter).or(0) + count)
+    }
+  })
+
+  total
+}
+
+fn letters(text: String) -> Map[String, Int] {
+  let counts = Map.new
+
+  for char in text.to_lower.chars {
+    if letter?(char) { counts.set(char, counts.get(char).or(0) + 1) }
+  }
+
+  counts
+}
+
+fn letter?(char: String) -> Bool {
+  (char >= 'a' and char <= 'z') or char.get(0).or(0) > 127
+}

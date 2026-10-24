@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "bank-account.janet"
+    ],
+    "test": [
+      "test/bank-account.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Simulate a bank account supporting opening/closing, withdraws, and deposits of money. Watch out for concurrent transactions!",
+  "custom": {
+    "after": [
+      "vending-machine"
+    ]
+  }
+}

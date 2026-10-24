@@ -1,0 +1,4 @@
+fn pub greet(name: String) -> String {
+  if name == 'you' { panic('implement me') }
+  'Hello, ${name}!'
+}

@@ -1,0 +1,26 @@
+# A game of bowling.
+#
+# Create one with `Game.new`, record each roll with `roll`, and ask for the
+# total with `score` once the game is over.
+type pub Game {
+  # The pins knocked down by each roll so far. Change the fields as you see fit.
+  let @rolls: Array[Int]
+
+  # Returns a game without any rolls.
+  fn pub static new -> Game {
+    panic('implement me')
+  }
+
+  # Records a roll that knocked down `pins` pins, or returns an error without
+  # recording it: `"Negative roll is invalid"`,
+  # `"Pin count exceeds pins on the lane"` or `"Cannot roll after game is over"`.
+  fn pub mut roll(pins: Int) -> Result[Nil, String] {
+    panic('implement me')
+  }
+
+  # Returns the total score, or `"Score cannot be taken until the end of the
+  # game"` as an error if the game isn't over.
+  fn pub score -> Result[Int, String] {
+    panic('implement me')
+  }
+}

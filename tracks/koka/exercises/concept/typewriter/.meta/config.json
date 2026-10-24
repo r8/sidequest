@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "typewriter.kk"
+    ],
+    "test": [
+      "test/typewriter-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about characters by tidying up the letters typed on an old typewriter with misbehaving keys.",
+  "custom": {
+    "after": [
+      "name-badges",
+      "orchard"
+    ]
+  }
+}

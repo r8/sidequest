@@ -1,0 +1,10 @@
+import std.map (Map)
+
+# Returns how often each nucleotide (`A`, `C`, `G` and `T`) occurs in `strand`,
+# with every nucleotide present in the map (zero if it doesn't occur), or an
+# error if `strand` contains anything else.
+#
+# Maps are compared without regard to the order of their entries.
+fn pub nucleotide_counts(strand: String) -> Result[Map[String, Int], String] {
+  panic('implement me')
+}

@@ -1,0 +1,11 @@
+import rna_transcription (to_rna)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('Empty RNA sequence', fn (t) { t.equal(to_rna(''), '') })
+  t.test('RNA complement of cytosine is guanine', fn (t) { t.equal(to_rna('C'), 'G') })
+  t.test('RNA complement of guanine is cytosine', fn (t) { t.equal(to_rna('G'), 'C') })
+  t.test('RNA complement of thymine is adenine', fn (t) { t.equal(to_rna('T'), 'A') })
+  t.test('RNA complement of adenine is uracil', fn (t) { t.equal(to_rna('A'), 'U') })
+  t.test('RNA complement', fn (t) { t.equal(to_rna('ACGTGGTCTTAA'), 'UGCACCAGAAUU') })
+}

@@ -1,0 +1,4 @@
+# Returns `true` if `year` is a leap year in the Gregorian calendar.
+fn pub leap_year?(year: Int) -> Bool {
+  year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+}

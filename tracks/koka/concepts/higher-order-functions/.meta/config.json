@@ -1,0 +1,7 @@
+{
+  "blurb": "Functions are values: pass them to map, filter and foldl, write them in place with fn, and take them as parameters.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

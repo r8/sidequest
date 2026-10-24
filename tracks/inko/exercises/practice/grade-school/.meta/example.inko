@@ -1,0 +1,41 @@
+# A school roster: students by name, each in one grade.
+type pub School {
+  # (grade, name) pairs, kept sorted by grade and then by name.
+  let @students: Array[(Int, String)]
+}
+
+impl School {
+  # Returns an empty school.
+  fn pub static new -> School {
+    School([])
+  }
+
+  # Adds the student `name` to `grade`. Returns `false` (and leaves the school
+  # unchanged) if a student with that name is already enrolled in any grade.
+  fn pub mut add(name: String, grade: Int) -> Bool {
+    if @students.iter.any?(fn (student) { student.1 == name }) { return false }
+
+    @students.push((grade, name))
+    @students.sort_by(fn (a, b) {
+      match a.0.cmp(b.0) {
+        case Equal -> a.1.cmp(b.1)
+        case other -> other
+      }
+    })
+    true
+  }
+
+  # Returns all students, sorted by grade and then by name within a grade.
+  fn pub roster -> Array[String] {
+    @students.iter.map(fn (student) { student.1 }).to_array
+  }
+
+  # Returns the students in `grade`, sorted by name.
+  fn pub grade(grade: Int) -> Array[String] {
+    @students
+      .iter
+      .select(fn (student) { student.0 == grade })
+      .map(fn (student) { student.1 })
+      .to_array
+  }
+}

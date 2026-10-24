@@ -1,0 +1,76 @@
+import museum_exhibits (Exhibit, Instrument, Painting, oldest)
+import std.test (Tests)
+
+fn lilies -> Painting {
+  Painting.new(name: 'Water Lilies', artist: 'Claude Monet', year: 1906)
+}
+
+fn lute -> Instrument {
+  Instrument.new(kind: 'Lute', maker: 'Anna Weiss', year: 1612, playable: false)
+}
+
+fn harp -> Instrument {
+  Instrument.new(kind: 'Harp', maker: 'Jan Brouwer', year: 1780, playable: true)
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('1. the title of a painting', fn (t) {
+    t.equal(lilies.title, 'Water Lilies by Claude Monet')
+  })
+  t.test('1. the year of a painting', fn (t) { t.equal(lilies.year, 1906) })
+
+  t.test('2. the title of an instrument', fn (t) {
+    t.equal(lute.title, 'Lute made by Anna Weiss')
+  })
+  t.test('2. the year of an instrument', fn (t) { t.equal(lute.year, 1612) })
+
+  t.test('3. the plaque of a painting', fn (t) {
+    t.equal(lilies.plaque, 'Water Lilies by Claude Monet (1906)')
+  })
+  t.test('3. the plaque of another painting', fn (t) {
+    t.equal(
+      Painting
+        .new(name: 'Sunflowers', artist: 'Vincent van Gogh', year: 1888)
+        .plaque,
+      'Sunflowers by Vincent van Gogh (1888)',
+    )
+  })
+
+  t.test('4. the plaque of an instrument', fn (t) {
+    t.equal(lute.plaque, 'Lute made by Anna Weiss (1612)')
+  })
+  t.test('4. the plaque of a playable instrument', fn (t) {
+    t.equal(harp.plaque, 'Harp made by Jan Brouwer (1780), ask to play it')
+  })
+
+  t.test('5. the oldest of several exhibits', fn (t) {
+    let exhibits = [lilies as Exhibit, lute as Exhibit, harp as Exhibit]
+
+    t.equal(oldest(exhibits), 'Lute made by Anna Weiss')
+  })
+  t.test('5. the oldest is the first', fn (t) {
+    let exhibits = [harp as Exhibit, lilies as Exhibit]
+
+    t.equal(oldest(exhibits), 'Harp made by Jan Brouwer')
+  })
+  t.test('5. a single exhibit', fn (t) {
+    let exhibits = [lilies as Exhibit]
+
+    t.equal(oldest(exhibits), 'Water Lilies by Claude Monet')
+  })
+  t.test('5. nothing on display', fn (t) {
+    let exhibits: Array[Exhibit] = []
+
+    t.equal(oldest(exhibits), 'nothing on display')
+  })
+
+  t.test('6. a painting as a string', fn (t) {
+    t.equal(lilies.to_string, 'Water Lilies by Claude Monet')
+  })
+  t.test('6. a painting in a sentence', fn (t) {
+    t.equal(
+      'Now showing: ${lilies}',
+      'Now showing: Water Lilies by Claude Monet',
+    )
+  })
+}

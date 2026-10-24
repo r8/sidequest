@@ -1,0 +1,34 @@
+# Mirrors the letters of `text` (lowercased), keeps its digits and drops
+# everything else.
+fn transpose(text: String) -> ByteArray {
+  let out = ByteArray.new
+
+  for byte in text.bytes {
+    if byte >= 65 and byte <= 90 {
+      out.push(122 - (byte - 65))
+    } else if byte >= 97 and byte <= 122 {
+      out.push(122 - (byte - 97))
+    } else if byte >= 48 and byte <= 57 {
+      out.push(byte)
+    }
+  }
+
+  out
+}
+
+# Encodes `phrase` with the Atbash cipher, in groups of five characters.
+fn pub encode(phrase: String) -> String {
+  let letters = transpose(phrase)
+
+  String.join(
+    letters.iter.chunks(5).map(fn (group) {
+      ByteArray.from_array(group).into_string
+    }),
+    with: ' ',
+  )
+}
+
+# Decodes `phrase` with the Atbash cipher.
+fn pub decode(phrase: String) -> String {
+  transpose(phrase).into_string
+}

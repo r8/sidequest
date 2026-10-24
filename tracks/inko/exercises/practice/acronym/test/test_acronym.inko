@@ -1,0 +1,19 @@
+import acronym (abbreviate)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('basic', fn (t) { t.equal(abbreviate('Portable Network Graphics'), 'PNG') })
+  t.test('lowercase words', fn (t) { t.equal(abbreviate('Ruby on Rails'), 'ROR') })
+  t.test('punctuation', fn (t) { t.equal(abbreviate('First In, First Out'), 'FIFO') })
+  t.test('all caps word', fn (t) { t.equal(abbreviate('GNU Image Manipulation Program'), 'GIMP') })
+  t.test('punctuation without whitespace', fn (t) { t.equal(abbreviate('Complementary metal-oxide semiconductor'), 'CMOS') })
+  t.test('very long abbreviation', fn (t) { t.equal(abbreviate('Rolling On The Floor Laughing So Hard That My Dogs Came Over And Licked Me'), 'ROTFLSHTMDCOALM') })
+  t.test('consecutive delimiters', fn (t) { t.equal(abbreviate('Something - I made up from thin air'), 'SIMUFTA') })
+  t.test('apostrophes', fn (t) { t.equal(abbreviate("Halley's Comet"), 'HC') })
+  t.test('underscore emphasis', fn (t) { t.equal(abbreviate('The Road _Not_ Taken'), 'TRNT') })
+  # Not in the canonical data: an apostrophe only continues a word, so a word
+  # that starts with one still gives its first letter.
+  t.test('word starting with an apostrophe', fn (t) { t.equal(abbreviate("Rock 'n' Roll"), 'RNR') })
+  # Not in the canonical data: words may start with non-ASCII letters.
+  t.test('non-ASCII letters', fn (t) { t.equal(abbreviate('Élan Vital'), 'ÉV') })
+}

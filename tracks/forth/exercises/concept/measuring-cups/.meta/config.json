@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "measuring-cups.fs"
+    ],
+    "test": [
+      "test/measuring-cups-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about defining words with create and does> by making units, counters and spice shelves for a bakery.",
+  "custom": {
+    "after": [
+      "locker-room",
+      "remote-control"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/macros.html",
+    "description": "Macros in the Janet documentation"
+  },
+  {
+    "url": "https://janet-lang.org/api/index.html#defmacro",
+    "description": "defmacro in the core API reference"
+  },
+  {
+    "url": "https://janet-lang.org/api/index.html#macex",
+    "description": "macex in the core API reference"
+  }
+]

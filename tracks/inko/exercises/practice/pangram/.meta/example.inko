@@ -1,0 +1,9 @@
+# Returns `true` if `sentence` contains every letter of the English alphabet at
+# least once, ignoring case.
+fn pub pangram?(sentence: String) -> Bool {
+  let lower = sentence.to_lower
+
+  'abcdefghijklmnopqrstuvwxyz'.chars.all?(fn (letter) {
+    lower.contains?(letter)
+  })
+}

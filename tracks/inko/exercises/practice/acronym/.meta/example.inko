@@ -1,0 +1,28 @@
+import std.string (StringBuffer)
+
+# Returns `true` if `char` is a letter: it has distinct upper and lower case
+# forms, which holds for non-ASCII letters such as "É" too.
+fn letter?(char: String) -> Bool {
+  char.to_upper != char.to_lower
+}
+
+# Returns the acronym of `phrase`: the first letter of every word, in upper
+# case. Words are separated by anything but letters and apostrophes.
+fn pub abbreviate(phrase: String) -> String {
+  let acronym = StringBuffer.new
+  let mut in_word = false
+
+  for char in phrase.chars {
+    if letter?(char) {
+      if !in_word { acronym.push(char.to_upper) }
+
+      in_word = true
+    } else {
+      # An apostrophe continues a word ("Halley's") but doesn't start one
+      # ("Rock 'n' Roll").
+      in_word = in_word and char == "'"
+    }
+  }
+
+  acronym.into_string
+}

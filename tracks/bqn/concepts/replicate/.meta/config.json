@@ -1,0 +1,7 @@
+{
+  "blurb": "Replicate /: filter a list with a boolean mask, copy elements by counts, and find the indices of 1s.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

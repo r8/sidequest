@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/ocr_numbers.inko"
+    ],
+    "test": [
+      "test/test_ocr_numbers.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Given a 3 x 4 grid of pipes, underscores, and spaces, determine which number is represented, or whether it is garbled.",
+  "source": "Inspired by the Bank OCR kata",
+  "source_url": "https://codingdojo.org/kata/BankOCR/",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

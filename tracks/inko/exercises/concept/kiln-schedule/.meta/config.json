@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/kiln_schedule.inko"
+    ],
+    "test": [
+      "test/test_kiln_schedule.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn the basics of Inko by helping a potter keep track of her kiln.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

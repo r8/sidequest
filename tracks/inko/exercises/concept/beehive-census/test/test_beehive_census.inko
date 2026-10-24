@@ -1,0 +1,54 @@
+import beehive_census (
+  busy_day_numbers, busy_days, daily_changes, estimates, quiet_day?, total_bees,
+)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. total of a few days', fn (t) {
+    t.equal(total_bees([31, 40, 0, 52]), 123)
+  })
+  t.test('1. total of one day', fn (t) { t.equal(total_bees([17]), 17) })
+  t.test('1. total of no days', fn (t) { t.equal(total_bees([]), 0) })
+
+  t.test('2. busy days', fn (t) {
+    t.equal(busy_days([31, 40, 0, 52], threshold: 40), 2)
+  })
+  t.test('2. every day is busy', fn (t) {
+    t.equal(busy_days([31, 40, 52], threshold: 10), 3)
+  })
+  t.test('2. no busy days', fn (t) {
+    t.equal(busy_days([31, 40, 52], threshold: 100), 0)
+  })
+
+  t.test('3. estimates for a few days', fn (t) {
+    t.equal(estimates([31, 40, 0, 52], factor: 10), [310, 400, 0, 520])
+  })
+  t.test('3. estimates with a factor of one', fn (t) {
+    t.equal(estimates([5, 6], factor: 1), [5, 6])
+  })
+  t.test('3. estimates for no days', fn (t) {
+    t.equal(estimates([], factor: 10), [])
+  })
+
+  t.test('4. a quiet day', fn (t) { t.true(quiet_day?([31, 40, 0, 52])) })
+  t.test('4. no quiet days', fn (t) { t.false(quiet_day?([31, 40, 52])) })
+  t.test('4. no days at all', fn (t) { t.false(quiet_day?([])) })
+
+  t.test('5. daily changes', fn (t) {
+    t.equal(daily_changes([31, 40, 0, 52]), [9, -40, 52])
+  })
+  t.test('5. no change', fn (t) { t.equal(daily_changes([20, 20]), [0]) })
+  t.test('5. a single day has no changes', fn (t) {
+    t.equal(daily_changes([20]), [])
+  })
+
+  t.test('6. busy day numbers', fn (t) {
+    t.equal(busy_day_numbers([31, 40, 0, 52], threshold: 40), [2, 4])
+  })
+  t.test('6. the first day is busy', fn (t) {
+    t.equal(busy_day_numbers([50, 10], threshold: 40), [1])
+  })
+  t.test('6. no busy day numbers', fn (t) {
+    t.equal(busy_day_numbers([1, 2], threshold: 40), [])
+  })
+}

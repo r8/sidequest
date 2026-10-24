@@ -1,0 +1,38 @@
+# Returns the sum of all the counts.
+fn pub total_bees(counts: ref Array[Int]) -> Int {
+  Int.sum(counts.iter)
+}
+
+# Returns how many days had at least `threshold` bees.
+fn pub busy_days(counts: ref Array[Int], threshold: Int) -> Int {
+  counts.iter.select(fn (count) { count >= threshold }).count
+}
+
+# Returns every count multiplied by `factor`.
+fn pub estimates(counts: ref Array[Int], factor: Int) -> Array[Int] {
+  counts.iter.map(fn (count) { count * factor }).to_array
+}
+
+# Returns whether any day had no bees.
+fn pub quiet_day?(counts: ref Array[Int]) -> Bool {
+  counts.iter.any?(fn (count) { count == 0 })
+}
+
+# Returns the change from each day to the next.
+fn pub daily_changes(counts: ref Array[Int]) -> Array[Int] {
+  counts
+    .iter
+    .zip(counts.iter.skip(1))
+    .map(fn (pair) { pair.1 - pair.0 })
+    .to_array
+}
+
+# Returns the day numbers (from 1) of the days with at least `threshold` bees.
+fn pub busy_day_numbers(counts: ref Array[Int], threshold: Int) -> Array[Int] {
+  counts
+    .iter
+    .with_index
+    .select(fn (pair) { pair.1 >= threshold })
+    .map(fn (pair) { pair.0 + 1 })
+    .to_array
+}

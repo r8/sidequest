@@ -1,0 +1,46 @@
+# Returns `true` if all `dominoes` can be arranged in a chain where the
+# adjacent halves of neighbouring stones match and the two free halves at the
+# ends match as well. Stones may be flipped. An empty set forms a chain.
+fn pub can_chain?(dominoes: ref Array[(Int, Int)]) -> Bool {
+  match dominoes.first {
+    case None -> true
+    case Some((start, end)) -> {
+      let used = Array.filled(with: false, times: dominoes.size)
+
+      used.set(0, true)
+      extend(dominoes, used, start, end, placed: 1)
+    }
+  }
+}
+
+# Tries to extend a chain running from `start` to `end` with the unused stones,
+# backtracking when a choice leads to a dead end.
+fn extend(
+  dominoes: ref Array[(Int, Int)],
+  used: mut Array[Bool],
+  start: Int,
+  end: Int,
+  placed: Int,
+) -> Bool {
+  if placed == dominoes.size { return start == end }
+
+  for (index, (left, right)) in dominoes.iter.with_index {
+    if used.get(index).or_panic { next }
+
+    let new_end = if left == end {
+      right
+    } else if right == end {
+      left
+    } else {
+      next
+    }
+
+    used.set(index, true)
+
+    if extend(dominoes, used, start, new_end, placed + 1) { return true }
+
+    used.set(index, false)
+  }
+
+  false
+}

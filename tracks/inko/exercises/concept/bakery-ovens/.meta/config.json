@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/bakery_ovens.inko"
+    ],
+    "test": [
+      "test/test_bakery_ovens.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about processes and messages by running the ovens of a bakery.",
+  "custom": {
+    "after": [
+      "sealed-parcels",
+      "weather-station"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+# Returns the lowercased letters and digits of `text`.
+fn normalize(text: String) -> ByteArray {
+  let out = ByteArray.new
+
+  for byte in text.bytes {
+    if byte >= 65 and byte <= 90 {
+      out.push(byte + 32)
+    } else if (byte >= 97 and byte <= 122) or (byte >= 48 and byte <= 57) {
+      out.push(byte)
+    }
+  }
+
+  out
+}
+
+# Encodes `plaintext` with the square code: its normalized characters are
+# written in the rows of a rectangle, then read column by column, the columns
+# separated by spaces.
+fn pub ciphertext(plaintext: String) -> String {
+  let text = normalize(plaintext)
+  let size = text.size
+  let mut columns = 0
+
+  while columns * columns < size { columns += 1 }
+
+  let rows = if columns * (columns - 1) >= size { columns - 1 } else { columns }
+
+  String.join(
+    0.until(columns).iter.map(fn (column) {
+      let chunk = ByteArray.new
+
+      for row in 0.until(rows) {
+        chunk.push(text.get(row * columns + column).or(32))
+      }
+
+      chunk.into_string
+    }),
+    with: ' ',
+  )
+}

@@ -1,0 +1,7 @@
+{
+  "blurb": "Calling resume more than once runs the rest of a computation once per answer: search and backtracking as handlers.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

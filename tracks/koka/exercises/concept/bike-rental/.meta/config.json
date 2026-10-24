@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "bike-rental.kk"
+    ],
+    "test": [
+      "test/bike-rental-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about structs by keeping track of the bikes in a lakeside rental shed.",
+  "custom": {
+    "after": [
+      "name-badges"
+    ]
+  }
+}

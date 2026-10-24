@@ -1,0 +1,106 @@
+import std.map (Map)
+
+type copy enum Outcome {
+  case Win
+  case Draw
+  case Loss
+}
+
+type Record {
+  let @team: String
+  let mut @won: Int
+  let mut @drawn: Int
+  let mut @lost: Int
+
+  fn static new(team: String) -> Record {
+    Record(team: team, won: 0, drawn: 0, lost: 0)
+  }
+
+  fn mut add(outcome: Outcome) {
+    match outcome {
+      case Win -> @won += 1
+      case Draw -> @drawn += 1
+      case Loss -> @lost += 1
+    }
+  }
+
+  fn played -> Int {
+    @won + @drawn + @lost
+  }
+
+  fn points -> Int {
+    @won * 3 + @drawn
+  }
+
+  fn line -> String {
+    format(@team, played, @won, @drawn, @lost, points)
+  }
+}
+
+# Returns the league table for the match results in `rows`, each formatted as
+# `<team>;<team>;<win|loss|draw>` (the result is from the first team's point of
+# view). The table starts with a header line; teams are sorted by points
+# (descending), then by name.
+fn pub tally(rows: ref Array[String]) -> Array[String] {
+  let records: Map[String, Record] = Map.new
+
+  for row in rows.iter {
+    match row.split(';').map(fn (part) { part.to_string }).to_array {
+      case [home, away, 'win'] -> {
+        add(records, home, Outcome.Win)
+        add(records, away, Outcome.Loss)
+      }
+      case [home, away, 'loss'] -> {
+        add(records, home, Outcome.Loss)
+        add(records, away, Outcome.Win)
+      }
+      case [home, away, 'draw'] -> {
+        add(records, home, Outcome.Draw)
+        add(records, away, Outcome.Draw)
+      }
+      case _ -> {}
+    }
+  }
+
+  let sorted = records
+    .into_iter
+    .map(fn (pair) {
+      match pair {
+        case (_, record) -> record
+      }
+    })
+    .to_array
+
+  sorted.sort_by(fn (a, b) {
+    match b.points.cmp(a.points) {
+      case Equal -> a.team.cmp(b.team)
+      case order -> order
+    }
+  })
+
+  let lines = ['Team                           | MP |  W |  D |  L |  P']
+
+  lines.append(sorted.iter.map(fn (record) { record.line }).to_array)
+  lines
+}
+
+fn add(records: mut Map[String, Record], team: String, outcome: Outcome) {
+  if !records.contains?(team) { records.set(team, Record.new(team.clone)) }
+
+  records.get_mut(team).or_panic.add(outcome)
+}
+
+fn format(
+  team: String,
+  played: Int,
+  won: Int,
+  drawn: Int,
+  lost: Int,
+  points: Int,
+) -> String {
+  let cols = [played, won, drawn, lost, points].into_iter.map(fn (value) {
+    value.to_string.pad_start(' ', 2)
+  })
+
+  '${team.pad_end(' ', 30)} | ${String.join(cols, ' | ')}'
+}

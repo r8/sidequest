@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/float/Float/",
+    "description": "The Float type in the standard library"
+  },
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/references/syntax/",
+    "description": "Float literals in the syntax reference"
+  }
+]

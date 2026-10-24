@@ -1,0 +1,53 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# A tree of labelled nodes. The order of `children` carries no meaning.
+type pub Tree {
+  let pub @label: String
+  let pub @children: Array[Tree]
+
+  # Returns a tree with the given `label` and `children`.
+  fn pub static new(label: String, children: Array[Tree]) -> Tree {
+    Tree(label: label, children: children)
+  }
+
+  # Returns a tree with the given `label` and no children.
+  fn pub static leaf(label: String) -> Tree {
+    Tree(label: label, children: [])
+  }
+}
+
+impl Equal for Tree {
+  # Returns `true` if both trees have the same labels with their children in
+  # the same order.
+  fn pub ==(other: ref Tree) -> Bool {
+    @label == other.label and @children == other.children
+  }
+}
+
+impl Format for Tree {
+  fn pub fmt(formatter: mut Formatter) {
+    formatter.write('Tree(')
+    @label.fmt(formatter)
+
+    if @children.size > 0 {
+      formatter.write(', ')
+      @children.fmt(formatter)
+    }
+
+    formatter.write(')')
+  }
+}
+
+# Returns `tree` reoriented so the node labelled `from` is its root, or `None`
+# if there is no such node. `tree` is consumed: the result is built from its
+# nodes.
+fn pub from_pov(tree: Tree, from: String) -> Option[Tree] {
+  panic('implement me')
+}
+
+# Returns the labels on the path from the node labelled `from` to the node
+# labelled `to`, both included, or `None` if either node doesn't exist.
+fn pub path_to(tree: Tree, from: String, to: String) -> Option[Array[String]] {
+  panic('implement me')
+}

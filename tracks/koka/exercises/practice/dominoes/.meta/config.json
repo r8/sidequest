@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "dominoes.kk"
+    ],
+    "test": [
+      "test/dominoes-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Make a chain of dominoes.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

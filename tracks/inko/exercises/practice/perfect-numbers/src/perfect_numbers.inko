@@ -1,0 +1,38 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# The classification of a positive integer by its aliquot sum (the sum of its
+# divisors other than itself).
+type pub copy enum Classification {
+  case Perfect
+  case Abundant
+  case Deficient
+}
+
+impl Equal for Classification {
+  fn pub ==(other: Classification) -> Bool {
+    match (self, other) {
+      case (Perfect, Perfect) -> true
+      case (Abundant, Abundant) -> true
+      case (Deficient, Deficient) -> true
+      case _ -> false
+    }
+  }
+}
+
+impl Format for Classification {
+  fn pub fmt(formatter: mut Formatter) {
+    let name = match self {
+      case Perfect -> 'Perfect'
+      case Abundant -> 'Abundant'
+      case Deficient -> 'Deficient'
+    }
+
+    formatter.tuple(name).finish
+  }
+}
+
+# Returns the classification of `number`, or an error if it isn't positive.
+fn pub classify(number: Int) -> Result[Classification, String] {
+  panic('implement me')
+}

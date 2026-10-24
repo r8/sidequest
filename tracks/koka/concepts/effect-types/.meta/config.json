@@ -1,0 +1,7 @@
+{
+  "blurb": "Function types that say what a function may do: total, exn, div, console, io and effect variables.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

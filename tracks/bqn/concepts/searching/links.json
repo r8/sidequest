@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/search.html",
+    "description": "Search functions: index of, member of and progressive index of"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/selfcmp.html",
+    "description": "Self-search functions: classify, mark firsts, occurrence count and deduplicate"
+  }
+]

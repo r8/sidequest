@@ -1,0 +1,26 @@
+# Returns the candidates that are anagrams of `subject`, ignoring case, in the
+# order they are given. A word is not an anagram of itself.
+fn pub find_anagrams(
+  subject: String,
+  candidates: ref Array[String],
+) -> Array[String] {
+  let lower = subject.to_lower
+  let key = sorted_chars(lower)
+
+  candidates
+    .iter
+    .select(fn (candidate) {
+      let other = candidate.to_lower
+
+      other != lower and sorted_chars(other) == key
+    })
+    .map(fn (candidate) { candidate.clone })
+    .to_array
+}
+
+fn sorted_chars(word: String) -> Array[String] {
+  let chars = word.chars.to_array
+
+  chars.sort
+  chars
+}

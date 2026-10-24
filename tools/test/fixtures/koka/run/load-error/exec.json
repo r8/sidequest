@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "stdout": "greet.kk(3,24): type error: types do not match\n  context      :                name ++ 1\n  term         :                        1\n  inferred type: int\n  expected type: string\n\n",
+  "stderr": "Failed to compile test/greet-test.kk\n",
+  "timedOut": false
+}

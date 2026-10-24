@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "almanac.fs"
+    ],
+    "test": [
+      "test/almanac-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about immediate words, state and compile-time computation by typesetting the tables of a harbourmaster's almanac.",
+  "custom": {
+    "after": [
+      "piggy-bank",
+      "vending-machine"
+    ]
+  }
+}

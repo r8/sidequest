@@ -1,0 +1,49 @@
+# Basic list operations on arrays.
+#
+# Implement them without the iterator helpers (`map`, `select`, `reduce`,
+# `chain`, `count` and the like) and without `Array.append`, `Array.reverse`
+# or `Array.size`: plain `for` loops, `push` and `pop` are fine. The functions
+# take ownership of their lists and return new ones.
+
+# Returns the elements of `list1` followed by those of `list2`.
+fn pub append[T](list1: Array[T], list2: Array[T]) -> Array[T] {
+  panic('implement me')
+}
+
+# Returns the elements of all the `lists`, in order, in one flat array.
+fn pub concat[T](lists: Array[Array[T]]) -> Array[T] {
+  panic('implement me')
+}
+
+# Returns the elements of `list` for which `func` returns `true`.
+fn pub filter[T](list: Array[T], func: fn (ref T) -> Bool) -> Array[T] {
+  panic('implement me')
+}
+
+# Returns the number of elements in `list`.
+fn pub length[T](list: ref Array[T]) -> Int {
+  panic('implement me')
+}
+
+# Returns the results of calling `func` with each element of `list`.
+fn pub map[T, R](list: Array[T], func: fn (T) -> R) -> Array[R] {
+  panic('implement me')
+}
+
+# Folds `list` from the left: calls `func` with the accumulator (starting at
+# `initial`) and each element, first to last, and returns the final
+# accumulator.
+fn pub foldl[T, A](list: Array[T], initial: A, func: fn (A, T) -> A) -> A {
+  panic('implement me')
+}
+
+# Folds `list` from the right: like `foldl`, but from the last element to the
+# first.
+fn pub foldr[T, A](list: Array[T], initial: A, func: fn (A, T) -> A) -> A {
+  panic('implement me')
+}
+
+# Returns the elements of `list` in reverse order.
+fn pub reverse[T](list: Array[T]) -> Array[T] {
+  panic('implement me')
+}

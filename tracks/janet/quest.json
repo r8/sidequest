@@ -1,0 +1,11 @@
+{
+  "runner": "janet",
+  "harness": ["lib/test.janet"],
+  "test": {
+    "argv": ["janet", "{test}"],
+    "env": { "JANET_PATH": "lib" },
+    "timeoutMs": 30000
+  },
+  "toolchain": null,
+  "color": "#9763cc"
+}

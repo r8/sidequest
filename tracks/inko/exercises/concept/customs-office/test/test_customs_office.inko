@@ -1,0 +1,73 @@
+import customs_office (
+  check_weight, on_form, read_number, read_weight, stamp, with_duty,
+)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. an allowed weight', fn (t) {
+    t.equal(check_weight(12), Result.Ok(12))
+  })
+  t.test('1. the limits are allowed', fn (t) {
+    t.equal(check_weight(1), Result.Ok(1))
+    t.equal(check_weight(30), Result.Ok(30))
+  })
+  t.test('1. too heavy', fn (t) {
+    t.equal(check_weight(45), Result.Error('too heavy'))
+  })
+  t.test('1. too light', fn (t) {
+    t.equal(check_weight(0), Result.Error('too light'))
+  })
+
+  t.test('2. read a number', fn (t) {
+    t.equal(read_number('12'), Result.Ok(12))
+  })
+  t.test('2. read words', fn (t) {
+    t.equal(read_number('twelve'), Result.Error('not a number: twelve'))
+  })
+  t.test('2. read nothing', fn (t) {
+    t.equal(read_number(''), Result.Error('not a number: '))
+  })
+
+  t.test('3. read an allowed weight', fn (t) {
+    t.equal(read_weight('12'), Result.Ok(12))
+  })
+  t.test('3. read a weight that is too heavy', fn (t) {
+    t.equal(read_weight('45'), Result.Error('too heavy'))
+  })
+  t.test('3. read a weight that is not a number', fn (t) {
+    t.equal(read_weight('lots'), Result.Error('not a number: lots'))
+  })
+
+  t.test('4. add the duty', fn (t) {
+    t.equal(with_duty(Result.Ok(150)), Result.Ok(180))
+  })
+  t.test('4. the duty is rounded down', fn (t) {
+    t.equal(with_duty(Result.Ok(99)), Result.Ok(118))
+  })
+  t.test('4. no duty on an error', fn (t) {
+    t.equal(
+      with_duty(Result.Error('not a number: x')),
+      Result.Error('not a number: x'),
+    )
+  })
+
+  t.test('5. name the form of an error', fn (t) {
+    t.equal(
+      on_form(Result.Error('too heavy'), 'C2'),
+      Result.Error('C2: too heavy'),
+    )
+  })
+  t.test('5. a success is unchanged', fn (t) {
+    t.equal(on_form(Result.Ok(12), 'C2'), Result.Ok(12))
+  })
+
+  t.test('6. stamp a cleared parcel', fn (t) {
+    t.equal(stamp(Result.Ok(180)), 'cleared: 180')
+  })
+  t.test('6. stamp a held parcel', fn (t) {
+    t.equal(stamp(Result.Error('too heavy')), 'held: too heavy')
+  })
+  t.test('6. stamp the whole check', fn (t) {
+    t.equal(stamp(on_form(read_weight('45'), 'C2')), 'held: C2: too heavy')
+  })
+}

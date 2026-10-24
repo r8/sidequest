@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "clock.janet"
+    ],
+    "test": [
+      "test/clock.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Implement a clock that handles times without dates.",
+  "source": "Pairing session with Erin Drummond",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

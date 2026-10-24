@@ -1,0 +1,32 @@
+# Returns the decimal digits of `number`, least significant first.
+fn digits(number: Int) -> Array[Int] {
+  let digits = []
+  let mut rest = number
+
+  while rest > 0 {
+    digits.push(rest % 10)
+    rest /= 10
+  }
+
+  digits
+}
+
+# Returns `true` if `number` is the sum of its own digits each raised to the
+# power of the number of digits.
+fn pub armstrong_number?(number: Int) -> Bool {
+  let digits = digits(number)
+  let power = digits.size
+  let mut sum = 0
+
+  # A number has at most 19 digits, so `digit ** power` fits in an `Int`, but
+  # the sum may not: stop as soon as it would pass `number`.
+  for digit in digits.into_iter {
+    let term = digit ** power
+
+    if term > (number - sum) { return false }
+
+    sum += term
+  }
+
+  sum == number
+}

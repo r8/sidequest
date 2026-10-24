@@ -1,0 +1,17 @@
+# Searches `files` for lines matching `pattern` and returns the output lines.
+#
+# Flags: `-n` prefixes line numbers, `-l` returns only the names of files with
+# a match, `-i` matches case-insensitively, `-v` returns non-matching lines,
+# and `-x` only matches entire lines. With more than one file, output lines are
+# prefixed with the file name. File names are reported as given; the tests
+# pass bare names relative to the working directory, which they point at a
+# temporary directory holding the files.
+#
+# Returns an error if a file can't be read.
+fn pub grep(
+  pattern: String,
+  flags: ref Array[String],
+  files: ref Array[String],
+) -> Result[Array[String], String] {
+  panic('implement me')
+}

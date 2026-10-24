@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "forth.janet"
+    ],
+    "test": [
+      "test/forth.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Implement an evaluator for a very simple subset of Forth.",
+  "custom": {
+    "after": [
+      "wordy"
+    ]
+  }
+}

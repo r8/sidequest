@@ -1,0 +1,12 @@
+# Returns the raindrop sounds for the factors 3, 5 and 7 of `number`, or the
+# number itself.
+fn pub convert(number: Int) -> String {
+  let sounds = [(3, 'Pling'), (5, 'Plang'), (7, 'Plong')]
+  let drops = sounds
+    .iter
+    .select(fn (pair) { number % pair.0 == 0 })
+    .map(fn (pair) { pair.1 })
+    .reduce('', fn (acc, sound) { acc + sound })
+
+  if drops.empty? { number.to_string } else { drops }
+}

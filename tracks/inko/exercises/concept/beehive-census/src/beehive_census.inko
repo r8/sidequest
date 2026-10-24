@@ -1,0 +1,29 @@
+# Returns the sum of all the counts.
+fn pub total_bees(counts: ref Array[Int]) -> Int {
+  panic('implement me')
+}
+
+# Returns how many days had at least `threshold` bees.
+fn pub busy_days(counts: ref Array[Int], threshold: Int) -> Int {
+  panic('implement me')
+}
+
+# Returns every count multiplied by `factor`.
+fn pub estimates(counts: ref Array[Int], factor: Int) -> Array[Int] {
+  panic('implement me')
+}
+
+# Returns whether any day had no bees.
+fn pub quiet_day?(counts: ref Array[Int]) -> Bool {
+  panic('implement me')
+}
+
+# Returns the change from each day to the next.
+fn pub daily_changes(counts: ref Array[Int]) -> Array[Int] {
+  panic('implement me')
+}
+
+# Returns the day numbers (from 1) of the days with at least `threshold` bees.
+fn pub busy_day_numbers(counts: ref Array[Int], threshold: Int) -> Array[Int] {
+  panic('implement me')
+}

@@ -1,0 +1,111 @@
+import relay_baton (Baton, Runner, lap_counter)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. a new runner holds nothing', fn (t) {
+    t.false(Runner.new('Ada').holding?)
+  })
+  t.test('1. a runner takes a baton', fn (t) {
+    let ada = Runner.new('Ada')
+
+    ada.take(Baton.new('Red'))
+    t.true(ada.holding?)
+  })
+
+  t.test('2. hand off the baton', fn (t) {
+    let ada = Runner.new('Ada')
+    let bo = Runner.new('Bo')
+
+    ada.take(Baton.new('Red'))
+    ada.hand_off(bo)
+    t.false(ada.holding?)
+    t.true(bo.holding?)
+  })
+  t.test('2. hand off without a baton', fn (t) {
+    let ada = Runner.new('Ada')
+    let bo = Runner.new('Bo')
+
+    ada.hand_off(bo)
+    t.false(ada.holding?)
+    t.false(bo.holding?)
+  })
+  t.test('2. hand off along the team', fn (t) {
+    let ada = Runner.new('Ada')
+    let bo = Runner.new('Bo')
+    let cy = Runner.new('Cy')
+
+    ada.take(Baton.new('Red'))
+    ada.hand_off(bo)
+    bo.hand_off(cy)
+    t.true(cy.holding?)
+    t.false(bo.holding?)
+  })
+
+  t.test('3. the team of the baton', fn (t) {
+    let ada = Runner.new('Ada')
+
+    ada.take(Baton.new('Red'))
+    t.equal(ada.team, 'Red')
+  })
+  t.test('3. the team after a hand off', fn (t) {
+    let ada = Runner.new('Ada')
+    let bo = Runner.new('Bo')
+
+    ada.take(Baton.new('Blue'))
+    ada.hand_off(bo)
+    t.equal(bo.team, 'Blue')
+    t.equal(ada.team, 'no team')
+  })
+
+  t.test('4. retire with the baton', fn (t) {
+    let ada = Runner.new('Ada')
+    let bo = Runner.new('Bo')
+
+    ada.take(Baton.new('Red'))
+    ada.hand_off(bo)
+
+    match bo.retire {
+      case Some(baton) -> {
+        t.equal(baton.team, 'Red')
+        t.equal(baton.handoffs, 1)
+      }
+      case None -> t.true(false)
+    }
+  })
+  t.test('4. retire without a baton', fn (t) {
+    t.true(Runner.new('Ada').retire.none?)
+  })
+  t.test('4. the baton counts every hand off', fn (t) {
+    let ada = Runner.new('Ada')
+    let bo = Runner.new('Bo')
+
+    ada.take(Baton.new('Red'))
+    ada.hand_off(bo)
+    bo.hand_off(ada)
+    ada.hand_off(bo)
+    t.equal(bo.retire.map(fn (baton) { baton.handoffs }), Option.Some(3))
+  })
+
+  t.test('5. count the first lap', fn (t) {
+    let laps = lap_counter
+
+    t.equal(laps.call, 1)
+  })
+  t.test('5. count several laps', fn (t) {
+    let laps = lap_counter
+
+    let _ = laps.call
+    let _ = laps.call
+
+    t.equal(laps.call, 3)
+  })
+  t.test('5. counters count separately', fn (t) {
+    let first = lap_counter
+    let second = lap_counter
+
+    let _ = first.call
+    let _ = first.call
+
+    t.equal(second.call, 1)
+  })
+}

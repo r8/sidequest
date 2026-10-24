@@ -1,0 +1,7 @@
+{
+  "blurb": "Match values against patterns of literals, tuples and lists, with guards, to choose what to do.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

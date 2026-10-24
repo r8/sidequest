@@ -1,0 +1,9 @@
+# Returns the sum of the distinct numbers below `limit` that are multiples of
+# at least one of `factors`. A factor of 0 has no multiples below `limit`.
+fn pub sum(factors: Array[Int], limit: Int) -> Int {
+  Int.sum(
+    1.until(limit).iter.select(fn (number) {
+      factors.iter.any?(fn (factor) { factor > 0 and number % factor == 0 })
+    }),
+  )
+}

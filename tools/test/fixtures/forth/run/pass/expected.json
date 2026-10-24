@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "status": "pass",
+  "message": null,
+  "tests": [
+    {
+      "name": "greets",
+      "status": "pass",
+      "test_code": "test\" greets\"\n  .\" noisy output\" cr .\" second line\"\n  greet s\" Hello, you!\" assert-str= ;test",
+      "message": null,
+      "output": "noisy output\nsecond line\n"
+    },
+    {
+      "name": "doubles",
+      "status": "pass",
+      "test_code": "test\" doubles\"  21 double 42 assert= ;test",
+      "message": null,
+      "output": null
+    }
+  ]
+}

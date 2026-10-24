@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "line-up.janet"
+    ],
+    "test": [
+      "test/line-up.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Help lining up customers at Yaʻqūb's Deli.",
+  "source": "mk-mxp, based on previous work from Exercism contributors codedge and neenjaw",
+  "source_url": "https://forum.exercism.org/t/new-exercise-ordinal-numbers/19147",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

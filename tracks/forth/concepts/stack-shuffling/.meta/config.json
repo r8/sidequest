@@ -1,0 +1,7 @@
+{
+  "blurb": "dup, swap, over, rot and their relatives rearrange the top of the data stack so each word finds its arguments.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

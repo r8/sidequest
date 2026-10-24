@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/General-Loops-Tutorial.html",
+    "description": "General loops in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Simple-Loops.html",
+    "description": "begin, until, while, repeat and again in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/BEGIN-loops-with-multiple-exits.html",
+    "description": "Loops with several exits in the Gforth manual"
+  }
+]

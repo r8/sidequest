@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/types/",
+    "description": "Types and enums, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/pattern-matching/",
+    "description": "Matching on enum cases"
+  }
+]

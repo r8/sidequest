@@ -1,0 +1,5 @@
+# Returns `number` spelled out in English, or an error if it is below zero or
+# above 999,999,999,999.
+fn pub say(number: Int) -> Result[String, String] {
+  panic('implement me')
+}

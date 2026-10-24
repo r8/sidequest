@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "pythagorean-triplet.kk"
+    ],
+    "test": [
+      "test/pythagorean-triplet-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Given an integer N, find all Pythagorean triplets for which a + b + c = N.",
+  "source": "A variation of Problem 9 from Project Euler",
+  "source_url": "https://projecteuler.net/problem=9",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

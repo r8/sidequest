@@ -1,0 +1,6 @@
+{
+  "exitCode": 0,
+  "stdout": "debugPASS\tno name\t\tnoisy\\toutput\\nsecond line\\n\nPASS\tname with \"quotes\"\t\t\nSUMMARY\t2\t0\t0\n",
+  "stderr": "",
+  "timedOut": false
+}

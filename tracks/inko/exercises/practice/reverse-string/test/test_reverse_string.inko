@@ -1,0 +1,14 @@
+import reverse_string (reverse)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('an empty string', fn (t) { t.equal(reverse(''), '') })
+  t.test('a word', fn (t) { t.equal(reverse('robot'), 'tobor') })
+  t.test('a capitalized word', fn (t) { t.equal(reverse('Ramen'), 'nemaR') })
+  t.test('a sentence with punctuation', fn (t) { t.equal(reverse("I'm hungry!"), "!yrgnuh m'I") })
+  t.test('a palindrome', fn (t) { t.equal(reverse('racecar'), 'racecar') })
+  t.test('an even-sized word', fn (t) { t.equal(reverse('drawer'), 'reward') })
+  t.test('wide characters', fn (t) { t.equal(reverse('子猫'), '猫子') })
+  t.test('grapheme cluster with pre-combined form', fn (t) { t.equal(reverse('Würstchenstand'), 'dnatsnehctsrüW') })
+  t.test('grapheme clusters', fn (t) { t.equal(reverse('ผู้เขียนโปรแกรม'), 'มรกแรปโนยขีเผู้') })
+}

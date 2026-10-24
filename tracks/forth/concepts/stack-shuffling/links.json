@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Stack-Manipulation-Tutorial.html",
+    "description": "Stack manipulation in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Data-stack.html",
+    "description": "Every data-stack word in the Gforth manual"
+  },
+  {
+    "url": "https://www.forth.com/starting-forth/2-stack-manipulation-operators-arithmetic/",
+    "description": "Starting Forth, chapter 2: stack maneuvers"
+  }
+]

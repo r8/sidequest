@@ -1,0 +1,8 @@
+# Returns the results of calling `func` with each of the `values`, in order.
+fn pub accumulate[T, R](values: Array[T], func: fn (T) -> R) -> Array[R] {
+  let results = Array.with_capacity(values.size)
+
+  for value in values.into_iter { results.push(func.call(value)) }
+
+  results
+}

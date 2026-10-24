@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "spell-book.janet"
+    ],
+    "test": [
+      "test/spell-book.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about symbols and quoting by reading and writing the spells of a wizard's book, where every spell is a Janet form.",
+  "custom": {
+    "after": [
+      "weather-report",
+      "train-cars"
+    ]
+  }
+}

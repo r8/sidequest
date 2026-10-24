@@ -1,0 +1,8 @@
+import greet (greet)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('panics', fn (t) { t.equal(greet('you'), 'Hello, you!') })
+  t.test('passes', fn (t) { t.equal(greet('Bob'), 'Hello, Bob!') })
+  t.test('fails', fn (t) { t.equal(greet('Bob'), 'nope') })
+}

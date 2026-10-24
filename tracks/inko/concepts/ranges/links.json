@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/range/",
+    "description": "The std.range module"
+  },
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/int/Int/",
+    "description": "Int.until, Int.to and Int.times"
+  }
+]

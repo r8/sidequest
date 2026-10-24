@@ -1,0 +1,21 @@
+# Returns the prime factors of `value` in ascending order, each repeated as
+# often as it divides `value`.
+fn pub factors(value: Int) -> Array[Int] {
+  let factors = []
+  let mut rest = value
+  let mut divisor = 2
+
+  # Not divisor * divisor <= rest: near the largest Int, that product overflows.
+  while divisor <= (rest / divisor) {
+    if rest % divisor == 0 {
+      factors.push(divisor)
+      rest /= divisor
+    } else {
+      divisor += 1
+    }
+  }
+
+  if rest > 1 { factors.push(rest) }
+
+  factors
+}

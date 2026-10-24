@@ -1,0 +1,11 @@
+import greet (greet)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('passing case', fn (t) { t.equal(greet('you'), 'Hello, you!') })
+  t.test('passing case extended', fn (t) {
+    t.equal(greet('boom'), 'x')
+  })
+  t.test('name check', fn (t) { t.equal(greet('Bob'), 'Hello, Bob!') })
+  t.test('name check strict', fn (t) { t.equal(greet('Bob'), 'Hi, Bob!') })
+}

@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "status": "fail",
+  "message": null,
+  "tests": [
+    {
+      "name": "passes",
+      "status": "pass",
+      "test_code": "test\" passes\"  21 double 42 assert= ;test",
+      "message": null,
+      "output": null
+    },
+    {
+      "name": "fails on a number",
+      "status": "fail",
+      "test_code": "test\" fails on a number\"  2 double 5 assert= ;test",
+      "message": "expected 5, got 4",
+      "output": null
+    },
+    {
+      "name": "fails on a missing throw",
+      "status": "fail",
+      "test_code": "test\" fails on a missing throw\"  1 ['] double -24 assert-throws ;test",
+      "message": "expected throw -24, but nothing was thrown",
+      "output": null
+    },
+    {
+      "name": "leaves the stack dirty",
+      "status": "error",
+      "test_code": "test\" leaves the stack dirty\"  1 double ;test",
+      "message": "the test left the stack changed by 1 item(s)",
+      "output": null
+    }
+  ]
+}

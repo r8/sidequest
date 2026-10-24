@@ -1,0 +1,6 @@
+{
+  "runner": "Bad Runner",
+  "harness": [],
+  "test": { "argv": ["bad", "{test}"], "timeoutMs": "soon" },
+  "toolchain": null
+}

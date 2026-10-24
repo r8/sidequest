@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "status": "pass",
+  "message": "warning: inko ran 2 tests but the test file declares 1",
+  "tests": [
+    {
+      "name": "src",
+      "status": "pass",
+      "test_code": "t.test('src', fn (t) { t.equal(greet('you'), 'Hello, you!') })",
+      "message": null
+    }
+  ]
+}

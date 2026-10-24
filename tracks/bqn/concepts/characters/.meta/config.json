@@ -1,0 +1,7 @@
+{
+  "blurb": "Characters are Unicode code points, written 'a', with arithmetic by code point and @ as code point zero.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

@@ -1,0 +1,86 @@
+import std.test (Tests)
+import weather_station (Station)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. a new station has a name', fn (t) {
+    t.equal(Station.new('Ridge Hut').name, 'Ridge Hut')
+  })
+  t.test('1. a new station has no readings', fn (t) {
+    t.equal(Station.new('Ridge Hut').count, 0)
+  })
+
+  t.test('2. record one reading', fn (t) {
+    let station = Station.new('Ridge Hut')
+
+    station.record(12.5)
+    t.equal(station.count, 1)
+  })
+  t.test('2. record several readings', fn (t) {
+    let station = Station.new('Ridge Hut')
+
+    station.record(12.5)
+    station.record(9.0)
+    station.record(-3.5)
+    t.equal(station.count, 3)
+  })
+
+  t.test('3. the latest reading', fn (t) {
+    let station = Station.new('Ridge Hut')
+
+    station.record(12.5)
+    station.record(9.0)
+    t.equal(station.latest, Option.Some(9.0))
+  })
+  t.test('3. no latest reading yet', fn (t) {
+    t.equal(Station.new('Ridge Hut').latest, Option.None)
+  })
+
+  t.test('4. the average of several readings', fn (t) {
+    let station = Station.new('Ridge Hut')
+
+    station.record(12.5)
+    station.record(9.0)
+    t.equal(station.average, 10.8)
+  })
+  t.test('4. the average of one reading', fn (t) {
+    let station = Station.new('Ridge Hut')
+
+    station.record(-4.0)
+    t.equal(station.average, -4.0)
+  })
+  t.test('4. the average without readings', fn (t) {
+    t.equal(Station.new('Ridge Hut').average, 0.0)
+  })
+
+  t.test('5. a warmer station', fn (t) {
+    let hut = Station.new('Ridge Hut')
+    let summit = Station.new('Summit')
+
+    hut.record(10.0)
+    summit.record(2.0)
+    t.true(hut.warmer_than?(summit))
+    t.false(summit.warmer_than?(hut))
+  })
+  t.test('5. equally warm stations', fn (t) {
+    let hut = Station.new('Ridge Hut')
+    let summit = Station.new('Summit')
+
+    hut.record(5.0)
+    summit.record(5.0)
+    t.false(hut.warmer_than?(summit))
+  })
+
+  t.test('6. rename a station', fn (t) {
+    let station = Station.new('Ridge Hut')
+
+    station.rename('Eagle Hut')
+    t.equal(station.name, 'Eagle Hut')
+  })
+  t.test('6. renaming keeps the readings', fn (t) {
+    let station = Station.new('Ridge Hut')
+
+    station.record(1.0)
+    station.rename('Eagle Hut')
+    t.equal(station.count, 1)
+  })
+}

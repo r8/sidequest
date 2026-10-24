@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/nesting_dolls.inko"
+    ],
+    "test": [
+      "test/test_nesting_dolls.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about recursion by unpacking and packing sets of nesting dolls.",
+  "custom": {
+    "after": [
+      "potion-shop"
+    ]
+  }
+}

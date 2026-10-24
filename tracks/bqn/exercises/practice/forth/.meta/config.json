@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "forth.bqn"
+    ],
+    "test": [
+      "test/forth.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Implement an evaluator for a very simple subset of Forth.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

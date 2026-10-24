@@ -1,0 +1,30 @@
+import all_your_base (rebase)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('single bit one to decimal', fn (t) { t.equal(rebase(2, [1], 10), Result.Ok([1])) })
+  t.test('binary to single decimal', fn (t) { t.equal(rebase(2, [1, 0, 1], 10), Result.Ok([5])) })
+  t.test('single decimal to binary', fn (t) { t.equal(rebase(10, [5], 2), Result.Ok([1, 0, 1])) })
+  t.test('binary to multiple decimal', fn (t) { t.equal(rebase(2, [1, 0, 1, 0, 1, 0], 10), Result.Ok([4, 2])) })
+  t.test('decimal to binary', fn (t) { t.equal(rebase(10, [4, 2], 2), Result.Ok([1, 0, 1, 0, 1, 0])) })
+  t.test('trinary to hexadecimal', fn (t) { t.equal(rebase(3, [1, 1, 2, 0], 16), Result.Ok([2, 10])) })
+  t.test('hexadecimal to trinary', fn (t) { t.equal(rebase(16, [2, 10], 3), Result.Ok([1, 1, 2, 0])) })
+  t.test('15-bit integer', fn (t) { t.equal(rebase(97, [3, 46, 60], 73), Result.Ok([6, 10, 45])) })
+  t.test('empty list', fn (t) { t.equal(rebase(2, [], 10), Result.Ok([0])) })
+  t.test('single zero', fn (t) { t.equal(rebase(10, [0], 2), Result.Ok([0])) })
+  t.test('multiple zeros', fn (t) { t.equal(rebase(10, [0, 0, 0], 2), Result.Ok([0])) })
+  t.test('leading zeros', fn (t) { t.equal(rebase(7, [0, 6, 0], 10), Result.Ok([4, 2])) })
+  t.test('input base is one', fn (t) { t.equal(rebase(1, [0], 10), Result.Error('input base must be >= 2')) })
+  t.test('input base is zero', fn (t) { t.equal(rebase(0, [], 10), Result.Error('input base must be >= 2')) })
+  t.test('input base is negative', fn (t) { t.equal(rebase(-2, [1], 10), Result.Error('input base must be >= 2')) })
+  t.test('negative digit', fn (t) {
+    t.equal(rebase(2, [1, -1, 1, 0, 1, 0], 10), Result.Error('all digits must satisfy 0 <= d < input base'))
+  })
+  t.test('invalid positive digit', fn (t) {
+    t.equal(rebase(2, [1, 2, 1, 0, 1, 0], 10), Result.Error('all digits must satisfy 0 <= d < input base'))
+  })
+  t.test('output base is one', fn (t) { t.equal(rebase(2, [1, 0, 1, 0, 1, 0], 1), Result.Error('output base must be >= 2')) })
+  t.test('output base is zero', fn (t) { t.equal(rebase(10, [7], 0), Result.Error('output base must be >= 2')) })
+  t.test('output base is negative', fn (t) { t.equal(rebase(2, [1], -7), Result.Error('output base must be >= 2')) })
+  t.test('both bases are negative', fn (t) { t.equal(rebase(-2, [1], -7), Result.Error('input base must be >= 2')) })
+}

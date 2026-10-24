@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/poker.inko"
+    ],
+    "test": [
+      "test/test_poker.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Pick the best hand(s) from a list of poker hands.",
+  "source": "Inspired by the training course from Udacity.",
+  "source_url": "https://www.udacity.com/course/design-of-computer-programs--cs212",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

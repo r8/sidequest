@@ -1,0 +1,5 @@
+# Returns `true` if no letter occurs more than once in `phrase`, ignoring case.
+# Spaces and hyphens may appear multiple times.
+fn pub isogram?(phrase: String) -> Bool {
+  panic('implement me')
+}

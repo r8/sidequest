@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "linked-list.kk"
+    ],
+    "test": [
+      "test/linked-list-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Implement a doubly linked list.",
+  "source": "Classic computer science topic",
+  "custom": {
+    "after": [
+      "simple-linked-list"
+    ]
+  }
+}

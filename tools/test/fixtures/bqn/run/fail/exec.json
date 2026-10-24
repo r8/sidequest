@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "stdout": "PASS\tpasses\t\t\nFAIL\tfails on a list\texpected 1‿2, got 2‿4\t\nFAIL\tfails on a missing error\texpected the error \"boom\", but nothing was raised\t\nFAIL\tfails on a float\texpected 2.5, got 2.6\t\nSUMMARY\t1\t3\t0\n",
+  "stderr": "",
+  "timedOut": false
+}

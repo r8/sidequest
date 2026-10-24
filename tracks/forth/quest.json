@@ -1,0 +1,22 @@
+{
+  "runner": "forth",
+  "harness": ["lib/test.fs"],
+  "test": {
+    "argv": ["gforth", "{test}", "-e", "bye"],
+    "env": {},
+    "timeoutMs": 30000
+  },
+  "toolchain": {
+    "bin": "gforth",
+    "version": "0.7.3",
+    "versionCommand": ["gforth", "--version"],
+    "versionPattern": "^gforth (\\S+)",
+    "ci": {
+      "install": [
+        ["sudo", "apt-get", "update", "-qq"],
+        ["sudo", "apt-get", "install", "-y", "-qq", "gforth"]
+      ]
+    }
+  },
+  "color": "#cb5a1a"
+}

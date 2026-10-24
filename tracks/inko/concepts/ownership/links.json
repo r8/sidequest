@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/memory-management/",
+    "description": "Memory management, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/methods/",
+    "description": "fn move methods and closures, in the Inko manual"
+  }
+]

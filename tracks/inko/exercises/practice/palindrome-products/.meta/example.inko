@@ -1,0 +1,131 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# A palindrome product: the palindrome's `value`, and every pair of factors
+# `(a, b)` in the range with `a <= b` and `a * b == value`, sorted by `a`.
+type pub Palindrome {
+  let pub @value: Int
+  let pub @factors: Array[(Int, Int)]
+}
+
+impl Equal for Palindrome {
+  fn pub ==(other: ref Palindrome) -> Bool {
+    @value == other.value and @factors == other.factors
+  }
+}
+
+impl Format for Palindrome {
+  fn pub fmt(formatter: mut Formatter) {
+    formatter
+      .object('Palindrome')
+      .field('value', @value)
+      .field('factors', @factors)
+      .finish
+  }
+}
+
+fn palindrome?(number: Int) -> Bool {
+  let mut rest = number
+  let mut reversed = 0
+
+  while rest > 0 {
+    reversed = (reversed * 10) + (rest % 10)
+    rest /= 10
+  }
+
+  reversed == number
+}
+
+fn found(value: Option[Int], min: Int, max: Int) -> Option[Palindrome] {
+  value.map(fn (value) {
+    # Zero (only a product when the range starts at 0) is 0 times anything.
+    let factors = if value == 0 {
+      0.to(max).iter.map(fn (b) { (0, b) }).to_array
+    } else {
+      min
+        .to(max)
+        .iter
+        .take_while(fn (a) { a * a <= value })
+        .select(fn (a) { a > 0 and value % a == 0 and value / a <= max })
+        .map(fn (a) { (a, value / a) })
+        .to_array
+    }
+
+    Palindrome(value: value, factors: factors)
+  })
+}
+
+# Returns the smallest palindrome that is a product of two factors in the range
+# `min` to `max` (inclusive), or `Option.None` if there is none.
+#
+# Returns an error if `min` is greater than `max`.
+fn pub smallest(min: Int, max: Int) -> Result[Option[Palindrome], String] {
+  if min > max { return Result.Error('min must be <= max') }
+
+  let mut best: Option[Int] = Option.None
+
+  for a in min.to(max) {
+    # Every product left is at least a * a.
+    match ref best {
+      case Some(value) if a * a >= value -> break
+      case _ -> {}
+    }
+
+    for b in a.to(max) {
+      let product = a * b
+
+      match ref best {
+        case Some(value) if product >= value -> break
+        case _ -> {}
+      }
+
+      if palindrome?(product) {
+        best = Option.Some(product)
+        break
+      }
+    }
+  }
+
+  Result.Ok(found(best, min, max))
+}
+
+# Returns the largest palindrome that is a product of two factors in the range
+# `min` to `max` (inclusive), or `Option.None` if there is none.
+#
+# Returns an error if `min` is greater than `max`.
+fn pub largest(min: Int, max: Int) -> Result[Option[Palindrome], String] {
+  if min > max { return Result.Error('min must be <= max') }
+
+  let mut best: Option[Int] = Option.None
+  let mut a = max
+
+  while a >= min {
+    # Every product left is at most a * max.
+    match ref best {
+      case Some(value) if a * max <= value -> break
+      case _ -> {}
+    }
+
+    let mut b = max
+
+    while b >= a {
+      let product = a * b
+
+      match ref best {
+        case Some(value) if product <= value -> break
+        case _ -> {}
+      }
+
+      if palindrome?(product) {
+        best = Option.Some(product)
+        break
+      }
+
+      b -= 1
+    }
+
+    a -= 1
+  }
+
+  Result.Ok(found(best, min, max))
+}

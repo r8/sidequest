@@ -1,0 +1,7 @@
+{
+  "blurb": "Functions that call themselves with 𝕊, with base cases, accumulators and BQN's stack limit.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

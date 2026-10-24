@@ -1,0 +1,148 @@
+import robot_simulator (Direction, Robot)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('Create robot > at origin facing north', fn (t) {
+    let robot = Robot.new(0, 0, Direction.North)
+
+    t.equal(robot.position, (0, 0))
+    t.equal(robot.direction, Direction.North)
+  })
+  t.test('Create robot > at negative position facing south', fn (t) {
+    let robot = Robot.new(-1, -1, Direction.South)
+
+    t.equal(robot.position, (-1, -1))
+    t.equal(robot.direction, Direction.South)
+  })
+  t.test('Rotating clockwise > changes north to east', fn (t) {
+    let robot = Robot.new(0, 0, Direction.North)
+
+    robot.turn_right
+
+    t.equal(robot.position, (0, 0))
+    t.equal(robot.direction, Direction.East)
+  })
+  t.test('Rotating clockwise > changes east to south', fn (t) {
+    let robot = Robot.new(0, 0, Direction.East)
+
+    robot.turn_right
+
+    t.equal(robot.position, (0, 0))
+    t.equal(robot.direction, Direction.South)
+  })
+  t.test('Rotating clockwise > changes south to west', fn (t) {
+    let robot = Robot.new(0, 0, Direction.South)
+
+    robot.turn_right
+
+    t.equal(robot.position, (0, 0))
+    t.equal(robot.direction, Direction.West)
+  })
+  t.test('Rotating clockwise > changes west to north', fn (t) {
+    let robot = Robot.new(0, 0, Direction.West)
+
+    robot.turn_right
+
+    t.equal(robot.position, (0, 0))
+    t.equal(robot.direction, Direction.North)
+  })
+  t.test('Rotating counter-clockwise > changes north to west', fn (t) {
+    let robot = Robot.new(0, 0, Direction.North)
+
+    robot.turn_left
+
+    t.equal(robot.position, (0, 0))
+    t.equal(robot.direction, Direction.West)
+  })
+  t.test('Rotating counter-clockwise > changes west to south', fn (t) {
+    let robot = Robot.new(0, 0, Direction.West)
+
+    robot.turn_left
+
+    t.equal(robot.position, (0, 0))
+    t.equal(robot.direction, Direction.South)
+  })
+  t.test('Rotating counter-clockwise > changes south to east', fn (t) {
+    let robot = Robot.new(0, 0, Direction.South)
+
+    robot.turn_left
+
+    t.equal(robot.position, (0, 0))
+    t.equal(robot.direction, Direction.East)
+  })
+  t.test('Rotating counter-clockwise > changes east to north', fn (t) {
+    let robot = Robot.new(0, 0, Direction.East)
+
+    robot.turn_left
+
+    t.equal(robot.position, (0, 0))
+    t.equal(robot.direction, Direction.North)
+  })
+  t.test('Moving forward one > facing north increments Y', fn (t) {
+    let robot = Robot.new(0, 0, Direction.North)
+
+    robot.advance
+
+    t.equal(robot.position, (0, 1))
+    t.equal(robot.direction, Direction.North)
+  })
+  t.test('Moving forward one > facing south decrements Y', fn (t) {
+    let robot = Robot.new(0, 0, Direction.South)
+
+    robot.advance
+
+    t.equal(robot.position, (0, -1))
+    t.equal(robot.direction, Direction.South)
+  })
+  t.test('Moving forward one > facing east increments X', fn (t) {
+    let robot = Robot.new(0, 0, Direction.East)
+
+    robot.advance
+
+    t.equal(robot.position, (1, 0))
+    t.equal(robot.direction, Direction.East)
+  })
+  t.test('Moving forward one > facing west decrements X', fn (t) {
+    let robot = Robot.new(0, 0, Direction.West)
+
+    robot.advance
+
+    t.equal(robot.position, (-1, 0))
+    t.equal(robot.direction, Direction.West)
+  })
+  t.test(
+    'Follow series of instructions > moving east and north from README',
+    fn (t) {
+      let robot = Robot.new(7, 3, Direction.North)
+
+      robot.instructions('RAALAL')
+
+      t.equal(robot.position, (9, 4))
+      t.equal(robot.direction, Direction.West)
+    },
+  )
+  t.test('Follow series of instructions > moving west and north', fn (t) {
+    let robot = Robot.new(0, 0, Direction.North)
+
+    robot.instructions('LAAARALA')
+
+    t.equal(robot.position, (-4, 1))
+    t.equal(robot.direction, Direction.West)
+  })
+  t.test('Follow series of instructions > moving west and south', fn (t) {
+    let robot = Robot.new(2, -7, Direction.East)
+
+    robot.instructions('RRAAAAALA')
+
+    t.equal(robot.position, (-3, -8))
+    t.equal(robot.direction, Direction.South)
+  })
+  t.test('Follow series of instructions > moving east and north', fn (t) {
+    let robot = Robot.new(8, 4, Direction.South)
+
+    robot.instructions('LAAARRRALLLL')
+
+    t.equal(robot.position, (11, 5))
+    t.equal(robot.direction, Direction.North)
+  })
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "guest-list.fs"
+    ],
+    "test": [
+      "test/guest-list-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about heap memory with allocate, resize and free by keeping an ever-changing guest list.",
+  "custom": {
+    "after": [
+      "sign-painter"
+    ]
+  }
+}

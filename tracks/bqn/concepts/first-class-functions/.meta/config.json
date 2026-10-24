@@ -1,0 +1,7 @@
+{
+  "blurb": "Treat functions as values: store them in lists, pass them as arguments with 𝕏 and 𝕎, and return them from blocks.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

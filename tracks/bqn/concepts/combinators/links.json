@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/compose.html",
+    "description": "Atop ∘ and Over ○"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/hook.html",
+    "description": "Before ⊸ and After ⟜, and binding values"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/swap.html",
+    "description": "Self and Swap ˜"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/tutorial/combinator.html",
+    "description": "Tutorial: combinators"
+  }
+]

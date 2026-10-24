@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "stage-lights.janet"
+    ],
+    "test": [
+      "test/stage-lights.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about dynamic bindings by programming the lighting desk of a theatre.",
+  "custom": {
+    "after": [
+      "coffee-orders",
+      "weather-report",
+      "conveyor-belt"
+    ]
+  }
+}

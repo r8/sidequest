@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/lost_and_found.inko"
+    ],
+    "test": [
+      "test/test_lost_and_found.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about Option by running a station's lost-and-found office.",
+  "custom": {
+    "after": [
+      "library-shelf",
+      "market-stall"
+    ]
+  }
+}

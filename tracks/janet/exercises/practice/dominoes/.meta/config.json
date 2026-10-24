@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "dominoes.janet"
+    ],
+    "test": [
+      "test/dominoes.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Make a chain of dominoes.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

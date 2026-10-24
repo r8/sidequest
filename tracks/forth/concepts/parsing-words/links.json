@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/The-Input-Stream.html",
+    "description": "The input stream in the Gforth manual: parse-name, parse, source and >in"
+  },
+  {
+    "url": "https://gforth.org/manual/The-Text-Interpreter.html",
+    "description": "The text interpreter in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/PARSE-NAME",
+    "description": "PARSE-NAME in the Forth standard"
+  }
+]

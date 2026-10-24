@@ -1,0 +1,5 @@
+# Returns the `number`th prime, counting from 1 (the first prime is 2), or an
+# error if `number` is zero.
+fn pub prime(number: Int) -> Result[Int, String] {
+  panic('implement me')
+}

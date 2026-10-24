@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/std_core_string.html",
+    "description": "The std/core/string module: strings"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/std_core_sslice.html",
+    "description": "The std/core/sslice module: slices, starts-with, ends-with and find"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-literals",
+    "description": "The Koka book: string literals and escapes"
+  }
+]

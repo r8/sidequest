@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "status": "error",
+  "message": "in file included from *OS command line*:-1\ntest/greet-test.fs:5: Division by zero\n>>><<<\nBacktrace:",
+  "tests": [
+    {
+      "name": "runs",
+      "status": "pass",
+      "test_code": "test\" runs\"  21 double 42 assert= ;test",
+      "message": null,
+      "output": null
+    }
+  ]
+}

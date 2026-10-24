@@ -1,0 +1,7 @@
+{
+  "blurb": "Janet functions are values; their parameter lists declare optional (&opt), variadic (&) and named (&named) parameters.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

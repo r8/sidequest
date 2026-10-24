@@ -1,0 +1,68 @@
+# Returns the elements of `list1` followed by those of `list2`.
+fn pub append[T](list1: Array[T], list2: Array[T]) -> Array[T] {
+  for value in list2.into_iter { list1.push(value) }
+
+  list1
+}
+
+# Returns the elements of all the `lists`, in order, in one flat array.
+fn pub concat[T](lists: Array[Array[T]]) -> Array[T] {
+  foldl(lists, [], fn (acc, list) { append(acc, list) })
+}
+
+# Returns the elements of `list` for which `func` returns `true`.
+fn pub filter[T](list: Array[T], func: fn (ref T) -> Bool) -> Array[T] {
+  foldl(list, [], fn (acc, value) {
+    if func.call(value) { acc.push(value) }
+
+    acc
+  })
+}
+
+# Returns the number of elements in `list`.
+fn pub length[T](list: ref Array[T]) -> Int {
+  let mut count = 0
+
+  for _ in list.iter { count += 1 }
+
+  count
+}
+
+# Returns the results of calling `func` with each element of `list`.
+fn pub map[T, R](list: Array[T], func: fn (T) -> R) -> Array[R] {
+  foldl(list, [], fn (acc, value) {
+    acc.push(func.call(value))
+    acc
+  })
+}
+
+# Folds `list` from the left: calls `func` with the accumulator (starting at
+# `initial`) and each element, first to last, and returns the final
+# accumulator.
+fn pub foldl[T, A](list: Array[T], initial: A, func: fn (A, T) -> A) -> A {
+  let mut acc = initial
+
+  for value in list.into_iter { acc = func.call(acc, value) }
+
+  acc
+}
+
+# Folds `list` from the right: like `foldl`, but from the last element to the
+# first.
+fn pub foldr[T, A](list: Array[T], initial: A, func: fn (A, T) -> A) -> A {
+  foldl(reverse(list), initial, func)
+}
+
+# Returns the elements of `list` in reverse order.
+fn pub reverse[T](list: Array[T]) -> Array[T] {
+  let reversed = []
+
+  loop {
+    match list.pop {
+      case Some(value) -> reversed.push(value)
+      case None -> break
+    }
+  }
+
+  reversed
+}

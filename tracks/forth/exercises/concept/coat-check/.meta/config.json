@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "coat-check.fs"
+    ],
+    "test": [
+      "test/coat-check-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about the return stack with >r, r> and r@ by tallying claims at a theatre coat check.",
+  "custom": {
+    "after": [
+      "knitting-rows"
+    ]
+  }
+}

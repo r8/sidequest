@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "many-worlds.kk"
+    ],
+    "test": [
+      "test/many-worlds-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn how handlers combine by running the branching worlds of a gamebook with local and shared luck.",
+  "custom": {
+    "after": [
+      "lock-picker"
+    ]
+  }
+}

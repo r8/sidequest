@@ -1,0 +1,29 @@
+# Returns every contiguous substring of `slice_length` characters in `series`,
+# in order, or an error if `series` is empty or `slice_length` is zero,
+# negative or greater than the length of `series`.
+fn pub slices(
+  series: String,
+  slice_length: Int,
+) -> Result[Array[String], String] {
+  let digits = series.chars.to_array
+
+  if digits.empty? {
+    Result.Error('series cannot be empty')
+  } else if slice_length == 0 {
+    Result.Error('slice length cannot be zero')
+  } else if slice_length < 0 {
+    Result.Error('slice length cannot be negative')
+  } else if slice_length > digits.size {
+    Result.Error('slice length cannot be greater than series length')
+  } else {
+    Result.Ok(
+      0
+        .to(digits.size - slice_length)
+        .iter
+        .map(fn (start) {
+          String.join(digits.slice(start, start + slice_length).iter, '')
+        })
+        .to_array,
+    )
+  }
+}

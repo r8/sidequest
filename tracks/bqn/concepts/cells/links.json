@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/rank.html",
+    "description": "Cells and rank: ˘ and ⎉"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/leading.html",
+    "description": "Leading axis agreement and why the first axis is special"
+  }
+]

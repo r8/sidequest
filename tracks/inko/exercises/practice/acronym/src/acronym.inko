@@ -1,0 +1,5 @@
+# Returns the acronym of `phrase`: the first letter of every word, in upper
+# case. Words are separated by anything but letters and apostrophes.
+fn pub abbreviate(phrase: String) -> String {
+  panic('implement me')
+}

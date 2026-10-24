@@ -1,0 +1,10 @@
+# Encodes `string` by replacing every run of two or more identical characters
+# with the run's length followed by the character.
+fn pub encode(string: String) -> String {
+  panic('implement me')
+}
+
+# Decodes a run-length encoded `string`.
+fn pub decode(string: String) -> String {
+  panic('implement me')
+}

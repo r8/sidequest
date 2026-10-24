@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "pizza-night.bqn"
+    ],
+    "test": [
+      "test/pizza-night.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn the basics of BQN by timing a pizza night.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

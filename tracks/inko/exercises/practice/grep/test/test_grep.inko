@@ -1,0 +1,285 @@
+import grep (grep)
+import std.env
+import std.fs.file (ReadOnlyFile, WriteOnlyFile)
+import std.test (Tests)
+
+# The three files every test greps, as (name, lines) pairs.
+fn files -> Array[(String, Array[String])] {
+  [
+    (
+      'iliad.txt',
+      [
+        "Achilles sing, O Goddess! Peleus' son;",
+        'His wrath pernicious, who ten thousand woes',
+        "Caused to Achaia's host, sent many a soul",
+        'Illustrious into Ades premature,',
+        'And Heroes gave (so stood the will of Jove)',
+        'To dogs and to all ravening fowls a prey,',
+        'When fierce dispute had separated once',
+        'The noble Chief Achilles from the son',
+        'Of Atreus, Agamemnon, King of men.',
+      ],
+    ),
+    (
+      'midsummer-night.txt',
+      [
+        'I do entreat your grace to pardon me.',
+        'I know not by what power I am made bold,',
+        'Nor how it may concern my modesty,',
+        'In such a presence here to plead my thoughts;',
+        'But I beseech your grace that I may know',
+        'The worst that may befall me in this case,',
+        'If I refuse to wed Demetrius.',
+      ],
+    ),
+    (
+      'paradise-lost.txt',
+      [
+        'Of Mans First Disobedience, and the Fruit',
+        'Of that Forbidden Tree, whose mortal tast',
+        'Brought Death into the World, and all our woe,',
+        'With loss of Eden, till one greater Man',
+        'Restore us, and regain the blissful Seat,',
+        "Sing Heav'nly Muse, that on the secret top",
+        'Of Oreb, or of Sinai, didst inspire',
+        'That Shepherd, who first taught the chosen Seed',
+      ],
+    ),
+  ]
+}
+
+# Writes the files into a directory of their own under the temporary directory
+# and makes it the working directory, so `grep` reads (and reports) them by
+# their bare names. This runs once, before any test, because the tests run
+# concurrently and the working directory is shared by the whole process. A file
+# is only rewritten when its content differs.
+fn setup {
+  let dir = env.temporary_directory.join('sidequest-inko-grep')
+
+  dir.create_directory_all.or_panic
+
+  for (name, lines) in files.into_iter {
+    let path = dir.join(name)
+    let content = String.join(lines.into_iter, '\n') + '\n'
+    let current = ByteArray.new
+    let same = match ReadOnlyFile.new(path) {
+      case Ok(file) -> file.read_all(current).ok? and current.to_string == content
+      case Error(_) -> false
+    }
+
+    if !same { WriteOnlyFile.new(path).or_panic.write(content).or_panic }
+  }
+
+  (env.working_directory = dir).or_panic
+}
+
+fn pub tests(t: mut Tests) {
+  setup
+
+  t.test('Test grepping a single file > One file, one match, no flags', fn (t) {
+    t.equal(grep('Agamemnon', [], ['iliad.txt']), Result.Ok(['Of Atreus, Agamemnon, King of men.']))
+  })
+  t.test('Test grepping a single file > One file, one match, print line numbers flag', fn (t) {
+    t.equal(
+      grep('Forbidden', ['-n'], ['paradise-lost.txt']),
+      Result.Ok(['2:Of that Forbidden Tree, whose mortal tast']),
+    )
+  })
+  t.test('Test grepping a single file > One file, one match, case-insensitive flag', fn (t) {
+    t.equal(
+      grep('FORBIDDEN', ['-i'], ['paradise-lost.txt']),
+      Result.Ok(['Of that Forbidden Tree, whose mortal tast']),
+    )
+  })
+  t.test('Test grepping a single file > One file, one match, print file names flag', fn (t) {
+    t.equal(grep('Forbidden', ['-l'], ['paradise-lost.txt']), Result.Ok(['paradise-lost.txt']))
+  })
+  t.test('Test grepping a single file > One file, one match, match entire lines flag', fn (t) {
+    t.equal(
+      grep('With loss of Eden, till one greater Man', ['-x'], ['paradise-lost.txt']),
+      Result.Ok(['With loss of Eden, till one greater Man']),
+    )
+  })
+  t.test('Test grepping a single file > One file, one match, multiple flags', fn (t) {
+    t.equal(
+      grep('OF ATREUS, Agamemnon, KIng of MEN.', ['-n', '-i', '-x'], ['iliad.txt']),
+      Result.Ok(['9:Of Atreus, Agamemnon, King of men.']),
+    )
+  })
+  t.test('Test grepping a single file > One file, several matches, no flags', fn (t) {
+    t.equal(
+      grep('may', [], ['midsummer-night.txt']),
+      Result.Ok([
+        'Nor how it may concern my modesty,',
+        'But I beseech your grace that I may know',
+        'The worst that may befall me in this case,',
+      ]),
+    )
+  })
+  t.test('Test grepping a single file > One file, several matches, print line numbers flag', fn (t) {
+    t.equal(
+      grep('may', ['-n'], ['midsummer-night.txt']),
+      Result.Ok([
+        '3:Nor how it may concern my modesty,',
+        '5:But I beseech your grace that I may know',
+        '6:The worst that may befall me in this case,',
+      ]),
+    )
+  })
+  t.test('Test grepping a single file > One file, several matches, match entire lines flag', fn (t) {
+    t.equal(grep('may', ['-x'], ['midsummer-night.txt']), Result.Ok([]))
+  })
+  t.test('Test grepping a single file > One file, several matches, case-insensitive flag', fn (t) {
+    t.equal(
+      grep('ACHILLES', ['-i'], ['iliad.txt']),
+      Result.Ok(["Achilles sing, O Goddess! Peleus' son;", 'The noble Chief Achilles from the son']),
+    )
+  })
+  t.test('Test grepping a single file > One file, several matches, inverted flag', fn (t) {
+    t.equal(
+      grep('Of', ['-v'], ['paradise-lost.txt']),
+      Result.Ok([
+        'Brought Death into the World, and all our woe,',
+        'With loss of Eden, till one greater Man',
+        'Restore us, and regain the blissful Seat,',
+        "Sing Heav'nly Muse, that on the secret top",
+        'That Shepherd, who first taught the chosen Seed',
+      ]),
+    )
+  })
+  t.test('Test grepping a single file > One file, no matches, various flags', fn (t) {
+    t.equal(grep('Gandalf', ['-n', '-l', '-x', '-i'], ['iliad.txt']), Result.Ok([]))
+  })
+  t.test('Test grepping a single file > One file, one match, file flag takes precedence over line flag', fn (t) {
+    t.equal(grep('ten', ['-n', '-l'], ['iliad.txt']), Result.Ok(['iliad.txt']))
+  })
+  t.test('Test grepping a single file > One file, several matches, inverted and match entire lines flags', fn (t) {
+    t.equal(
+      grep('Illustrious into Ades premature,', ['-x', '-v'], ['iliad.txt']),
+      Result.Ok([
+        "Achilles sing, O Goddess! Peleus' son;",
+        'His wrath pernicious, who ten thousand woes',
+        "Caused to Achaia's host, sent many a soul",
+        'And Heroes gave (so stood the will of Jove)',
+        'To dogs and to all ravening fowls a prey,',
+        'When fierce dispute had separated once',
+        'The noble Chief Achilles from the son',
+        'Of Atreus, Agamemnon, King of men.',
+      ]),
+    )
+  })
+  t.test('Test grepping multiples files at once > Multiple files, one match, no flags', fn (t) {
+    t.equal(
+      grep('Agamemnon', [], ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']),
+      Result.Ok(['iliad.txt:Of Atreus, Agamemnon, King of men.']),
+    )
+  })
+  t.test('Test grepping multiples files at once > Multiple files, several matches, no flags', fn (t) {
+    t.equal(
+      grep('may', [], ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']),
+      Result.Ok([
+        'midsummer-night.txt:Nor how it may concern my modesty,',
+        'midsummer-night.txt:But I beseech your grace that I may know',
+        'midsummer-night.txt:The worst that may befall me in this case,',
+      ]),
+    )
+  })
+  t.test('Test grepping multiples files at once > Multiple files, several matches, print line numbers flag', fn (t) {
+    t.equal(
+      grep('that', ['-n'], ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']),
+      Result.Ok([
+        'midsummer-night.txt:5:But I beseech your grace that I may know',
+        'midsummer-night.txt:6:The worst that may befall me in this case,',
+        'paradise-lost.txt:2:Of that Forbidden Tree, whose mortal tast',
+        "paradise-lost.txt:6:Sing Heav'nly Muse, that on the secret top",
+      ]),
+    )
+  })
+  t.test('Test grepping multiples files at once > Multiple files, one match, print file names flag', fn (t) {
+    t.equal(
+      grep('who', ['-l'], ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']),
+      Result.Ok(['iliad.txt', 'paradise-lost.txt']),
+    )
+  })
+  t.test('Test grepping multiples files at once > Multiple files, several matches, case-insensitive flag', fn (t) {
+    t.equal(
+      grep('TO', ['-i'], ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']),
+      Result.Ok([
+        "iliad.txt:Caused to Achaia's host, sent many a soul",
+        'iliad.txt:Illustrious into Ades premature,',
+        'iliad.txt:And Heroes gave (so stood the will of Jove)',
+        'iliad.txt:To dogs and to all ravening fowls a prey,',
+        'midsummer-night.txt:I do entreat your grace to pardon me.',
+        'midsummer-night.txt:In such a presence here to plead my thoughts;',
+        'midsummer-night.txt:If I refuse to wed Demetrius.',
+        'paradise-lost.txt:Brought Death into the World, and all our woe,',
+        'paradise-lost.txt:Restore us, and regain the blissful Seat,',
+        "paradise-lost.txt:Sing Heav'nly Muse, that on the secret top",
+      ]),
+    )
+  })
+  t.test('Test grepping multiples files at once > Multiple files, several matches, inverted flag', fn (t) {
+    t.equal(
+      grep('a', ['-v'], ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']),
+      Result.Ok([
+        "iliad.txt:Achilles sing, O Goddess! Peleus' son;",
+        'iliad.txt:The noble Chief Achilles from the son',
+        'midsummer-night.txt:If I refuse to wed Demetrius.',
+      ]),
+    )
+  })
+  t.test('Test grepping multiples files at once > Multiple files, one match, match entire lines flag', fn (t) {
+    t.equal(
+      grep('But I beseech your grace that I may know', ['-x'], ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']),
+      Result.Ok(['midsummer-night.txt:But I beseech your grace that I may know']),
+    )
+  })
+  t.test('Test grepping multiples files at once > Multiple files, one match, multiple flags', fn (t) {
+    t.equal(
+      grep('WITH LOSS OF EDEN, TILL ONE GREATER MAN', ['-n', '-i', '-x'], ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']),
+      Result.Ok(['paradise-lost.txt:4:With loss of Eden, till one greater Man']),
+    )
+  })
+  t.test('Test grepping multiples files at once > Multiple files, no matches, various flags', fn (t) {
+    t.equal(
+      grep('Frodo', ['-n', '-l', '-x', '-i'], ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']),
+      Result.Ok([]),
+    )
+  })
+  t.test('Test grepping multiples files at once > Multiple files, several matches, file flag takes precedence over line number flag', fn (t) {
+    t.equal(
+      grep('who', ['-n', '-l'], ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']),
+      Result.Ok(['iliad.txt', 'paradise-lost.txt']),
+    )
+  })
+  t.test('Test grepping multiples files at once > Multiple files, several matches, inverted and match entire lines flags', fn (t) {
+    t.equal(
+      grep('Illustrious into Ades premature,', ['-x', '-v'], ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']),
+      Result.Ok([
+        "iliad.txt:Achilles sing, O Goddess! Peleus' son;",
+        'iliad.txt:His wrath pernicious, who ten thousand woes',
+        "iliad.txt:Caused to Achaia's host, sent many a soul",
+        'iliad.txt:And Heroes gave (so stood the will of Jove)',
+        'iliad.txt:To dogs and to all ravening fowls a prey,',
+        'iliad.txt:When fierce dispute had separated once',
+        'iliad.txt:The noble Chief Achilles from the son',
+        'iliad.txt:Of Atreus, Agamemnon, King of men.',
+        'midsummer-night.txt:I do entreat your grace to pardon me.',
+        'midsummer-night.txt:I know not by what power I am made bold,',
+        'midsummer-night.txt:Nor how it may concern my modesty,',
+        'midsummer-night.txt:In such a presence here to plead my thoughts;',
+        'midsummer-night.txt:But I beseech your grace that I may know',
+        'midsummer-night.txt:The worst that may befall me in this case,',
+        'midsummer-night.txt:If I refuse to wed Demetrius.',
+        'paradise-lost.txt:Of Mans First Disobedience, and the Fruit',
+        'paradise-lost.txt:Of that Forbidden Tree, whose mortal tast',
+        'paradise-lost.txt:Brought Death into the World, and all our woe,',
+        'paradise-lost.txt:With loss of Eden, till one greater Man',
+        'paradise-lost.txt:Restore us, and regain the blissful Seat,',
+        "paradise-lost.txt:Sing Heav'nly Muse, that on the secret top",
+        'paradise-lost.txt:Of Oreb, or of Sinai, didst inspire',
+        'paradise-lost.txt:That Shepherd, who first taught the chosen Seed',
+      ]),
+    )
+  })
+}

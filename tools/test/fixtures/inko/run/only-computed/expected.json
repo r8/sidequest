@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "status": "pass",
+  "message": "warning: inko ran 1 tests, but none was found in the test file (tests are registered with t.test)",
+  "tests": []
+}

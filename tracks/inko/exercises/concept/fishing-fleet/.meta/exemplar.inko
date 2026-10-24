@@ -1,0 +1,69 @@
+import std.sync (Channel)
+
+# Returns how many kilograms of fish a boat brings back from `ground`.
+fn pub catch_at(ground: String) -> Int {
+  match ground {
+    case 'north' -> 120
+    case 'reef' -> 45
+    case 'bank' -> 80
+    case _ -> 10
+  }
+}
+
+# Returns a channel holding one job for every fishing ground in `grounds`.
+fn pub jobs(grounds: ref Array[String]) -> Channel[String] {
+  let channel = Channel.new
+
+  for ground in grounds.iter { channel.send(ground) }
+
+  channel
+}
+
+# A fishing boat, running as its own process.
+type pub async Boat {
+  # Takes jobs from `jobs` until it receives "home", sending a `(ground,
+  # kilograms)` catch to `catches` for every ground it fishes.
+  fn pub async fish(
+    jobs: uni Channel[String],
+    catches: uni Channel[(String, Int)],
+  ) {
+    loop {
+      let ground = jobs.receive
+
+      if ground == 'home' { break }
+
+      catches.send(recover (ground, catch_at(ground)))
+    }
+  }
+}
+
+# Receives `count` catches from `catches` and returns the kilograms caught at
+# each ground.
+fn pub collect(
+  catches: ref Channel[(String, Int)],
+  count: Int,
+) -> Map[String, Int] {
+  let totals = Map.new
+
+  count.times(fn (_) {
+    let (ground, kilograms) = catches.receive
+
+    totals.set(ground, totals.get(ground).or(0) + kilograms)
+  })
+
+  totals
+}
+
+# Sends `boats` boats to fish all of `grounds`, and returns the kilograms caught
+# at each ground.
+fn pub fleet_catch(grounds: ref Array[String], boats: Int) -> Map[String, Int] {
+  let work = jobs(grounds)
+  let catches = Channel.new
+
+  boats.times(fn (_) {
+    Boat().fish(recover work.clone, recover catches.clone)
+    work.send('home')
+  })
+
+  collect(catches, grounds.size)
+}

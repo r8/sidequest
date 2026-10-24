@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-return",
+    "description": "The Koka book: return operations"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-handler-expressions",
+    "description": "The Koka language specification: handler expressions"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "blurb": "Forth programs are words that take their arguments from the data stack and leave their results there; colon definitions add new words.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

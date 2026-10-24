@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/syntax.html",
+    "description": "Janet syntax and the parser"
+  },
+  {
+    "url": "https://janet-lang.org/docs/bindings.html",
+    "description": "Bindings: def and var"
+  },
+  {
+    "url": "https://janet-lang.org/docs/functions.html",
+    "description": "Defining and calling functions"
+  }
+]

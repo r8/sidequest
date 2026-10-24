@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/rectangles.inko"
+    ],
+    "test": [
+      "test/test_rectangles.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Count the rectangles in an ASCII diagram.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

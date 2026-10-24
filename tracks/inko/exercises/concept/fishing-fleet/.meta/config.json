@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/fishing_fleet.inko"
+    ],
+    "test": [
+      "test/test_fishing_fleet.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about channels by sharing out fishing grounds among the boats of a fleet.",
+  "custom": {
+    "after": [
+      "bakery-ovens",
+      "seed-catalog"
+    ]
+  }
+}

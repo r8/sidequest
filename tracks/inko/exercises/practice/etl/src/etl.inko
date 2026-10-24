@@ -1,0 +1,9 @@
+import std.map (Map)
+
+# Converts the legacy format, which maps each score to its uppercase letters,
+# to the new format, which maps each lowercase letter to its score.
+#
+# Maps are compared without regard to the order of their entries.
+fn pub transform(legacy: ref Map[Int, Array[String]]) -> Map[String, Int] {
+  panic('implement me')
+}

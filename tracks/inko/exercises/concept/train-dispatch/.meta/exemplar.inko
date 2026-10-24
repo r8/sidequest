@@ -1,0 +1,52 @@
+# Returns the platform for `line`.
+fn pub platform(line: String) -> Int {
+  match line {
+    case 'red' or 'blue' -> 1
+    case 'green' -> 2
+    case _ -> 0
+  }
+}
+
+# Returns the departure board text for a delay of `minutes`.
+fn pub board(minutes: Int) -> String {
+  match minutes {
+    case m if m <= 0 -> 'on time'
+    case m if m < 5 -> 'slight delay'
+    case m if m < 60 -> 'delayed ${m} min'
+    case _ -> 'cancelled'
+  }
+}
+
+# Returns the signal to show: "green", "yellow" or "red".
+fn pub signal(clear: Bool, occupied: Bool) -> String {
+  match (clear, occupied) {
+    case (true, false) -> 'green'
+    case (true, true) -> 'yellow'
+    case (false, _) -> 'red'
+  }
+}
+
+# Returns the announcement for the next stop, if there is one.
+fn pub next_stop(stop: Option[String]) -> String {
+  match stop {
+    case Some(name) -> 'Next stop: ${name}'
+    case None -> 'This train terminates here'
+  }
+}
+
+# Returns the routing for a train, given as its service and its platform.
+fn pub route(train: (String, Option[Int])) -> String {
+  match train {
+    case ('express', Some(platform)) -> 'Express to platform ${platform}'
+    case (service, Some(platform)) -> '${service} to platform ${platform}'
+    case (service, None) -> '${service} waits'
+  }
+}
+
+# Returns the zone number of a code such as "Z3", or 0 for an invalid code.
+fn pub zone(code: String) -> Int {
+  let Some(digits) = code.strip_prefix('Z') else return 0
+  let Some(number) = Int.parse(digits, 10) else return 0
+
+  number
+}

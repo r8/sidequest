@@ -1,0 +1,102 @@
+import std.test (Tests)
+import tool_shed (Shed, Tool)
+
+fn stocked -> Shed {
+  let shed = Shed.new
+
+  shed.store(Tool.new('saw'))
+  shed.store(Tool.new('spade'))
+  shed.store(Tool.new('shears'))
+  shed
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('1. a new shed is empty', fn (t) { t.equal(Shed.new.size, 0) })
+  t.test('1. store tools', fn (t) { t.equal(stocked.size, 3) })
+
+  t.test('2. find a tool', fn (t) {
+    let shed = stocked
+
+    t.equal(
+      shed.find('spade').map(fn (tool) { tool.name }),
+      Option.Some('spade'),
+    )
+  })
+  t.test('2. find a missing tool', fn (t) {
+    let shed = stocked
+
+    t.true(shed.find('hammer').none?)
+  })
+  t.test('2. finding leaves the tool in the shed', fn (t) {
+    let shed = stocked
+    let _ = shed.find('saw')
+
+    t.equal(shed.size, 3)
+  })
+
+  t.test('3. work with a tool', fn (t) {
+    let shed = stocked
+
+    t.true(shed.work_with('saw'))
+    t.true(shed.work_with('saw'))
+    t.equal(shed.find('saw').map(fn (tool) { tool.jobs }), Option.Some(2))
+  })
+  t.test('3. work with a missing tool', fn (t) {
+    let shed = stocked
+
+    t.false(shed.work_with('hammer'))
+  })
+  t.test('3. work blunts a tool', fn (t) {
+    let shed = stocked
+
+    shed.work_with('shears')
+    shed.work_with('shears')
+    shed.work_with('shears')
+    t.equal(
+      shed.find('shears').map(fn (tool) { tool.blunt? }),
+      Option.Some(true),
+    )
+  })
+
+  t.test('4. sharpen the blunt tools', fn (t) {
+    let shed = stocked
+
+    shed.work_with('saw')
+    shed.work_with('saw')
+    shed.work_with('saw')
+    shed.work_with('spade')
+    shed.sharpen_all
+    t.equal(shed.find('saw').map(fn (tool) { tool.jobs }), Option.Some(0))
+    t.equal(shed.find('spade').map(fn (tool) { tool.jobs }), Option.Some(1))
+  })
+
+  t.test('5. lend a tool', fn (t) {
+    let shed = stocked
+
+    t.equal(
+      shed.lend('spade').map(fn (tool) { tool.name }),
+      Option.Some('spade'),
+    )
+    t.equal(shed.size, 2)
+    t.true(shed.find('spade').none?)
+  })
+  t.test('5. lend a missing tool', fn (t) {
+    let shed = stocked
+
+    t.true(shed.lend('hammer').none?)
+    t.equal(shed.size, 3)
+  })
+  t.test('5. a lent tool can come back', fn (t) {
+    let shed = stocked
+
+    match shed.lend('saw') {
+      case Some(saw) -> {
+        saw.work
+        shed.store(saw)
+      }
+      case None -> {}
+    }
+
+    t.equal(shed.find('saw').map(fn (tool) { tool.jobs }), Option.Some(1))
+  })
+}

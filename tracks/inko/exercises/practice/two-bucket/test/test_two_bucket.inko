@@ -1,0 +1,65 @@
+import two_bucket (Bucket, BucketStats, measure)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('Measure using bucket one of size 3 and bucket two of size 5 - start with bucket one', fn (t) {
+    t.equal(
+      measure(3, 5, 1, Bucket.One),
+      Result.Ok(BucketStats(moves: 4, goal_bucket: Bucket.One, other_bucket: 5)),
+    )
+  })
+  t.test('Measure using bucket one of size 3 and bucket two of size 5 - start with bucket two', fn (t) {
+    t.equal(
+      measure(3, 5, 1, Bucket.Two),
+      Result.Ok(BucketStats(moves: 8, goal_bucket: Bucket.Two, other_bucket: 3)),
+    )
+  })
+  t.test('Measure using bucket one of size 7 and bucket two of size 11 - start with bucket one', fn (t) {
+    t.equal(
+      measure(7, 11, 2, Bucket.One),
+      Result.Ok(BucketStats(moves: 14, goal_bucket: Bucket.One, other_bucket: 11)),
+    )
+  })
+  t.test('Measure using bucket one of size 7 and bucket two of size 11 - start with bucket two', fn (t) {
+    t.equal(
+      measure(7, 11, 2, Bucket.Two),
+      Result.Ok(BucketStats(moves: 18, goal_bucket: Bucket.Two, other_bucket: 7)),
+    )
+  })
+  t.test('Measure one step using bucket one of size 1 and bucket two of size 3 - start with bucket two', fn (t) {
+    t.equal(
+      measure(1, 3, 3, Bucket.Two),
+      Result.Ok(BucketStats(moves: 1, goal_bucket: Bucket.Two, other_bucket: 0)),
+    )
+  })
+  t.test('Measure using bucket one of size 2 and bucket two of size 3 - start with bucket one and end with bucket two', fn (t) {
+    t.equal(
+      measure(2, 3, 3, Bucket.One),
+      Result.Ok(BucketStats(moves: 2, goal_bucket: Bucket.Two, other_bucket: 2)),
+    )
+  })
+  t.test('Measure using bucket one much bigger than bucket two', fn (t) {
+    t.equal(
+      measure(5, 1, 2, Bucket.One),
+      Result.Ok(BucketStats(moves: 6, goal_bucket: Bucket.One, other_bucket: 1)),
+    )
+  })
+  t.test('Measure using bucket one much smaller than bucket two', fn (t) {
+    t.equal(
+      measure(3, 15, 9, Bucket.One),
+      Result.Ok(BucketStats(moves: 6, goal_bucket: Bucket.Two, other_bucket: 0)),
+    )
+  })
+  t.test('Not possible to reach the goal', fn (t) {
+    t.equal(measure(6, 15, 5, Bucket.One), Result.Error('impossible'))
+  })
+  t.test('With the same buckets but a different goal, then it is possible', fn (t) {
+    t.equal(
+      measure(6, 15, 9, Bucket.One),
+      Result.Ok(BucketStats(moves: 10, goal_bucket: Bucket.Two, other_bucket: 0)),
+    )
+  })
+  t.test('Goal larger than both buckets is impossible', fn (t) {
+    t.equal(measure(5, 7, 8, Bucket.One), Result.Error('impossible'))
+  })
+}

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "nesting-dolls.janet"
+    ],
+    "test": [
+      "test/nesting-dolls.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about recursion by counting, listing and assembling sets of nesting dolls.",
+  "custom": {
+    "after": [
+      "night-market",
+      "train-cars"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "exitCode": 101,
+    "stdout": ".",
+    "stderr": "\u001equest-passed 6:passes\nStack trace (the most recent call comes last):\n  /opt/homebrew/Cellar/inko/0.21.1_1/lib/inko/std/std/test.inko:313 in std.test.Runner.run\n  <staging>/test/test_greet.inko:5 in <closure>\n  <staging>/src/greet.inko:2 in greet.greet\n  /opt/homebrew/Cellar/inko/0.21.1_1/lib/inko/std/std/process.inko:21 in std.process.panic\nProcess 'Runner' (0x779146c000) panicked: implement me\n",
+    "timedOut": false
+  },
+  {
+    "exitCode": null,
+    "stdout": "\u001equest-run\n\u001equest-exit 101\n\u001equest-run\n",
+    "stderr": "\u001equest-run\nStack trace (the most recent call comes last):\n  /opt/homebrew/Cellar/inko/0.21.1_1/lib/inko/std/std/test.inko:313 in std.test.Runner.run\n  <staging>/test/test_greet.inko:5 in <closure>\n  <staging>/src/greet.inko:2 in greet.greet\n  /opt/homebrew/Cellar/inko/0.21.1_1/lib/inko/std/std/process.inko:21 in std.process.panic\nProcess 'Runner' (0x102b16b40) panicked: implement me\n\u001equest-run\n",
+    "timedOut": true
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "twin-ledgers.kk"
+    ],
+    "test": [
+      "test/twin-ledgers-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about named handlers by keeping the till and the safe of a bicycle shop in two ledgers at once.",
+  "custom": {
+    "after": [
+      "tally-counter"
+    ]
+  }
+}

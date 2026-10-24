@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://gforth.org/manual/Tutorial.html",
+    "description": "The Gforth tutorial: the stack, definitions and stack-effect comments"
+  },
+  {
+    "url": "https://gforth.org/manual/Colon-Definitions.html",
+    "description": "Colon definitions in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Stack_002dEffect-Comments-Tutorial.html",
+    "description": "Stack-effect comments in the Gforth tutorial"
+  },
+  {
+    "url": "https://www.forth.com/starting-forth/1-forth-stacks-dictionary/",
+    "description": "Starting Forth, chapter 1: fundamental Forth"
+  }
+]

@@ -1,0 +1,20 @@
+# Returns the prime numbers from 2 up to and including `limit`, in ascending
+# order, found with the Sieve of Eratosthenes.
+fn pub primes(limit: Int) -> Array[Int] {
+  if limit < 2 { return [] }
+
+  let composite = Array.filled(with: false, times: limit + 1)
+  let primes = []
+
+  for number in 2.to(limit) {
+    if composite.get(number).or_panic { next }
+
+    primes.push(number)
+
+    for multiple in (number * number).to(limit).step_by(number) {
+      composite.set(multiple, true)
+    }
+  }
+
+  primes
+}

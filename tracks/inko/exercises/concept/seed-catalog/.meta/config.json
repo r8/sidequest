@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/seed_catalog.inko"
+    ],
+    "test": [
+      "test/test_seed_catalog.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about maps by keeping the catalogue of a seed library.",
+  "custom": {
+    "after": [
+      "tide-tables",
+      "sign-painter"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/traits/",
+    "description": "Traits, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/string/ToString/",
+    "description": "The ToString trait"
+  }
+]

@@ -1,0 +1,73 @@
+import launch_checklist (
+  LaunchError, check_fuel, check_wind, read_sensor, ready,
+)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. enough fuel', fn (t) { t.equal(check_fuel(95), Result.Ok(95)) })
+  t.test('1. just enough fuel', fn (t) {
+    t.equal(check_fuel(80), Result.Ok(80))
+  })
+  t.test('1. not enough fuel', fn (t) {
+    t.equal(check_fuel(79), Result.Error(LaunchError.LowFuel(79)))
+  })
+
+  t.test('2. calm wind', fn (t) { t.equal(check_wind(12), Result.Ok(12)) })
+  t.test('2. wind at the limit', fn (t) {
+    t.equal(check_wind(30), Result.Ok(30))
+  })
+  t.test('2. too much wind', fn (t) {
+    t.equal(check_wind(45), Result.Error(LaunchError.HighWind(45)))
+  })
+
+  t.test('3. a sensor reading', fn (t) {
+    t.equal(read_sensor('88'), Result.Ok(88))
+  })
+  t.test('3. a broken sensor', fn (t) {
+    t.equal(read_sensor('ERR'), Result.Error(LaunchError.BadReading('ERR')))
+  })
+  t.test('3. an empty reading', fn (t) {
+    t.equal(read_sensor(''), Result.Error(LaunchError.BadReading('')))
+  })
+
+  t.test('4. ready for launch', fn (t) {
+    t.equal(ready(fuel: '95', wind: '12', armed: true), Result.Ok(nil))
+  })
+  t.test('4. a bad fuel reading', fn (t) {
+    t.equal(
+      ready(fuel: 'ERR', wind: '12', armed: true),
+      Result.Error(LaunchError.BadReading('ERR')),
+    )
+  })
+  t.test('4. low fuel', fn (t) {
+    t.equal(
+      ready(fuel: '50', wind: '45', armed: false),
+      Result.Error(LaunchError.LowFuel(50)),
+    )
+  })
+  t.test('4. too windy', fn (t) {
+    t.equal(
+      ready(fuel: '95', wind: '45', armed: false),
+      Result.Error(LaunchError.HighWind(45)),
+    )
+  })
+  t.test('4. not armed', fn (t) {
+    t.equal(
+      ready(fuel: '95', wind: '12', armed: false),
+      Result.Error(LaunchError.NotArmed),
+    )
+  })
+
+  t.test('5. the low fuel message', fn (t) {
+    t.equal(LaunchError.LowFuel(50).message, 'fuel at 50%, need 80%')
+  })
+  t.test('5. the high wind message', fn (t) {
+    t.equal(LaunchError.HighWind(45).message, 'wind at 45 km/h, limit 30 km/h')
+  })
+  t.test('5. the bad reading message', fn (t) {
+    t.equal(LaunchError.BadReading('ERR').message, "sensor says 'ERR'")
+  })
+  t.test('5. the not armed message', fn (t) {
+    t.equal(LaunchError.NotArmed.message, 'igniter not armed')
+  })
+}

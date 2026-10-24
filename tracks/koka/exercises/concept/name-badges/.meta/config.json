@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "name-badges.kk"
+    ],
+    "test": [
+      "test/name-badges-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about strings by printing the name badges and seat labels of a conference.",
+  "custom": {
+    "after": [
+      "parcel-post"
+    ]
+  }
+}

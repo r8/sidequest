@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "word-search.janet"
+    ],
+    "test": [
+      "test/word-search.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Create a program to solve a word search puzzle.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

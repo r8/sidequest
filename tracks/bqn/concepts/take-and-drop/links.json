@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/take.html",
+    "description": "Take and drop"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/fill.html",
+    "description": "Fill elements, used when taking more than a list has"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/prefixes.html",
+    "description": "Prefixes and suffixes: monadic ↑ and ↓"
+  }
+]

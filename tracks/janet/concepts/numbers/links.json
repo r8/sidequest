@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/numbers.html",
+    "description": "Numbers and arithmetic"
+  },
+  {
+    "url": "https://janet-lang.org/api/math.html",
+    "description": "The math module"
+  }
+]

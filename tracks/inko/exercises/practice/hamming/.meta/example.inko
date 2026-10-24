@@ -1,0 +1,15 @@
+# Returns the number of positions at which the strands differ, or an error if
+# their lengths differ.
+fn pub distance(strand1: String, strand2: String) -> Result[Int, String] {
+  if strand1.size != strand2.size {
+    return Result.Error('strands must be of equal length')
+  }
+
+  Result.Ok(
+    strand1
+      .chars
+      .zip(strand2.chars)
+      .select(fn (pair) { pair.0 != pair.1 })
+      .count,
+  )
+}

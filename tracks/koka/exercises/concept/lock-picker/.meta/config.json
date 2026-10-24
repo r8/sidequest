@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "lock-picker.kk"
+    ],
+    "test": [
+      "test/lock-picker-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about resuming more than once by picking combination locks with a backtracking search.",
+  "custom": {
+    "after": [
+      "escape-room",
+      "tally-counter"
+    ]
+  }
+}

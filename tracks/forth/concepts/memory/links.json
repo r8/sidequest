@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://gforth.org/manual/Memory-Tutorial.html",
+    "description": "Memory in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Memory-Access.html",
+    "description": "Fetching and storing in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Dictionary-allocation.html",
+    "description": "here, allot, comma and alignment in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Address-arithmetic.html",
+    "description": "cells, chars and address arithmetic in the Gforth manual"
+  }
+]

@@ -1,0 +1,38 @@
+import std.cmp (min)
+
+# The price in cents of a group of 0 to 5 different books.
+let GROUP_PRICES = [0, 800, 1520, 2160, 2560, 3000]
+
+# Returns the lowest price in cents for `basket`, a list of books numbered 1 to
+# 5, applying the best combination of discounts for groups of different books.
+fn pub total(basket: ref Array[Int]) -> Int {
+  let counts = Array.filled(with: 0, times: 5)
+
+  for book in basket.iter {
+    counts.set(book - 1, counts.get(book - 1).or_panic + 1)
+  }
+
+  # With the counts in descending order, the k-th count is the number of groups
+  # holding at least k different books.
+  counts.sort
+  counts.reverse
+  counts.push(0)
+
+  # groups.get(k) is the number of groups of exactly k different books.
+  let groups = [0]
+
+  for k in 1.to(5) {
+    groups.push(counts.get(k - 1).or_panic - counts.get(k).or_panic)
+  }
+
+  # Two groups of four cost less than a group of five plus a group of three.
+  let swaps = min(groups.get(5).or_panic, groups.get(3).or_panic)
+
+  groups.set(5, groups.get(5).or_panic - swaps)
+  groups.set(3, groups.get(3).or_panic - swaps)
+  groups.set(4, groups.get(4).or_panic + (2 * swaps))
+
+  groups.iter.with_index.reduce(0, fn (sum, pair) {
+    sum + (pair.1 * GROUP_PRICES.get(pair.0).or_panic)
+  })
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Memory-Blocks.html",
+    "description": "move, fill and the other memory-block words in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/String-words.html",
+    "description": "place, +place and other string words in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/MOVE",
+    "description": "MOVE in the Forth 2012 standard"
+  }
+]

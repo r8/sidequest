@@ -1,0 +1,5 @@
+# Returns the sum of the distinct numbers below `limit` that are multiples of
+# at least one of `factors`. A factor of 0 has no multiples below `limit`.
+fn pub sum(factors: Array[Int], limit: Int) -> Int {
+  panic('implement me')
+}

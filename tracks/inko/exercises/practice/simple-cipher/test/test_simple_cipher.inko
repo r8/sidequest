@@ -1,0 +1,38 @@
+import simple_cipher (Cipher)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('Random key cipher > Can encode', fn (t) {
+    let cipher = Cipher.new
+
+    t.equal(cipher.encode('aaaaaaaaaa'), cipher.key.substring(0, 10))
+  })
+  t.test('Random key cipher > Can decode', fn (t) {
+    let cipher = Cipher.new
+
+    t.equal(cipher.decode(cipher.key.substring(0, 10)), 'aaaaaaaaaa')
+  })
+  t.test('Random key cipher > Is reversible. I.e., if you apply decode in a encoded result, you must see the same plaintext encode parameter as a result of the decode method', fn (t) {
+    let cipher = Cipher.new
+
+    t.equal(cipher.decode(cipher.encode('abcdefghij')), 'abcdefghij')
+  })
+  t.test('Random key cipher > Key is made only of lowercase letters', fn (t) {
+    let key = Cipher.new.key
+
+    t.true(key.size >= 100)
+    t.true(key.bytes.all?(fn (byte) { byte >= 97 and byte <= 122 }))
+  })
+  t.test('Substitution cipher > Can encode', fn (t) { t.equal(Cipher.with_key('abcdefghij').encode('aaaaaaaaaa'), 'abcdefghij') })
+  t.test('Substitution cipher > Can decode', fn (t) { t.equal(Cipher.with_key('abcdefghij').decode('abcdefghij'), 'aaaaaaaaaa') })
+  t.test('Substitution cipher > Is reversible. I.e., if you apply decode in a encoded result, you must see the same plaintext encode parameter as a result of the decode method', fn (t) {
+    let cipher = Cipher.with_key('abcdefghij')
+
+    t.equal(cipher.decode(cipher.encode('abcdefghij')), 'abcdefghij')
+  })
+  t.test('Substitution cipher > Can double shift encode', fn (t) { t.equal(Cipher.with_key('iamapandabear').encode('iamapandabear'), 'qayaeaagaciai') })
+  t.test('Substitution cipher > Can wrap on encode', fn (t) { t.equal(Cipher.with_key('abcdefghij').encode('zzzzzzzzzz'), 'zabcdefghi') })
+  t.test('Substitution cipher > Can wrap on decode', fn (t) { t.equal(Cipher.with_key('abcdefghij').decode('zabcdefghi'), 'zzzzzzzzzz') })
+  t.test('Substitution cipher > Can encode messages longer than the key', fn (t) { t.equal(Cipher.with_key('abc').encode('iamapandabear'), 'iboaqcnecbfcr') })
+  t.test('Substitution cipher > Can decode messages longer than the key', fn (t) { t.equal(Cipher.with_key('abc').decode('iboaqcnecbfcr'), 'iamapandabear') })
+}

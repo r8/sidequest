@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "matrix.fs"
+    ],
+    "test": [
+      "test/matrix-test.fs"
+    ],
+    "example": [
+      ".meta/example.fs"
+    ]
+  },
+  "blurb": "Given a string representing a matrix of numbers, return the rows and columns of that matrix.",
+  "source": "Exercise by the JumpstartLab team for students at The Turing School of Software and Design.",
+  "source_url": "https://www.turing.edu/",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

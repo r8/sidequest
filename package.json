@@ -1,0 +1,38 @@
+{
+  "name": "sidequest",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A personal Exercism for languages Exercism does not have.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "quest": "tools/src/cli.ts"
+  },
+  "engines": {
+    "node": ">=24.3"
+  },
+  "scripts": {
+    "help": "npx --no quest help",
+    "doctor": "npx --no quest doctor",
+    "list": "npx --no quest list",
+    "start": "npx --no quest start",
+    "test": "npx --no quest test:tools",
+    "compare": "npx --no quest compare",
+    "done": "npx --no quest done",
+    "new": "npx --no quest new",
+    "new-track": "npx --no quest new-track",
+    "validate": "npx --no quest validate",
+    "cache": "npx --no quest cache",
+    "toolchain": "npx --no quest toolchain",
+    "dashboard": "npx --no quest dashboard",
+    "typecheck": "npx --no quest typecheck",
+    "test:tools": "npx --no quest test:tools"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "^7.0.2"
+  }
+}

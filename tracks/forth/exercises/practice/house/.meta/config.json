@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "house.fs"
+    ],
+    "test": [
+      "test/house-test.fs"
+    ],
+    "example": [
+      ".meta/example.fs"
+    ]
+  },
+  "blurb": "Output the nursery rhyme 'This is the House that Jack Built'.",
+  "source": "British nursery rhyme",
+  "source_url": "https://en.wikipedia.org/wiki/This_Is_The_House_That_Jack_Built",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

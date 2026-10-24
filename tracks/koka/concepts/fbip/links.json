@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-fbip",
+    "description": "The Koka book: FBIP, functional but in-place"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#why-perceus",
+    "description": "The Koka book: why Perceus reference counting"
+  },
+  {
+    "url": "https://www.microsoft.com/en-us/research/publication/fp2-fully-in-place-functional-programming/",
+    "description": "FP²: Fully in-Place Functional Programming (Lorenzen, Leijen and Swierstra, ICFP 2023)"
+  },
+  {
+    "url": "https://www.microsoft.com/en-us/research/publication/perceus-garbage-free-reference-counting-with-reuse/",
+    "description": "Perceus: Garbage Free Reference Counting with Reuse (PLDI 2021)"
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/std_core_bool.html",
+    "description": "The std/core/bool module: booleans"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-operator-expressions",
+    "description": "The Koka book: operator expressions and their precedence"
+  }
+]

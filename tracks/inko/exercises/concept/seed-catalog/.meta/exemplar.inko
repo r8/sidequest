@@ -1,0 +1,39 @@
+# Returns a catalogue counting the packets of each variety in `labels`.
+fn pub catalogue_from(labels: ref Array[String]) -> Map[String, Int] {
+  let catalogue = Map.new
+
+  for label in labels.iter { add_packets(catalogue, label, amount: 1) }
+
+  catalogue
+}
+
+# Returns the number of packets of `variety`, or 0 if there are none.
+fn pub packets(catalogue: ref Map[String, Int], variety: String) -> Int {
+  catalogue.get(variety).or(0)
+}
+
+# Adds `amount` packets of `variety` to the catalogue.
+fn pub add_packets(
+  catalogue: mut Map[String, Int],
+  variety: String,
+  amount: Int,
+) {
+  catalogue.set(variety, packets(catalogue, variety) + amount)
+}
+
+# Removes `variety` and returns how many packets it had, or 0.
+fn pub retire(catalogue: mut Map[String, Int], variety: String) -> Int {
+  catalogue.remove(variety).or(0)
+}
+
+# Returns the varieties with fewer than `below` packets, in catalogue order.
+fn pub running_low(catalogue: ref Map[String, Int], below: Int) -> Array[String]
+{
+  let low = []
+
+  for (variety, count) in catalogue.iter {
+    if count < below { low.push(variety) }
+  }
+
+  low
+}

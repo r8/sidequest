@@ -1,0 +1,24 @@
+# Whitespace in Unicode's sense, such as a no-break space (String.trim only
+# strips ASCII whitespace). "\r\n" is one character, and in here too.
+let WHITESPACE = '\t\r\n\u{B}\u{C} \u{85}\u{A0}\u{1680}\u{2000}\u{2001}\u{2002}\u{2003}\u{2004}\u{2005}\u{2006}\u{2007}\u{2008}\u{2009}\u{200A}\u{2028}\u{2029}\u{202F}\u{205F}\u{3000}'
+
+# Returns Bob's response to `hey_bob`.
+fn pub response(hey_bob: String) -> String {
+  # Whitespace changes neither the case nor the last character said.
+  let message = String.join(
+    hey_bob.chars.select(fn (char) { WHITESPACE.contains?(char) == false }),
+    with: '',
+  )
+  let question = message.ends_with?('?')
+  # Shouting has letters (so lowercasing changes something) and no lowercase
+  # ones (so uppercasing changes nothing), in any script.
+  let shouting = message.to_lower != message and message.to_upper == message
+
+  match (message.empty?, shouting, question) {
+    case (true, _, _) -> 'Fine. Be that way!'
+    case (_, true, true) -> "Calm down, I know what I'm doing!"
+    case (_, true, _) -> 'Whoa, chill out!'
+    case (_, _, true) -> 'Sure.'
+    case _ -> 'Whatever.'
+  }
+}

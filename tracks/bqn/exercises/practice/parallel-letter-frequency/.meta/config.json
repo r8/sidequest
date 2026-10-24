@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "parallel-letter-frequency.bqn"
+    ],
+    "test": [
+      "test/parallel-letter-frequency.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Count the frequency of letters in texts using parallel computation.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

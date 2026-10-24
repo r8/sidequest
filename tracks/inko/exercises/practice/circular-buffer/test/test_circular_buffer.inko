@@ -1,0 +1,119 @@
+import circular_buffer (CircularBuffer)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('reading empty buffer should fail', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(1)
+
+    t.equal(buffer.read, Result.Error('buffer is empty'))
+  })
+  t.test('can read an item just written', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(1)
+
+    t.equal(buffer.write(1), Result.Ok(nil))
+    t.equal(buffer.read, Result.Ok(1))
+  })
+  t.test('each item may only be read once', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(1)
+
+    t.equal(buffer.write(1), Result.Ok(nil))
+    t.equal(buffer.read, Result.Ok(1))
+    t.equal(buffer.read, Result.Error('buffer is empty'))
+  })
+  t.test('items are read in the order they are written', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(2)
+
+    t.equal(buffer.write(1), Result.Ok(nil))
+    t.equal(buffer.write(2), Result.Ok(nil))
+    t.equal(buffer.read, Result.Ok(1))
+    t.equal(buffer.read, Result.Ok(2))
+  })
+  t.test('full buffer can\'t be written to', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(1)
+
+    t.equal(buffer.write(1), Result.Ok(nil))
+    t.equal(buffer.write(2), Result.Error('buffer is full'))
+  })
+  t.test('a read frees up capacity for another write', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(1)
+
+    t.equal(buffer.write(1), Result.Ok(nil))
+    t.equal(buffer.read, Result.Ok(1))
+    t.equal(buffer.write(2), Result.Ok(nil))
+    t.equal(buffer.read, Result.Ok(2))
+  })
+  t.test('read position is maintained even across multiple writes', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(3)
+
+    t.equal(buffer.write(1), Result.Ok(nil))
+    t.equal(buffer.write(2), Result.Ok(nil))
+    t.equal(buffer.read, Result.Ok(1))
+    t.equal(buffer.write(3), Result.Ok(nil))
+    t.equal(buffer.read, Result.Ok(2))
+    t.equal(buffer.read, Result.Ok(3))
+  })
+  t.test('items cleared out of buffer can\'t be read', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(1)
+
+    t.equal(buffer.write(1), Result.Ok(nil))
+    buffer.clear
+    t.equal(buffer.read, Result.Error('buffer is empty'))
+  })
+  t.test('clear frees up capacity for another write', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(1)
+
+    t.equal(buffer.write(1), Result.Ok(nil))
+    buffer.clear
+    t.equal(buffer.write(2), Result.Ok(nil))
+    t.equal(buffer.read, Result.Ok(2))
+  })
+  t.test('clear does nothing on empty buffer', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(1)
+
+    buffer.clear
+    t.equal(buffer.write(1), Result.Ok(nil))
+    t.equal(buffer.read, Result.Ok(1))
+  })
+  t.test('overwrite acts like write on non-full buffer', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(2)
+
+    t.equal(buffer.write(1), Result.Ok(nil))
+    buffer.overwrite(2)
+    t.equal(buffer.read, Result.Ok(1))
+    t.equal(buffer.read, Result.Ok(2))
+  })
+  t.test('overwrite replaces the oldest item on full buffer', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(2)
+
+    t.equal(buffer.write(1), Result.Ok(nil))
+    t.equal(buffer.write(2), Result.Ok(nil))
+    buffer.overwrite(3)
+    t.equal(buffer.read, Result.Ok(2))
+    t.equal(buffer.read, Result.Ok(3))
+  })
+  t.test('overwrite replaces the oldest item remaining in buffer following a read', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(3)
+
+    t.equal(buffer.write(1), Result.Ok(nil))
+    t.equal(buffer.write(2), Result.Ok(nil))
+    t.equal(buffer.write(3), Result.Ok(nil))
+    t.equal(buffer.read, Result.Ok(1))
+    t.equal(buffer.write(4), Result.Ok(nil))
+    buffer.overwrite(5)
+    t.equal(buffer.read, Result.Ok(3))
+    t.equal(buffer.read, Result.Ok(4))
+    t.equal(buffer.read, Result.Ok(5))
+  })
+  t.test('initial clear does not affect wrapping around', fn (t) {
+    let buffer: CircularBuffer[Int] = CircularBuffer.new(2)
+
+    buffer.clear
+    t.equal(buffer.write(1), Result.Ok(nil))
+    t.equal(buffer.write(2), Result.Ok(nil))
+    buffer.overwrite(3)
+    buffer.overwrite(4)
+    t.equal(buffer.read, Result.Ok(3))
+    t.equal(buffer.read, Result.Ok(4))
+    t.equal(buffer.read, Result.Error('buffer is empty'))
+  })
+}

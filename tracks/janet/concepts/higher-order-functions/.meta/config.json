@@ -1,0 +1,7 @@
+{
+  "blurb": "Functions are values: map, filter, reduce and friends take functions as arguments, and fn and |( ) write them in place.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

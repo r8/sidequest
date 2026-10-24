@@ -1,0 +1,1 @@
+{ "testFiles": ["test/greet-test.kk"], "argv": ["koka", "--verbose=0", "-e", "-ilib", "-i.", "test/greet-test.kk"], "timeoutMs": 60000 }

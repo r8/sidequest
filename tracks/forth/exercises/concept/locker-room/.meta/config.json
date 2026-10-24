@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "locker-room.fs"
+    ],
+    "test": [
+      "test/locker-room-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about memory, addresses, here, allot and comma by building the records of a swimming pool's lockers.",
+  "custom": {
+    "after": [
+      "piggy-bank"
+    ]
+  }
+}

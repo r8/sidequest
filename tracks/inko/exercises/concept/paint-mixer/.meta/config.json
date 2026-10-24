@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/paint_mixer.inko"
+    ],
+    "test": [
+      "test/test_paint_mixer.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about value types and cloning by mixing paints in a paint shop.",
+  "custom": {
+    "after": [
+      "tool-shed",
+      "coin-purse"
+    ]
+  }
+}

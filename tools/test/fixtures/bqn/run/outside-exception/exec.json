@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "Error: setup failed\ntest/greet.bqn:4:\n  setup ← \"setup failed\" ! 0\n                         ^\n",
+  "timedOut": false
+}

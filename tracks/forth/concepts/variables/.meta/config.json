@@ -1,0 +1,7 @@
+{
+  "blurb": "variable names a cell of memory; @ fetches from it, ! stores into it and +! adds to it.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

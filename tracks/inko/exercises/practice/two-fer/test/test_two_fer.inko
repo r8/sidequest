@@ -1,0 +1,8 @@
+import two_fer (two_fer)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('no name given', fn (t) { t.equal(two_fer(Option.None), 'One for you, one for me.') })
+  t.test('a name given', fn (t) { t.equal(two_fer(Option.Some('Alice')), 'One for Alice, one for me.') })
+  t.test('another name given', fn (t) { t.equal(two_fer(Option.Some('Bob')), 'One for Bob, one for me.') })
+}

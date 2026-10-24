@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Recursion-Tutorial.html",
+    "description": "Recursion in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Calls-and-returns.html",
+    "description": "Calls and returns, including recurse and recursive, in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/RECURSE",
+    "description": "RECURSE in the Forth standard"
+  }
+]

@@ -1,0 +1,1371 @@
+{
+  "language": "BQN",
+  "slug": "bqn",
+  "active": false,
+  "status": {
+    "concept_exercises": true,
+    "test_runner": true,
+    "representer": false,
+    "analyzer": false
+  },
+  "blurb": "BQN is an array programming language in the APL family, with first-class functions and a consistent, minimal design.",
+  "version": 3,
+  "online_editor": {
+    "indent_style": "space",
+    "indent_size": 2
+  },
+  "test_runner": {
+    "average_run_time": 2
+  },
+  "files": {
+    "solution": [
+      "%{kebab_slug}.bqn"
+    ],
+    "test": [
+      "test/%{kebab_slug}.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "exercises": {
+    "practice": [
+      {
+        "slug": "hello-world",
+        "name": "Hello World",
+        "uuid": "1105fc94-6bd3-40be-9d31-99476491bbd6",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "leap",
+        "name": "Leap",
+        "uuid": "be01feed-b2c0-4c17-a644-52c101555c57",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "difference-of-squares",
+        "name": "Difference of Squares",
+        "uuid": "1c32b0d7-f1e0-4514-96a5-78f2b1772b62",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "hamming",
+        "name": "Hamming",
+        "uuid": "b6a82408-dbb5-4ddc-bdf8-8d4734c419a5",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "raindrops",
+        "name": "Raindrops",
+        "uuid": "889f7e88-a939-4488-931c-1016b34fca9c",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "isogram",
+        "name": "Isogram",
+        "uuid": "b53ec6b5-327a-42c3-b086-f2a5a5a0edfe",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "gigasecond",
+        "name": "Gigasecond",
+        "uuid": "29773b08-a2fb-4157-8b61-04435e83fb91",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "rna-transcription",
+        "name": "RNA Transcription",
+        "uuid": "2d8d93df-467a-44b3-898d-cf1e14804169",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "resistor-color",
+        "name": "Resistor Color",
+        "uuid": "98da742d-402a-48e3-8564-db34391e7ace",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "reverse-string",
+        "name": "Reverse String",
+        "uuid": "98891088-7c23-4c14-978e-1ab9dd63109d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "scrabble-score",
+        "name": "Scrabble Score",
+        "uuid": "5d664320-8df2-489f-8aa5-a7304e832f48",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "acronym",
+        "name": "Acronym",
+        "uuid": "471971d1-a4ae-4197-81b3-b49bb48acf20",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "diamond",
+        "name": "Diamond",
+        "uuid": "eba1456d-83a9-4c4f-b539-6e4acf72908c",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "eliuds-eggs",
+        "name": "Eliud's Eggs",
+        "uuid": "4d64da8d-0e8a-442c-92cd-d195e9b519e0",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "grains",
+        "name": "Grains",
+        "uuid": "a563e4ff-7008-4f4e-9a5a-7e0346aa70c2",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "house",
+        "name": "House",
+        "uuid": "8d2064bb-30fd-4b67-ac34-79cb5b39fe19",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "micro-blog",
+        "name": "Micro Blog",
+        "uuid": "e13dc29e-f757-43aa-92c1-b8f6875bebad",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "nucleotide-count",
+        "name": "Nucleotide Count",
+        "uuid": "40c97c9f-3157-4562-8bbb-f0e8c42c814b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "proverb",
+        "name": "Proverb",
+        "uuid": "60db44e8-bf78-4988-bf7e-071fbc2605e5",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "resistor-color-duo",
+        "name": "Resistor Color Duo",
+        "uuid": "20ba3628-2ff2-4eac-885c-681bcf2d4f1f",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "two-fer",
+        "name": "Two-Fer",
+        "uuid": "11237150-6cd0-4e2f-9af2-a016406f3b7d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "armstrong-numbers",
+        "name": "Armstrong Numbers",
+        "uuid": "2255cdf8-3251-4632-9e8b-a4572e1a449e",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "bob",
+        "name": "Bob",
+        "uuid": "1bacec51-69a2-4235-b85e-f6cccbf3ef7a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "line-up",
+        "name": "Line Up",
+        "uuid": "ab667dd5-5092-4cfc-8b76-35adb7cb2d56",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "matrix",
+        "name": "Matrix",
+        "uuid": "d470eacf-b8a4-4f3e-bfbd-a6a75fda93d3",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "pascals-triangle",
+        "name": "Pascal's Triangle",
+        "uuid": "d881d4f7-e63d-4454-a0df-3f683f09ccc5",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "perfect-numbers",
+        "name": "Perfect Numbers",
+        "uuid": "ae83403b-42f2-488f-9cec-491791f26d59",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "queen-attack",
+        "name": "Queen Attack",
+        "uuid": "f4b03fe2-992f-4a89-8283-075903a1ca91",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "resistor-color-trio",
+        "name": "Resistor Color Trio",
+        "uuid": "88ca0ad0-7a77-4a27-bf43-d9a3b82bed0b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "rotational-cipher",
+        "name": "Rotational Cipher",
+        "uuid": "b8dcbc14-94c4-4c5d-b343-a659de3bd65a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "sieve",
+        "name": "Sieve",
+        "uuid": "0f896dc0-b2de-4c2d-a935-8f841c8b7520",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "simple-cipher",
+        "name": "Simple Cipher",
+        "uuid": "7d398b62-b09b-4f7b-882a-da02a3db0452",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "clock",
+        "name": "Clock",
+        "uuid": "616793bb-250b-4344-9967-5f9ad49a176b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "collatz-conjecture",
+        "name": "Collatz Conjecture",
+        "uuid": "f0714c9b-570f-44c1-9421-694b09d00b9e",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "dnd-character",
+        "name": "D&D Character",
+        "uuid": "49c0c411-c937-4e12-a182-881f76b372e8",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "darts",
+        "name": "Darts",
+        "uuid": "1645231b-7b92-443d-8797-757316727cf8",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "high-scores",
+        "name": "High Scores",
+        "uuid": "c15fcdd5-64b5-429b-b942-07c0eb0a9395",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "isbn-verifier",
+        "name": "ISBN Verifier",
+        "uuid": "81c3715d-075f-4912-b021-cbd25de37b8a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "luhn",
+        "name": "Luhn",
+        "uuid": "3e7a02b2-5c4c-46b6-9e08-b5305ee3279d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "pangram",
+        "name": "Pangram",
+        "uuid": "c22f4444-a8c0-46f2-a6f8-f32835efe258",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "phone-number",
+        "name": "Phone Number",
+        "uuid": "26348839-e1d0-4e9f-a7fc-c859aed8e2f1",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "pig-latin",
+        "name": "Pig Latin",
+        "uuid": "d8738ca7-f574-44a8-912c-2156c71af4c8",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "protein-translation",
+        "name": "Protein Translation",
+        "uuid": "57d1df06-6be2-4184-b230-bd6a1e95b3bc",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "save-the-cow",
+        "name": "Save the Cow",
+        "uuid": "04d440d2-7f52-43b7-a5cb-97978f00a18e",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "secret-handshake",
+        "name": "Secret Handshake",
+        "uuid": "703ae6b6-fb61-48b9-bbd1-aa1b6b5b7887",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "series",
+        "name": "Series",
+        "uuid": "f6fbf072-958b-46ca-9e02-674544855ce0",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "space-age",
+        "name": "Space Age",
+        "uuid": "f251a2b9-8261-4da6-a916-04b021d365e7",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "sublist",
+        "name": "Sublist",
+        "uuid": "d4fab6c3-b2f7-4a8a-8294-c64fc2674c1e",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "sum-of-multiples",
+        "name": "Sum of Multiples",
+        "uuid": "92d2a03d-ecbc-437d-b348-92fe005291d4",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "triangle",
+        "name": "Triangle",
+        "uuid": "efae939c-f3ee-4148-878a-4faeb9449144",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "allergies",
+        "name": "Allergies",
+        "uuid": "7c561017-8bc9-4366-a0e4-31ec203e91bd",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "atbash-cipher",
+        "name": "Atbash Cipher",
+        "uuid": "7c787fbb-bff7-4591-8463-782b71f0b4cb",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "baffling-birthdays",
+        "name": "Baffling Birthdays",
+        "uuid": "fd87d260-ef85-46c5-b462-a8586fdb79b2",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "bottle-song",
+        "name": "Bottle Song",
+        "uuid": "076e5dbc-f01e-4e51-a25b-72193e15b034",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "diffie-hellman",
+        "name": "Diffie-Hellman",
+        "uuid": "c2f1b450-ef03-4ee5-9f94-291612f66e31",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "etl",
+        "name": "ETL",
+        "uuid": "b326a022-37a8-4773-b837-47ece4393de2",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "flatten-array",
+        "name": "Flatten Array",
+        "uuid": "ed0488ee-89ea-4242-8bef-2af7932514b0",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "flower-field",
+        "name": "Flower Field",
+        "uuid": "8c4a24f7-bc55-4343-a14a-57bc80b30a62",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "food-chain",
+        "name": "Food Chain",
+        "uuid": "6ff14922-eb16-4d49-a05d-d33f12b11ea0",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "forth",
+        "name": "Forth",
+        "uuid": "68c09c0c-2bd2-4bc3-866e-9fec1cd0b9ba",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "killer-sudoku-helper",
+        "name": "Killer Sudoku Helper",
+        "uuid": "3c0ae7c1-150a-4829-8778-9c821d3e3e0c",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "kindergarten-garden",
+        "name": "Kindergarten Garden",
+        "uuid": "5518103b-fdcb-4838-97cd-8d8f9b23aa9d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "largest-series-product",
+        "name": "Largest Series Product",
+        "uuid": "f1f18ae2-2455-48b3-a2a5-725391e1c878",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "meetup",
+        "name": "Meetup",
+        "uuid": "32b3328e-2fb3-40db-a882-8d672e8e3a59",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "pythagorean-triplet",
+        "name": "Pythagorean Triplet",
+        "uuid": "7d6d3d49-ba94-4bbe-adf8-39774e5eda93",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "robot-simulator",
+        "name": "Robot Simulator",
+        "uuid": "b7b7f328-4bca-4504-afa3-526cac2fb48b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "roman-numerals",
+        "name": "Roman Numerals",
+        "uuid": "cdd61a83-c0e9-410d-86fa-b44be2be65b2",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "square-root",
+        "name": "Square Root",
+        "uuid": "2c7759a8-f2ab-4b4f-a0a8-92572f261402",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "strain",
+        "name": "Strain",
+        "uuid": "22034c79-79a3-46da-8a09-0abcf1483867",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "word-count",
+        "name": "Word Count",
+        "uuid": "8fa9d405-1d18-4fe9-94ee-d767b2fa0429",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "yacht",
+        "name": "Yacht",
+        "uuid": "afb24e77-96c5-4d88-9f44-275f888abcd6",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "affine-cipher",
+        "name": "Affine Cipher",
+        "uuid": "5e860d80-4071-4440-9229-474ccb3980cb",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "anagram",
+        "name": "Anagram",
+        "uuid": "d9836b9a-8659-4de9-97d0-b38c4a661b99",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "knapsack",
+        "name": "Knapsack",
+        "uuid": "5a3604cb-71db-4fec-86e8-717f3c8907a5",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "matching-brackets",
+        "name": "Matching Brackets",
+        "uuid": "44651a53-9b28-4c90-b635-49a2da7fb839",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "ocr-numbers",
+        "name": "OCR Numbers",
+        "uuid": "b90f9145-a4aa-4260-8672-5e3f6568326c",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "palindrome-products",
+        "name": "Palindrome Products",
+        "uuid": "1fafd1aa-cb79-4df0-b9cc-179b0c2b28a7",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "say",
+        "name": "Say",
+        "uuid": "7df4878e-142c-4eb8-b9fe-192b8928505a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "state-of-tic-tac-toe",
+        "name": "State of Tic-Tac-Toe",
+        "uuid": "bd29edc5-ddae-46bf-85f5-d11e4b23d58b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "twelve-days",
+        "name": "Twelve Days",
+        "uuid": "aab2ef9d-e30d-4bdd-ad95-ac6f02d717a5",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "all-your-base",
+        "name": "All Your Base",
+        "uuid": "c853fe13-9b50-47a9-99b5-9c80fc0f1f73",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
+        "slug": "binary-search",
+        "name": "Binary Search",
+        "uuid": "25b52e08-ad78-4a7b-b79b-516d6c8ca525",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
+        "slug": "connect",
+        "name": "Connect",
+        "uuid": "bfe38387-a1bf-4f3d-b4ab-dbe8cfddf3a0",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
+        "slug": "crypto-square",
+        "name": "Crypto Square",
+        "uuid": "4fe616d7-5257-4d35-a1d8-14ad2bd8f191",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
+        "slug": "dominoes",
+        "name": "Dominoes",
+        "uuid": "77444f52-ce93-4351-852a-47128d2bc6be",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
+        "slug": "intergalactic-transmission",
+        "name": "Intergalactic Transmission",
+        "uuid": "7bd43394-6a08-4938-8654-ffb312f22a33",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
+        "slug": "nth-prime",
+        "name": "Nth Prime",
+        "uuid": "6f39f297-44e7-4b90-b616-da63192eaf3c",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
+        "slug": "parallel-letter-frequency",
+        "name": "Parallel Letter Frequency",
+        "uuid": "cc6d51be-498a-423b-846a-e0ea102359a8",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
+        "slug": "prime-factors",
+        "name": "Prime Factors",
+        "uuid": "54866c5d-d089-42cb-aead-7b9c2be27fa5",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
+        "slug": "variable-length-quantity",
+        "name": "Variable Length Quantity",
+        "uuid": "4fb6e9ea-c973-4b9d-8a8a-4ef26bf05363",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
+        "slug": "change",
+        "name": "Change",
+        "uuid": "f8b1bd79-122a-4615-b5ad-efc27e5b6a64",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8
+      },
+      {
+        "slug": "game-of-life",
+        "name": "Conway's Game of Life",
+        "uuid": "b8607c43-b222-427f-b0b8-c0dd90c6fd67",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8
+      },
+      {
+        "slug": "rail-fence-cipher",
+        "name": "Rail Fence Cipher",
+        "uuid": "2aafe21f-3276-4da8-8f1c-9dd4c1ecfddb",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8
+      },
+      {
+        "slug": "rectangles",
+        "name": "Rectangles",
+        "uuid": "c50df7e1-177b-489d-a168-a7a552cb9513",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8
+      },
+      {
+        "slug": "saddle-points",
+        "name": "Saddle Points",
+        "uuid": "ab6e6833-3b6a-442c-995f-9168d150f6cc",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8
+      },
+      {
+        "slug": "word-search",
+        "name": "Word Search",
+        "uuid": "f558a592-ac6d-4216-8731-825eca586a95",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8
+      },
+      {
+        "slug": "run-length-encoding",
+        "name": "Run-Length Encoding",
+        "uuid": "23f2c7c2-5c95-4f8e-aa26-3cde1f3e8d08",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 9
+      },
+      {
+        "slug": "spiral-matrix",
+        "name": "Spiral Matrix",
+        "uuid": "10ee413d-6dad-428e-bc70-4fcb7f6808ec",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 9
+      },
+      {
+        "slug": "zebra-puzzle",
+        "name": "Zebra Puzzle",
+        "uuid": "1a6baf16-77f6-4ca9-8b7b-91022b4bc74b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 9
+      }
+    ],
+    "concept": [
+      {
+        "slug": "pizza-night",
+        "name": "Pizza Night",
+        "uuid": "8ec5de6c-1e6a-4ad8-866d-2601aac90a96",
+        "concepts": [
+          "basics"
+        ],
+        "prerequisites": []
+      },
+      {
+        "slug": "road-trip",
+        "name": "Road Trip",
+        "uuid": "7c9004a4-b9d8-4fff-9469-d497d0bd59b3",
+        "concepts": [
+          "numbers"
+        ],
+        "prerequisites": [
+          "basics"
+        ]
+      },
+      {
+        "slug": "drawbridge",
+        "name": "Drawbridge",
+        "uuid": "80d33df9-1ee1-4570-bd31-a70886fe3fa1",
+        "concepts": [
+          "booleans"
+        ],
+        "prerequisites": [
+          "basics"
+        ]
+      },
+      {
+        "slug": "step-counter",
+        "name": "Step Counter",
+        "uuid": "91939604-15f8-4a5b-8b49-44376c30a35b",
+        "concepts": [
+          "lists"
+        ],
+        "prerequisites": [
+          "numbers",
+          "booleans"
+        ]
+      },
+      {
+        "slug": "name-tags",
+        "name": "Name Tags",
+        "uuid": "28312980-fd55-45c0-a807-b0bfdf548480",
+        "concepts": [
+          "characters",
+          "strings"
+        ],
+        "prerequisites": [
+          "lists"
+        ]
+      },
+      {
+        "slug": "ticket-machine",
+        "name": "Ticket Machine",
+        "uuid": "59f80c8c-b53f-4d9e-937c-988d3452d436",
+        "concepts": [
+          "blocks"
+        ],
+        "prerequisites": [
+          "lists"
+        ]
+      },
+      {
+        "slug": "parking-garage",
+        "name": "Parking Garage",
+        "uuid": "6fcbb138-3201-4f7c-9bf6-968298beb341",
+        "concepts": [
+          "conditionals"
+        ],
+        "prerequisites": [
+          "booleans",
+          "characters",
+          "strings",
+          "blocks"
+        ]
+      },
+      {
+        "slug": "paper-folding",
+        "name": "Paper Folding",
+        "uuid": "1273daf9-f799-4bd0-9b98-e89e9ef0adaa",
+        "concepts": [
+          "recursion"
+        ],
+        "prerequisites": [
+          "conditionals"
+        ]
+      },
+      {
+        "slug": "library-card",
+        "name": "Library Card",
+        "uuid": "b7f387e4-401b-4309-9ff1-1d6ae9c36f00",
+        "concepts": [
+          "namespaces"
+        ],
+        "prerequisites": [
+          "blocks",
+          "characters",
+          "strings"
+        ]
+      },
+      {
+        "slug": "train-cars",
+        "name": "Train Cars",
+        "uuid": "b4a1b5ba-23bc-4adc-9078-8403a6d7946e",
+        "concepts": [
+          "take-and-drop",
+          "reverse-and-rotate"
+        ],
+        "prerequisites": [
+          "lists"
+        ]
+      },
+      {
+        "slug": "band-setlist",
+        "name": "Band Setlist",
+        "uuid": "acd66d86-0357-4ff2-ae81-dcaab8d3d887",
+        "concepts": [
+          "each"
+        ],
+        "prerequisites": [
+          "characters",
+          "strings",
+          "blocks"
+        ]
+      },
+      {
+        "slug": "shopping-basket",
+        "name": "Shopping Basket",
+        "uuid": "80944ee4-eac4-4fe0-8a8f-b1b898a52cfd",
+        "concepts": [
+          "fold"
+        ],
+        "prerequisites": [
+          "each",
+          "booleans"
+        ]
+      },
+      {
+        "slug": "savings-jar",
+        "name": "Savings Jar",
+        "uuid": "7f771caa-694a-4de3-81da-c05961e867e1",
+        "concepts": [
+          "scan"
+        ],
+        "prerequisites": [
+          "fold"
+        ]
+      },
+      {
+        "slug": "lost-and-found",
+        "name": "Lost and Found",
+        "uuid": "933790ec-57da-410d-be61-ae0d1911472a",
+        "concepts": [
+          "replicate"
+        ],
+        "prerequisites": [
+          "characters",
+          "strings",
+          "booleans"
+        ]
+      },
+      {
+        "slug": "vending-machine",
+        "name": "Vending Machine",
+        "uuid": "daac4231-952e-431c-be60-b952a682e68a",
+        "concepts": [
+          "selection"
+        ],
+        "prerequisites": [
+          "characters",
+          "strings"
+        ]
+      },
+      {
+        "slug": "spice-rack",
+        "name": "Spice Rack",
+        "uuid": "644c4e62-ca6e-4c35-9b89-3139becc074a",
+        "concepts": [
+          "searching"
+        ],
+        "prerequisites": [
+          "selection",
+          "replicate"
+        ]
+      },
+      {
+        "slug": "race-results",
+        "name": "Race Results",
+        "uuid": "0999ae85-6f0a-4ed7-85c4-b57bbca438e8",
+        "concepts": [
+          "sorting"
+        ],
+        "prerequisites": [
+          "selection"
+        ]
+      },
+      {
+        "slug": "mail-room",
+        "name": "Mail Room",
+        "uuid": "bae3ed1f-424b-4f93-9156-ddbca57b8443",
+        "concepts": [
+          "group"
+        ],
+        "prerequisites": [
+          "searching",
+          "each"
+        ]
+      },
+      {
+        "slug": "egg-cartons",
+        "name": "Egg Cartons",
+        "uuid": "c8b6b466-873e-4461-b684-cbb8138c39d0",
+        "concepts": [
+          "arrays",
+          "reshaping"
+        ],
+        "prerequisites": [
+          "lists"
+        ]
+      },
+      {
+        "slug": "paint-mixer",
+        "name": "Paint Mixer",
+        "uuid": "cfaa14cc-ff35-4813-acd7-e7f0ef346a32",
+        "concepts": [
+          "table"
+        ],
+        "prerequisites": [
+          "arrays",
+          "reshaping",
+          "characters",
+          "strings"
+        ]
+      },
+      {
+        "slug": "gradebook",
+        "name": "Gradebook",
+        "uuid": "3c8db9bc-a7a8-46a4-a897-5e05f45ab3a5",
+        "concepts": [
+          "cells",
+          "insert"
+        ],
+        "prerequisites": [
+          "table",
+          "fold"
+        ]
+      },
+      {
+        "slug": "moving-boxes",
+        "name": "Moving Boxes",
+        "uuid": "e2bb5569-1a77-4a42-bdda-ff0113f35cfa",
+        "concepts": [
+          "nesting"
+        ],
+        "prerequisites": [
+          "each",
+          "arrays",
+          "reshaping"
+        ]
+      },
+      {
+        "slug": "unit-converter",
+        "name": "Unit Converter",
+        "uuid": "1d03300a-9c0f-4d93-b0d8-2026431096de",
+        "concepts": [
+          "combinators"
+        ],
+        "prerequisites": [
+          "each",
+          "numbers"
+        ]
+      },
+      {
+        "slug": "statistics-club",
+        "name": "Statistics Club",
+        "uuid": "19a765bb-3e46-40c7-bb66-2b943ad3b545",
+        "concepts": [
+          "trains"
+        ],
+        "prerequisites": [
+          "combinators",
+          "fold"
+        ]
+      },
+      {
+        "slug": "redacted-files",
+        "name": "Redacted Files",
+        "uuid": "eb624ba8-e85e-4ff0-a006-ddbd3763403c",
+        "concepts": [
+          "under"
+        ],
+        "prerequisites": [
+          "combinators",
+          "replicate",
+          "selection"
+        ]
+      },
+      {
+        "slug": "bacteria-culture",
+        "name": "Bacteria Culture",
+        "uuid": "dc1eeb60-ba7a-4957-b503-5d7dd263e7f9",
+        "concepts": [
+          "repeat",
+          "undo"
+        ],
+        "prerequisites": [
+          "combinators"
+        ]
+      },
+      {
+        "slug": "kitchen-gadgets",
+        "name": "Kitchen Gadgets",
+        "uuid": "b0c52f07-f6b0-4652-be9e-543ec185d339",
+        "concepts": [
+          "modifiers",
+          "first-class-functions"
+        ],
+        "prerequisites": [
+          "combinators",
+          "each"
+        ]
+      },
+      {
+        "slug": "package-inspector",
+        "name": "Package Inspector",
+        "uuid": "5010eb3b-a88f-4804-b8d3-251673a1e829",
+        "concepts": [
+          "errors"
+        ],
+        "prerequisites": [
+          "conditionals",
+          "characters",
+          "strings"
+        ]
+      },
+      {
+        "slug": "receipt-printer",
+        "name": "Receipt Printer",
+        "uuid": "70e3a7e2-18c8-44b5-8732-2fdb7f150eb7",
+        "concepts": [
+          "formatting"
+        ],
+        "prerequisites": [
+          "characters",
+          "strings",
+          "take-and-drop",
+          "reverse-and-rotate"
+        ]
+      }
+    ]
+  },
+  "tags": [
+    "execution_mode/interpreted",
+    "paradigm/array",
+    "paradigm/functional",
+    "platform/linux",
+    "platform/mac",
+    "runtime/standalone_executable",
+    "typing/dynamic"
+  ],
+  "concepts": [
+    {
+      "uuid": "c5c2d4a6-1cd1-49a2-905c-6b4203360682",
+      "slug": "basics",
+      "name": "Basics"
+    },
+    {
+      "uuid": "9f5fe1b5-73ed-4b30-aeeb-bbe84018cf59",
+      "slug": "numbers",
+      "name": "Numbers"
+    },
+    {
+      "uuid": "b55b6df0-7f6e-471e-84af-e715f672d655",
+      "slug": "booleans",
+      "name": "Booleans"
+    },
+    {
+      "uuid": "9e4634a9-9043-4fac-882d-b4518c9ad8a2",
+      "slug": "lists",
+      "name": "Lists"
+    },
+    {
+      "uuid": "8c605a80-fe86-43f2-a5bb-be45093296ea",
+      "slug": "characters",
+      "name": "Characters"
+    },
+    {
+      "uuid": "5961ec38-72a5-4abd-9656-8ee6bec3f23f",
+      "slug": "strings",
+      "name": "Strings"
+    },
+    {
+      "uuid": "711541c2-cf8e-41be-9ca1-2358c2f4751d",
+      "slug": "blocks",
+      "name": "Blocks"
+    },
+    {
+      "uuid": "9f622070-0047-4725-a1f6-06b1275c6079",
+      "slug": "conditionals",
+      "name": "Conditionals"
+    },
+    {
+      "uuid": "1910c906-4067-4960-a585-7f37efc5f650",
+      "slug": "recursion",
+      "name": "Recursion"
+    },
+    {
+      "uuid": "da8648f4-d0d4-4559-9873-51de27a0e26a",
+      "slug": "namespaces",
+      "name": "Namespaces"
+    },
+    {
+      "uuid": "cae2d355-01a4-48e7-9cf5-22d3dadf6b57",
+      "slug": "take-and-drop",
+      "name": "Take and Drop"
+    },
+    {
+      "uuid": "5aa2ae9e-2eba-422c-9da0-12f9899d5055",
+      "slug": "reverse-and-rotate",
+      "name": "Reverse and Rotate"
+    },
+    {
+      "uuid": "4f8ebc31-2ee6-4a88-9eee-7f9b35d491fa",
+      "slug": "each",
+      "name": "Each"
+    },
+    {
+      "uuid": "a0d39b81-354c-4588-812d-bbcf889466aa",
+      "slug": "fold",
+      "name": "Fold"
+    },
+    {
+      "uuid": "408bcde4-0c99-41d2-bcc2-10c605ecb420",
+      "slug": "scan",
+      "name": "Scan"
+    },
+    {
+      "uuid": "736715db-b30f-4ab9-affc-d6a341f189c6",
+      "slug": "replicate",
+      "name": "Replicate"
+    },
+    {
+      "uuid": "4330a6a0-164e-42fc-970e-57b16084f74a",
+      "slug": "selection",
+      "name": "Selection"
+    },
+    {
+      "uuid": "970ce498-48c0-4e78-9b1e-5736b33baa0b",
+      "slug": "searching",
+      "name": "Searching"
+    },
+    {
+      "uuid": "34dd41f5-ca2b-49b1-aab9-9c87444e0f48",
+      "slug": "sorting",
+      "name": "Sorting"
+    },
+    {
+      "uuid": "ea3afb0e-c957-4221-8b23-e268f21c4bfe",
+      "slug": "group",
+      "name": "Group"
+    },
+    {
+      "uuid": "33e44948-f890-4957-879f-47eb62258ed8",
+      "slug": "arrays",
+      "name": "Arrays"
+    },
+    {
+      "uuid": "985e43b0-3251-4ada-b1b7-25db9d053944",
+      "slug": "reshaping",
+      "name": "Reshaping"
+    },
+    {
+      "uuid": "806f1b18-1944-4d64-9881-a1815816a726",
+      "slug": "table",
+      "name": "Table"
+    },
+    {
+      "uuid": "cc5c7fc1-26c1-4791-9003-f667f5cb4ee3",
+      "slug": "cells",
+      "name": "Cells"
+    },
+    {
+      "uuid": "55ce2e95-4c9c-48cf-9035-a8cb3f691aa5",
+      "slug": "insert",
+      "name": "Insert"
+    },
+    {
+      "uuid": "e934baa3-9520-422b-bca8-78c2107d1034",
+      "slug": "nesting",
+      "name": "Nesting"
+    },
+    {
+      "uuid": "22c3b6e2-9e7b-49a8-ad3f-3f57e3a1ef2a",
+      "slug": "combinators",
+      "name": "Combinators"
+    },
+    {
+      "uuid": "669fa0d4-f5a4-4b55-9abe-f1782e8256a9",
+      "slug": "trains",
+      "name": "Trains"
+    },
+    {
+      "uuid": "f23666d9-a168-45f8-90ac-73d751a0aabd",
+      "slug": "under",
+      "name": "Under"
+    },
+    {
+      "uuid": "03d08b28-3931-47dc-b054-7f5ece50e290",
+      "slug": "repeat",
+      "name": "Repeat"
+    },
+    {
+      "uuid": "704a0b5d-b0e5-4b46-ad8f-dba01d9066b9",
+      "slug": "undo",
+      "name": "Undo"
+    },
+    {
+      "uuid": "5868e670-858e-4281-b7ab-ccf4d5d2e012",
+      "slug": "modifiers",
+      "name": "Modifiers"
+    },
+    {
+      "uuid": "dd6a8963-5541-4130-8ea1-71f868ea4ec0",
+      "slug": "first-class-functions",
+      "name": "First-Class Functions"
+    },
+    {
+      "uuid": "cb91d51c-0da0-46c5-b945-e361b3d5b80d",
+      "slug": "errors",
+      "name": "Errors"
+    },
+    {
+      "uuid": "36f51914-536f-4bd8-8f30-2d3d704bc2ff",
+      "slug": "formatting",
+      "name": "Formatting"
+    }
+  ]
+}

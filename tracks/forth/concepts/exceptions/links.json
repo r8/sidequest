@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Exception-Handling.html",
+    "description": "Exception handling in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Exceptions-Tutorial.html",
+    "description": "Exceptions in the Gforth tutorial"
+  },
+  {
+    "url": "https://forth-standard.org/standard/exception",
+    "description": "The Forth standard's exception word set and its table of throw codes"
+  }
+]

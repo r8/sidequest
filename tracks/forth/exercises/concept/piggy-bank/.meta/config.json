@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "piggy-bank.fs"
+    ],
+    "test": [
+      "test/piggy-bank-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about variables, constants and values by keeping track of the savings in a piggy bank.",
+  "custom": {
+    "after": [
+      "tea-time"
+    ]
+  }
+}

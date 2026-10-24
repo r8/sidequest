@@ -1,0 +1,52 @@
+import star_chart (brighter, catalogue_entry, position, shift, steps)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. a position', fn (t) {
+    t.equal(position(column: 18, row: 36), (18, 36))
+  })
+  t.test('1. the origin', fn (t) {
+    t.equal(position(column: 0, row: 0), (0, 0))
+  })
+
+  t.test('2. shift forwards', fn (t) {
+    t.equal(shift((18, 36), by: (2, 3)), (20, 39))
+  })
+  t.test('2. shift in both directions', fn (t) {
+    t.equal(shift((18, 36), by: (2, -1)), (20, 35))
+  })
+  t.test('2. shift by nothing', fn (t) {
+    t.equal(shift((5, 5), by: (0, 0)), (5, 5))
+  })
+
+  t.test('3. steps across', fn (t) {
+    t.equal(steps(from: (1, 1), to: (4, 1)), 3)
+  })
+  t.test('3. steps across and down', fn (t) {
+    t.equal(steps(from: (1, 1), to: (4, -3)), 7)
+  })
+  t.test('3. steps back', fn (t) {
+    t.equal(steps(from: (4, -3), to: (1, 1)), 7)
+  })
+  t.test('3. no steps', fn (t) { t.equal(steps(from: (2, 2), to: (2, 2)), 0) })
+
+  t.test('4. the second star is brighter', fn (t) {
+    t.equal(brighter(('Vega', 0.03), ('Sirius', -1.46)), 'Sirius')
+  })
+  t.test('4. the first star is brighter', fn (t) {
+    t.equal(brighter(('Rigel', 0.13), ('Deneb', 1.25)), 'Rigel')
+  })
+  t.test('4. equally bright stars', fn (t) {
+    t.equal(brighter(('Castor', 1.58), ('Twin', 1.58)), 'Castor')
+  })
+
+  t.test('5. a catalogue entry', fn (t) {
+    t.equal(catalogue_entry(('Vega', 0.03, (18, 36))), 'Vega (0.03) at 18,36')
+  })
+  t.test('5. a negative magnitude', fn (t) {
+    t.equal(
+      catalogue_entry(('Sirius', -1.46, (6, -16))),
+      'Sirius (-1.46) at 6,-16',
+    )
+  })
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "sourdough-schedule.janet"
+    ],
+    "test": [
+      "test/sourdough-schedule.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn the basics of Janet — expressions, def and defn — by planning a sourdough bakery's schedule.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

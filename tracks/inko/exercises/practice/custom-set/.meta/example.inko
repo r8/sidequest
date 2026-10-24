@@ -1,0 +1,86 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# A set of unique values of type `T`, which can be compared with `==`.
+#
+# `intersection`, `difference` and `union` consume both sets and build the
+# result from their elements, so `T` needn't be cloneable.
+type pub CustomSet[T: Equal] {
+  # The elements, without duplicates, in the order they were added.
+  let @items: Array[T]
+}
+
+impl CustomSet {
+  # Returns a set of the given `values`, ignoring duplicates.
+  fn pub static new(values: Array[T]) -> CustomSet[T] {
+    let set = CustomSet([])
+
+    for value in values.into_iter { set.add(value) }
+
+    set
+  }
+
+  # Returns `true` if the set has no elements.
+  fn pub empty? -> Bool {
+    @items.empty?
+  }
+
+  # Returns `true` if `value` is in the set.
+  fn pub contains?(value: ref T) -> Bool {
+    @items.contains?(value)
+  }
+
+  # Returns `true` if every element of this set is also in `other`.
+  fn pub subset?(other: ref CustomSet[T]) -> Bool {
+    @items.iter.all?(fn (value) { other.contains?(value) })
+  }
+
+  # Returns `true` if this set and `other` share no elements.
+  fn pub disjoint?(other: ref CustomSet[T]) -> Bool {
+    @items.iter.all?(fn (value) { !other.contains?(value) })
+  }
+
+  # Adds `value` to the set, unless it's already there.
+  fn pub mut add(value: T) {
+    if contains?(value) { return }
+
+    @items.push(value)
+  }
+
+  # Returns a set of the elements that are in both this set and `other`.
+  fn pub move intersection(other: CustomSet[T]) -> CustomSet[T] {
+    CustomSet(@items.into_iter.select(fn (value) { other.contains?(value) }).to_array)
+  }
+
+  # Returns a set of the elements of this set that aren't in `other`.
+  fn pub move difference(other: CustomSet[T]) -> CustomSet[T] {
+    CustomSet(@items.into_iter.select(fn (value) { !other.contains?(value) }).to_array)
+  }
+
+  # Returns a set of the elements that are in this set, in `other` or in both.
+  fn pub move union(other: CustomSet[T]) -> CustomSet[T] {
+    match other {
+      case { @items = items } -> {
+        let set = CustomSet(@items)
+
+        for value in items.into_iter { set.add(value) }
+
+        set
+      }
+    }
+  }
+}
+
+impl Equal for CustomSet {
+  # Returns `true` if both sets have the same elements, in any order.
+  fn pub ==(other: ref CustomSet[T]) -> Bool {
+    @items.size == other.items.size and subset?(other)
+  }
+}
+
+impl Format for CustomSet if T: Format {
+  fn pub fmt(formatter: mut Formatter) {
+    formatter.write('CustomSet')
+    @items.fmt(formatter)
+  }
+}

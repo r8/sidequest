@@ -1,0 +1,105 @@
+import lantern_festival (Lantern, Parade, snuff)
+import std.drop (drop)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. a lantern goes out when dropped', fn (t) {
+    let log = []
+    let lantern = Lantern.new('Moon', log)
+
+    drop(lantern)
+    t.equal(log, ['Moon goes out'])
+  })
+  t.test('1. lanterns go out in reverse order at the end of a scope', fn (t) {
+    let log = []
+
+    {
+      let _first = Lantern.new('Moon', log)
+      let _second = Lantern.new('Star', log)
+    }
+
+    t.equal(log, ['Star goes out', 'Moon goes out'])
+  })
+
+  t.test('2. light lanterns', fn (t) {
+    let log = []
+    let parade = Parade.new(log)
+
+    parade.light('Moon')
+    parade.light('Star')
+    t.equal(parade.size, 2)
+    drop(parade)
+  })
+  t.test('2. lighting writes nothing to the log', fn (t) {
+    let log = []
+    let parade = Parade.new(log)
+
+    parade.light('Moon')
+    t.equal(log, [])
+    drop(parade)
+  })
+
+  t.test('3. the end of the parade', fn (t) {
+    let log = []
+    let parade = Parade.new(log)
+
+    parade.light('Moon')
+    parade.light('Star')
+    drop(parade)
+    t.equal(log, ['the parade is over', 'Moon goes out', 'Star goes out'])
+  })
+  t.test('3. the end of an empty parade', fn (t) {
+    let log = []
+
+    drop(Parade.new(log))
+    t.equal(log, ['the parade is over'])
+  })
+
+  t.test('4. release a lantern', fn (t) {
+    let log = []
+    let parade = Parade.new(log)
+
+    parade.light('Moon')
+    parade.light('Star')
+
+    let kept = parade.release('Moon')
+
+    t.equal(parade.size, 1)
+    drop(parade)
+    t.equal(log, ['the parade is over', 'Star goes out'])
+    drop(kept)
+    t.equal(log, ['the parade is over', 'Star goes out', 'Moon goes out'])
+  })
+  t.test('4. release a lantern that is not there', fn (t) {
+    let log = []
+    let parade = Parade.new(log)
+
+    parade.light('Moon')
+    t.true(parade.release('Sun').none?)
+    t.equal(parade.size, 1)
+    drop(parade)
+  })
+
+  t.test('5. snuff a lantern', fn (t) {
+    let log = []
+    let lantern = Lantern.new('Moon', log)
+
+    snuff(lantern)
+    t.equal(log, ['Moon goes out'])
+  })
+  t.test('5. snuff a released lantern', fn (t) {
+    let log = []
+    let parade = Parade.new(log)
+
+    parade.light('Moon')
+    parade.light('Star')
+
+    match parade.release('Star') {
+      case Some(lantern) -> snuff(lantern)
+      case None -> {}
+    }
+
+    t.equal(log, ['Star goes out'])
+    drop(parade)
+  })
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/cmp/",
+    "description": "The std.cmp module: Equal, Compare and Ordering"
+  },
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/fmt/Format/",
+    "description": "The Format trait, used by the tests"
+  }
+]

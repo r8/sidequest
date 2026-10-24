@@ -1,0 +1,28 @@
+# A Vigenère cipher: a substitution cipher whose key is a series of lowercase
+# letters, where "a" shifts by 0, "b" by 1 and so on.
+type pub Cipher {
+  # The key, made only of lowercase letters.
+  let pub @key: String
+
+  # Returns a cipher with a random key of at least 100 lowercase letters.
+  #
+  # `std.rand.Random` generates random numbers.
+  fn pub static new -> Cipher {
+    panic('implement me')
+  }
+
+  # Returns a cipher using `key`, a series of lowercase letters.
+  fn pub static with_key(key: String) -> Cipher {
+    panic('implement me')
+  }
+
+  # Encodes the lowercase letters of `plaintext`.
+  fn pub encode(plaintext: String) -> String {
+    panic('implement me')
+  }
+
+  # Decodes the lowercase letters of `ciphertext`.
+  fn pub decode(ciphertext: String) -> String {
+    panic('implement me')
+  }
+}

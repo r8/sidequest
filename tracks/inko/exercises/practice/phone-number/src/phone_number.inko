@@ -1,0 +1,5 @@
+# Returns the ten digits of the NANP phone number `phrase`, or an error
+# describing why it isn't valid.
+fn pub clean(phrase: String) -> Result[String, String] {
+  panic('implement me')
+}

@@ -1,0 +1,94 @@
+import fishing_fleet (Boat, collect, fleet_catch, jobs)
+import std.sync (Channel)
+import std.test (Tests)
+import std.time (Duration)
+
+fn totals(entries: Array[(String, Int)]) -> Map[String, Int] {
+  let map = Map.new
+
+  for (ground, kilograms) in entries { map.set(ground, kilograms) }
+
+  map
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('1. jobs come out in order', fn (t) {
+    let grounds = ['north', 'reef']
+    let work = jobs(grounds)
+
+    t.equal(work.receive, 'north')
+    t.equal(work.receive, 'reef')
+  })
+  t.test('1. a job for every ground', fn (t) {
+    let grounds = ['north', 'north', 'bank']
+    let work = jobs(grounds)
+
+    t.equal(work.receive, 'north')
+    t.equal(work.receive, 'north')
+    t.equal(work.receive, 'bank')
+  })
+
+  t.test('2. a boat fishes every job', fn (t) {
+    let work = Channel.new
+    let catches = Channel.new
+
+    Boat().fish(recover work.clone, recover catches.clone)
+    work.send('reef')
+    work.send('north')
+    work.send('home')
+
+    let first = recover catches.receive
+    let second = recover catches.receive
+
+    t.equal(first, ('reef', 45))
+    t.equal(second, ('north', 120))
+  })
+  t.test('2. a boat goes home', fn (t) {
+    let work = Channel.new
+    let catches = Channel.new
+
+    Boat().fish(recover work.clone, recover catches.clone)
+    work.send('home')
+    work.send('bank')
+
+    let late = catches.receive_until(Duration.from_millis(50))
+
+    t.true(late.none?)
+  })
+
+  t.test('3. collect catches', fn (t) {
+    let catches = Channel.new
+
+    catches.send(recover ('reef', 45))
+    catches.send(recover ('north', 120))
+    catches.send(recover ('reef', 45))
+    t.equal(collect(catches, 3), totals([('reef', 90), ('north', 120)]))
+  })
+  t.test('3. collect nothing', fn (t) {
+    let catches: Channel[(String, Int)] = Channel.new
+
+    t.equal(collect(catches, 0), Map.new)
+  })
+
+  t.test('4. a fleet of one', fn (t) {
+    let grounds = ['north', 'reef', 'bank']
+
+    t.equal(
+      fleet_catch(grounds, boats: 1),
+      totals([('north', 120), ('reef', 45), ('bank', 80)]),
+    )
+  })
+  t.test('4. a fleet of three', fn (t) {
+    let grounds = ['north', 'reef', 'bank', 'reef', 'shoal']
+
+    t.equal(
+      fleet_catch(grounds, boats: 3),
+      totals([('north', 120), ('reef', 90), ('bank', 80), ('shoal', 10)]),
+    )
+  })
+  t.test('4. more boats than grounds', fn (t) {
+    let grounds = ['bank']
+
+    t.equal(fleet_catch(grounds, boats: 4), totals([('bank', 80)]))
+  })
+}

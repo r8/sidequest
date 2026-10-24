@@ -1,0 +1,10 @@
+import greet (greet)
+import std.test (Tests)
+
+# A comment with a paren ( and a 'string' that must not confuse extraction.
+fn pub tests(t: mut Tests) {
+  t.test('greets', fn (t) { t.equal(greet('you'), 'Hello, you!') })
+  t.test("name with 'quotes'", fn (t) {
+    t.equal(greet("'Bob'"), "Hello, 'Bob'!")
+  })
+}

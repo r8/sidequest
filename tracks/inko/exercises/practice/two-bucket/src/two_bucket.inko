@@ -1,0 +1,70 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# One of the two buckets.
+type pub copy enum Bucket {
+  case One
+  case Two
+}
+
+impl Equal for Bucket {
+  fn pub ==(other: Bucket) -> Bool {
+    match (self, other) {
+      case (One, One) -> true
+      case (Two, Two) -> true
+      case _ -> false
+    }
+  }
+}
+
+impl Format for Bucket {
+  fn pub fmt(formatter: mut Formatter) {
+    let name = match self {
+      case One -> 'One'
+      case Two -> 'Two'
+    }
+
+    formatter.tuple(name).finish
+  }
+}
+
+# The outcome of measuring: the number of moves (the first fill included),
+# the bucket that ends up holding the goal amount, and the amount left in the
+# other bucket.
+type pub BucketStats {
+  let pub @moves: Int
+  let pub @goal_bucket: Bucket
+  let pub @other_bucket: Int
+}
+
+impl Equal for BucketStats {
+  fn pub ==(other: ref BucketStats) -> Bool {
+    @moves == other.moves
+      and @goal_bucket == other.goal_bucket
+      and @other_bucket == other.other_bucket
+  }
+}
+
+impl Format for BucketStats {
+  fn pub fmt(formatter: mut Formatter) {
+    formatter
+      .object('BucketStats')
+      .field('moves', @moves)
+      .field('goal_bucket', @goal_bucket)
+      .field('other_bucket', @other_bucket)
+      .finish
+  }
+}
+
+# Measures `goal` liters with buckets of `bucket_one` and `bucket_two` liters,
+# starting by filling `start_bucket`. Each fill, empty or pour is one move, and
+# the state with the starting bucket empty and the other one full is never
+# allowed. Returns the error "impossible" if the goal can't be reached.
+fn pub measure(
+  bucket_one: Int,
+  bucket_two: Int,
+  goal: Int,
+  start_bucket: Bucket,
+) -> Result[BucketStats, String] {
+  panic('implement me')
+}

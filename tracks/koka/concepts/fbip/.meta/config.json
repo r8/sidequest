@@ -1,0 +1,7 @@
+{
+  "blurb": "Functional but in-place: Perceus reuses unique values, and fip and fbip check that a function updates in place.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

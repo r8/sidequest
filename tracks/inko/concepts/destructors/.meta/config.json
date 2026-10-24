@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn how the Drop trait runs code when a value is dropped, and in which order values are dropped.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

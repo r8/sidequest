@@ -1,0 +1,38 @@
+# Encodes each of the unsigned 32-bit `integers` as a variable-length quantity
+# and returns all the bytes (values from 0 to 255) in order.
+fn pub encode(integers: ref Array[Int]) -> Array[Int] {
+  integers.iter.flat_map(fn (value) { encode_one(value).into_iter }).to_array
+}
+
+fn encode_one(value: Int) -> Array[Int] {
+  let bytes = [value & 0x7F]
+  let mut rest = value >> 7
+
+  while rest > 0 {
+    bytes.push(rest & 0x7F | 0x80)
+    rest >>= 7
+  }
+
+  bytes.reverse
+  bytes
+}
+
+# Decodes the variable-length quantities in `bytes` (values from 0 to 255) back
+# into integers, or returns an error if the last quantity is incomplete.
+fn pub decode(bytes: ref Array[Int]) -> Result[Array[Int], String] {
+  let values = []
+  let mut current = 0
+  let mut complete = true
+
+  for byte in bytes.iter {
+    current = current << 7 | (byte & 0x7F)
+    complete = byte & 0x80 == 0
+
+    if complete {
+      values.push(current)
+      current = 0
+    }
+  }
+
+  if complete { Result.Ok(values) } else { Result.Error('incomplete sequence') }
+}

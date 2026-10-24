@@ -1,0 +1,7 @@
+{
+  "blurb": "Each Janet collection has a mutable and an immutable version; = compares immutable ones by value and mutable ones by identity.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

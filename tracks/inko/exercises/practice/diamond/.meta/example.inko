@@ -1,0 +1,22 @@
+let A = 65
+
+# Returns the rows of a diamond whose widest point is the uppercase `letter`
+# ('A' to 'Z'). Every row has the same width; spaces pad it on both sides.
+fn pub rows(letter: String) -> Array[String] {
+  let size = letter.get(0).or_panic - A
+  let top = 0.to(size).iter.map(fn (index) { row(index, size) }).to_array
+  let bottom = top.iter.take(size).to_array
+
+  bottom.reverse
+  top.append(bottom)
+  top
+}
+
+fn row(index: Int, size: Int) -> String {
+  let letter = ByteArray.from_array([A + index]).into_string
+  let outer = ' '.repeat(size - index)
+
+  if index == 0 { return '${outer}${letter}${outer}' }
+
+  '${outer}${letter}${' '.repeat(2 * index - 1)}${letter}${outer}'
+}

@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "shorthand.fs"
+    ],
+    "test": [
+      "test/shorthand-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about parsing words and evaluate by teaching Forth to read a court stenographer's shorthand.",
+  "custom": {
+    "after": [
+      "measuring-cups",
+      "name-tags",
+      "coat-check"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "telegraph-office.janet"
+    ],
+    "test": [
+      "test/telegraph-office.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about buffers by building, censoring and sending telegrams in a village telegraph office.",
+  "custom": {
+    "after": [
+      "name-badges",
+      "firefly-census"
+    ]
+  }
+}

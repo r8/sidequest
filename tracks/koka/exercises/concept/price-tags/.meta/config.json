@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "price-tags.kk"
+    ],
+    "test": [
+      "test/price-tags-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about overloading and implicit parameters by printing the price tags of a grocery.",
+  "custom": {
+    "after": [
+      "storage-crates",
+      "bike-rental"
+    ]
+  }
+}

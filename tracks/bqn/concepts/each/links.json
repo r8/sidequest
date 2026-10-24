@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/map.html",
+    "description": "Mapping modifiers: each and table"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/arithmetic.html",
+    "description": "Arithmetic and pervasion"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/ops.html",
+    "description": "Modifiers and how they bind"
+  }
+]

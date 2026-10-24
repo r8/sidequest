@@ -1,0 +1,7 @@
+{
+  "blurb": "Koka's int never overflows, and its division and remainder are Euclidean.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

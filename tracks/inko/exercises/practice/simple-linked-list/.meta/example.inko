@@ -1,0 +1,93 @@
+type Node[T] {
+  let @value: T
+  let @next: Option[Node[T]]
+}
+
+# A singly linked list used as a stack: the last value pushed is the first one
+# popped.
+type pub SimpleLinkedList[T] {
+  let mut @head: Option[Node[T]]
+  let mut @size: Int
+}
+
+impl SimpleLinkedList {
+  # Returns an empty list.
+  fn pub static new -> SimpleLinkedList[T] {
+    SimpleLinkedList(head: Option.None, size: 0)
+  }
+
+  # Returns a list with the `values` pushed in order, so the last one is on top.
+  fn pub static from_array(values: Array[T]) -> SimpleLinkedList[T] {
+    let list = new
+
+    for value in values.into_iter { list.push(value) }
+
+    list
+  }
+
+  # Returns the number of values in the list.
+  fn pub count -> Int {
+    @size
+  }
+
+  # Pushes `value` on top of the list.
+  fn pub mut push(value: T) {
+    @head = Option.Some(Node(value: value, next: @head := Option.None))
+    @size += 1
+  }
+
+  # Removes and returns the value on top of the list, or the error "list is
+  # empty".
+  fn pub mut pop -> Result[T, String] {
+    match @head := Option.None {
+      case Some({ @value = value, @next = rest }) -> {
+        @head = rest
+        @size -= 1
+        Result.Ok(value)
+      }
+      case None -> Result.Error('list is empty')
+    }
+  }
+
+  # Returns the value on top of the list without removing it, or the error
+  # "list is empty".
+  fn pub peek -> Result[ref T, String] {
+    match @head {
+      case Some(node) -> Result.Ok(node.value)
+      case None -> Result.Error('list is empty')
+    }
+  }
+
+  # Reverses the order of the values in the list.
+  fn pub mut reverse {
+    let mut reversed = Option.None
+
+    loop {
+      match @head := Option.None {
+        case Some({ @value = value, @next = rest }) -> {
+          @head = rest
+          reversed = Option.Some(Node(value: value, next: reversed))
+        }
+        case None -> break
+      }
+    }
+
+    @head = reversed
+  }
+
+  # Consumes the list and returns its values in the order they were pushed
+  # (the top of the list last).
+  fn pub move into_array -> Array[T] {
+    let values = []
+
+    loop {
+      match pop {
+        case Ok(value) -> values.push(value)
+        case Error(_) -> break
+      }
+    }
+
+    values.reverse
+    values
+  }
+}

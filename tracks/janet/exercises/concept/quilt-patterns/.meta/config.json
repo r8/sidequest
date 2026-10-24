@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "quilt-patterns.janet"
+    ],
+    "test": [
+      "test/quilt-patterns.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about the loop macro and seq, tabseq and catseq by planning patchwork quilts on a grid.",
+  "custom": {
+    "after": [
+      "train-cars",
+      "firefly-census",
+      "spice-rack"
+    ]
+  }
+}

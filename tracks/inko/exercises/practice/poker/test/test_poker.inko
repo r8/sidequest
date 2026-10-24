@@ -1,0 +1,276 @@
+import poker (best_hands)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('single hand always wins', fn (t) {
+    t.equal(best_hands(['4S 5S 7H 8D JC']), ['4S 5S 7H 8D JC'])
+  })
+  t.test('highest card out of all hands wins', fn (t) {
+    t.equal(
+      best_hands(['4D 5S 6S 8D 3C', '2S 4C 7S 9H 10H', '3S 4S 5D 6H JH']),
+      ['3S 4S 5D 6H JH'],
+    )
+  })
+  t.test('a tie has multiple winners', fn (t) {
+    t.equal(
+      best_hands(
+        [
+          '4D 5S 6S 8D 3C',
+          '2S 4C 7S 9H 10H',
+          '3S 4S 5D 6H JH',
+          '3H 4H 5C 6C JD',
+        ],
+      ),
+      ['3S 4S 5D 6H JH', '3H 4H 5C 6C JD'],
+    )
+  })
+  t.test(
+    'multiple hands with the same high cards, tie compares next highest ranked, down to last card',
+    fn (t) {
+      t.equal(
+        best_hands(['3S 5H 6S 8D 7H', '2S 5D 6D 8C 7S']),
+        ['3S 5H 6S 8D 7H'],
+      )
+    },
+  )
+  t.test('winning high card hand also has the lowest card', fn (t) {
+    t.equal(
+      best_hands(['2S 5H 6S 8D 7H', '3S 4D 6D 8C 7S']),
+      ['2S 5H 6S 8D 7H'],
+    )
+  })
+  t.test('one pair beats high card', fn (t) {
+    t.equal(
+      best_hands(['4S 5H 6C 8D KH', '2S 4H 6S 4D JH']),
+      ['2S 4H 6S 4D JH'],
+    )
+  })
+  t.test('highest pair wins', fn (t) {
+    t.equal(
+      best_hands(['4S 2H 6S 2D JH', '2S 4H 6C 4D JD']),
+      ['2S 4H 6C 4D JD'],
+    )
+  })
+  t.test('both hands have the same pair, high card wins', fn (t) {
+    t.equal(
+      best_hands(['4H 4S AH JC 3D', '4C 4D AS 5D 6C']),
+      ['4H 4S AH JC 3D'],
+    )
+  })
+  t.test('two pairs beats one pair', fn (t) {
+    t.equal(
+      best_hands(['2S 8H 6S 8D JH', '4S 5H 4C 8C 5C']),
+      ['4S 5H 4C 8C 5C'],
+    )
+  })
+  t.test('both hands have two pairs, highest ranked pair wins', fn (t) {
+    t.equal(
+      best_hands(['2S 8H 2D 8D 3H', '4S 5H 4C 8S 5D']),
+      ['2S 8H 2D 8D 3H'],
+    )
+  })
+  t.test(
+    'both hands have two pairs, with the same highest ranked pair, tie goes to low pair',
+    fn (t) {
+      t.equal(
+        best_hands(['2S QS 2C QD JH', 'JD QH JS 8D QC']),
+        ['JD QH JS 8D QC'],
+      )
+    },
+  )
+  t.test(
+    'both hands have two identically ranked pairs, tie goes to remaining card (kicker)',
+    fn (t) {
+      t.equal(
+        best_hands(['JD QH JS 8D QC', 'JS QS JC 2D QD']),
+        ['JD QH JS 8D QC'],
+      )
+    },
+  )
+  t.test(
+    'both hands have two pairs that add to the same value, win goes to highest pair',
+    fn (t) {
+      t.equal(
+        best_hands(['6S 6H 3S 3H AS', '7H 7S 2H 2S AC']),
+        ['7H 7S 2H 2S AC'],
+      )
+    },
+  )
+  t.test('two pairs first ranked by largest pair', fn (t) {
+    t.equal(
+      best_hands(['5C 2S 5S 4H 4C', '6S 2S 6H 7C 2C']),
+      ['6S 2S 6H 7C 2C'],
+    )
+  })
+  t.test('three of a kind beats two pair', fn (t) {
+    t.equal(
+      best_hands(['2S 8H 2H 8D JH', '4S 5H 4C 8S 4H']),
+      ['4S 5H 4C 8S 4H'],
+    )
+  })
+  t.test(
+    'both hands have three of a kind, tie goes to highest ranked triplet',
+    fn (t) {
+      t.equal(
+        best_hands(['2S 2H 2C 8D JH', '4S AH AS 8C AD']),
+        ['4S AH AS 8C AD'],
+      )
+    },
+  )
+  t.test(
+    'with multiple decks, two players can have same three of a kind, ties go to highest remaining cards',
+    fn (t) {
+      t.equal(
+        best_hands(['5S AH AS 7C AD', '4S AH AS 8C AD']),
+        ['4S AH AS 8C AD'],
+      )
+    },
+  )
+  t.test('a straight beats three of a kind', fn (t) {
+    t.equal(
+      best_hands(['4S 5H 4C 8D 4H', '3S 4D 2S 6D 5C']),
+      ['3S 4D 2S 6D 5C'],
+    )
+  })
+  t.test('aces can end a straight (10 J Q K A)', fn (t) {
+    t.equal(
+      best_hands(['4S 5H 4C 8D 4H', '10D JH QS KD AC']),
+      ['10D JH QS KD AC'],
+    )
+  })
+  t.test('aces can start a straight (A 2 3 4 5)', fn (t) {
+    t.equal(
+      best_hands(['4S 5H 4C 8D 4H', '4D AH 3S 2D 5C']),
+      ['4D AH 3S 2D 5C'],
+    )
+  })
+  t.test('aces cannot be in the middle of a straight (Q K A 2 3)', fn (t) {
+    t.equal(
+      best_hands(['2C 3D 7H 5H 2S', 'QS KH AC 2D 3S']),
+      ['2C 3D 7H 5H 2S'],
+    )
+  })
+  t.test(
+    'both hands with a straight, tie goes to highest ranked card',
+    fn (t) {
+      t.equal(
+        best_hands(['4S 6C 7S 8D 5H', '5S 7H 8S 9D 6H']),
+        ['5S 7H 8S 9D 6H'],
+      )
+    },
+  )
+  t.test(
+    'even though an ace is usually high, a 5-high straight is the lowest-scoring straight',
+    fn (t) {
+      t.equal(
+        best_hands(['2H 3C 4D 5D 6H', '4S AH 3S 2D 5H']),
+        ['2H 3C 4D 5D 6H'],
+      )
+    },
+  )
+  t.test('flush beats a straight', fn (t) {
+    t.equal(
+      best_hands(['4C 6H 7D 8D 5H', '2S 4S 5S 6S 7S']),
+      ['2S 4S 5S 6S 7S'],
+    )
+  })
+  t.test(
+    'both hands have a flush, tie goes to high card, down to the last one if necessary',
+    fn (t) {
+      t.equal(
+        best_hands(['2H 7H 8H 9H 6H', '3S 5S 6S 7S 8S']),
+        ['2H 7H 8H 9H 6H'],
+      )
+    },
+  )
+  t.test('full house beats a flush', fn (t) {
+    t.equal(
+      best_hands(['3H 6H 7H 8H 5H', '4S 5H 4C 5D 4H']),
+      ['4S 5H 4C 5D 4H'],
+    )
+  })
+  t.test(
+    'both hands have a full house, tie goes to highest-ranked triplet',
+    fn (t) {
+      t.equal(
+        best_hands(['4H 4S 4D 9S 9D', '5H 5S 5D 8S 8D']),
+        ['5H 5S 5D 8S 8D'],
+      )
+    },
+  )
+  t.test(
+    'with multiple decks, both hands have a full house with the same triplet, tie goes to the pair',
+    fn (t) {
+      t.equal(
+        best_hands(['5H 5S 5D 9S 9D', '5H 5S 5D 8S 8D']),
+        ['5H 5S 5D 9S 9D'],
+      )
+    },
+  )
+  t.test('four of a kind beats a full house', fn (t) {
+    t.equal(
+      best_hands(['4S 5H 4D 5D 4H', '3S 3H 2S 3D 3C']),
+      ['3S 3H 2S 3D 3C'],
+    )
+  })
+  t.test('both hands have four of a kind, tie goes to high quad', fn (t) {
+    t.equal(
+      best_hands(['2S 2H 2C 8D 2D', '4S 5H 5S 5D 5C']),
+      ['4S 5H 5S 5D 5C'],
+    )
+  })
+  t.test(
+    'with multiple decks, both hands with identical four of a kind, tie determined by kicker',
+    fn (t) {
+      t.equal(
+        best_hands(['3S 3H 2S 3D 3C', '3S 3H 4S 3D 3C']),
+        ['3S 3H 4S 3D 3C'],
+      )
+    },
+  )
+  t.test('straight flush beats four of a kind', fn (t) {
+    t.equal(
+      best_hands(['4S 5H 5S 5D 5C', '7S 8S 9S 6S 10S']),
+      ['7S 8S 9S 6S 10S'],
+    )
+  })
+  t.test('aces can end a straight flush (10 J Q K A)', fn (t) {
+    t.equal(
+      best_hands(['KC AH AS AD AC', '10C JC QC KC AC']),
+      ['10C JC QC KC AC'],
+    )
+  })
+  t.test('aces can start a straight flush (A 2 3 4 5)', fn (t) {
+    t.equal(
+      best_hands(['KS AH AS AD AC', '4H AH 3H 2H 5H']),
+      ['4H AH 3H 2H 5H'],
+    )
+  })
+  t.test(
+    'aces cannot be in the middle of a straight flush (Q K A 2 3)',
+    fn (t) {
+      t.equal(
+        best_hands(['2C AC QC 10C KC', 'QH KH AH 2H 3H']),
+        ['2C AC QC 10C KC'],
+      )
+    },
+  )
+  t.test(
+    'both hands have a straight flush, tie goes to highest-ranked card',
+    fn (t) {
+      t.equal(
+        best_hands(['4H 6H 7H 8H 5H', '5S 7S 8S 9S 6S']),
+        ['5S 7S 8S 9S 6S'],
+      )
+    },
+  )
+  t.test(
+    'even though an ace is usually high, a 5-high straight flush is the lowest-scoring straight flush',
+    fn (t) {
+      t.equal(
+        best_hands(['2H 3H 4H 5H 6H', '4D AD 3D 2D 5D']),
+        ['2H 3H 4H 5H 6H'],
+      )
+    },
+  )
+}

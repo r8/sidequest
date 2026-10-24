@@ -1,0 +1,49 @@
+import std.sync (Promise)
+
+# An oven, running as its own process. Other processes talk to it by sending
+# it messages.
+type pub async Oven {
+  let mut @temperature: Int
+  let mut @baked: Int
+  let @trays: Array[Array[String]]
+
+  # Returns a new oven process at room temperature (20 degrees), which hasn't
+  # baked anything yet.
+  fn pub static new -> Oven {
+    Oven(temperature: 20, baked: 0, trays: recover [])
+  }
+
+  # Replies with the oven's temperature.
+  fn pub async temperature(reply: uni Promise[Int]) {
+    reply.set(@temperature)
+  }
+
+  # Heats (or cools) the oven to `degrees`.
+  fn pub async mut heat_to(degrees: Int) {
+    @temperature = degrees
+  }
+
+  # Bakes `loaves` loaves, replying with the number of loaves baked so far, or
+  # with the error "too cold" when the oven is below 180 degrees.
+  fn pub async mut bake(reply: uni Promise[Result[Int, String]], loaves: Int) {
+    if @temperature < 180 {
+      reply.set(recover Result.Error('too cold'))
+      return
+    }
+
+    @baked += loaves
+    reply.set(recover Result.Ok(@baked))
+  }
+
+  # Puts `tray` in the oven, replying with the number of items on all the trays
+  # in the oven.
+  fn pub async mut load(reply: uni Promise[Int], tray: uni Array[String]) {
+    @trays.push(recover tray)
+    reply.set(Int.sum(@trays.iter.map(fn (items) { items.size })))
+  }
+}
+
+# Heats every oven in `ovens` to `degrees`.
+fn pub preheat(ovens: ref Array[Oven], degrees: Int) {
+  for oven in ovens.iter { oven.heat_to(degrees) }
+}

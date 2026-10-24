@@ -1,0 +1,18 @@
+import crypto_square (ciphertext)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('empty plaintext results in an empty ciphertext', fn (t) { t.equal(ciphertext(''), '') })
+  t.test('normalization results in empty plaintext', fn (t) { t.equal(ciphertext('... --- ...'), '') })
+  t.test('Lowercase', fn (t) { t.equal(ciphertext('A'), 'a') })
+  t.test('Remove spaces', fn (t) { t.equal(ciphertext('  b '), 'b') })
+  t.test('Remove punctuation', fn (t) { t.equal(ciphertext('@1,%!'), '1') })
+  t.test('9 character plaintext results in 3 chunks of 3 characters', fn (t) { t.equal(ciphertext('This is fun!'), 'tsf hiu isn') })
+  t.test('8 character plaintext results in 3 chunks, the last one with a trailing space', fn (t) { t.equal(ciphertext('Chill out.'), 'clu hlt io ') })
+  t.test('54 character plaintext results in 8 chunks, the last two with trailing spaces', fn (t) {
+    t.equal(
+      ciphertext('If man was meant to stay on the ground, god would have given us roots.'),
+      'imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau ',
+    )
+  })
+}

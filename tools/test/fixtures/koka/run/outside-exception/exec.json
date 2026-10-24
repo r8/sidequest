@@ -1,0 +1,6 @@
+{
+  "exitCode": 0,
+  "stdout": "uncaught exception: setup failed\n",
+  "stderr": "vfs: [\"/@virtual/test/greet-test/@main.kk\"]\nvfs: [\"/@virtual/test/greet-test/@main.kk\"]\n",
+  "timedOut": false
+}

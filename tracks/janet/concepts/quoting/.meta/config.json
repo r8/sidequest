@@ -1,0 +1,7 @@
+{
+  "blurb": "Quoting turns code into data: quote freezes a form, quasiquote makes a template with unquote and splicing, and eval runs it.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

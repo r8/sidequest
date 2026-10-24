@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/orchard_harvest.inko"
+    ],
+    "test": [
+      "test/test_orchard_harvest.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about integers and floats by packing apples into crates.",
+  "custom": {
+    "after": [
+      "kiln-schedule"
+    ]
+  }
+}

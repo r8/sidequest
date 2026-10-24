@@ -1,0 +1,7 @@
+{
+  "blurb": "A string is an address and a length on the stack; substrings, trimming and comparison need no copying.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

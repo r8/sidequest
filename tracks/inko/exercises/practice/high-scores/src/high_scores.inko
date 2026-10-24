@@ -1,0 +1,32 @@
+# A player's list of high scores, in the order they were added.
+#
+# Add the fields you need to the type.
+type pub HighScores {}
+
+impl HighScores {
+  # Returns a `HighScores` for the given `scores`.
+  fn pub static new(scores: Array[Int]) -> HighScores {
+    panic('implement me')
+  }
+
+  # Returns all the scores, in the order they were added.
+  fn pub scores -> ref Array[Int] {
+    panic('implement me')
+  }
+
+  # Returns the last score added, or `None` if there are no scores.
+  fn pub latest -> Option[Int] {
+    panic('implement me')
+  }
+
+  # Returns the highest score, or `None` if there are no scores.
+  fn pub personal_best -> Option[Int] {
+    panic('implement me')
+  }
+
+  # Returns the three highest scores, highest first (fewer if there aren't
+  # three scores). The scores themselves stay in the order they were added.
+  fn pub personal_top_three -> Array[Int] {
+    panic('implement me')
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Interpretation-and-Compilation-Semantics-and-Immediacy-Tutorial.html",
+    "description": "Interpretation and compilation semantics, and immediacy, in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Interpretation-and-Compilation-Semantics.html",
+    "description": "Interpretation and compilation semantics in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/IMMEDIATE",
+    "description": "IMMEDIATE in the Forth standard"
+  }
+]

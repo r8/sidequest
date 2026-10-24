@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "log-lines.janet"
+    ],
+    "test": [
+      "test/log-lines.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about PEGs — matching, capturing, finding and replacing — by digging through a tram network's control-room log.",
+  "custom": {
+    "after": [
+      "name-badges",
+      "weather-report",
+      "train-cars"
+    ]
+  }
+}

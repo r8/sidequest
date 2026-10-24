@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/saddle_points.inko"
+    ],
+    "test": [
+      "test/test_saddle_points.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Detect saddle points in a matrix.",
+  "source": "J Dalbey's Programming Practice problems",
+  "source_url": "https://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html",
+  "custom": {
+    "after": [
+      "matrix"
+    ]
+  }
+}

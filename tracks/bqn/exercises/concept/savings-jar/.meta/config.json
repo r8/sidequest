@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "savings-jar.bqn"
+    ],
+    "test": [
+      "test/savings-jar.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about scan by keeping track of the money in a savings jar.",
+  "custom": {
+    "after": [
+      "shopping-basket"
+    ]
+  }
+}

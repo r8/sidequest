@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "phone-number.fs"
+    ],
+    "test": [
+      "test/phone-number-test.fs"
+    ],
+    "example": [
+      ".meta/example.fs"
+    ]
+  },
+  "blurb": "Clean up user-entered phone numbers so that they can be sent SMS messages.",
+  "source": "Exercise by the JumpstartLab team for students at The Turing School of Software and Design.",
+  "source_url": "https://www.turing.edu/",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

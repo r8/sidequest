@@ -1,0 +1,62 @@
+import sealed_parcels (Parcel, combine, open, pack)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. seal an empty parcel', fn (t) {
+    let parcel = Parcel.seal('Oslo')
+
+    t.equal(parcel.label, 'Oslo')
+    t.equal(parcel.items, [])
+  })
+
+  t.test('2. add an item to a sealed parcel', fn (t) {
+    let parcel = Parcel.seal('Oslo')
+
+    parcel.add('books')
+    t.equal(parcel.items, ['books'])
+  })
+  t.test('2. add several items', fn (t) {
+    let parcel = Parcel.seal('Oslo')
+
+    parcel.add('books')
+    parcel.add('tea')
+    t.equal(parcel.items, ['books', 'tea'])
+  })
+
+  t.test('3. pack a list of items', fn (t) {
+    let items = ['books', 'tea']
+    let parcel = pack('Bergen', items)
+
+    t.equal(parcel.label, 'Bergen')
+    t.equal(parcel.items, ['books', 'tea'])
+  })
+  t.test('3. packing leaves the list alone', fn (t) {
+    let items = ['books']
+    let parcel = pack('Bergen', items)
+
+    parcel.add('tea')
+    t.equal(items, ['books'])
+  })
+
+  t.test('4. open a parcel', fn (t) {
+    let parcel = open(pack('Bergen', ['books']))
+    let borrowed = ref parcel
+
+    t.equal(borrowed.label, 'Bergen')
+    t.equal(borrowed.items, ['books'])
+  })
+
+  t.test('5. combine two parcels', fn (t) {
+    let first = pack('Oslo', ['books'])
+    let second = pack('Bergen', ['tea', 'maps'])
+    let both = combine(first, second)
+
+    t.equal(both.label, 'Oslo')
+    t.equal(both.items, ['books', 'tea', 'maps'])
+  })
+  t.test('5. combine with an empty parcel', fn (t) {
+    let both = combine(Parcel.seal('Oslo'), pack('Bergen', ['tea']))
+
+    t.equal(both.items, ['tea'])
+  })
+}

@@ -1,0 +1,16 @@
+import scrabble_score (score)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('lowercase letter', fn (t) { t.equal(score('a'), 1) })
+  t.test('uppercase letter', fn (t) { t.equal(score('A'), 1) })
+  t.test('valuable letter', fn (t) { t.equal(score('f'), 4) })
+  t.test('short word', fn (t) { t.equal(score('at'), 2) })
+  t.test('short, valuable word', fn (t) { t.equal(score('zoo'), 12) })
+  t.test('medium word', fn (t) { t.equal(score('street'), 6) })
+  t.test('medium, valuable word', fn (t) { t.equal(score('quirky'), 22) })
+  t.test('long, mixed-case word', fn (t) { t.equal(score('OxyphenButazone'), 41) })
+  t.test('english-like word', fn (t) { t.equal(score('pinata'), 8) })
+  t.test('empty input', fn (t) { t.equal(score(''), 0) })
+  t.test('entire alphabet available', fn (t) { t.equal(score('abcdefghijklmnopqrstuvwxyz'), 87) })
+}

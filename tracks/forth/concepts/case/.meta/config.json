@@ -1,0 +1,7 @@
+{
+  "blurb": "case \u2026 of \u2026 endof \u2026 endcase picks a branch by the value on top of the stack, with a default for everything else.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

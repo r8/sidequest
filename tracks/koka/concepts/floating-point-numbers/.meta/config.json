@@ -1,0 +1,7 @@
+{
+  "blurb": "The float64 type: importing std/num/float64, converting to and from int, rounding and showing.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

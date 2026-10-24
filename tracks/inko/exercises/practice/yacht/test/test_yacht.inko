@@ -1,0 +1,78 @@
+import std.test (Tests)
+import yacht (Category, score)
+
+fn pub tests(t: mut Tests) {
+  t.test('Yacht', fn (t) { t.equal(score([5, 5, 5, 5, 5], Category.Yacht), 50) })
+  t.test('Not Yacht', fn (t) {
+    t.equal(score([1, 3, 3, 2, 5], Category.Yacht), 0)
+  })
+  t.test('Ones', fn (t) { t.equal(score([1, 1, 1, 3, 5], Category.Ones), 3) })
+  t.test('Ones, out of order', fn (t) {
+    t.equal(score([3, 1, 1, 5, 1], Category.Ones), 3)
+  })
+  t.test('No ones', fn (t) { t.equal(score([4, 3, 6, 5, 5], Category.Ones), 0) })
+  t.test('Twos', fn (t) { t.equal(score([2, 3, 4, 5, 6], Category.Twos), 2) })
+  t.test('Fours', fn (t) { t.equal(score([1, 4, 1, 4, 1], Category.Fours), 8) })
+  t.test('Yacht counted as threes', fn (t) {
+    t.equal(score([3, 3, 3, 3, 3], Category.Threes), 15)
+  })
+  t.test('Yacht of 3s counted as fives', fn (t) {
+    t.equal(score([3, 3, 3, 3, 3], Category.Fives), 0)
+  })
+  t.test('Fives', fn (t) { t.equal(score([1, 5, 3, 5, 3], Category.Fives), 10) })
+  t.test('Sixes', fn (t) { t.equal(score([2, 3, 4, 5, 6], Category.Sixes), 6) })
+  t.test('Full house two small, three big', fn (t) {
+    t.equal(score([2, 2, 4, 4, 4], Category.FullHouse), 16)
+  })
+  t.test('Full house three small, two big', fn (t) {
+    t.equal(score([5, 3, 3, 5, 3], Category.FullHouse), 19)
+  })
+  t.test('Two pair is not a full house', fn (t) {
+    t.equal(score([2, 2, 4, 4, 5], Category.FullHouse), 0)
+  })
+  t.test('Four of a kind is not a full house', fn (t) {
+    t.equal(score([1, 4, 4, 4, 4], Category.FullHouse), 0)
+  })
+  t.test('Yacht is not a full house', fn (t) {
+    t.equal(score([2, 2, 2, 2, 2], Category.FullHouse), 0)
+  })
+  t.test('Four of a Kind', fn (t) {
+    t.equal(score([6, 6, 4, 6, 6], Category.FourOfAKind), 24)
+  })
+  t.test('Yacht can be scored as Four of a Kind', fn (t) {
+    t.equal(score([3, 3, 3, 3, 3], Category.FourOfAKind), 12)
+  })
+  t.test('Full house is not Four of a Kind', fn (t) {
+    t.equal(score([3, 3, 3, 5, 5], Category.FourOfAKind), 0)
+  })
+  t.test('Little Straight', fn (t) {
+    t.equal(score([3, 5, 4, 1, 2], Category.LittleStraight), 30)
+  })
+  t.test('Little Straight as Big Straight', fn (t) {
+    t.equal(score([1, 2, 3, 4, 5], Category.BigStraight), 0)
+  })
+  t.test('Four in order but not a little straight', fn (t) {
+    t.equal(score([1, 1, 2, 3, 4], Category.LittleStraight), 0)
+  })
+  t.test('No pairs but not a little straight', fn (t) {
+    t.equal(score([1, 2, 3, 4, 6], Category.LittleStraight), 0)
+  })
+  t.test('Minimum is 1, maximum is 5, but not a little straight', fn (t) {
+    t.equal(score([1, 1, 3, 4, 5], Category.LittleStraight), 0)
+  })
+  t.test('Big Straight', fn (t) {
+    t.equal(score([4, 6, 2, 5, 3], Category.BigStraight), 30)
+  })
+  t.test('Big Straight as little straight', fn (t) {
+    t.equal(score([6, 5, 4, 3, 2], Category.LittleStraight), 0)
+  })
+  t.test('No pairs but not a big straight', fn (t) {
+    t.equal(score([6, 5, 4, 3, 1], Category.BigStraight), 0)
+  })
+  t.test('Choice', fn (t) {
+    t.equal(score([3, 3, 5, 6, 6], Category.Choice), 23)
+  })
+  t.test('Yacht as choice', fn (t) {
+    t.equal(score([2, 2, 2, 2, 2], Category.Choice), 10)
+  })
+}

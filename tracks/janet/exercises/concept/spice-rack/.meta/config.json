@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "spice-rack.janet"
+    ],
+    "test": [
+      "test/spice-rack.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about tables and structs by keeping a restaurant's spice rack stocked.",
+  "custom": {
+    "after": [
+      "weather-report",
+      "train-cars",
+      "firefly-census"
+    ]
+  }
+}

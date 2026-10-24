@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/queen_attack.inko"
+    ],
+    "test": [
+      "test/test_queen_attack.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Given the position of two queens on a chess board, indicate whether or not they are positioned so that they can attack each other.",
+  "source": "J Dalbey's Programming Practice problems",
+  "source_url": "https://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

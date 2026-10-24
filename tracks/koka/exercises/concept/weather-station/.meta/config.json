@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "weather-station.kk"
+    ],
+    "test": [
+      "test/weather-station-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about declaring and handling effects by testing the code of a network of weather stations.",
+  "custom": {
+    "after": [
+      "assembly-line",
+      "garden-sprinklers"
+    ]
+  }
+}

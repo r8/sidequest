@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/beehive_census.inko"
+    ],
+    "test": [
+      "test/test_beehive_census.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about iterators by making sense of a beekeeper's daily counts.",
+  "custom": {
+    "after": [
+      "market-stall"
+    ]
+  }
+}

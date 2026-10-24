@@ -1,0 +1,52 @@
+# A singly linked list used as a stack: the last value pushed is the first one
+# popped.
+#
+# Add the fields (and any node type) you need. The list owns its values: `push`
+# moves a value in, `pop` moves it back out, `peek` lends it, and `into_array`
+# consumes the list.
+type pub SimpleLinkedList[T] {}
+
+impl SimpleLinkedList {
+  # Returns an empty list.
+  fn pub static new -> SimpleLinkedList[T] {
+    panic('implement me')
+  }
+
+  # Returns a list with the `values` pushed in order, so the last one is on top.
+  fn pub static from_array(values: Array[T]) -> SimpleLinkedList[T] {
+    panic('implement me')
+  }
+
+  # Returns the number of values in the list.
+  fn pub count -> Int {
+    panic('implement me')
+  }
+
+  # Pushes `value` on top of the list.
+  fn pub mut push(value: T) {
+    panic('implement me')
+  }
+
+  # Removes and returns the value on top of the list, or the error "list is
+  # empty".
+  fn pub mut pop -> Result[T, String] {
+    panic('implement me')
+  }
+
+  # Returns the value on top of the list without removing it, or the error
+  # "list is empty".
+  fn pub peek -> Result[ref T, String] {
+    panic('implement me')
+  }
+
+  # Reverses the order of the values in the list.
+  fn pub mut reverse {
+    panic('implement me')
+  }
+
+  # Consumes the list and returns its values in the order they were pushed
+  # (the top of the list last).
+  fn pub move into_array -> Array[T] {
+    panic('implement me')
+  }
+}

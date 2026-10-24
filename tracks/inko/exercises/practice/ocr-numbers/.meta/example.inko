@@ -1,0 +1,52 @@
+import std.array (Slice)
+
+# The digits 0 to 9, each as its four rows joined together.
+let DIGITS = [
+  ' _ | ||_|   ',
+  '     |  |   ',
+  ' _  _||_    ',
+  ' _  _| _|   ',
+  '   |_|  |   ',
+  ' _ |_  _|   ',
+  ' _ |_ |_|   ',
+  ' _   |  |   ',
+  ' _ |_||_|   ',
+  ' _ |_| _|   ',
+]
+
+# Converts the OCR grid `rows` to its digits: every 4 rows form one line of
+# digits that are 3 columns wide each, unreadable digits become `?`, and lines
+# are joined by commas. Returns an error if the grid has the wrong size.
+fn pub convert(rows: ref Array[String]) -> Result[String, String] {
+  if rows.size % 4 != 0 {
+    return Result.Error('Number of input lines is not a multiple of four')
+  }
+
+  if rows.iter.any?(fn (row) { row.size % 3 != 0 }) {
+    return Result.Error('Number of input columns is not a multiple of three')
+  }
+
+  let lines = 0.until(rows.size / 4).iter.map(fn (line) {
+    let group = rows.slice(line * 4, line * 4 + 4)
+    let width = group.get(0).or_panic.size
+
+    String.join(
+      0.until(width / 3).iter.map(fn (col) { digit(group, col * 3) }),
+      '',
+    )
+  })
+
+  Result.Ok(String.join(lines, ','))
+}
+
+fn digit(group: ref Slice[String], column: Int) -> String {
+  let cell = String.join(
+    group.iter.map(fn (row) { row.substring(column, column + 3) }),
+    '',
+  )
+
+  match DIGITS.index_of(cell) {
+    case Some(value) -> value.to_string
+    case None -> '?'
+  }
+}

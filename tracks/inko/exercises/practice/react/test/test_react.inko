@@ -1,0 +1,167 @@
+import react (Reactor)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('input cells have a value', fn (t) {
+    let reactor = Reactor.new
+    let input = reactor.input(10)
+
+    t.equal(reactor.value(input), 10)
+  })
+  t.test('an input cell\'s value can be set', fn (t) {
+    let reactor = Reactor.new
+    let input = reactor.input(4)
+
+    t.true(reactor.set_value(input, 20))
+    t.equal(reactor.value(input), 20)
+  })
+  t.test('compute cells calculate initial value', fn (t) {
+    let reactor = Reactor.new
+    let input = reactor.input(1)
+    let output = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic + 1 })
+
+    t.equal(reactor.value(output), 2)
+  })
+  t.test('compute cells take inputs in the right order', fn (t) {
+    let reactor = Reactor.new
+    let one = reactor.input(1)
+    let two = reactor.input(2)
+    let output = reactor.compute([one, two], fn (inputs) { inputs.get(0).or_panic + (inputs.get(1).or_panic * 10) })
+
+    t.equal(reactor.value(output), 21)
+  })
+  t.test('compute cells update value when dependencies are changed', fn (t) {
+    let reactor = Reactor.new
+    let input = reactor.input(1)
+    let output = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic + 1 })
+
+    t.true(reactor.set_value(input, 3))
+    t.equal(reactor.value(output), 4)
+  })
+  t.test('compute cells can depend on other compute cells', fn (t) {
+    let reactor = Reactor.new
+    let input = reactor.input(1)
+    let times_two = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic * 2 })
+    let times_thirty = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic * 30 })
+    let output = reactor.compute([times_two, times_thirty], fn (inputs) { inputs.get(0).or_panic + inputs.get(1).or_panic })
+
+    t.equal(reactor.value(output), 32)
+    t.true(reactor.set_value(input, 3))
+    t.equal(reactor.value(output), 96)
+  })
+  t.test('compute cells fire callbacks', fn (t) {
+    let callback1_values = []
+    let reactor = Reactor.new
+    let input = reactor.input(1)
+    let output = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic + 1 })
+
+    let _ = reactor.add_callback(output, fn (value) { callback1_values.push(value) })
+    t.true(reactor.set_value(input, 3))
+    t.equal(callback1_values, [4])
+  })
+  t.test('callback cells only fire on change', fn (t) {
+    let callback1_values = []
+    let reactor = Reactor.new
+    let input = reactor.input(1)
+    let output = reactor.compute([input], fn (inputs) { if inputs.get(0).or_panic < 3 { 111 } else { 222 } })
+
+    let _ = reactor.add_callback(output, fn (value) { callback1_values.push(value) })
+    t.true(reactor.set_value(input, 2))
+    t.equal(callback1_values, [])
+    t.true(reactor.set_value(input, 4))
+    t.equal(callback1_values, [222])
+  })
+  t.test('callbacks do not report already reported values', fn (t) {
+    let callback1_values = []
+    let reactor = Reactor.new
+    let input = reactor.input(1)
+    let output = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic + 1 })
+
+    let _ = reactor.add_callback(output, fn (value) { callback1_values.push(value) })
+    t.true(reactor.set_value(input, 2))
+    t.equal(callback1_values, [3])
+    t.true(reactor.set_value(input, 3))
+    t.equal(callback1_values, [3, 4])
+  })
+  t.test('callbacks can fire from multiple cells', fn (t) {
+    let callback1_values = []
+    let callback2_values = []
+    let reactor = Reactor.new
+    let input = reactor.input(1)
+    let plus_one = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic + 1 })
+    let minus_one = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic - 1 })
+
+    let _ = reactor.add_callback(plus_one, fn (value) { callback1_values.push(value) })
+    let _ = reactor.add_callback(minus_one, fn (value) { callback2_values.push(value) })
+    t.true(reactor.set_value(input, 10))
+    t.equal(callback1_values, [11])
+    t.equal(callback2_values, [9])
+  })
+  t.test('callbacks can be added and removed', fn (t) {
+    let callback1_values = []
+    let callback2_values = []
+    let callback3_values = []
+    let reactor = Reactor.new
+    let input = reactor.input(11)
+    let output = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic + 1 })
+
+    let callback1 = reactor.add_callback(output, fn (value) { callback1_values.push(value) })
+    let _ = reactor.add_callback(output, fn (value) { callback2_values.push(value) })
+    t.true(reactor.set_value(input, 31))
+    t.equal(callback1_values, [32])
+    t.equal(callback2_values, [32])
+    let _ = reactor.remove_callback(output, callback1)
+    let _ = reactor.add_callback(output, fn (value) { callback3_values.push(value) })
+    t.true(reactor.set_value(input, 41))
+    t.equal(callback2_values, [32, 42])
+    t.equal(callback3_values, [42])
+    t.equal(callback1_values, [32])
+  })
+  t.test('removing a callback multiple times doesn\'t interfere with other callbacks', fn (t) {
+    let callback1_values = []
+    let callback2_values = []
+    let reactor = Reactor.new
+    let input = reactor.input(1)
+    let output = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic + 1 })
+
+    let callback1 = reactor.add_callback(output, fn (value) { callback1_values.push(value) })
+    let _ = reactor.add_callback(output, fn (value) { callback2_values.push(value) })
+    let _ = reactor.remove_callback(output, callback1)
+    let _ = reactor.remove_callback(output, callback1)
+    let _ = reactor.remove_callback(output, callback1)
+    t.true(reactor.set_value(input, 2))
+    t.equal(callback2_values, [3])
+    t.equal(callback1_values, [])
+  })
+  t.test('callbacks should only be called once even if multiple dependencies change', fn (t) {
+    let callback1_values = []
+    let reactor = Reactor.new
+    let input = reactor.input(1)
+    let plus_one = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic + 1 })
+    let minus_one1 = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic - 1 })
+    let minus_one2 = reactor.compute([minus_one1], fn (inputs) { inputs.get(0).or_panic - 1 })
+    let output = reactor.compute([plus_one, minus_one2], fn (inputs) { inputs.get(0).or_panic * inputs.get(1).or_panic })
+
+    let _ = reactor.add_callback(output, fn (value) { callback1_values.push(value) })
+    t.true(reactor.set_value(input, 4))
+    t.equal(callback1_values, [10])
+  })
+  t.test('callbacks should not be called if dependencies change but output value doesn\'t change', fn (t) {
+    let callback1_values = []
+    let reactor = Reactor.new
+    let input = reactor.input(1)
+    let plus_one = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic + 1 })
+    let minus_one = reactor.compute([input], fn (inputs) { inputs.get(0).or_panic - 1 })
+    let always_two = reactor.compute([plus_one, minus_one], fn (inputs) { inputs.get(0).or_panic - inputs.get(1).or_panic })
+
+    let _ = reactor.add_callback(always_two, fn (value) { callback1_values.push(value) })
+    t.true(reactor.set_value(input, 2))
+    t.equal(callback1_values, [])
+    t.true(reactor.set_value(input, 3))
+    t.equal(callback1_values, [])
+    t.true(reactor.set_value(input, 4))
+    t.equal(callback1_values, [])
+    t.true(reactor.set_value(input, 5))
+    t.equal(callback1_values, [])
+  })
+}

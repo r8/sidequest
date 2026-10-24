@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "complex-numbers.janet"
+    ],
+    "test": [
+      "test/complex-numbers.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Implement complex numbers.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Complex_number",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

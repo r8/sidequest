@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "matching-brackets.fs"
+    ],
+    "test": [
+      "test/matching-brackets-test.fs"
+    ],
+    "example": [
+      ".meta/example.fs"
+    ]
+  },
+  "blurb": "Make sure the brackets and braces all match.",
+  "source": "Ginna Baker",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

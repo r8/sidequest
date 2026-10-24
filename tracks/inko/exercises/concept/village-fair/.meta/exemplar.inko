@@ -1,0 +1,25 @@
+import village_fair.stalls (Stall)
+
+# Returns the fees all the stalls pay together.
+fn pub total_fees(stalls: ref Array[Stall]) -> Int {
+  Int.sum(stalls.iter.map(fn (stall) { stall.fee }))
+}
+
+# Returns the length of field needed for the stalls in a row, with a gap of one
+# metre between neighbouring stalls.
+fn pub field_length(stalls: ref Array[Stall]) -> Int {
+  if stalls.empty? { return 0 }
+
+  Int.sum(stalls.iter.map(fn (stall) { stall.metres })) + (stalls.size - 1)
+}
+
+# Returns the programme listing the stalls, such as "1. Cakes, 2. Plants".
+fn pub programme(stalls: ref Array[Stall]) -> String {
+  let entries = stalls.iter.with_index.map(fn (pair) {
+    let (index, stall) = pair
+
+    '${index + 1}. ${stall.name}'
+  })
+
+  String.join(entries, ', ')
+}

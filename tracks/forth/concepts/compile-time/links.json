@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Literals.html",
+    "description": "Literals, [ and ] in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Literal-Tutorial.html",
+    "description": "Literals in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Interpreter-Directives.html",
+    "description": "Interpreter directives such as [IF] and [DEFINED] in the Gforth manual"
+  }
+]

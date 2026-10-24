@@ -1,0 +1,13 @@
+import std.map (Map)
+
+# Returns how often each letter occurs in `texts`, ignoring case, with letters
+# in lowercase. Count the texts in parallel, using processes.
+#
+# Inko's standard library has no Unicode letter classification, so a letter is
+# an ASCII letter or any non-ASCII character; digits, whitespace and ASCII
+# punctuation aren't counted.
+#
+# Maps are compared without regard to the order of their entries.
+fn pub calculate_frequencies(texts: ref Array[String]) -> Map[String, Int] {
+  panic('implement me')
+}

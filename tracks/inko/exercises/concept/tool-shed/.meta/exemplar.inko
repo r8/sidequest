@@ -1,0 +1,91 @@
+# A tool, which goes blunt after three jobs.
+type pub Tool {
+  let @name: String
+  let mut @jobs: Int
+
+  # Returns a new, sharp tool called `name`.
+  fn pub static new(name: String) -> Tool {
+    Tool(name: name, jobs: 0)
+  }
+
+  # Returns the name of the tool.
+  fn pub name -> String {
+    @name
+  }
+
+  # Returns how many jobs the tool has done since it was last sharpened.
+  fn pub jobs -> Int {
+    @jobs
+  }
+
+  # Returns whether the tool needs sharpening.
+  fn pub blunt? -> Bool {
+    @jobs >= 3
+  }
+
+  # Records that the tool was used for a job.
+  fn pub mut work {
+    @jobs += 1
+  }
+
+  # Sharpens the tool.
+  fn pub mut sharpen {
+    @jobs = 0
+  }
+}
+
+# The tool shed, which owns the tools that aren't lent out.
+type pub Shed {
+  let @tools: Array[Tool]
+
+  # Returns an empty shed.
+  fn pub static new -> Shed {
+    Shed(tools: [])
+  }
+
+  # Puts `tool` in the shed.
+  fn pub mut store(tool: Tool) {
+    @tools.push(tool)
+  }
+
+  # Returns the number of tools in the shed.
+  fn pub size -> Int {
+    @tools.size
+  }
+
+  # Returns a borrow of the tool called `name`, if it is in the shed.
+  fn pub find(name: String) -> Option[ref Tool] {
+    @tools.iter.find(fn (tool) { tool.name == name })
+  }
+
+  # Uses the tool called `name` for a job in the shed, and returns whether the
+  # shed has it.
+  fn pub mut work_with(name: String) -> Bool {
+    for tool in @tools.iter_mut {
+      if tool.name == name {
+        tool.work
+        return true
+      }
+    }
+
+    false
+  }
+
+  # Sharpens every blunt tool in the shed.
+  fn pub mut sharpen_all {
+    for tool in @tools.iter_mut {
+      if tool.blunt? { tool.sharpen }
+    }
+  }
+
+  # Takes the tool called `name` out of the shed, if it is there.
+  fn pub mut lend(name: String) -> Option[Tool] {
+    let index = try @tools
+      .iter
+      .with_index
+      .find(fn (pair) { pair.1.name == name })
+      .map(fn (pair) { pair.0 })
+
+    @tools.remove_at(index).ok
+  }
+}

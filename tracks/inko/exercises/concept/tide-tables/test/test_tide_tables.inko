@@ -1,0 +1,65 @@
+import std.test (Tests)
+import tide_tables (
+  first_hour_at, highest, hours_above, longest_safe_stretch, reading_times,
+)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. highest of several readings', fn (t) {
+    t.equal(highest([120, 180, 260, 210]), 260)
+  })
+  t.test('1. highest is the first reading', fn (t) {
+    t.equal(highest([300, 180, 260]), 300)
+  })
+  t.test('1. highest of one reading', fn (t) { t.equal(highest([95]), 95) })
+  t.test('1. highest of no readings', fn (t) { t.equal(highest([]), 0) })
+
+  t.test('2. hours above a level', fn (t) {
+    t.equal(hours_above([120, 180, 260, 210], level: 200), 2)
+  })
+  t.test('2. hours exactly at the level count', fn (t) {
+    t.equal(hours_above([200, 199, 201], level: 200), 2)
+  })
+  t.test('2. no hours above the level', fn (t) {
+    t.equal(hours_above([120, 180], level: 500), 0)
+  })
+
+  t.test('3. first hour at a level', fn (t) {
+    t.equal(first_hour_at([120, 180, 260, 210], level: 200), 2)
+  })
+  t.test('3. the first reading is high enough', fn (t) {
+    t.equal(first_hour_at([250, 180], level: 200), 0)
+  })
+  t.test('3. the water never gets high enough', fn (t) {
+    t.equal(first_hour_at([120, 180], level: 200), -1)
+  })
+  t.test('3. no readings', fn (t) { t.equal(first_hour_at([], level: 200), -1) })
+
+  t.test('4. readings that reach the last minute', fn (t) {
+    t.equal(reading_times(first: 0, last: 60, every: 20), [0, 20, 40, 60])
+  })
+  t.test('4. readings that stop short of the last minute', fn (t) {
+    t.equal(reading_times(first: 10, last: 60, every: 15), [10, 25, 40, 55])
+  })
+  t.test('4. a single reading', fn (t) {
+    t.equal(reading_times(first: 30, last: 30, every: 5), [30])
+  })
+
+  t.test('5. the longest of several stretches', fn (t) {
+    t.equal(
+      longest_safe_stretch(
+        [150, 210, 230, 190, 220, 240, 250, 180],
+        minimum: 200,
+      ),
+      3,
+    )
+  })
+  t.test('5. one stretch for the whole day', fn (t) {
+    t.equal(longest_safe_stretch([210, 230, 250], minimum: 200), 3)
+  })
+  t.test('5. the stretch at the end', fn (t) {
+    t.equal(longest_safe_stretch([210, 100, 220, 230], minimum: 200), 2)
+  })
+  t.test('5. never deep enough', fn (t) {
+    t.equal(longest_safe_stretch([100, 150], minimum: 200), 0)
+  })
+}

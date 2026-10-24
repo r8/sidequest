@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn how throw and try return and propagate errors, and when to panic instead.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

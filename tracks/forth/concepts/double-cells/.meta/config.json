@@ -1,0 +1,7 @@
+{
+  "blurb": "Double-cell numbers hold one value in two cells, with d-prefixed and mixed-precision words for numbers too big for a cell.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

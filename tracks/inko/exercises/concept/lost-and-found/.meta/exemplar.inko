@@ -1,0 +1,28 @@
+# Returns `number` if it is a valid ticket (1 to 999), or `None`.
+fn pub ticket(number: Int) -> Option[Int] {
+  if number >= 1 and number <= 999 { Option.Some(number) } else { Option.None }
+}
+
+# Returns the valid ticket written in `text`, or `None`.
+fn pub read_ticket(text: String) -> Option[Int] {
+  Int.parse(text, 10).then(fn (number) { ticket(number) })
+}
+
+# Returns the first description in `items` containing `word`, or `None`.
+fn pub find_item(items: ref Array[String], word: String) -> Option[String] {
+  for item in items.iter {
+    if item.contains?(word) { return Option.Some(item) }
+  }
+
+  Option.None
+}
+
+# Returns the shelf (1 to 20) for a ticket, or `None` without a ticket.
+fn pub shelf(ticket: Option[Int]) -> Option[Int] {
+  ticket.map(fn (number) { (number % 20) + 1 })
+}
+
+# Returns "Ticket N" for a ticket, or "No ticket".
+fn pub label(ticket: Option[Int]) -> String {
+  ticket.map(fn (number) { 'Ticket ${number}' }).or('No ticket')
+}

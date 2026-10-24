@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "parking-garage.bqn"
+    ],
+    "test": [
+      "test/parking-garage.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about conditionals in BQN by writing the rules of a car park.",
+  "custom": {
+    "after": [
+      "drawbridge",
+      "name-tags",
+      "ticket-machine"
+    ]
+  }
+}

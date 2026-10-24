@@ -1,0 +1,20 @@
+# Returns how many minutes a firing takes.
+fn pub firing_minutes -> Int {
+  panic('implement me')
+}
+
+# Returns how many minutes of the firing are left after `elapsed` minutes.
+fn pub remaining_minutes(elapsed: Int) -> Int {
+  panic('implement me')
+}
+
+# Returns how many minutes it takes to glaze `pieces` pieces.
+fn pub glazing_minutes(pieces: Int) -> Int {
+  panic('implement me')
+}
+
+# Returns the minutes spent glazing `pieces` pieces plus the `elapsed` minutes
+# of firing.
+fn pub total_minutes(pieces: Int, elapsed: Int) -> Int {
+  panic('implement me')
+}

@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "beer-song.kk"
+    ],
+    "test": [
+      "test/beer-song-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Produce the lyrics to that beloved classic, that field-trip favorite: 99 Bottles of Beer on the Wall.",
+  "source": "Learn to Program by Chris Pine",
+  "source_url": "https://pine.fm/LearnToProgram/chap_06.html",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "lost-and-found.kk"
+    ],
+    "test": [
+      "test/lost-and-found-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about maybe by running the lost property office of a railway station.",
+  "custom": {
+    "after": [
+      "treasure-map"
+    ]
+  }
+}

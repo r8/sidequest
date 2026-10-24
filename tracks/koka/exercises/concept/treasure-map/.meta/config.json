@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "treasure-map.kk"
+    ],
+    "test": [
+      "test/treasure-map-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about tuples and pattern matching by following the clues on a treasure map.",
+  "custom": {
+    "after": [
+      "playlist"
+    ]
+  }
+}

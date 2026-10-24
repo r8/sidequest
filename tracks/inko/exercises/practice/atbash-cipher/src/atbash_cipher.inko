@@ -1,0 +1,9 @@
+# Encodes `phrase` with the Atbash cipher, in groups of five characters.
+fn pub encode(phrase: String) -> String {
+  panic('implement me')
+}
+
+# Decodes `phrase` with the Atbash cipher.
+fn pub decode(phrase: String) -> String {
+  panic('implement me')
+}

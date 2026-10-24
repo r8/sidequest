@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/parallel_letter_frequency.inko"
+    ],
+    "test": [
+      "test/test_parallel_letter_frequency.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Count the frequency of letters in texts using parallel computation.",
+  "custom": {
+    "after": [
+      "fishing-fleet"
+    ]
+  }
+}

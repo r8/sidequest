@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "custom-set.janet"
+    ],
+    "test": [
+      "test/custom-set.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Create a custom set type.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

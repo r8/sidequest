@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/forth.inko"
+    ],
+    "test": [
+      "test/test_forth.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Implement an evaluator for a very simple subset of Forth.",
+  "custom": {
+    "after": [
+      "wordy"
+    ]
+  }
+}

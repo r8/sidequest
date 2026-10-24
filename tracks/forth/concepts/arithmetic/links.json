@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Single-precision.html",
+    "description": "Single-precision arithmetic in the Gforth manual"
+  },
+  {
+    "url": "https://gforth.org/manual/Arithmetics-Tutorial.html",
+    "description": "Arithmetic in the Gforth tutorial"
+  },
+  {
+    "url": "https://www.forth.com/starting-forth/2-stack-manipulation-operators-arithmetic/",
+    "description": "Starting Forth, chapter 2: how to get results"
+  }
+]

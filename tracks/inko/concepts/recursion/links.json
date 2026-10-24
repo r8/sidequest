@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/methods/",
+    "description": "Methods, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/references/tuning/",
+    "description": "Tuning, including the process stack size"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "blurb": "Raise errors with ! and a message, and catch them with ⎊ and •CurrentError.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

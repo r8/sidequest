@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/concurrency/",
+    "description": "Concurrency and recovery, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/memory-management/",
+    "description": "Unique references in memory management"
+  }
+]

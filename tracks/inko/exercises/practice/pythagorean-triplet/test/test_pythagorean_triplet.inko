@@ -1,0 +1,37 @@
+import pythagorean_triplet (triplets_with_sum)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('triplets whose sum is 12', fn (t) { t.equal(triplets_with_sum(12), [(3, 4, 5)]) })
+  t.test('triplets whose sum is 108', fn (t) { t.equal(triplets_with_sum(108), [(27, 36, 45)]) })
+  t.test('triplets whose sum is 1000', fn (t) { t.equal(triplets_with_sum(1000), [(200, 375, 425)]) })
+  t.test('no matching triplets for 1001', fn (t) { t.equal(triplets_with_sum(1001), []) })
+  t.test('returns all matching triplets', fn (t) { t.equal(triplets_with_sum(90), [(9, 40, 41), (15, 36, 39)]) })
+  t.test('several matching triplets', fn (t) {
+    t.equal(
+      triplets_with_sum(840),
+      [
+        (40, 399, 401),
+        (56, 390, 394),
+        (105, 360, 375),
+        (120, 350, 370),
+        (140, 336, 364),
+        (168, 315, 357),
+        (210, 280, 350),
+        (240, 252, 348),
+      ],
+    )
+  })
+  t.test('triplets for large number', fn (t) {
+    t.equal(
+      triplets_with_sum(30000),
+      [
+        (1200, 14375, 14425),
+        (1875, 14000, 14125),
+        (5000, 12000, 13000),
+        (6000, 11250, 12750),
+        (7500, 10000, 12500),
+      ],
+    )
+  })
+}

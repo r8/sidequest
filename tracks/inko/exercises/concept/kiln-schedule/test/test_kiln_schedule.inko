@@ -1,0 +1,34 @@
+import kiln_schedule (
+  firing_minutes, glazing_minutes, remaining_minutes, total_minutes,
+)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. a firing takes 480 minutes', fn (t) {
+    t.equal(firing_minutes, 480)
+  })
+
+  t.test('2. minutes left at the start', fn (t) {
+    t.equal(remaining_minutes(0), 480)
+  })
+  t.test('2. minutes left part way through', fn (t) {
+    t.equal(remaining_minutes(200), 280)
+  })
+  t.test('2. minutes left at the end', fn (t) {
+    t.equal(remaining_minutes(480), 0)
+  })
+
+  t.test('3. glazing no pieces', fn (t) { t.equal(glazing_minutes(0), 0) })
+  t.test('3. glazing one piece', fn (t) { t.equal(glazing_minutes(1), 12) })
+  t.test('3. glazing several pieces', fn (t) { t.equal(glazing_minutes(5), 60) })
+
+  t.test('4. total before firing starts', fn (t) {
+    t.equal(total_minutes(pieces: 3, elapsed: 0), 36)
+  })
+  t.test('4. total part way through', fn (t) {
+    t.equal(total_minutes(pieces: 5, elapsed: 200), 260)
+  })
+  t.test('4. total for a big batch', fn (t) {
+    t.equal(total_minutes(pieces: 20, elapsed: 480), 720)
+  })
+}

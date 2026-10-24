@@ -1,0 +1,53 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+import std.string (ToString)
+
+let MINUTES_PER_DAY = 1440
+
+# A clock without a date. `hour` (0 to 23) and `minute` (0 to 59) are always
+# normalized, so clocks showing the same time are equal.
+type pub copy Clock {
+  let pub @hour: Int
+  let pub @minute: Int
+
+  # Returns a clock showing `hour`:`minute`, rolling over values outside a day
+  # in either direction (`Clock.new(25, -10)` shows 00:50).
+  fn pub static new(hour: Int, minute: Int) -> Clock {
+    # `%` takes the sign of the divisor, so the result is never negative.
+    let total = ((hour * 60) + minute) % MINUTES_PER_DAY
+
+    Clock(hour: total / 60, minute: total % 60)
+  }
+
+  # Returns a new clock `minutes` later than this one.
+  fn pub add(minutes: Int) -> Clock {
+    Clock.new(@hour, @minute + minutes)
+  }
+
+  # Returns a new clock `minutes` earlier than this one.
+  fn pub subtract(minutes: Int) -> Clock {
+    Clock.new(@hour, @minute - minutes)
+  }
+}
+
+impl ToString for Clock {
+  # Returns the time as "HH:MM", such as "08:05".
+  fn pub to_string -> String {
+    let hour = @hour.to_string.pad_start(with: '0', chars: 2)
+    let minute = @minute.to_string.pad_start(with: '0', chars: 2)
+
+    '${hour}:${minute}'
+  }
+}
+
+impl Equal for Clock {
+  fn pub ==(other: Clock) -> Bool {
+    @hour == other.hour and @minute == other.minute
+  }
+}
+
+impl Format for Clock {
+  fn pub fmt(formatter: mut Formatter) {
+    formatter.write(to_string)
+  }
+}

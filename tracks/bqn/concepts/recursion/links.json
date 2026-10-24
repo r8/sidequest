@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/block.html",
+    "description": "Blocks: 𝕊 and self-reference"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/control.html",
+    "description": "Control flow, including loops written with recursion"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/functional.html",
+    "description": "Functional programming in BQN"
+  }
+]

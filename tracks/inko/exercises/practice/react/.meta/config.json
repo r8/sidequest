@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/react.inko"
+    ],
+    "test": [
+      "test/test_react.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Implement a basic reactive system.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

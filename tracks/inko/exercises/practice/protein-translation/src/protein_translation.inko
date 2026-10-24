@@ -1,0 +1,5 @@
+# Translates the RNA `strand` into the amino acids it codes for, up to the
+# first stop codon, or returns an error if it contains an invalid codon.
+fn pub proteins(strand: String) -> Result[Array[String], String] {
+  panic('implement me')
+}

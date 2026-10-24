@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "vending-machine.fs"
+    ],
+    "test": [
+      "test/vending-machine-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about throw, catch and abort\" by writing the firmware of a vending machine that has to recover from every fault.",
+  "custom": {
+    "after": [
+      "remote-control",
+      "piggy-bank"
+    ]
+  }
+}

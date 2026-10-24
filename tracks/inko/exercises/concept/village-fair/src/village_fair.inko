@@ -1,0 +1,17 @@
+import village_fair.stalls (Stall)
+
+# Returns the fees all the stalls pay together.
+fn pub total_fees(stalls: ref Array[Stall]) -> Int {
+  panic('implement me')
+}
+
+# Returns the length of field needed for the stalls in a row, with a gap of one
+# metre between neighbouring stalls.
+fn pub field_length(stalls: ref Array[Stall]) -> Int {
+  panic('implement me')
+}
+
+# Returns the programme listing the stalls, such as "1. Cakes, 2. Plants".
+fn pub programme(stalls: ref Array[Stall]) -> String {
+  panic('implement me')
+}

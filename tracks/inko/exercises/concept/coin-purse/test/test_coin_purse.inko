@@ -1,0 +1,131 @@
+import coin_purse (Coins)
+import std.cmp (Ordering)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. add two amounts', fn (t) {
+    t.equal(
+      (
+        Coins.new(gold: 1, silver: 2, copper: 3)
+          + Coins.new(gold: 0, silver: 5, copper: 9)
+      )
+        .in_copper,
+      182,
+    )
+  })
+  t.test('1. add nothing', fn (t) {
+    t.equal(
+      (
+        Coins.new(gold: 1, silver: 0, copper: 0)
+          + Coins.new(gold: 0, silver: 0, copper: 0)
+      )
+        .in_copper,
+      100,
+    )
+  })
+  t.test('1. add three amounts', fn (t) {
+    let coin = Coins.new(gold: 0, silver: 0, copper: 1)
+
+    t.equal((coin + coin + coin).in_copper, 3)
+  })
+
+  t.test('2. subtract an amount', fn (t) {
+    t.equal(
+      (
+        Coins.new(gold: 2, silver: 0, copper: 0)
+          - Coins.new(gold: 0, silver: 3, copper: 5)
+      )
+        .in_copper,
+      165,
+    )
+  })
+  t.test('2. subtract everything', fn (t) {
+    let purse = Coins.new(gold: 1, silver: 1, copper: 1)
+
+    t.equal((purse - purse).in_copper, 0)
+  })
+
+  t.test('3. multiply an amount', fn (t) {
+    t.equal((Coins.new(gold: 0, silver: 2, copper: 5) * 3).in_copper, 75)
+  })
+  t.test('3. multiply by zero', fn (t) {
+    t.equal((Coins.new(gold: 4, silver: 0, copper: 0) * 0).in_copper, 0)
+  })
+
+  t.test('4. the same coins are equal', fn (t) {
+    t.true(
+      Coins.new(gold: 1, silver: 2, copper: 3)
+        == Coins.new(gold: 1, silver: 2, copper: 3),
+    )
+  })
+  t.test('4. different coins of the same worth are equal', fn (t) {
+    t.true(
+      Coins.new(gold: 1, silver: 0, copper: 0)
+        == Coins.new(gold: 0, silver: 10, copper: 0),
+    )
+  })
+  t.test('4. different amounts are not equal', fn (t) {
+    t.true(
+      Coins.new(gold: 1, silver: 0, copper: 0)
+        != Coins.new(gold: 0, silver: 9, copper: 9),
+    )
+  })
+  t.test('4. compare the results of sums', fn (t) {
+    t.equal(
+      Coins.new(gold: 0, silver: 7, copper: 0) * 2,
+      Coins.new(gold: 1, silver: 4, copper: 0),
+    )
+  })
+
+  t.test('5. a smaller amount', fn (t) {
+    t.equal(
+      Coins.new(gold: 0, silver: 9, copper: 9).cmp(
+        Coins.new(gold: 1, silver: 0, copper: 0),
+      ),
+      Ordering.Less,
+    )
+  })
+  t.test('5. a larger amount', fn (t) {
+    t.true(
+      Coins.new(gold: 2, silver: 0, copper: 0)
+        > Coins.new(gold: 1, silver: 9, copper: 9),
+    )
+  })
+  t.test('5. amounts of the same worth', fn (t) {
+    t.equal(
+      Coins.new(gold: 0, silver: 10, copper: 0).cmp(
+        Coins.new(gold: 1, silver: 0, copper: 0),
+      ),
+      Ordering.Equal,
+    )
+  })
+  t.test('5. sort a list of amounts', fn (t) {
+    let amounts = [
+      Coins.new(gold: 1, silver: 0, copper: 0),
+      Coins.new(gold: 0, silver: 0, copper: 5),
+      Coins.new(gold: 0, silver: 3, copper: 0),
+    ]
+
+    amounts.sort
+    t.equal(
+      amounts.iter.map(fn (coins) { coins.in_copper }).to_array,
+      [5, 30, 100],
+    )
+  })
+
+  t.test('6. a string for every kind of coin', fn (t) {
+    t.equal(Coins.new(gold: 2, silver: 3, copper: 5).to_string, '2g 3s 5c')
+  })
+  t.test('6. a string in the fewest coins', fn (t) {
+    t.equal(Coins.new(gold: 0, silver: 12, copper: 15).to_string, '1g 3s 5c')
+  })
+  t.test('6. a string for nothing', fn (t) {
+    t.equal(Coins.new(gold: 0, silver: 0, copper: 0).to_string, '0g 0s 0c')
+  })
+  t.test('6. an amount in a sentence', fn (t) {
+    t.equal(
+      'You pay ${Coins.new(gold: 0, silver: 0, copper: 42)}.',
+      'You pay 0g 4s 2c.',
+    )
+  })
+}

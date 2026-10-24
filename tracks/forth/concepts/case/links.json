@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/General-control-structures-with-CASE.html",
+    "description": "Control structures with CASE in the Gforth manual"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/CASE",
+    "description": "CASE in the Forth 2012 standard"
+  },
+  {
+    "url": "https://forth-standard.org/standard/core/ENDCASE",
+    "description": "ENDCASE in the Forth 2012 standard: what it drops"
+  }
+]

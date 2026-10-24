@@ -1,0 +1,13 @@
+# Encodes `phrase` with the key (`a`, `b`), in groups of five characters.
+#
+# Returns an error if `a` and 26 are not coprime.
+fn pub encode(phrase: String, a: Int, b: Int) -> Result[String, String] {
+  panic('implement me')
+}
+
+# Decodes `phrase` with the key (`a`, `b`).
+#
+# Returns an error if `a` and 26 are not coprime.
+fn pub decode(phrase: String, a: Int, b: Int) -> Result[String, String] {
+  panic('implement me')
+}

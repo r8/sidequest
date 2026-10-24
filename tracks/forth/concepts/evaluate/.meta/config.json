@@ -1,0 +1,7 @@
+{
+  "blurb": "evaluate interprets a string as Forth source, so a program can run code it builds or stores at run time.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "escape-room.kk"
+    ],
+    "test": [
+      "test/escape-room-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about control operations by simulating the teams in an escape room.",
+  "custom": {
+    "after": [
+      "weather-station",
+      "lost-and-found"
+    ]
+  }
+}

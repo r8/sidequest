@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "receipt-printer.bqn"
+    ],
+    "test": [
+      "test/receipt-printer.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about formatting and parsing numbers by making a tiny printer print shop receipts.",
+  "custom": {
+    "after": [
+      "name-tags",
+      "train-cars"
+    ]
+  }
+}

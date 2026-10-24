@@ -1,0 +1,5 @@
+# Returns the prime factors of `value` in ascending order, each repeated as
+# often as it divides `value`.
+fn pub factors(value: Int) -> Array[Int] {
+  panic('implement me')
+}

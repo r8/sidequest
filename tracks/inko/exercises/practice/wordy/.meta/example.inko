@@ -1,0 +1,105 @@
+# `left` divided by `right`, rounded toward zero; Inko's `/` rounds down (-7 / 2
+# is -4), which is one less when the signs differ and it doesn't divide evenly.
+# (Not via `absolute`: the smallest Int has no positive counterpart.)
+fn quotient(left: Int, right: Int) -> Int {
+  let q = left / right
+
+  if (left % right != 0) and ((left < 0) != (right < 0)) { q + 1 } else { q }
+}
+
+type copy enum Operation {
+  case Plus
+  case Minus
+  case Times
+  case Over
+
+  fn apply(left: Int, right: Int) -> Int {
+    match self {
+      case Plus -> left + right
+      case Minus -> left - right
+      case Times -> left * right
+      case Over -> quotient(left, right)
+    }
+  }
+}
+
+type copy enum Token {
+  case Number(Int)
+  case Operator(Operation)
+  case Unknown
+}
+
+# What has been read so far: nothing, a value, or a value and an operation
+# that still needs its right-hand side.
+type copy enum State {
+  case Start
+  case Value(Int)
+  case Pending(Int, Operation)
+}
+
+# Evaluates a word problem such as "What is 5 plus 13 multiplied by 2?" from
+# left to right, ignoring the usual precedence. Returns the error
+# "unknown operation" for an unsupported operation or a question that isn't a
+# math question, "syntax error" for a malformed problem, and "division by zero".
+fn pub answer(question: String) -> Result[Int, String] {
+  let body = match
+    question.strip_prefix('What is').then(fn (s) { s.strip_suffix('?') })
+  {
+    case Some(body) -> body
+    case None -> return Result.Error('unknown operation')
+  }
+  let mut state = State.Start
+
+  for token in tokens(body).into_iter {
+    state = match (state, token) {
+      case (Start, Number(value)) -> State.Value(value)
+      case (Value(left), Operator(op)) -> State.Pending(left, op)
+      case (Pending(_, Over), Number(0)) -> return Result.Error('division by zero')
+      case (Pending(left, op), Number(right)) -> {
+        State.Value(op.apply(left, right))
+      }
+      case (_, Unknown) -> return Result.Error('unknown operation')
+      case _ -> return Result.Error('syntax error')
+    }
+  }
+
+  match state {
+    case Value(value) -> Result.Ok(value)
+    case _ -> Result.Error('syntax error')
+  }
+}
+
+fn tokens(body: String) -> Array[Token] {
+  let words = body.split(' ').select(fn (w) { w.size > 0 }).to_array
+  let tokens = []
+  let mut index = 0
+
+  while index < words.size {
+    let word = words.get(index).or_panic.to_string
+    let following = words.get(index + 1).map(fn (w) { w.to_string }).or('')
+
+    index += 1
+    tokens.push(
+      match word {
+        case 'plus' -> Token.Operator(Operation.Plus)
+        case 'minus' -> Token.Operator(Operation.Minus)
+        case 'multiplied' if following == 'by' -> {
+          index += 1
+          Token.Operator(Operation.Times)
+        }
+        case 'divided' if following == 'by' -> {
+          index += 1
+          Token.Operator(Operation.Over)
+        }
+        case _ -> {
+          match Int.parse(word, base: 10) {
+            case Some(value) -> Token.Number(value)
+            case None -> Token.Unknown
+          }
+        }
+      },
+    )
+  }
+
+  tokens
+}

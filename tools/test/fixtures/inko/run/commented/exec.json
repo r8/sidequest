@@ -1,0 +1,8 @@
+[
+  {
+    "exitCode": 0,
+    "stdout": "..\nFinished running 2 tests in 0 milliseconds, 0 failures, seed: -2174508754148033643\n",
+    "stderr": "\u001equest-passed 6:greets\n\u001equest-passed 24:ignores calls in strings\n",
+    "timedOut": false
+  }
+]

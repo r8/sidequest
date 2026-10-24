@@ -1,0 +1,83 @@
+import std.clone (Clone)
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# A colour as amounts of red, green and blue light, each from 0 to 255.
+type pub copy Colour {
+  let pub mut @red: Int
+  let pub mut @green: Int
+  let pub mut @blue: Int
+
+  # Returns the colour with the given amounts of red, green and blue.
+  fn pub static new(red: Int, green: Int, blue: Int) -> Colour {
+    Colour(red: red, green: green, blue: blue)
+  }
+
+  # Returns the colour halfway between this one and `other`, rounding down.
+  fn pub mix(other: Colour) -> Colour {
+    panic('implement me')
+  }
+
+  # Returns the colour with `amount` added to each of red, green and blue, up to
+  # 255.
+  fn pub move lighter(amount: Int) -> Colour {
+    panic('implement me')
+  }
+
+  # Returns the colour as a hex code, such as "#ff8000".
+  fn pub hex -> String {
+    panic('implement me')
+  }
+}
+
+# Lets the tests compare colours with `==`.
+impl Equal for Colour {
+  fn pub ==(other: Colour) -> Bool {
+    @red == other.red and @green == other.green and @blue == other.blue
+  }
+}
+
+# A copy type is copied whenever it's moved, so cloning it just returns it.
+# Implementing `Clone` lets an `Array[Colour]` be cloned.
+impl Clone for Colour {
+  fn pub clone -> Colour {
+    self
+  }
+}
+
+# Lets the tests show colours in their failure messages.
+impl Format for Colour {
+  fn pub fmt(formatter: mut Formatter) {
+    formatter.write(hex)
+  }
+}
+
+# A recipe for a paint: the colours that are mixed, in order.
+type pub Recipe {
+  let pub @name: String
+  let pub @colours: Array[Colour]
+
+  # Returns the recipe called `name` that mixes `colours`.
+  fn pub static new(name: String, colours: Array[Colour]) -> Recipe {
+    Recipe(name: name, colours: colours)
+  }
+
+  # Returns the colour of the paint: the colours mixed one after the other, in
+  # order, starting from the first. Black (0, 0, 0) without any colours.
+  fn pub paint -> Colour {
+    panic('implement me')
+  }
+
+  # Returns a copy of the recipe called `name`, with `colour` mixed in last.
+  # The recipe itself doesn't change.
+  fn pub variant(name: String, colour: Colour) -> Recipe {
+    panic('implement me')
+  }
+}
+
+impl Clone for Recipe {
+  # Returns a copy of the recipe.
+  fn pub clone -> Recipe {
+    panic('implement me')
+  }
+}

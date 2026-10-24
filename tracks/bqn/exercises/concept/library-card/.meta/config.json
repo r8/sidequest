@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "library-card.bqn"
+    ],
+    "test": [
+      "test/library-card.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about namespaces by moving a village library's index cards into BQN.",
+  "custom": {
+    "after": [
+      "ticket-machine",
+      "name-tags"
+    ]
+  }
+}

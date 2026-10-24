@@ -1,0 +1,131 @@
+import std.map (Map)
+
+let BUILTINS = ['+', '-', '*', '/', 'dup', 'drop', 'swap', 'over']
+
+# `left` divided by `right`, rounded toward zero; Inko's `/` rounds down (-7 / 2
+# is -4), which is one less when the signs differ and it doesn't divide evenly.
+# (Not via `absolute`: the smallest Int has no positive counterpart.)
+fn quotient(left: Int, right: Int) -> Int {
+  let q = left / right
+
+  if (left % right != 0) and ((left < 0) != (right < 0)) { q + 1 } else { q }
+}
+
+# Evaluates the Forth program `instructions` (one string per line) and returns
+# the resulting stack, bottom first.
+#
+# Supports integers, `+`, `-`, `*`, `/`, `dup`, `drop`, `swap`, `over`, and user
+# defined words (`: name body ;`); words are case-insensitive. Errors are
+# "empty stack", "only one value on the stack", "divide by zero",
+# "illegal operation" (redefining a number) and "undefined operation".
+fn pub evaluate(instructions: ref Array[String]) -> Result[Array[Int], String] {
+  let words = []
+
+  for line in instructions.iter {
+    # Words are separated by any whitespace, not only spaces.
+    let mut spaced = line.to_lower
+
+    for space in ['\t', '\n', '\r', '\u{B}', '\u{C}'] { spaced = spaced.replace(space, ' ') }
+
+    for word in spaced.split(' ') {
+      if word.size > 0 { words.push(word.to_string) }
+    }
+  }
+
+  let words = words.into_iter
+  # Definitions are stored fully expanded into numbers and built-in words, so
+  # redefining a word later doesn't change the words already defined with it.
+  let definitions = Map.new
+  let stack = []
+
+  loop {
+    match words.next {
+      case Some(':') -> {
+        let name = match words.next {
+          case Some(name) if Int.parse(name, base: 10).none? -> name
+          case _ -> return Result.Error('illegal operation')
+        }
+        let body = []
+
+        loop {
+          match words.next {
+            case Some(';') -> break
+            case Some(word) -> body.append(try expand(definitions, word))
+            case None -> return Result.Error('illegal operation')
+          }
+        }
+
+        definitions.set(name, body)
+      }
+      case Some(word) -> {
+        for primitive in (try expand(definitions, word)).into_iter {
+          try execute(stack, primitive)
+        }
+      }
+      case None -> break
+    }
+  }
+
+  Result.Ok(stack)
+}
+
+fn expand(
+  definitions: ref Map[String, Array[String]],
+  word: String,
+) -> Result[Array[String], String] {
+  match definitions.get(word) {
+    case Ok(body) -> Result.Ok(body.clone)
+    case Error(_) if BUILTINS.contains?(word) -> Result.Ok([word])
+    case Error(_) if Int.parse(word, base: 10).some? -> Result.Ok([word])
+    case Error(_) -> Result.Error('undefined operation')
+  }
+}
+
+fn execute(stack: mut Array[Int], word: String) -> Result[Nil, String] {
+  match word {
+    case '+' or '-' or '*' or '/' -> {
+      try require(stack, 2)
+
+      let right = stack.pop.get
+      let left = stack.pop.get
+
+      stack.push(
+        match word {
+          case '+' -> left + right
+          case '-' -> left - right
+          case '*' -> left * right
+          case _ if right == 0 -> return Result.Error('divide by zero')
+          case _ -> quotient(left, right)
+        },
+      )
+    }
+    case 'dup' -> {
+      try require(stack, 1)
+      stack.push(stack.last.get)
+    }
+    case 'drop' -> {
+      try require(stack, 1)
+      stack.pop
+    }
+    case 'swap' -> {
+      try require(stack, 2)
+      stack.swap_indexes(stack.size - 1, stack.size - 2)
+    }
+    case 'over' -> {
+      try require(stack, 2)
+      stack.push(stack.get(stack.size - 2).or_panic)
+    }
+    case number -> stack.push(Int.parse(number, base: 10).get)
+  }
+
+  Result.Ok(nil)
+}
+
+# Checks that `stack` holds at least `count` values.
+fn require(stack: ref Array[Int], count: Int) -> Result[Nil, String] {
+  match stack.size {
+    case 0 -> Result.Error('empty stack')
+    case size if size < count -> Result.Error('only one value on the stack')
+    case _ -> Result.Ok(nil)
+  }
+}

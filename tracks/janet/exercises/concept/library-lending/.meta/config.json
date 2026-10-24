@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "library-lending.janet"
+    ],
+    "test": [
+      "test/library-lending.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about defer, edefer and with by making sure every book in a village library finds its way back to the shelf.",
+  "custom": {
+    "after": [
+      "vending-machine",
+      "pet-shelter"
+    ]
+  }
+}

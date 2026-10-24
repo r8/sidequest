@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "flower-field.bqn"
+    ],
+    "test": [
+      "test/flower-field.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Mark all the flowers in a garden.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+import orchard_harvest (
+  average_weight, crates_needed, full_crates, loose_apples, sale_price,
+)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('1. full crates with apples to spare', fn (t) {
+    t.equal(full_crates(apples: 100, per_crate: 24), 4)
+  })
+  t.test('1. full crates exactly', fn (t) {
+    t.equal(full_crates(apples: 96, per_crate: 24), 4)
+  })
+  t.test('1. not enough for one crate', fn (t) {
+    t.equal(full_crates(apples: 23, per_crate: 24), 0)
+  })
+
+  t.test('2. loose apples left over', fn (t) {
+    t.equal(loose_apples(apples: 100, per_crate: 24), 4)
+  })
+  t.test('2. no loose apples', fn (t) {
+    t.equal(loose_apples(apples: 96, per_crate: 24), 0)
+  })
+  t.test('2. all apples loose', fn (t) {
+    t.equal(loose_apples(apples: 23, per_crate: 24), 23)
+  })
+
+  t.test('3. crates needed with a part-filled crate', fn (t) {
+    t.equal(crates_needed(apples: 100, per_crate: 24), 5)
+  })
+  t.test('3. crates needed exactly', fn (t) {
+    t.equal(crates_needed(apples: 96, per_crate: 24), 4)
+  })
+  t.test('3. one apple needs a crate', fn (t) {
+    t.equal(crates_needed(apples: 1, per_crate: 24), 1)
+  })
+  t.test('3. no apples need no crates', fn (t) {
+    t.equal(crates_needed(apples: 0, per_crate: 24), 0)
+  })
+
+  t.test('4. average weight of a whole number', fn (t) {
+    t.equal(average_weight(grams: 1000, apples: 8), 125.0)
+  })
+  t.test('4. average weight with a fraction', fn (t) {
+    t.equal(average_weight(grams: 1000, apples: 16), 62.5)
+  })
+  t.test('4. average weight of one apple', fn (t) {
+    t.equal(average_weight(grams: 183, apples: 1), 183.0)
+  })
+
+  t.test('5. sale price rounded to cents', fn (t) {
+    t.equal(sale_price(kilograms: 2.5, per_kilogram: 3.99), 9.98)
+  })
+  t.test('5. sale price of whole kilograms', fn (t) {
+    t.equal(sale_price(kilograms: 2.0, per_kilogram: 1.5), 3.0)
+  })
+  t.test('5. sale price rounding up', fn (t) {
+    t.equal(sale_price(kilograms: 1.333, per_kilogram: 2.0), 2.67)
+  })
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "train-cars.bqn"
+    ],
+    "test": [
+      "test/train-cars.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about take, drop, reverse, rotate and shifts by shunting freight cars in a railway yard.",
+  "custom": {
+    "after": [
+      "step-counter"
+    ]
+  }
+}

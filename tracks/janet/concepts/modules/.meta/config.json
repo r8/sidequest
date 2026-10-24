@@ -1,0 +1,7 @@
+{
+  "blurb": "Every Janet file is a module: import brings its public bindings in under a prefix, and def- and defn- keep helpers private.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

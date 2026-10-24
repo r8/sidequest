@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-default",
+    "description": "The Koka book: optional and named parameters"
+  },
+  {
+    "url": "https://koka-lang.github.io/koka/doc/book.html#sec-value-and-function-declarations",
+    "description": "The Koka book: value and function declarations"
+  }
+]

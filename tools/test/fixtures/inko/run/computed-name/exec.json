@@ -1,0 +1,8 @@
+[
+  {
+    "exitCode": 2,
+    "stdout": ".F\n\nFailures:\n\n1. Test: computed name\n   Line: <staging>/test/test_greet.inko:9\n\n     expected: \"nope\"\n          got: \"Hello, you!\"\n\nFinished running 2 tests in 0 milliseconds, 1 failures, seed: -4932901907834362874\n",
+    "stderr": "\u001equest-passed 6:passes\n",
+    "timedOut": false
+  }
+]

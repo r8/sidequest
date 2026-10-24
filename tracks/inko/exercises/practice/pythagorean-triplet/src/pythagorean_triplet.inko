@@ -1,0 +1,5 @@
+# Returns every Pythagorean triplet `(a, b, c)` with `a < b < c` and
+# `a + b + c == sum`, ordered by `a`.
+fn pub triplets_with_sum(sum: Int) -> Array[(Int, Int, Int)] {
+  panic('implement me')
+}

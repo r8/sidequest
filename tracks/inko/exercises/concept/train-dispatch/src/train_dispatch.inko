@@ -1,0 +1,29 @@
+# Returns the platform for `line`.
+fn pub platform(line: String) -> Int {
+  panic('implement me')
+}
+
+# Returns the departure board text for a delay of `minutes`.
+fn pub board(minutes: Int) -> String {
+  panic('implement me')
+}
+
+# Returns the signal to show: "green", "yellow" or "red".
+fn pub signal(clear: Bool, occupied: Bool) -> String {
+  panic('implement me')
+}
+
+# Returns the announcement for the next stop, if there is one.
+fn pub next_stop(stop: Option[String]) -> String {
+  panic('implement me')
+}
+
+# Returns the routing for a train, given as its service and its platform.
+fn pub route(train: (String, Option[Int])) -> String {
+  panic('implement me')
+}
+
+# Returns the zone number of a code such as "Z3", or 0 for an invalid code.
+fn pub zone(code: String) -> Int {
+  panic('implement me')
+}

@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "intergalactic-transmission.bqn"
+    ],
+    "test": [
+      "test/intergalactic-transmission.bqn"
+    ],
+    "example": [
+      ".meta/example.bqn"
+    ]
+  },
+  "blurb": "Add parity bits to a message for transmission",
+  "source": "Kah Goh",
+  "source_url": "https://github.com/exercism/problem-specifications/pull/2543",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

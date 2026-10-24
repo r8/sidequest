@@ -1,0 +1,7 @@
+{
+  "blurb": "Dynamic bindings are fiber-wide settings read with dyn and set with setdyn or with-dyns, seen by every function called while they hold.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

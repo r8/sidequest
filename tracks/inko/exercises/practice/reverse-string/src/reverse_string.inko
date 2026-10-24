@@ -1,0 +1,5 @@
+# Returns `value` with its characters (extended grapheme clusters) in reverse
+# order.
+fn pub reverse(value: String) -> String {
+  panic('implement me')
+}

@@ -1,0 +1,5 @@
+# Returns the index of `value` in the sorted `array`, or `Option.None` if the
+# array doesn't contain it.
+fn pub find(array: ref Array[Int], value: Int) -> Option[Int] {
+  panic('implement me')
+}

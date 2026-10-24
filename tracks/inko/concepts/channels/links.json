@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/hello-concurrency/",
+    "description": "Hello, concurrency!, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/sync/Channel/",
+    "description": "The Channel type in the standard library"
+  }
+]

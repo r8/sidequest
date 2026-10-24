@@ -1,0 +1,9 @@
+effect ask
+  ctl ask() : int
+
+fun add-twice() : ask int
+  ask() + ask()
+
+pub fun main()
+  with ctl ask() resume(21)
+  println(add-twice())

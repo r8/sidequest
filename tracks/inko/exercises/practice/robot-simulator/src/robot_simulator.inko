@@ -1,0 +1,83 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# The direction a robot faces.
+type pub copy enum Direction {
+  case North
+  case East
+  case South
+  case West
+}
+
+impl Equal for Direction {
+  fn pub ==(other: Direction) -> Bool {
+    match (self, other) {
+      case (North, North) -> true
+      case (East, East) -> true
+      case (South, South) -> true
+      case (West, West) -> true
+      case _ -> false
+    }
+  }
+}
+
+impl Format for Direction {
+  fn pub fmt(formatter: mut Formatter) {
+    let name = match self {
+      case North -> 'North'
+      case East -> 'East'
+      case South -> 'South'
+      case West -> 'West'
+    }
+
+    formatter.tuple(name).finish
+  }
+}
+
+# A robot on an infinite grid, where north is towards increasing `y` and east
+# towards increasing `x`.
+#
+# The robot moves in place: `turn_right`, `turn_left`, `advance` and
+# `instructions` change the robot they are called on.
+type pub Robot {
+  # Change the fields as you see fit.
+  let mut @x: Int
+  let mut @y: Int
+  let mut @direction: Direction
+
+  # Returns a robot at (`x`, `y`) facing `direction`.
+  fn pub static new(x: Int, y: Int, direction: Direction) -> Robot {
+    panic('implement me')
+  }
+
+  # Returns the robot's position as an `(x, y)` pair.
+  fn pub position -> (Int, Int) {
+    panic('implement me')
+  }
+
+  # Returns the direction the robot faces.
+  fn pub direction -> Direction {
+    panic('implement me')
+  }
+
+  # Turns the robot 90 degrees clockwise.
+  fn pub mut turn_right {
+    panic('implement me')
+  }
+
+  # Turns the robot 90 degrees counter-clockwise.
+  fn pub mut turn_left {
+    panic('implement me')
+  }
+
+  # Moves the robot one step in the direction it faces.
+  fn pub mut advance {
+    panic('implement me')
+  }
+
+  # Follows `instructions`, a string of `R` (turn right), `L` (turn left) and
+  # `A` (advance) letters.
+  fn pub mut instructions(instructions: String) {
+    panic('implement me')
+  }
+}

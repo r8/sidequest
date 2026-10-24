@@ -1,0 +1,7 @@
+# Returns the number of rectangles in the ASCII diagram `lines`.
+#
+# Corners are drawn with `+`, horizontal sides with `-` and vertical sides with
+# `|`. A side may cross other corners (`+`).
+fn pub rectangles(lines: Array[String]) -> Int {
+  panic('implement me')
+}

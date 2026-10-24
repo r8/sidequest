@@ -1,0 +1,7 @@
+import greet (greet)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  if false { t.test('greets', fn (t) { t.equal(greet('you'), 'Hello, you!') }) }
+  t.test('counts', fn (t) { t.equal(1 + 1, 2) })
+}

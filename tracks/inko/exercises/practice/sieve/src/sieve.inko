@@ -1,0 +1,5 @@
+# Returns the prime numbers from 2 up to and including `limit`, in ascending
+# order, found with the Sieve of Eratosthenes.
+fn pub primes(limit: Int) -> Array[Int] {
+  panic('implement me')
+}

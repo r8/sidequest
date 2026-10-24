@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "step-counter.kk"
+    ],
+    "test": [
+      "test/step-counter-test.kk"
+    ],
+    "exemplar": [
+      ".meta/exemplar.kk"
+    ]
+  },
+  "blurb": "Learn about mutable variables and loops by filling in the statistics screen of a fitness tracker.",
+  "custom": {
+    "after": [
+      "orchard"
+    ]
+  }
+}

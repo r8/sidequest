@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/launch_checklist.inko"
+    ],
+    "test": [
+      "test/test_launch_checklist.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about throw, try and error types by running a model rocket's launch checklist.",
+  "custom": {
+    "after": [
+      "customs-office",
+      "potion-shop"
+    ]
+  }
+}

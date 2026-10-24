@@ -1,0 +1,7 @@
+{
+  "blurb": "A flag is a cell, 0 for false and -1 for true; and, or, xor and invert combine flags bit by bit.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

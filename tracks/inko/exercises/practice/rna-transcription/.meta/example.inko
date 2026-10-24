@@ -1,0 +1,15 @@
+# Returns the RNA complement of the DNA strand `dna`.
+fn pub to_rna(dna: String) -> String {
+  String.join(
+    dna.chars.map(fn (nucleotide) {
+      match nucleotide {
+        case 'G' -> 'C'
+        case 'C' -> 'G'
+        case 'T' -> 'A'
+        case 'A' -> 'U'
+        case other -> panic('invalid nucleotide: ${other}')
+      }
+    }),
+    with: '',
+  )
+}

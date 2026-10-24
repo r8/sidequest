@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "robot-grammar.fs"
+    ],
+    "test": [
+      "test/robot-grammar-test.fs"
+    ],
+    "exemplar": [
+      ".meta/exemplar.fs"
+    ]
+  },
+  "blurb": "Learn about postpone, macros and compile, by giving a warehouse robot new syntax that costs nothing at run time.",
+  "custom": {
+    "after": [
+      "almanac",
+      "remote-control",
+      "knitting-rows"
+    ]
+  }
+}

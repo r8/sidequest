@@ -1,0 +1,33 @@
+# Returns the largest product of `span` adjacent digits in `digits`.
+#
+# Returns an error if `span` is negative or longer than `digits`, or if
+# `digits` contains anything other than the digits 0 to 9.
+fn pub largest_product(digits: String, span: Int) -> Result[Int, String] {
+  if span < 0 { return Result.Error('span must not be negative') }
+
+  if span > digits.size {
+    return Result.Error('span must not exceed string length')
+  }
+
+  let values = try digits.chars.try_reduce([], fn (acc, char) {
+    match Int.parse(char, base: 10) {
+      case Some(digit) -> {
+        acc.push(digit)
+        Result.Ok(acc)
+      }
+      case _ -> Result.Error('digits input must only contain digits')
+    }
+  })
+
+  Result.Ok(
+    0
+      .to(values.size - span)
+      .iter
+      .map(fn (start) {
+        values.iter.skip(start).take(span).reduce(1, fn (acc, d) { acc * d })
+      })
+      .reduce(0, fn (max, product) {
+        if product > max { product } else { max }
+      }),
+  )
+}

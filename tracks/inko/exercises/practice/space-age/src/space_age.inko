@@ -1,0 +1,52 @@
+import std.cmp (Equal)
+import std.fmt (Format, Formatter)
+
+# The planets of the solar system.
+type pub copy enum Planet {
+  case Mercury
+  case Venus
+  case Earth
+  case Mars
+  case Jupiter
+  case Saturn
+  case Uranus
+  case Neptune
+}
+
+impl Equal for Planet {
+  fn pub ==(other: Planet) -> Bool {
+    match (self, other) {
+      case (Mercury, Mercury) -> true
+      case (Venus, Venus) -> true
+      case (Earth, Earth) -> true
+      case (Mars, Mars) -> true
+      case (Jupiter, Jupiter) -> true
+      case (Saturn, Saturn) -> true
+      case (Uranus, Uranus) -> true
+      case (Neptune, Neptune) -> true
+      case _ -> false
+    }
+  }
+}
+
+impl Format for Planet {
+  fn pub fmt(formatter: mut Formatter) {
+    let name = match self {
+      case Mercury -> 'Mercury'
+      case Venus -> 'Venus'
+      case Earth -> 'Earth'
+      case Mars -> 'Mars'
+      case Jupiter -> 'Jupiter'
+      case Saturn -> 'Saturn'
+      case Uranus -> 'Uranus'
+      case Neptune -> 'Neptune'
+    }
+
+    formatter.tuple(name).finish
+  }
+}
+
+# Returns the age in years on `planet` of someone who is `seconds` old.
+fn pub age(planet: Planet, seconds: Int) -> Float {
+  panic('implement me')
+}

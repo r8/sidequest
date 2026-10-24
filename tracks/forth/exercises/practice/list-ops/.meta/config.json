@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "list-ops.fs"
+    ],
+    "test": [
+      "test/list-ops-test.fs"
+    ],
+    "example": [
+      ".meta/example.fs"
+    ]
+  },
+  "blurb": "Implement basic list operations.",
+  "custom": {
+    "after": [
+      "remote-control"
+    ]
+  }
+}

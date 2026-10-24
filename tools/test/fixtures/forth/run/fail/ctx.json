@@ -1,0 +1,1 @@
+{ "testFiles": ["test/greet-test.fs"], "argv": ["gforth", "test/greet-test.fs", "-e", "bye"], "timeoutMs": 3000 }

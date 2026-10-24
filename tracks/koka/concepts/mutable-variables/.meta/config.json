@@ -1,0 +1,7 @@
+{
+  "blurb": "Local variables declared with var and assigned with :=, which never escape their function.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "status": "fail",
+  "message": null,
+  "tests": [
+    {
+      "name": "passes",
+      "status": "pass",
+      "test_code": "\"passes\"‿{𝕊: 42 t.Expect g.Double 21}",
+      "message": null,
+      "output": null
+    },
+    {
+      "name": "fails on a list",
+      "status": "fail",
+      "test_code": "\"fails on a list\"‿{𝕊: 1‿2 t.Expect g.Double 1‿2}",
+      "message": "expected 1‿2, got 2‿4",
+      "output": null
+    },
+    {
+      "name": "fails on a missing error",
+      "status": "fail",
+      "test_code": "\"fails on a missing error\"‿{𝕊: {𝕊: g.Double 1} t._throws \"boom\"}",
+      "message": "expected the error \"boom\", but nothing was raised",
+      "output": null
+    },
+    {
+      "name": "fails on a float",
+      "status": "fail",
+      "test_code": "\"fails on a float\"‿{𝕊: 2.5 t.Approx 2.6}",
+      "message": "expected 2.5, got 2.6",
+      "output": null
+    }
+  ]
+}

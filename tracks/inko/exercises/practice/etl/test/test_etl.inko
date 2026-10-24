@@ -1,0 +1,59 @@
+import etl (transform)
+import std.map (Map)
+import std.test (Tests)
+
+fn legacy(pairs: Array[(Int, Array[String])]) -> Map[Int, Array[String]] {
+  let map = Map.new
+
+  for (score, letters) in pairs.into_iter { map.set(score, letters) }
+
+  map
+}
+
+fn scores(pairs: Array[(String, Int)]) -> Map[String, Int] {
+  let map = Map.new
+
+  for (letter, score) in pairs.into_iter { map.set(letter, score) }
+
+  map
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('single letter', fn (t) { t.equal(transform(legacy([(1, ['A'])])), scores([('a', 1)])) })
+  t.test('single score with multiple letters', fn (t) {
+    t.equal(
+      transform(legacy([(1, ['A', 'E', 'I', 'O', 'U'])])),
+      scores([('a', 1), ('e', 1), ('i', 1), ('o', 1), ('u', 1)]),
+    )
+  })
+  t.test('multiple scores with multiple letters', fn (t) {
+    t.equal(
+      transform(legacy([(1, ['A', 'E']), (2, ['D', 'G'])])),
+      scores([('a', 1), ('d', 2), ('e', 1), ('g', 2)]),
+    )
+  })
+  t.test('multiple scores with differing numbers of letters', fn (t) {
+    t.equal(
+      transform(
+        legacy(
+          [
+            (1, ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T']),
+            (2, ['D', 'G']),
+            (3, ['B', 'C', 'M', 'P']),
+            (4, ['F', 'H', 'V', 'W', 'Y']),
+            (5, ['K']),
+            (8, ['J', 'X']),
+            (10, ['Q', 'Z']),
+          ],
+        ),
+      ),
+      scores(
+        [
+          ('a', 1), ('b', 3), ('c', 3), ('d', 2), ('e', 1), ('f', 4), ('g', 2), ('h', 4), ('i', 1),
+          ('j', 8), ('k', 5), ('l', 1), ('m', 3), ('n', 1), ('o', 1), ('p', 3), ('q', 10), ('r', 1),
+          ('s', 1), ('t', 1), ('u', 1), ('v', 4), ('w', 4), ('x', 8), ('y', 4), ('z', 10),
+        ],
+      ),
+    )
+  })
+}

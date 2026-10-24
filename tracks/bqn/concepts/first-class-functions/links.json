@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/functional.html",
+    "description": "Functional programming: functions as values"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/context.html",
+    "description": "Syntactic roles"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/types.html",
+    "description": "BQN's value types"
+  }
+]

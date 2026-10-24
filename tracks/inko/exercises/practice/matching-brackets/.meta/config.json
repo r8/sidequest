@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/matching_brackets.inko"
+    ],
+    "test": [
+      "test/test_matching_brackets.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Make sure the brackets and braces all match.",
+  "source": "Ginna Baker",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

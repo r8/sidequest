@@ -1,0 +1,5 @@
+# Returns `true` if every bracket, brace and parenthesis in `value` is matched
+# and correctly nested. All other characters are ignored.
+fn pub paired?(value: String) -> Bool {
+  panic('implement me')
+}

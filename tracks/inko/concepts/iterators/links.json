@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/iter/Iter/",
+    "description": "The Iter trait in the standard library"
+  },
+  {
+    "url": "https://docs.inko-lang.org/std/latest/module/std/iter/",
+    "description": "The std.iter module"
+  }
+]

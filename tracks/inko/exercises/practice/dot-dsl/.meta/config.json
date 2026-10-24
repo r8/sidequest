@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/dot_dsl.inko"
+    ],
+    "test": [
+      "test/test_dot_dsl.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Write a Domain Specific Language similar to the Graphviz dot language.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/DOT_(graph_description_language)",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

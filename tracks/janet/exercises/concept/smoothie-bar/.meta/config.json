@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "smoothie-bar.janet"
+    ],
+    "test": [
+      "test/smoothie-bar.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about the threading macros by turning a beach smoothie bar's messy orders into prices and receipts.",
+  "custom": {
+    "after": [
+      "name-badges",
+      "seed-catalog"
+    ]
+  }
+}

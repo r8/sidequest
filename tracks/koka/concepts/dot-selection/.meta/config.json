@@ -1,0 +1,7 @@
+{
+  "blurb": "x.f(y) is f(x, y): calling any function with its first argument in front, for left-to-right chains.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

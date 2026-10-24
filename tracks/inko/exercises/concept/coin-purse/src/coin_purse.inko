@@ -1,0 +1,70 @@
+import std.cmp (Compare, Equal, Ordering)
+import std.fmt (Format, Formatter)
+import std.ops (Add, Multiply, Subtract)
+import std.string (ToString)
+
+# An amount of money in gold, silver and copper coins: one gold coin is worth 10
+# silver coins, and one silver coin 10 copper coins. The amount is stored in
+# copper, so the same amount always looks the same.
+type pub Coins {
+  let @copper: Int
+
+  # Returns the amount of `gold`, `silver` and `copper` coins together.
+  fn pub static new(gold: Int, silver: Int, copper: Int) -> Coins {
+    Coins(copper: (gold * 100) + (silver * 10) + copper)
+  }
+
+  # Returns the amount in copper coins.
+  fn pub in_copper -> Int {
+    @copper
+  }
+}
+
+impl Add[Coins, Coins] for Coins {
+  # Returns the two amounts together.
+  fn pub +(other: ref Coins) -> Coins {
+    panic('implement me')
+  }
+}
+
+impl Subtract[Coins, Coins] for Coins {
+  # Returns this amount minus `other`.
+  fn pub -(other: ref Coins) -> Coins {
+    panic('implement me')
+  }
+}
+
+impl Multiply[Int, Coins] for Coins {
+  # Returns this amount `other` times.
+  fn pub *(other: Int) -> Coins {
+    panic('implement me')
+  }
+}
+
+impl Equal for Coins {
+  # Returns whether both amounts are worth the same.
+  fn pub ==(other: ref Coins) -> Bool {
+    panic('implement me')
+  }
+}
+
+impl Compare for Coins {
+  # Returns how this amount compares to `other`.
+  fn pub cmp(other: ref Coins) -> Ordering {
+    panic('implement me')
+  }
+}
+
+impl ToString for Coins {
+  # Returns the amount in the fewest coins, such as "2g 3s 5c".
+  fn pub to_string -> String {
+    panic('implement me')
+  }
+}
+
+# Lets the tests show amounts in their failure messages.
+impl Format for Coins {
+  fn pub fmt(formatter: mut Formatter) {
+    formatter.tuple('Coins').field(@copper).finish
+  }
+}

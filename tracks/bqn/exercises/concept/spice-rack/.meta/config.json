@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "spice-rack.bqn"
+    ],
+    "test": [
+      "test/spice-rack.bqn"
+    ],
+    "exemplar": [
+      ".meta/exemplar.bqn"
+    ]
+  },
+  "blurb": "Learn about searching by finding the jars on a spice rack.",
+  "custom": {
+    "after": [
+      "vending-machine",
+      "lost-and-found"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://gforth.org/manual/Arrays-and-Records-Tutorial.html",
+    "description": "Arrays and records in the Gforth tutorial"
+  },
+  {
+    "url": "https://gforth.org/manual/Counted-Loops.html",
+    "description": "Counted loops, +loop and unloop in the Gforth manual"
+  },
+  {
+    "url": "https://www.forth.com/starting-forth/8-variables-constants-arrays/",
+    "description": "Starting Forth, chapter 8: variables, constants and arrays"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "blurb": "Janet's event loop runs fibers as cooperative tasks that wait on timers, I/O and channels, and talk through ev/give and ev/take.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

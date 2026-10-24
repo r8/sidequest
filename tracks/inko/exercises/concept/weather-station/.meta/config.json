@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/weather_station.inko"
+    ],
+    "test": [
+      "test/test_weather_station.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn how to define your own types, with fields and methods, by building a weather station.",
+  "custom": {
+    "after": [
+      "orchard-harvest",
+      "library-shelf"
+    ]
+  }
+}

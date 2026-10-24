@@ -1,0 +1,128 @@
+let A = 65
+
+# The puzzle reduced to a single equation: the sum of `weight * digit` over all
+# letters must be zero, where a letter's weight is the sum of its place values
+# in the words on the left, minus those on the right.
+type Solver {
+  # The letters as offsets from `A`, by descending absolute weight so the
+  # search fixes the most significant letters first.
+  let @letters: Array[Int]
+  let @weights: Array[Int]
+  let @leading: Array[Bool]
+
+  # For each position in `@letters`, the largest absolute amount the letters
+  # from that position onwards can still add to the sum.
+  let @bounds: Array[Int]
+  let @used: Array[Bool]
+  let @digits: Array[Int]
+
+  fn mut search(position: Int, sum: Int) -> Bool {
+    if position == @letters.size { return sum == 0 }
+
+    if sum.absolute > @bounds.get(position).or_panic { return false }
+
+    let letter = @letters.get(position).or_panic
+    let weight = @weights.get(letter).or_panic
+    let first = if @leading.get(letter).or_panic { 1 } else { 0 }
+
+    for digit in first.to(9) {
+      if @used.get(digit).or_panic { next }
+
+      @used.set(digit, true)
+
+      if search(position + 1, sum + (weight * digit)) {
+        @digits.set(letter, digit)
+        return true
+      }
+
+      @used.set(digit, false)
+    }
+
+    false
+  }
+}
+
+# Solves the alphametics `puzzle` (such as "SEND + MORE == MONEY"): returns the
+# digit for each letter as `(letter, digit)` pairs sorted by letter, or
+# `Option.None` if there is no solution. Every letter has a different digit,
+# and the first letter of a multi-digit word can't be zero.
+fn pub solve(puzzle: String) -> Option[Array[(String, Int)]] {
+  let (left, right) = match puzzle.split_once('==') {
+    case Some(sides) -> sides
+    case None -> return Option.None
+  }
+  let weights = Array.filled(with: 0, times: 26)
+  let present = Array.filled(with: false, times: 26)
+  let leading = Array.filled(with: false, times: 26)
+
+  for (side, sign) in [(left.to_string, 1), (right.to_string, -1)].into_iter {
+    for slice in side.split('+') {
+      let word = slice.to_string.trim
+      let mut place = sign
+
+      let mut index = word.size
+
+      while index > 0 {
+        index -= 1
+
+        let letter = word.get(index).or_panic - A
+
+        weights.set(letter, weights.get(letter).or_panic + place)
+        present.set(letter, true)
+        place *= 10
+      }
+
+      if word.size > 1 { leading.set(word.get(0).or_panic - A, true) }
+    }
+  }
+
+  let letters = 0
+    .until(26)
+    .iter
+    .select(fn (l) { present.get(l).or_panic })
+    .to_array
+
+  if letters.size > 10 { return Option.None }
+
+  letters.sort_by(fn (a, b) {
+    weights.get(b).or_panic.absolute.cmp(weights.get(a).or_panic.absolute)
+  })
+
+  let bounds = letters.iter.map(fn (_) { 0 }).to_array
+  let mut bound = 0
+
+  let mut position = letters.size
+
+  while position > 0 {
+    position -= 1
+    bound += weights.get(letters.get(position).or_panic).or_panic.absolute * 9
+    bounds.set(position, bound)
+  }
+
+  let solver = Solver(
+    letters: letters,
+    weights: weights,
+    leading: leading,
+    bounds: bounds,
+    used: Array.filled(with: false, times: 10),
+    digits: Array.filled(with: 0, times: 26),
+  )
+
+  if !solver.search(0, 0) { return Option.None }
+
+  let solution = solver.letters.clone
+
+  solution.sort
+
+  Option.Some(
+    solution
+      .into_iter
+      .map(fn (letter) {
+        (
+          ByteArray.from_array([A + letter]).into_string,
+          solver.digits.get(letter).or_panic,
+        )
+      })
+      .to_array,
+  )
+}

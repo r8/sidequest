@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "all-your-base.janet"
+    ],
+    "test": [
+      "test/all-your-base.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Convert a number, represented as a sequence of digits in one base, to any other base.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/coin_purse.inko"
+    ],
+    "test": [
+      "test/test_coin_purse.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about operator overloading and equality by counting the coins in a purse.",
+  "custom": {
+    "after": [
+      "museum-exhibits"
+    ]
+  }
+}

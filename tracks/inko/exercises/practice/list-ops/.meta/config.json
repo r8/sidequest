@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/list_ops.inko"
+    ],
+    "test": [
+      "test/test_list_ops.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Implement basic list operations.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

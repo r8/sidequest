@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "protein-translation.kk"
+    ],
+    "test": [
+      "test/protein-translation-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Translate RNA sequences into proteins.",
+  "source": "Tyler Long",
+  "custom": {
+    "after": [
+      "rna-transcription"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "pig-latin.kk"
+    ],
+    "test": [
+      "test/pig-latin-test.kk"
+    ],
+    "example": [
+      ".meta/example.kk"
+    ]
+  },
+  "blurb": "Implement a program that translates from English to Pig Latin.",
+  "source": "The Pig Latin exercise at Test First Teaching by Ultrasaurus",
+  "source_url": "https://github.com/ultrasaurus/test-first-teaching/tree/master/learn_ruby/pig_latin",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+# Returns the number of steps it takes `number` to reach 1 under the Collatz
+# rules, or an error if `number` isn't positive.
+fn pub steps(number: Int) -> Result[Int, String] {
+  panic('implement me')
+}

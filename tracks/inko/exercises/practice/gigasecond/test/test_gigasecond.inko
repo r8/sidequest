@@ -1,0 +1,35 @@
+import gigasecond (add)
+import std.locale.en (Locale)
+import std.test (Tests)
+import std.time (DateTime)
+
+# Parses an ISO 8601 date ("2011-04-25") or date and time ("2015-01-24T22:00:00")
+# as a UTC `DateTime`.
+fn moment(iso: String) -> DateTime {
+  let locale = Locale.new
+
+  DateTime
+    .parse(iso, format: '%Y-%m-%dT%H:%M:%S', locale: locale)
+    .else(fn { DateTime.parse(iso, format: '%Y-%m-%d', locale: locale) })
+    .or_panic_with('invalid moment: ${iso}')
+}
+
+fn pub tests(t: mut Tests) {
+  t.test('date only specification of time', fn (t) { t.equal(add(moment('2011-04-25')), moment('2043-01-01T01:46:40')) })
+  t.test('second test for date only specification of time', fn (t) {
+    t.equal(add(moment('1977-06-13')), moment('2009-02-19T01:46:40'))
+  })
+  t.test('third test for date only specification of time', fn (t) {
+    t.equal(add(moment('1959-07-19')), moment('1991-03-27T01:46:40'))
+  })
+  t.test('full time specified', fn (t) { t.equal(add(moment('2015-01-24T22:00:00')), moment('2046-10-02T23:46:40')) })
+  t.test('full time with day roll-over', fn (t) {
+    t.equal(add(moment('2015-01-24T23:59:59')), moment('2046-10-03T01:46:39'))
+  })
+  t.test('does not mutate the input', fn (t) {
+    let start = moment('2015-01-24T23:59:59')
+    let _ = add(start)
+
+    t.equal(start, moment('2015-01-24T23:59:59'))
+  })
+}

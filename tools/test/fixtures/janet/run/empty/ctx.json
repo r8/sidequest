@@ -1,0 +1,1 @@
+{ "testFiles": ["test/greet.janet"], "argv": ["janet", "test/greet.janet"], "timeoutMs": 1500 }

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/block.html",
+    "description": "Blocks: statements, headers and immediate blocks"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/lexical.html",
+    "description": "Lexical scoping and ↩"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/tutorial/variable.html",
+    "description": "Tutorial: variables, definition and modification"
+  }
+]

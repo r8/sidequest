@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://janet-lang.org/docs/destructuring.html",
+    "description": "Destructuring in the Janet documentation"
+  },
+  {
+    "url": "https://janet-lang.org/docs/bindings.html",
+    "description": "Bindings: def, var and let"
+  }
+]

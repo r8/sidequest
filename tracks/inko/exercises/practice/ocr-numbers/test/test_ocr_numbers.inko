@@ -1,0 +1,79 @@
+import ocr_numbers (convert)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('Recognizes 0', fn (t) { t.equal(convert([' _ ', '| |', '|_|', '   ']), Result.Ok('0')) })
+  t.test('Recognizes 1', fn (t) { t.equal(convert(['   ', '  |', '  |', '   ']), Result.Ok('1')) })
+  t.test('Unreadable but correctly sized inputs return ?', fn (t) {
+    t.equal(convert(['   ', '  _', '  |', '   ']), Result.Ok('?'))
+  })
+  t.test('Input with a number of lines that is not a multiple of four raises an error', fn (t) {
+    t.equal(convert([' _ ', '| |', '   ']), Result.Error('Number of input lines is not a multiple of four'))
+  })
+  t.test('Input with a number of columns that is not a multiple of three raises an error', fn (t) {
+    t.equal(
+      convert(['    ', '   |', '   |', '    ']),
+      Result.Error('Number of input columns is not a multiple of three'),
+    )
+  })
+  t.test('Recognizes 110101100', fn (t) {
+    t.equal(
+      convert([
+        '       _     _        _  _ ',
+        '  |  || |  || |  |  || || |',
+        '  |  ||_|  ||_|  |  ||_||_|',
+        '                           ',
+      ]),
+      Result.Ok('110101100'),
+    )
+  })
+  t.test('Garbled numbers in a string are replaced with ?', fn (t) {
+    t.equal(
+      convert([
+        '       _     _           _ ',
+        '  |  || |  || |     || || |',
+        '  |  | _|  ||_|  |  ||_||_|',
+        '                           ',
+      ]),
+      Result.Ok('11?10?1?0'),
+    )
+  })
+  t.test('Recognizes 2', fn (t) { t.equal(convert([' _ ', ' _|', '|_ ', '   ']), Result.Ok('2')) })
+  t.test('Recognizes 3', fn (t) { t.equal(convert([' _ ', ' _|', ' _|', '   ']), Result.Ok('3')) })
+  t.test('Recognizes 4', fn (t) { t.equal(convert(['   ', '|_|', '  |', '   ']), Result.Ok('4')) })
+  t.test('Recognizes 5', fn (t) { t.equal(convert([' _ ', '|_ ', ' _|', '   ']), Result.Ok('5')) })
+  t.test('Recognizes 6', fn (t) { t.equal(convert([' _ ', '|_ ', '|_|', '   ']), Result.Ok('6')) })
+  t.test('Recognizes 7', fn (t) { t.equal(convert([' _ ', '  |', '  |', '   ']), Result.Ok('7')) })
+  t.test('Recognizes 8', fn (t) { t.equal(convert([' _ ', '|_|', '|_|', '   ']), Result.Ok('8')) })
+  t.test('Recognizes 9', fn (t) { t.equal(convert([' _ ', '|_|', ' _|', '   ']), Result.Ok('9')) })
+  t.test('Recognizes string of decimal numbers', fn (t) {
+    t.equal(
+      convert([
+        '    _  _     _  _  _  _  _  _ ',
+        '  | _| _||_||_ |_   ||_||_|| |',
+        '  ||_  _|  | _||_|  ||_| _||_|',
+        '                              ',
+      ]),
+      Result.Ok('1234567890'),
+    )
+  })
+  t.test('Numbers separated by empty lines are recognized. Lines are joined by commas.', fn (t) {
+    t.equal(
+      convert([
+        '    _  _ ',
+        '  | _| _|',
+        '  ||_  _|',
+        '         ',
+        '    _  _ ',
+        '|_||_ |_ ',
+        '  | _||_|',
+        '         ',
+        ' _  _  _ ',
+        '  ||_||_|',
+        '  ||_| _|',
+        '         ',
+      ]),
+      Result.Ok('123,456,789'),
+    )
+  })
+}

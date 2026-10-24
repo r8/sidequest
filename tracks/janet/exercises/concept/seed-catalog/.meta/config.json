@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "seed-catalog.janet"
+    ],
+    "test": [
+      "test/seed-catalog.janet"
+    ],
+    "exemplar": [
+      ".meta/exemplar.janet"
+    ]
+  },
+  "blurb": "Learn about higher-order functions by answering a seed seller's questions with map, filter, count and reduce.",
+  "custom": {
+    "after": [
+      "coffee-orders",
+      "train-cars",
+      "spice-rack"
+    ]
+  }
+}

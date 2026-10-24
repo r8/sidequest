@@ -1,0 +1,36 @@
+import test
+import protein-translation
+
+pub fun main()
+  run([
+    test("Empty RNA sequence results in no proteins") { assert-equal([], proteins("")) },
+    test("Methionine RNA sequence") { assert-equal(["Methionine"], proteins("AUG")) },
+    test("Phenylalanine RNA sequence 1") { assert-equal(["Phenylalanine"], proteins("UUU")) },
+    test("Phenylalanine RNA sequence 2") { assert-equal(["Phenylalanine"], proteins("UUC")) },
+    test("Leucine RNA sequence 1") { assert-equal(["Leucine"], proteins("UUA")) },
+    test("Leucine RNA sequence 2") { assert-equal(["Leucine"], proteins("UUG")) },
+    test("Serine RNA sequence 1") { assert-equal(["Serine"], proteins("UCU")) },
+    test("Serine RNA sequence 2") { assert-equal(["Serine"], proteins("UCC")) },
+    test("Serine RNA sequence 3") { assert-equal(["Serine"], proteins("UCA")) },
+    test("Serine RNA sequence 4") { assert-equal(["Serine"], proteins("UCG")) },
+    test("Tyrosine RNA sequence 1") { assert-equal(["Tyrosine"], proteins("UAU")) },
+    test("Tyrosine RNA sequence 2") { assert-equal(["Tyrosine"], proteins("UAC")) },
+    test("Cysteine RNA sequence 1") { assert-equal(["Cysteine"], proteins("UGU")) },
+    test("Cysteine RNA sequence 2") { assert-equal(["Cysteine"], proteins("UGC")) },
+    test("Tryptophan RNA sequence") { assert-equal(["Tryptophan"], proteins("UGG")) },
+    test("STOP codon RNA sequence 1") { assert-equal([], proteins("UAA")) },
+    test("STOP codon RNA sequence 2") { assert-equal([], proteins("UAG")) },
+    test("STOP codon RNA sequence 3") { assert-equal([], proteins("UGA")) },
+    test("Sequence of two protein codons translates into proteins") { assert-equal(["Phenylalanine", "Phenylalanine"], proteins("UUUUUU")) },
+    test("Sequence of two different protein codons translates into proteins") { assert-equal(["Leucine", "Leucine"], proteins("UUAUUG")) },
+    test("Translate RNA strand into correct protein list") { assert-equal(["Methionine", "Phenylalanine", "Tryptophan"], proteins("AUGUUUUGG")) },
+    test("Translation stops if STOP codon at beginning of sequence") { assert-equal([], proteins("UAGUGG")) },
+    test("Translation stops if STOP codon at end of two-codon sequence") { assert-equal(["Tryptophan"], proteins("UGGUAG")) },
+    test("Translation stops if STOP codon at end of three-codon sequence") { assert-equal(["Methionine", "Phenylalanine"], proteins("AUGUUUUAA")) },
+    test("Translation stops if STOP codon in middle of three-codon sequence") { assert-equal(["Tryptophan"], proteins("UGGUAGUGG")) },
+    test("Translation stops if STOP codon in middle of six-codon sequence") { assert-equal(["Tryptophan", "Cysteine", "Tyrosine"], proteins("UGGUGUUAUUAAUGGUUU")) },
+    test("Sequence of two non-STOP codons does not translate to a STOP codon") { assert-equal(["Methionine", "Methionine"], proteins("AUGAUG")) },
+    test("Unknown amino acids, not part of a codon, can't translate") { assert-throws("Invalid codon") { proteins("XYZ") } },
+    test("Incomplete RNA sequence can't translate") { assert-throws("Invalid codon") { proteins("AUGU") } },
+    test("Incomplete RNA sequence can translate if valid until a STOP codon") { assert-equal(["Phenylalanine", "Phenylalanine"], proteins("UUCUUCUAAUGGU")) },
+  ])

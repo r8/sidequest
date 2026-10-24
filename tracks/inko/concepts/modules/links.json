@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/getting-started/modules/",
+    "description": "Modules and imports, in the Inko manual"
+  },
+  {
+    "url": "https://docs.inko-lang.org/manual/latest/references/prelude/",
+    "description": "The prelude: what is available without an import"
+  }
+]

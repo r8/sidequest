@@ -1,0 +1,10 @@
+import greet (greet)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('greets', fn (t) { t.equal(greet('you'), 'Hello, you!') })
+  # t.test('greets formally', fn (t) { t.equal(greet('sir'), 'Good day, sir!') })
+  t.test('ignores calls in strings', fn (t) {
+    t.equal(greet("t.test('nested', fn (t) {})"), "Hello, t.test('nested', fn (t) {})!")
+  })
+}

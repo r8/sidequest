@@ -1,0 +1,27 @@
+# Returns a new list with `rule` applied to every price.
+fn pub apply_rule(prices: ref Array[Int], rule: fn (Int) -> Int) -> Array[Int] {
+  panic('implement me')
+}
+
+# Returns how many prices pass `test`.
+fn pub count_where(prices: ref Array[Int], test: fn (Int) -> Bool) -> Int {
+  panic('implement me')
+}
+
+# Returns a rule that takes `percent` percent off a price.
+fn pub discount(percent: Int) -> fn (Int) -> Int {
+  panic('implement me')
+}
+
+# Returns a closure that turns cents into a tag such as "€2.05".
+fn pub price_tag(currency: String) -> fn (Int) -> String {
+  panic('implement me')
+}
+
+# Returns a rule that applies `first`, then `second`.
+fn pub combine(
+  first: fn (Int) -> Int,
+  second: fn (Int) -> Int,
+) -> fn (Int) -> Int {
+  panic('implement me')
+}

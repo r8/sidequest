@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "alphametics.janet"
+    ],
+    "test": [
+      "test/alphametics.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Given an alphametics puzzle, find the correct solution.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

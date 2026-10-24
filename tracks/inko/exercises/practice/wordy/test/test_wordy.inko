@@ -1,0 +1,54 @@
+import wordy (answer)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('just a number', fn (t) { t.equal(answer('What is 5?'), Result.Ok(5)) })
+  t.test('just a zero', fn (t) { t.equal(answer('What is 0?'), Result.Ok(0)) })
+  t.test('just a negative number', fn (t) { t.equal(answer('What is -123?'), Result.Ok(-123)) })
+  t.test('addition', fn (t) { t.equal(answer('What is 1 plus 1?'), Result.Ok(2)) })
+  t.test('addition with a left hand zero', fn (t) { t.equal(answer('What is 0 plus 2?'), Result.Ok(2)) })
+  t.test('addition with a right hand zero', fn (t) { t.equal(answer('What is 3 plus 0?'), Result.Ok(3)) })
+  t.test('more addition', fn (t) { t.equal(answer('What is 53 plus 2?'), Result.Ok(55)) })
+  t.test('addition with negative numbers', fn (t) { t.equal(answer('What is -1 plus -10?'), Result.Ok(-11)) })
+  t.test('large addition', fn (t) { t.equal(answer('What is 123 plus 45678?'), Result.Ok(45801)) })
+  t.test('subtraction', fn (t) { t.equal(answer('What is 4 minus -12?'), Result.Ok(16)) })
+  t.test('multiplication', fn (t) { t.equal(answer('What is -3 multiplied by 25?'), Result.Ok(-75)) })
+  t.test('division', fn (t) { t.equal(answer('What is 33 divided by -3?'), Result.Ok(-11)) })
+  t.test('multiple additions', fn (t) { t.equal(answer('What is 1 plus 1 plus 1?'), Result.Ok(3)) })
+  t.test('addition and subtraction', fn (t) { t.equal(answer('What is 1 plus 5 minus -2?'), Result.Ok(8)) })
+  t.test('multiple subtraction', fn (t) { t.equal(answer('What is 20 minus 4 minus 13?'), Result.Ok(3)) })
+  t.test('subtraction then addition', fn (t) { t.equal(answer('What is 17 minus 6 plus 3?'), Result.Ok(14)) })
+  t.test('multiple multiplication', fn (t) {
+    t.equal(answer('What is 2 multiplied by -2 multiplied by 3?'), Result.Ok(-12))
+  })
+  t.test('addition and multiplication', fn (t) {
+    t.equal(answer('What is -3 plus 7 multiplied by -2?'), Result.Ok(-8))
+  })
+  t.test('multiple division', fn (t) { t.equal(answer('What is -12 divided by 2 divided by -3?'), Result.Ok(2)) })
+  # Not in the canonical data: integer division rounds toward zero, as in most languages' integer division.
+  t.test('division rounds toward zero', fn (t) { t.equal(answer('What is -7 divided by 2?'), Result.Ok(-3)) })
+  # Not in the canonical data: the smallest Int divides without overflowing.
+  t.test('division of the smallest Int', fn (t) {
+    t.equal(answer('What is -9223372036854775808 divided by 2?'), Result.Ok(-4611686018427387904))
+  })
+  # Not in the canonical data: dividing by zero is an error, not a number.
+  t.test('division by zero', fn (t) { t.equal(answer('What is 1 divided by 0?'), Result.Error('division by zero')) })
+  t.test('unknown operation', fn (t) { t.equal(answer('What is 52 cubed?'), Result.Error('unknown operation')) })
+  t.test('Non math question', fn (t) {
+    t.equal(answer('Who is the President of the United States?'), Result.Error('unknown operation'))
+  })
+  t.test('reject problem missing an operand', fn (t) {
+    t.equal(answer('What is 1 plus?'), Result.Error('syntax error'))
+  })
+  t.test('reject problem with no operands or operators', fn (t) {
+    t.equal(answer('What is?'), Result.Error('syntax error'))
+  })
+  t.test('reject two operations in a row', fn (t) {
+    t.equal(answer('What is 1 plus plus 2?'), Result.Error('syntax error'))
+  })
+  t.test('reject two numbers in a row', fn (t) {
+    t.equal(answer('What is 1 plus 2 1?'), Result.Error('syntax error'))
+  })
+  t.test('reject postfix notation', fn (t) { t.equal(answer('What is 1 2 plus?'), Result.Error('syntax error')) })
+  t.test('reject prefix notation', fn (t) { t.equal(answer('What is plus 1 2?'), Result.Error('syntax error')) })
+}

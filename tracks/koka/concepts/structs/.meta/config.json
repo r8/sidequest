@@ -1,0 +1,7 @@
+{
+  "blurb": "Structs group named fields into one immutable value, copied with changes rather than modified.",
+  "authors": [
+    "r8"
+  ],
+  "contributors": []
+}

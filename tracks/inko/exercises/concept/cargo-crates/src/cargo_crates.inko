@@ -1,0 +1,51 @@
+import std.cmp (Equal)
+import std.string (ToString)
+
+# A shipping crate holding up to a fixed number of items of one type.
+#
+# Add the fields you need.
+type pub Crate[T] {
+  # Returns an empty crate with room for `capacity` items.
+  fn pub static new(capacity: Int) -> Crate[T] {
+    panic('implement me')
+  }
+
+  # Returns the number of items in the crate.
+  fn pub size -> Int {
+    panic('implement me')
+  }
+
+  # Returns whether the crate is full.
+  fn pub full? -> Bool {
+    panic('implement me')
+  }
+
+  # Puts `item` in the crate, or returns it as an error when the crate is full.
+  fn pub mut load(item: T) -> Result[Nil, T] {
+    panic('implement me')
+  }
+
+  # Takes the most recently loaded item out of the crate, if there is one.
+  fn pub mut unload -> Option[T] {
+    panic('implement me')
+  }
+}
+
+impl Crate if T: Equal {
+  # Returns whether the crate holds `item`.
+  fn pub contains?(item: ref T) -> Bool {
+    panic('implement me')
+  }
+}
+
+impl Crate if T: ToString {
+  # Returns the items in the order they were loaded, separated by ", ".
+  fn pub manifest -> String {
+    panic('implement me')
+  }
+}
+
+# Returns how many of `items` are equal to `wanted`.
+fn pub count_matching[T: Equal](items: ref Array[T], wanted: ref T) -> Int {
+  panic('implement me')
+}

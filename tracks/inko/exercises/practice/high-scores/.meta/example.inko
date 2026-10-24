@@ -1,0 +1,42 @@
+# A player's list of high scores, in the order they were added.
+type pub HighScores {
+  let @scores: Array[Int]
+}
+
+impl HighScores {
+  # Returns a `HighScores` for the given `scores`.
+  fn pub static new(scores: Array[Int]) -> HighScores {
+    HighScores(scores)
+  }
+
+  # Returns all the scores, in the order they were added.
+  fn pub scores -> ref Array[Int] {
+    @scores
+  }
+
+  # Returns the last score added, or `None` if there are no scores.
+  fn pub latest -> Option[Int] {
+    @scores.last
+  }
+
+  # Returns the highest score, or `None` if there are no scores.
+  fn pub personal_best -> Option[Int] {
+    let none: Option[Int] = Option.None
+
+    @scores.iter.reduce(none, fn (best, score) {
+      match best {
+        case Some(b) if b >= score -> Option.Some(b)
+        case _ -> Option.Some(score)
+      }
+    })
+  }
+
+  # Returns the three highest scores, highest first (fewer if there aren't
+  # three scores). The scores themselves stay in the order they were added.
+  fn pub personal_top_three -> Array[Int] {
+    let sorted = @scores.clone
+
+    sorted.sort_by(fn (a, b) { b.cmp(a) })
+    sorted.into_iter.take(3).to_array
+  }
+}

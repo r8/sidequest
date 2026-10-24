@@ -1,0 +1,9 @@
+# Returns the number of grains on chessboard square `number` (1 to 64), or an
+# error if there is no such square.
+#
+# Inko's `Int` is a signed 64-bit integer, so it holds the grains of squares 1
+# to 63; square 64 (2^63) and the board's total (2^64 - 1) don't fit and
+# aren't tested.
+fn pub square(number: Int) -> Result[Int, String] {
+  panic('implement me')
+}

@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "nucleotide-count.fs"
+    ],
+    "test": [
+      "test/nucleotide-count-test.fs"
+    ],
+    "example": [
+      ".meta/example.fs"
+    ]
+  },
+  "blurb": "Given a DNA string, compute how many times each nucleotide occurs in the string.",
+  "source": "The Counting DNA Nucleotides problem at Rosalind",
+  "source_url": "https://rosalind.info/problems/dna/",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

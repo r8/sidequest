@@ -1,0 +1,46 @@
+import std.string (StringBuffer)
+
+fn push_run(buffer: mut StringBuffer, char: String, count: Int) {
+  if count > 1 { buffer.push(count.to_string) }
+
+  buffer.push(char)
+}
+
+# Encodes `string` by replacing every run of two or more identical characters
+# with the run's length followed by the character.
+fn pub encode(string: String) -> String {
+  let buffer = StringBuffer.new
+  let mut run = ''
+  let mut count = 0
+
+  for char in string.chars {
+    if char == run {
+      count += 1
+    } else {
+      push_run(buffer, run, count)
+      run = char
+      count = 1
+    }
+  }
+
+  push_run(buffer, run, count)
+  buffer.into_string
+}
+
+# Decodes a run-length encoded `string`.
+fn pub decode(string: String) -> String {
+  let buffer = StringBuffer.new
+  let mut count = 0
+
+  for char in string.chars {
+    match Int.parse(char, base: 10) {
+      case Some(digit) -> count = count * 10 + digit
+      case None -> {
+        buffer.push(char.repeat(if count == 0 { 1 } else { count }))
+        count = 0
+      }
+    }
+  }
+
+  buffer.into_string
+}

@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "status": "error",
+  "message": "Error: setup failed\ntest/greet.bqn:4:\n  setup ← \"setup failed\" ! 0\n                         ^",
+  "tests": []
+}

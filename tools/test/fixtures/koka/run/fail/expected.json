@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "status": "fail",
+  "message": null,
+  "tests": [
+    {
+      "name": "passes",
+      "status": "pass",
+      "test_code": "test(\"passes\") { assert-equal(\"Hello, you!\", greet()) }",
+      "message": null,
+      "output": null
+    },
+    {
+      "name": "fails on a list",
+      "status": "fail",
+      "test_code": "test(\"fails on a list\") { assert-equal([1, 2], [1, 3]) }",
+      "message": "expected [1,2], got [1,3]",
+      "output": null
+    },
+    {
+      "name": "fails on a missing exception",
+      "status": "fail",
+      "test_code": "test(\"fails on a missing exception\") { assert-throws(\"boom\") { greet() } }",
+      "message": "expected the exception \"boom\", but nothing was thrown",
+      "output": null
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/customs_office.inko"
+    ],
+    "test": [
+      "test/test_customs_office.inko"
+    ],
+    "exemplar": [
+      ".meta/exemplar.inko"
+    ]
+  },
+  "blurb": "Learn about Result by checking the parcels declared at a border post.",
+  "custom": {
+    "after": [
+      "train-dispatch"
+    ]
+  }
+}

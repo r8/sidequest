@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "isogram.janet"
+    ],
+    "test": [
+      "test/isogram.janet"
+    ],
+    "example": [
+      ".meta/example.janet"
+    ]
+  },
+  "blurb": "Determine whether a phrase is an isogram, a word with no repeated letters.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Isogram",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}

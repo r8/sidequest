@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/repeat.html",
+    "description": "Repeat ⍟"
+  },
+  {
+    "url": "https://mlochbaum.github.io/BQN/doc/control.html",
+    "description": "Control flow in BQN, including ⍟ as a conditional"
+  }
+]

@@ -1,0 +1,56 @@
+import anagram (find_anagrams)
+import std.test (Tests)
+
+fn pub tests(t: mut Tests) {
+  t.test('no matches', fn (t) {
+    t.equal(find_anagrams('diaper', ['hello', 'world', 'zombies', 'pants']), [])
+  })
+  t.test('detects two anagrams', fn (t) {
+    t.equal(find_anagrams('solemn', ['lemons', 'cherry', 'melons']), ['lemons', 'melons'])
+  })
+  t.test('does not detect anagram subsets', fn (t) { t.equal(find_anagrams('good', ['dog', 'goody']), []) })
+  t.test('detects anagram', fn (t) {
+    t.equal(find_anagrams('listen', ['enlists', 'google', 'inlets', 'banana']), ['inlets'])
+  })
+  t.test('detects three anagrams', fn (t) {
+    t.equal(
+      find_anagrams('allergy', ['gallery', 'ballerina', 'regally', 'clergy', 'largely', 'leading']),
+      ['gallery', 'regally', 'largely'],
+    )
+  })
+  t.test('detects multiple anagrams with different case', fn (t) {
+    t.equal(find_anagrams('nose', ['Eons', 'ONES']), ['Eons', 'ONES'])
+  })
+  t.test('does not detect non-anagrams with identical checksum', fn (t) {
+    t.equal(find_anagrams('mass', ['last']), [])
+  })
+  t.test('detects anagrams case-insensitively', fn (t) {
+    t.equal(find_anagrams('Orchestra', ['cashregister', 'Carthorse', 'radishes']), ['Carthorse'])
+  })
+  t.test('detects anagrams using case-insensitive subject', fn (t) {
+    t.equal(find_anagrams('Orchestra', ['cashregister', 'carthorse', 'radishes']), ['carthorse'])
+  })
+  t.test('detects anagrams using case-insensitive possible matches', fn (t) {
+    t.equal(find_anagrams('orchestra', ['cashregister', 'Carthorse', 'radishes']), ['Carthorse'])
+  })
+  t.test('does not detect an anagram if the original word is repeated', fn (t) {
+    t.equal(find_anagrams('go', ['goGoGO']), [])
+  })
+  t.test('anagrams must use all letters exactly once', fn (t) {
+    t.equal(find_anagrams('tapper', ['patter']), [])
+  })
+  t.test('words are not anagrams of themselves', fn (t) { t.equal(find_anagrams('BANANA', ['BANANA']), []) })
+  t.test('words are not anagrams of themselves even if letter case is partially different', fn (t) {
+    t.equal(find_anagrams('BANANA', ['Banana']), [])
+  })
+  t.test('words are not anagrams of themselves even if letter case is completely different', fn (t) {
+    t.equal(find_anagrams('BANANA', ['banana']), [])
+  })
+  t.test('words other than themselves can be anagrams', fn (t) {
+    t.equal(find_anagrams('LISTEN', ['LISTEN', 'Silent']), ['Silent'])
+  })
+  t.test('handles case of greek letters', fn (t) {
+    t.equal(find_anagrams('ΑΒΓ', ['ΒΓΑ', 'ΒΓΔ', 'γβα', 'αβγ']), ['ΒΓΑ', 'γβα'])
+  })
+  t.test('different characters may have the same bytes', fn (t) { t.equal(find_anagrams('a⬂', ['€a']), []) })
+}

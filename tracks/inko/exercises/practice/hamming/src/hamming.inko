@@ -1,0 +1,5 @@
+# Returns the number of positions at which the strands differ, or an error if
+# their lengths differ.
+fn pub distance(strand1: String, strand2: String) -> Result[Int, String] {
+  panic('implement me')
+}

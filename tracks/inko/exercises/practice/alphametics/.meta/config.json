@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "r8"
+  ],
+  "files": {
+    "solution": [
+      "src/alphametics.inko"
+    ],
+    "test": [
+      "test/test_alphametics.inko"
+    ],
+    "example": [
+      ".meta/example.inko"
+    ]
+  },
+  "blurb": "Given an alphametics puzzle, find the correct solution.",
+  "custom": {
+    "after": [
+      "hello-world"
+    ]
+  }
+}
