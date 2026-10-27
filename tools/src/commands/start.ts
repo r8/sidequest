@@ -70,5 +70,6 @@ export default async function start(args: string[]): Promise<number> {
   process.stdout.write(`  read:  ${display(root, join(workspace, README))}\n`);
   process.stdout.write(`  edit:  ${files.solution.map((f) => display(root, join(workspace, f))).join(', ')}\n`);
   process.stdout.write(`  test:  npx quest test ${ref.track}/${ref.slug}\n`);
+  process.stdout.write(`  done:  npx quest done ${ref.track}/${ref.slug}\n`);
   return 0;
 }
